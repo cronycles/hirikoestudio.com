@@ -6,5 +6,6 @@ return [
     'locales' => [
         'es' => 'Español',
         'en' => 'English',
+        'eu' => 'Euskara',
     ],
 ];
