@@ -1,0 +1,94 @@
+.img__upload_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+
+    @media (--no-mobileDevice) {
+        grid-template-columns: 1fr 2fr;
+    }
+}
+
+.img__upload_select_zone {
+    margin-bottom: 2rem;
+
+    .img__upload-select_form{
+        text-align: center;
+
+        @media (--no-mobileDevice) {
+            text-align: left;
+        }
+    }
+
+    .img__upload-dropzone {
+        height:20rem;
+        border:1px dotted grey;
+        display: none;
+
+        @media (--no-mobileDevice) {
+            display: inherit;
+        }
+    }
+}
+
+.img__upload_thumbnail_zone {
+    @media (--no-mobileDevice) {
+        margin-left: 30px;
+    }
+
+    .img__upload_thumb-text {
+        margin-bottom: 2.2rem;
+    }
+    .img__upload__thumbs__container{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        grid-auto-flow: dense;
+        list-style: none;
+        grid-gap: 30px;
+
+        object-fit: cover;
+        text-align: center;
+        padding: 0;
+
+        .img__upload__thumb-wrap{
+            margin: auto;
+            img {
+                max-width: 225px;
+                height: 150px;
+            }
+
+            .img__upload__thumb__buttons-wrap {
+                height: 30px;
+                .img__upload__thumb-left__btn{
+                    float: left;
+                }
+                .img__upload__thumb-right__btn{
+                    float: right;
+                }
+
+                .img__upload__confirm-btn {
+                    padding: 5px;
+
+                    background: #fff;
+                    border: 1px solid #ccc;
+                }
+            }
+            .upload-error {
+                color: red;
+            }
+            .img__upload__progress-bar_container {
+                width: 100%;
+                .img__upload_progress-bar {
+                    width: 0%;
+                    height: 10px;
+                    background-color: var(--corporateColor);
+                }
+                .img__upload_percentage-number {
+                    height: 20px;
+                }
+            }
+        }
+    }
+}
+
+
+
+

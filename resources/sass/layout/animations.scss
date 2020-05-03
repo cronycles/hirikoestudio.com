@@ -1,0 +1,25 @@
+/* Animation */
+
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0,20px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+
+@keyframes slideInDownAndClose {
+    0%  { transform: translateY(-50px); }
+    10% { transform: translateY(0px); }
+    80% { transform: translateY(0px); }
+    100% { transform: translateY(-50px); }
+}

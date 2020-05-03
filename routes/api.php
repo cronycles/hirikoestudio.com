@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/log/info', ['as' => 'log.info', 'uses' => 'JsLoggingController@logInfo']);
+Route::post('/log/error', ['as' => 'log.error', 'uses' => 'JsLoggingController@logError']);

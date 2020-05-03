@@ -1,0 +1,31 @@
+.cro__button, .cro__button:visited, .cro__button:active {
+    color: var(--textColor);
+    text-decoration: none;
+    background-color: var(--buttonBackgroundColor);
+    border: 1px solid var(--buttonBorderColor);
+    border-radius: 0;
+    padding: 18px 54px;
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 0 var(--corporateColor);
+    text-transform: uppercase;
+    position: relative;
+
+    &:hover:not(.loading__spinner) {
+        box-shadow: inset 400px 0 0 0 var(--corporateColor);
+        border-color: var(--corporateColor);
+        color: var(--buttonTextColorHover)
+    }
+
+    &.cro__button--basic {
+        padding: 18px 54px;
+    }
+
+    &.cro__button--small {
+        padding: 10px 10px;
+    }
+}

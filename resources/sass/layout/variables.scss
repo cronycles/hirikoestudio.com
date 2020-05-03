@@ -1,0 +1,33 @@
+:root {
+    --defaultFont:"Raleway",sans-serif;
+    --defaultFontSize: 14px;
+
+    --backgroundColor: #fff;
+
+    --textColor: #636b6f;
+
+    --corporateColor: #89ba40;
+
+    --complementaryColor: #ffffff;
+
+    --formFieldErrorColor: #ff5353;
+
+    /*---Buttons---*/
+    --buttonBackgroundColor: var(--complementaryColor);
+    --buttonTextColorHover: var(--complementaryColor);
+    --buttonBorderColor: var(--textColor);
+
+    --mobileScreenMaxWidth: 767px;
+    --tabletScreenMaxWidth: 991px;
+    --smallDesktopScreenMaxWidth: 1199px;
+    --mediumDesktopScreenMaxWidth: 1329px;
+    --largeDesktopScreenMaxWidth: 1530px;
+}
+
+@custom-media --mobileDevice (width <= var(--mobileScreenMaxWidth));
+@custom-media --tabletDevice (calc(var(--mobileScreenMaxWidth) + 1px) <= width <= var(--tabletScreenMaxWidth));
+@custom-media --smallDesktop (calc(var(--tabletScreenMaxWidth) + 1px) <= width <= var(--smallDesktopScreenMaxWidth));
+@custom-media --mediumDesktop (calc(var(--smallDesktopScreenMaxWidth) + 1px) <= width <= var(--mediumDesktopScreenMaxWidth));
+@custom-media --largeDesktop (calc(var(--mediumDesktopScreenMaxWidth) + 1px) <= width <= var(--largeDesktopScreenMaxWidth));
+
+@custom-media --no-mobileDevice (width > var(--mobileScreenMaxWidth));

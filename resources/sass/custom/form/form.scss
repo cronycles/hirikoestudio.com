@@ -1,0 +1,127 @@
+@import "loading-spinner";
+form {
+
+    .form__inputs {
+        display: grid;
+        margin-bottom: 20px;
+        .form__row {
+            position: relative;
+            width: 100%;
+            margin-bottom: 20px;
+
+            label {
+                display: block;
+                color: var(--corporateColor);
+                &.label__checkbox-array {
+                    color: var(--textColor);
+                }
+            }
+
+            input:not([type='checkbox']), textarea, .form__content-editable {
+                appearance: none;
+                width: 80%;
+                border: 0;
+                font-family: inherit;
+                padding: 12px 0;
+                font-size: 16px;
+                font-weight: 500;
+                border-bottom: 2px solid #c8ccd4;
+                background: none;
+                border-radius: 0;
+                color: #223254;
+                transition: all 0.15s ease;
+
+                @media (--no-mobileDevice) {
+                    width: 50%;
+                }
+
+                &:hover {
+                    background: rgba(34, 50, 84, 0.03);
+                }
+
+                &:focus {
+                    background: none;
+                    outline: none;
+                }
+
+                &:focus + span {
+                    color: var(--corporateColor);
+                    transform: translateY(-26px) scale(0.75);
+                }
+
+                &:focus + span + .border {
+                    transform: scaleX(1);
+                }
+                &.form__field--error {
+                    border-color: var(--formFieldErrorColor);
+                }
+
+            }
+            select {
+                display: block;
+                line-height: 1.3;
+                margin-top: 10px;
+                height: 35px;
+                font-size: var(--defaultFontSize);
+                font-weight: 200;
+                border: 2px solid #c8ccd4;
+                width: 100%;
+                max-width: 100%;
+
+                &.form__field--error {
+                    border-color: var(--formFieldErrorColor);
+                }
+
+            }
+        }
+    }
+
+
+    .form__field--error-text-container {
+        height: 20px;
+
+        .form__field--error-text {
+            margin: 0;
+            padding: 0;
+            padding-top: 5px;
+            font-size: 0.9rem;
+            color: var(--formFieldErrorColor);
+
+            animation-name: fadeInUp;
+        }
+    }
+}
+
+
+.form__error_messages {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.form__success_messages {
+    position: absolute;
+    z-index: 101;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--corporateColor);
+    color: var(--complementaryColor);
+    text-align: center;
+    line-height: 2.5;
+    overflow: hidden;
+    box-shadow: 0 0 5px black;
+    animation: slideInDownAndClose 7s forwards;
+
+    .close {
+        position: absolute;
+        right: 10px;
+        color: var(--complementaryColor);
+        cursor: pointer;
+    }
+}
+

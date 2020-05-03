@@ -1,1 +1,23 @@
-//
+@import "layout/variables";
+@import "layout/fonts";
+
+/*Layout*/
+@import "layout/globals";
+@import "layout/buttons";
+@import "layout/animations";
+@import "layout/wrapper";
+@import "viewComponents/navbar/navbar";
+
+/*Form*/
+@import "custom/form/form";
+
+//@import "custom/sorting/sorting";
+//@import "custom/auto-adjust-image-gallery/auto-adjust-image-gallery";
+//@import "custom/cro-image-carousel/cro-image-carousel";
+
+
+@import "pages";
+/*---Pages----*/
+@import "pages/index";
+
+@import "auth/auth";

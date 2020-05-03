@@ -1,0 +1,67 @@
+.admin-section__container {
+
+    .general__buttons {
+        display: inline-flex;
+
+        div {
+            padding: 10px 10px 10px 0;
+        }
+    }
+
+    table.items__table {
+        width: 100%;
+        table-layout: fixed;
+        white-space: nowrap;
+
+        td, th {
+            text-align: left;
+            padding: 10px 10px;
+        }
+        td {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        th {
+            background: darkgray;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: lightgrey;
+        }
+
+        .row-edit {
+            width: 25%;
+        }
+
+        .row-delete {
+            width: 20%;
+        }
+        @media (--no-mobileDevice) {
+            .row-edit {
+                width: 10%;
+            }
+
+            .row-delete {
+                width: 10%;
+            }
+        }
+
+        .delete__form {
+            margin: 0;
+            button {
+                margin: 0;
+                padding: 0;
+                border: 0;
+                background: none;
+                font-family: var(--defaultFont);
+                font-size: var(--defaultFontSize);
+                text-decoration: none;
+                cursor: pointer;
+                &:hover {
+                    color: var(--corporateColor);
+                }
+            }
+        }
+    }
+}

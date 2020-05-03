@@ -1,0 +1,46 @@
+html, body {
+    margin: 0;
+    padding: 0;
+
+    font-family: var(--defaultFont);
+    color: var(--textColor);
+    font-size: var(--defaultFontSize);
+}
+
+.none {
+    display: none;
+}
+
+h1 {
+
+}
+
+h2 {
+
+}
+
+h3 {
+
+}
+
+p {
+    margin-top: 0;
+}
+
+a {
+
+}
+
+ul {
+    margin-top: 0;
+    padding: 0;
+    list-style-position: inside;
+}
+
+.text-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,8 +23,10 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Request $request)
     {
-        //
+        Blade::directive('render', function ($component) {
+            return "<?php echo (app($component))->toHtml(); ?>";
+        });
     }
 }
