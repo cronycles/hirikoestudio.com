@@ -1,11 +1,10 @@
 <?php
 
 return [
-    'isActiveMultilang' => false,
+    'isActiveMultilang' => true,
 
     'locales' => [
-        'it' => 'Italiano',
+        'es' => 'Español',
         'en' => 'English',
-        'es' => 'Español'
     ],
 ];

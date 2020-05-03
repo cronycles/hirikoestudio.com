@@ -35,6 +35,9 @@ Route::get('password/reset/{token}', ['as' => 'password.reset', 'uses' => 'Auth\
 Route::get('register', ['as' => 'register', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
 Route::post('register', ['as' => 'register', 'uses' => 'Auth\RegisterController@register']);
 
+Route::get('lang/{language}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/auth', ['as' => 'auth', 'uses' => 'Auth\AuthPagesController@index']);
 });
+

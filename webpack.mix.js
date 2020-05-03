@@ -3,6 +3,10 @@ const webpack = require("webpack");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 require('laravel-mix-polyfill');
 
+let publicFolderName = 'public';
+
+mix.config.publicPath = publicFolderName;
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -46,11 +50,11 @@ mix.webpackConfig({
     }
 });
 
-mix.js('resources/js/app.js', 'public/js')
-    .js('resources/js/lazy.js', 'public/js')
+mix.js('resources/js/app.js', publicFolderName + '/js')
+    .js('resources/js/lazy.js', publicFolderName + '/js')
     .sourceMaps()
     .extract()
-    .sass('resources/sass/app.scss', 'public/css').options({
+    .sass('resources/sass/app.scss', publicFolderName + '/css').options({
     postCss: postCssPlugins
 })
     .sourceMaps()
