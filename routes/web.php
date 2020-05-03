@@ -15,6 +15,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', ['as' => 'index', 'uses' => 'PagesController@index']);
 
+//projects
+Route::get('projects', ['as' => 'projects', 'uses' => 'PagesController@projects']);
+Route::get('projects/{id}', ['as' => 'projects.show', 'uses' => 'PagesController@projectShow']);
+
+//contact
+Route::get('contact', ['as' => 'contact', 'uses' => 'PagesController@contact']);
+Route::post('contact', ['as' => 'contact.send', 'uses' => 'ContactController@send']);
+
+
 //Login Routes...
 Route::get('login', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
 Route::post('login', ['as' => 'login', 'uses' => 'Auth\LoginController@login']);
@@ -39,5 +48,35 @@ Route::get('lang/{language}', ['as' => 'lang.switch', 'uses' => 'LanguageControl
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/auth', ['as' => 'auth', 'uses' => 'Auth\AuthPagesController@index']);
+
+    //Auth Categories
+    Route::get('/auth/categories', ['as' => 'auth.categories', 'uses' => 'AuthPagesController@categories']);
+    Route::get('/auth/categories/create', ['as' => 'auth.categories.create', 'uses' => 'AuthPagesController@categoryCreate']);
+    Route::get('/auth/categories/{id}/edit', ['as' => 'auth.categories.edit', 'uses' => 'AuthPagesController@categoryEdit']);
+    Route::get('/auth/categories/sort', ['as' => 'auth.categories.sort', 'uses' => 'AuthPagesController@categoriesSort']);
+
+    Route::post('/auth/categories/create', ['as' => 'auth.categories.create', 'uses' => 'Auth\Categories\AuthCategoriesCrudController@store']);
+    Route::post('/auth/categories/{id}/edit', ['as' => 'auth.categories.update', 'uses' => 'Auth\Categories\AuthCategoriesCrudController@update']);
+    Route::delete('/auth/categories/{id}', ['as' => 'auth.categories.delete', 'uses' => 'Auth\Categories\AuthCategoriesCrudController@delete']);
+
+    Route::post('/auth/categories/sort', ['as' => 'auth.categories.sort', 'uses' => 'Auth\Categories\AuthCategoriesSortingController@updateSort']);
+
+
+    //Auth Projects
+    Route::get('/auth/projects', ['as' => 'auth.projects', 'uses' => 'AuthPagesController@projects']);
+    Route::get('/auth/projects/create', ['as' => 'auth.projects.create', 'uses' => 'AuthPagesController@projectCreate']);
+    Route::get('/auth/projects/{id}/edit', ['as' => 'auth.projects.edit', 'uses' => 'AuthPagesController@projectEdit']);
+    Route::get('/auth/projects/sort', ['as' => 'auth.projects.sort', 'uses' => 'AuthPagesController@projectsSort']);
+    Route::get('/auth/projects/{id}/images', ['as' => 'auth.projects.images', 'uses' => 'AuthPagesController@projectImages']);
+
+    Route::post('/auth/projects/create', ['as' => 'auth.projects.create', 'uses' => 'Auth\Projects\AuthProjectsCrudController@store']);
+    Route::post('/auth/projects/{id}/edit', ['as' => 'auth.projects.update', 'uses' => 'Auth\Projects\AuthProjectsCrudController@update']);
+    Route::delete('/auth/projects/{id}', ['as' => 'auth.projects.delete', 'uses' => 'Auth\Projects\AuthProjectsCrudController@delete']);
+
+    Route::post('/auth/projects/sort', ['as' => 'auth.projects.sort', 'uses' => 'Auth\Projects\AuthProjectsSortingController@updateSort']);
+
+    Route::post('/auth/projects/{id}/images', ['as' => 'auth.projects.images.upload', 'uses' => 'Auth\Projects\AuthProjectsImagesController@uploadImages']);
+    Route::post('/auth/projects/{id}/images-sort', ['as' => 'auth.projects.imagesSort', 'uses' => 'Auth\Projects\AuthProjectsImagesController@updateImagesSort']);
+    Route::delete('/auth/projects/{id}/images/{imageId}', ['as' => 'auth.projects.images.delete', 'uses' => 'Auth\Projects\AuthProjectsImagesController@deleteImage']);
 });
 
