@@ -11,12 +11,12 @@
             <li><a href="#">History</a></li>
             <li><a href="#">Contact</a></li>
             <li>
-                <div class="jdropdown dropdown">
-                    <div class="dropbtn">
+                <div class="jdropdown nav__dropdown-container">
+                    <div class="nav__dropdown-button">
                         italiano
                         <i data-opened="la-caret-right" data-closed="la-caret-down" class="jcaret la la-caret-down"></i>
                     </div>
-                    <div class="jdropdownContent dropdown-content">
+                    <div class="jdropdownContent nav__dropdown-list-container">
                         <a href="#">
                             francois
                         </a>

@@ -55,7 +55,7 @@ nav ul {
 }
 
 nav a,
-nav .dropbtn {
+nav .nav__dropdown-button {
     font-size: 12px;
     display: block;
     letter-spacing: 0.1rem;
@@ -79,10 +79,10 @@ nav a:visited, nav a:active {
     }
 }
 
-nav .dropdown {
+nav .nav__dropdown-container {
   overflow: hidden;
 
-    .dropbtn {
+    .nav__dropdown-button {
         outline: none;
         background-color: inherit;
         font-family: inherit;
@@ -90,7 +90,7 @@ nav .dropdown {
         cursor: pointer;
     }
 
-    .dropdown-content {
+    .nav__dropdown-list-container {
         padding-left: 15px;
         display: none;
         @media (--no-mobileDevice) {
