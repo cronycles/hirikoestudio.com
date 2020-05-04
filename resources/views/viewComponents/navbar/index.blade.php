@@ -1,37 +1,33 @@
-@if (Route::has('login'))
-<div class="navbar">
-    @foreach($model->pageLinks as $pageLink)
-        <a href="{{$pageLink->url}}" class="{{ $pageLink->isActive ? 'active' : "" }}">{{$pageLink->text}}</a>
-    @endforeach
+<header>
+    <div class="logo">Site Title</div>
+    <div class="jburger nav__burger">
+        <i data-opened="las la-times" data-closed="las la-bars" class="jburgerBars las la-bars"></i>
+    </div>
+    <nav>
+        <ul class="jnavList">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">History</a></li>
+            <li><a href="#">Contact</a></li>
+            <li>
+                <div class="jdropdown dropdown">
+                    <div class="dropbtn">
+                        italiano
+                        <i data-opened="la-caret-right" data-closed="la-caret-down" class="jcaret la la-caret-down"></i>
+                    </div>
+                    <div class="jdropdownContent dropdown-content">
+                        <a href="#">
+                            francois
+                        </a>
+                            <a href="#">
+                               angle
+                            </a>
 
-    @if ($model->isMultilanguageActive)
-        <div class="dropdown">
-            <button class="dropbtn">
-                {{ $model->currentLanguage }}
-                <i class="la la-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                @foreach ($model->languageLinks as $languageLink)
-                <a href="{{ $languageLink->url }}">
-                    {{ $languageLink->text }}
-                </a>
-                @endforeach
-            </div>
-        </div>
-    @endif
+                    </div>
+                </div>
 
-    @if ($model->isUserAuth)
-        @foreach($model->adminPageLinks as $adminPageLink)
-            <a href="{{$adminPageLink->url}}" class="dropdown-toggle {{ $adminPageLink->isActive ? 'active' : "" }}" data-toggle="dropdown">
-                {{ $adminPageLink->text }}
-            </a>
-        @endforeach
-
-    @else
-        @foreach($model->userPageLinks as $userPageLink)
-            <a href="{{$userPageLink->url}}" class="{{ $userPageLink->isActive ? 'active' : "" }}">{{$userPageLink->text}}</a>
-        @endforeach
-    @endif
-
-</div>
-@endif
+            </li>
+        </ul>
+    </nav>
+</header>

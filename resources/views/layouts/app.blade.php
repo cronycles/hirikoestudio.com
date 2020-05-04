@@ -4,8 +4,9 @@
 
 <body>
     @include('custom.layouts._client-server')
+    @render(\App\Http\ViewComponents\Navbar\Components\NavbarComponent::class)
+
     <div class="jpage wrapper" data-p="{{$model->id}}">
-        @render(\App\Http\ViewComponents\Navbar\Components\NavbarComponent::class)
         @include('custom.form.messages.success')
          @yield('content')
     </div>

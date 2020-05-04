@@ -2,6 +2,7 @@ import PageFactory from './pages/page.factory';
 import LazyFactory from './custom/scriptsLazy/lazy.factory';
 import ImagesLazy from './custom/imagesLazy/images.lazy';
 import Notifications from "./custom/httpMessages/notifications";
+import Navbar from "./viewComponents/navbar/navbar";
 
 $(function () {
     let lazyFactory = new LazyFactory();
@@ -12,4 +13,6 @@ $(function () {
     let imagesLoading = new ImagesLazy();
     imagesLoading.loadAllLazyImagesIntoThePage();
     new Notifications();
+    new Navbar();
+
 });

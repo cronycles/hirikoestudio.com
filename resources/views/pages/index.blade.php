@@ -2,7 +2,31 @@
 
 @section('page_content')
     <div>
-        <img src="{{config('custom.images.static.defaultLazyPlaceholder')}}" data-src="https://via.placeholder.com/400x300.png" class="jlimg">
+        <img src="{{config('custom.images.static.defaultLazyPlaceholder')}}" data-src="https://via.placeholder.com/200x100.png" class="jlimg">
+    </div>
+    <div>
+        <img src="{{config('custom.images.static.defaultLazyPlaceholder')}}" data-src="https://via.placeholder.com/200x100.png" class="jlimg">
+    </div>
+    <div>
+        <img src="{{config('custom.images.static.defaultLazyPlaceholder')}}" data-src="https://via.placeholder.com/200x100.png" class="jlimg">
+    </div>
+    <div>
+        <img src="{{config('custom.images.static.defaultLazyPlaceholder')}}" data-src="https://via.placeholder.com/200x100.png" class="jlimg">
+    </div>
+    <div>
+        <img src="{{config('custom.images.static.defaultLazyPlaceholder')}}" data-src="https://via.placeholder.com/200x100.png" class="jlimg">
+    </div>
+    <div>
+        <img src="{{config('custom.images.static.defaultLazyPlaceholder')}}" data-src="https://via.placeholder.com/200x100.png" class="jlimg">
+    </div>
+    <div>
+        <img src="{{config('custom.images.static.defaultLazyPlaceholder')}}" data-src="https://via.placeholder.com/200x100.png" class="jlimg">
+    </div>
+    <div>
+        <img src="{{config('custom.images.static.defaultLazyPlaceholder')}}" data-src="https://via.placeholder.com/200x100.png" class="jlimg">
+    </div>
+    <div>
+        <img src="{{config('custom.images.static.defaultLazyPlaceholder')}}" data-src="https://via.placeholder.com/200x100.png" class="jlimg">
     </div>
 
     <div class="links">
