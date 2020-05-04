@@ -19,7 +19,7 @@ h1 {
 
     @media (--tabletDevice) {
         margin: 0 0 20px;
-        padding:  0;
+        padding: 0;
         font-size: 15px;
     }
 }
@@ -42,9 +42,11 @@ p {
 a {
     color: var(--textColor);
     cursor: pointer;
+
     &:active, &:visited {
         color: var(--textColor);
     }
+
     &:hover {
         color: var(--textColorLinkHover);
         text-decoration: none;

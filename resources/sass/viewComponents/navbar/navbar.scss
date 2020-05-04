@@ -46,6 +46,7 @@ nav ul {
         width: initial;
         position: initial;
     }
+
     li {
         float: none;
         @media (--no-mobileDevice) {
@@ -69,18 +70,19 @@ nav .nav__dropdown-button {
         padding: 0 10px;
         line-height: inherit;
         border: 0;
-        color: var(--corporateColor);
+        color: initial;
     }
 }
+
 nav a:visited, nav a:active {
     color: var(--complementaryColor);
     @media (--no-mobileDevice) {
-        color: var(--corporateColor);
+        color: initial;
     }
 }
 
 nav .nav__dropdown-container {
-  overflow: hidden;
+    overflow: hidden;
 
     .nav__dropdown-button {
         outline: none;
@@ -98,16 +100,15 @@ nav .nav__dropdown-container {
             padding: 0;
             background-color: var(--corporateColor);
         }
+
         a {
             line-height: 30px;
             float: none;
             text-decoration: none;
             display: block;
             text-align: left;
-
-
             @media (--no-mobileDevice) {
-                color: var(--complementaryColor);
+                color: initial;
             }
         }
     }
