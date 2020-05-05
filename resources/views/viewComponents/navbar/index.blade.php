@@ -5,29 +5,43 @@
     </div>
     <nav>
         <ul class="jnavList">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">History</a></li>
-            <li><a href="#">Contact</a></li>
-            <li>
-                <div class="jdropdownButton nav__dropdown-container">
-                    <div class="nav__dropdown-button">
-                        italiano
-                        <i data-open="la-caret-right" data-closed="la-caret-down" class="la la-caret-down"></i>
+            @foreach($model->pageLinks as $pageLink)
+            <li><a href="{{$pageLink->url}}" class="{{ $pageLink->isActive ? 'active' : "" }}">{{$pageLink->text}}</a></li>
+            @endforeach
+            @if ($model->isMultilanguageActive)
+                <li>
+                    <div class="nav__dropdown-container">
+                        <div class="jdropdownButton nav__dropdown-button">
+                            {{ $model->currentLanguage }}
+                            <i data-open="la-caret-right" data-closed="la-caret-down" class="la la-caret-down"></i>
+                        </div>
+                        <div class="jdropdownContent nav__dropdown-list-container">
+                            @foreach ($model->languageLinks as $languageLink)
+                                <a href="{{ $languageLink->url }}">
+                                    {{ $languageLink->text }}
+                                </a>
+                            @endforeach
+                        </div>
                     </div>
-                    <div class="jdropdownContent nav__dropdown-list-container">
-                        <a href="#">
-                            francois
-                        </a>
-                        <a href="#">
-                            angle
-                        </a>
-
-                    </div>
-                </div>
-
-            </li>
+                </li>
+            @endif
+                @if ($model->isUserAuth)
+                    <li>
+                        <div class="nav__dropdown-container">
+                            <div class="jdropdownButton nav__dropdown-button">
+                                {{ $model->userName }}
+                                <i data-open="la-caret-right" data-closed="la-caret-down" class="la la-caret-down"></i>
+                            </div>
+                            <div class="jdropdownContent nav__dropdown-list-container">
+                                @foreach($model->adminPageLinks as $adminPageLink)
+                                    <a href="{{$adminPageLink->url}}" class="{{ $adminPageLink->isActive ? 'active' : "" }}">
+                                        {{ $adminPageLink->text }}
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
+                    </li>
+                @endif
         </ul>
     </nav>
 </header>

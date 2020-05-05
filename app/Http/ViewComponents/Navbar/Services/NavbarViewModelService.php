@@ -109,7 +109,7 @@ class NavbarViewModelService {
         $vieModel->isUserAuth = $this->authService->isAnyUserAuthenticated();
         if($vieModel->isUserAuth) {
             $userEntity = $this->authService->getAuthUser();
-            $vieModel->userName =  $userEntity->name;
+            $vieModel->userName =  '@' . $userEntity->name;
         }
         $vieModel->adminPageLinks = [
             $this->createAuthHomeLink()
@@ -135,7 +135,7 @@ class NavbarViewModelService {
     private function createAuthHomeLink() {
         $userEntity = $this->authService->getAuthUser();
         $url = route('auth');
-        $text = $userEntity ? '@' . $userEntity->name : "";
+        $text = $this->getMenuPageTextFromConfig(config('custom.pages.AUTH_INDEX'));
         $isActive = Route::currentRouteNamed('auth');
         return new NavbarLinkViewModel($url, $text, $isActive);
     }

@@ -57,19 +57,19 @@ export default class NavbarView {
     };
 
     isDropDownButtonOpened = (dropdownButtonSelector) => {
-        const $dropdownContent = $(dropdownButtonSelector).find(this.dropdownContentSelector);
+        const $dropdownContent = $(dropdownButtonSelector).next(this.dropdownContentSelector);
         return $dropdownContent.hasClass(this.topen);
     };
 
     closeDropDownMenu = (dropdownButtonSelector) => {
-        const $dropdownContent = $(dropdownButtonSelector).find(this.dropdownContentSelector);
+        const $dropdownContent = $(dropdownButtonSelector).next(this.dropdownContentSelector);
         $dropdownContent.hide();
         $dropdownContent.removeClass(this.topen);
         this.#setDropdownClosedIcon(dropdownButtonSelector);
     };
 
     openDropDownMenu = (dropdownButtonSelector) => {
-        const $dropdownContent = $(dropdownButtonSelector).find(this.dropdownContentSelector);
+        const $dropdownContent = $(dropdownButtonSelector).next(this.dropdownContentSelector);
         $dropdownContent.show();
         $dropdownContent.addClass(this.topen);
         this.#setDropdownOpenIcon(dropdownButtonSelector);
