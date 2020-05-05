@@ -1,5 +1,5 @@
 <header class="jheader">
-    <div class="logo">Site Title</div>
+    <div class="header__logo"><a href="{{$model->logo->url}}"><img src="{{$model->logo->imageUrl}}" alt="{{$model->logo->altText}}"></a></div>
     <div class="jburgerBtn nav__burger">
         <i data-open="las la-times" data-closed="las la-bars" class="las la-bars"></i>
     </div>

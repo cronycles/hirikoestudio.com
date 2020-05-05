@@ -5,6 +5,11 @@ namespace App\Http\ViewComponents\Navbar\Models;
 class NavbarViewModel {
 
     /**
+     * @var NavbarLogoViewModel
+     */
+    public $logo;
+
+    /**
      * @var NavbarLinkViewModel[]
      */
     public $pageLinks;

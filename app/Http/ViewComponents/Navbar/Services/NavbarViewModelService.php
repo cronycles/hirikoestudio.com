@@ -2,6 +2,7 @@
 
 namespace App\Http\ViewComponents\Navbar\Services;
 
+use App\Http\ViewComponents\Navbar\Models\NavbarLogoViewModel;
 use App\Services\AuthService;
 use App\Custom\Languages\Services\LanguagesService;
 use App\Custom\Pages\Services\PagesService;
@@ -39,11 +40,24 @@ class NavbarViewModelService {
 
     public function getModel() {
         $outcome = new NavbarViewModel();
+        $outcome->logo = $this->createLogoViewModel();
         $outcome->pageLinks = $this->createPageLinks();
         $outcome->userPageLinks = $this->createUserPageLinks();
         $outcome = $this->createViewModelLanguagesPart($outcome);
         $outcome = $this->createViewModelAdminPart($outcome);
 
+        return $outcome;
+    }
+
+    /**
+     * @return NavbarLogoViewModel
+     */
+    private function createLogoViewModel() {
+        $outcome = new NavbarLogoViewModel();
+        $outcome->imageUrl = config('custom.images.static.logoBlack');
+        $outcome->url = route('index');
+        $outcome->linkText = config('custom.company.name');
+        $outcome->altText = config('custom.company.name');
         return $outcome;
     }
 

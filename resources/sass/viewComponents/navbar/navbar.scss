@@ -2,14 +2,16 @@ header {
     position: fixed;
     z-index: 2;
     width: 100%;
-    height: 60px;
-    line-height: 60px;
+    height: 65px;
+    line-height: 65px;
 
-    .logo {
-        position: absolute;
-        top: 0;
-        left: 10px;
-        text-transform: uppercase;
+
+    .header__logo {
+        float: left;
+        margin: 10px 10px;
+        img {
+            height: 50px;
+        }
     }
 
     .nav__burger {
@@ -25,7 +27,7 @@ header {
 
     nav {
         width: 100%;
-        top: 60px;
+        top: 65px;
         position: absolute;
         @media (--no-mobileDevice) {
             right: 0;
@@ -62,7 +64,7 @@ nav .nav__dropdown-button {
     letter-spacing: 0.1rem;
     text-decoration: none;
     text-transform: uppercase;
-    padding: 10px 3%;
+    padding: 20px 3%;
     line-height: 20px;
     border-top: 1px solid #333;
     color: var(--complementaryColor);
