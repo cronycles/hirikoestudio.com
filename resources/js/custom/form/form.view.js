@@ -31,7 +31,7 @@ export default class FormView {
 
     onFormSubmit = (callback) => {
         this.$forms.off(this.tsubmit).on(this.tsubmit, (element) => {
-            const $form = $(element.target);
+            const $form = $(element.delegateTarget);
             callback($form.attr(this.tid));
             return false;
         });
@@ -117,13 +117,13 @@ export default class FormView {
 
     onFieldFocus = (callback) => {
         this.$forms.on(this.tfocusIn, this.fieldSelector, (element) => {
-            const $field = $(element.target);
+            const $field = $(element.delegateTarget);
             const $form = $field.closest(this.tform);
             callback($form.attr(this.tid), $field.attr(this.tname));
         });
 
         this.$forms.on(this.tfocusIn, this.fieldSubSelector, (element) => {
-            const $fieldSub = $(element.target);
+            const $fieldSub = $(element.delegateTarget);
             const $field = this.#findJqueryFormFieldByJqueryFieldSub($fieldSub);
             const $form = $field.closest(this.tform);
             callback($form.attr(this.tid), $field.attr(this.tname));
@@ -132,19 +132,18 @@ export default class FormView {
 
     onFieldFocusOut = (callback) => {
         this.$forms.on(this.tfocusOut, this.fieldSelector, (element) => {
-            const $field = $(element.target);
+            const $field = $(element.delegateTarget);
             const $form = $field.closest(this.tform);
             callback($form.attr(this.tid), $field.attr(this.tname));
         });
 
         this.$forms.on(this.tfocusOut, this.fieldSubSelector, (element) => {
-            const $fieldSub = $(element.target);
+            const $fieldSub = $(element.delegateTarget);
             const $field = this.#findJqueryFormFieldByJqueryFieldSub($fieldSub);
             const $form = $field.closest(this.tform);
             callback($form.attr(this.tid), $field.attr(this.tname));
         });
     };
-
 
     continueFormSubmit = (formId) => {
         const $form = this.#getJqueryFormById(formId);

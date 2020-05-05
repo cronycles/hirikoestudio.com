@@ -112,7 +112,7 @@ export default class ImagesUploaderView {
      */
     onDeleteFile = (callback) => {
         this.$thumbsContainer.on('click', this.#deleteSelector, (deleteButton) => {
-            var id = $(deleteButton.target).closest("." + this.thumbSelector).data("id");
+            var id = $(deleteButton.delegateTarget).closest("." + this.thumbSelector).data("id");
             callback(id);
             return false;
         });
@@ -132,7 +132,7 @@ export default class ImagesUploaderView {
      */
     onDeleteFileConfirm = (callback) => {
         this.$thumbsContainer.on('click', this.#deleteConfirmSelector, (deleteButton) => {
-            var id = $(deleteButton.target).closest("." + this.thumbSelector).data("id");
+            var id = $(deleteButton.delegateTarget).closest("." + this.thumbSelector).data("id");
             callback(id);
             return false;
         });
@@ -188,8 +188,8 @@ export default class ImagesUploaderView {
             this.$fileElem.remove();
         }
         var $clone = this.$imageHandlingClonableInputFile.clone();
-        $clone.off().on("change", ($input) => {
-            callback(Array.from($input.target.files));
+        $clone.off().on("change", (input) => {
+            callback(Array.from(input.delegateTarget.files));
             return false;
         });
         $clone.appendTo(this.$imageHandlingForm);

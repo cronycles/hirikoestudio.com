@@ -108,7 +108,7 @@ nav .nav__dropdown-container {
             display: block;
             text-align: left;
             @media (--no-mobileDevice) {
-                color: initial;
+                color: var(--complementaryColor);
             }
         }
     }

@@ -1,7 +1,7 @@
-<header>
+<header class="jheader">
     <div class="logo">Site Title</div>
-    <div class="jburger nav__burger">
-        <i data-opened="las la-times" data-closed="las la-bars" class="jburgerBars las la-bars"></i>
+    <div class="jburgerBtn nav__burger">
+        <i data-open="las la-times" data-closed="las la-bars" class="las la-bars"></i>
     </div>
     <nav>
         <ul class="jnavList">
@@ -11,10 +11,10 @@
             <li><a href="#">History</a></li>
             <li><a href="#">Contact</a></li>
             <li>
-                <div class="jdropdown nav__dropdown-container">
+                <div class="jdropdownButton nav__dropdown-container">
                     <div class="nav__dropdown-button">
                         italiano
-                        <i data-opened="la-caret-right" data-closed="la-caret-down" class="jcaret la la-caret-down"></i>
+                        <i data-open="la-caret-right" data-closed="la-caret-down" class="la la-caret-down"></i>
                     </div>
                     <div class="jdropdownContent nav__dropdown-list-container">
                         <a href="#">
