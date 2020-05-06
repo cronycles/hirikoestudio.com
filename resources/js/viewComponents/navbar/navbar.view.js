@@ -11,10 +11,10 @@ export default class NavbarView {
         //Selectors
         this.headerSelector = '.jheader';
         this.burgerButtonSelector = '.jburgerBtn';
-        this.navMenuSelector = '.jnavList';
+        this.navMenuSelector = '.jnavContainer';
 
         this.dropdownButtonSelector = '.jdropdownButton';
-        this.dropdownContentSelector = ".jdropdownContent";
+        this.dropdownContentSelector = ".jdropdownListContainer";
 
         //DOM
         this.$header = $(this.headerSelector);
