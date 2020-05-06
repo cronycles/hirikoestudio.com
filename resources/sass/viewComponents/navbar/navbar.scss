@@ -10,8 +10,18 @@ header {
     .header__logo {
         float: left;
         height: 100%;
+        background-color: bisque;
+        display: flex;
+        a {
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            top: 50%;
+            align-self: center;
+        }
         img {
-            height: 100%;
+            float: left;
+            height: 50px;
         }
     }
 
@@ -20,17 +30,28 @@ header {
         cursor: pointer;
         position: relative;
         float: right;
+        height: 100%;
+        display: flex;
         @media (--no-mobileDevice) {
             display: none;
+        }
+        i {
+            top: 50%;
+            align-self: center;
         }
     }
 
     nav {
         width: 100%;
+
         float: right;
+        background-color: bisque;
+        display: flex;
         @media (--no-mobileDevice) {
+            height: 100%;
             width: initial;
             float: right;
+            right: 0;
         }
     }
 }
@@ -42,9 +63,14 @@ nav ul {
     width: 0;
     transition: 0.5s;
     list-style-type: none;
+    margin: 0;
+    padding: 0;
     @media (--no-mobileDevice) {
         width: initial;
         position: initial;
+        top: 50%;
+        align-self: center;
+        background: none;
     }
 
     li {
@@ -95,9 +121,9 @@ nav .nav__dropdown-container {
         padding-left: 15px;
         display: none;
         @media (--no-mobileDevice) {
-            margin-top: -15px;
             padding: 0;
             background-color: var(--corporateColor);
+            position: absolute;
         }
 
         a {
