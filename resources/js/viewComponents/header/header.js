@@ -1,10 +1,10 @@
-import NavbarView from "./navbar.view";
+import HeaderView from "./header.view";
 
-export default class Navbar {
+export default class Header {
     #view;
     constructor() {
 
-        this.#view = new NavbarView();
+        this.#view = new HeaderView();
 
         this.#view.onBurgerButtonClick(() => {
             if(this.#view.isNavMenuOpened()) {

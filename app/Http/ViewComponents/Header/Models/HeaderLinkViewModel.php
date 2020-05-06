@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\ViewComponents\Navbar\Models;
+namespace App\Http\ViewComponents\Header\Models;
 
-class NavbarLinkViewModel {
+class HeaderLinkViewModel {
 
     public $url;
     public $text;

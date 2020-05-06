@@ -1,5 +1,5 @@
 
-export default class NavbarView {
+export default class HeaderView {
 
     constructor() {
         //Texts

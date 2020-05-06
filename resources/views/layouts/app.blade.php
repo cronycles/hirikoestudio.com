@@ -4,7 +4,7 @@
 
 <body>
 @include('custom.layouts._client-server')
-@render(\App\Http\ViewComponents\Navbar\Components\NavbarComponent::class)
+@render(\App\Http\ViewComponents\Header\Components\HeaderComponent::class)
 
 <div class="jpage wrapper" data-p="{{$model->id}}">
     @include('custom.form.messages.success')

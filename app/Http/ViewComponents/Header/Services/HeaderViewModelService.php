@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Http\ViewComponents\Navbar\Services;
+namespace App\Http\ViewComponents\Header\Services;
 
-use App\Http\ViewComponents\Navbar\Models\NavbarLogoViewModel;
+use App\Http\ViewComponents\Header\Models\HeaderLogoViewModel;
 use App\Services\AuthService;
 use App\Custom\Languages\Services\LanguagesService;
 use App\Custom\Pages\Services\PagesService;
-use App\Http\ViewComponents\Navbar\Models\NavbarLinkViewModel;
-use App\Http\ViewComponents\Navbar\Models\NavbarViewModel;
-use Illuminate\Support\Facades\Auth;
+use App\Http\ViewComponents\Header\Models\HeaderLinkViewModel;
+use App\Http\ViewComponents\Header\Models\HeaderViewModel;
 use Illuminate\Support\Facades\Route;
 
-class NavbarViewModelService {
+class HeaderViewModelService {
 
     /**
      * @var LanguagesService
@@ -39,7 +38,7 @@ class NavbarViewModelService {
     }
 
     public function getModel() {
-        $outcome = new NavbarViewModel();
+        $outcome = new HeaderViewModel();
         $outcome->logo = $this->createLogoViewModel();
         $outcome->pageLinks = $this->createPageLinks();
         $outcome->userPageLinks = $this->createUserPageLinks();
@@ -50,10 +49,10 @@ class NavbarViewModelService {
     }
 
     /**
-     * @return NavbarLogoViewModel
+     * @return HeaderLogoViewModel
      */
     private function createLogoViewModel() {
-        $outcome = new NavbarLogoViewModel();
+        $outcome = new HeaderLogoViewModel();
         $outcome->imageUrl = config('custom.images.static.logoBlack');
         $outcome->url = route('index');
         $outcome->linkText = config('custom.company.name');
@@ -62,7 +61,7 @@ class NavbarViewModelService {
     }
 
     /**
-     * @return NavbarLinkViewModel[]
+     * @return HeaderLinkViewModel[]
      */
     private function createPageLinks() {
         $outcome = [
@@ -72,7 +71,7 @@ class NavbarViewModelService {
     }
 
     /**
-     * @return NavbarLinkViewModel[]
+     * @return HeaderLinkViewModel[]
      */
     private function createUserPageLinks() {
         $outcome = [
@@ -83,7 +82,7 @@ class NavbarViewModelService {
     }
 
     /**
-     * @param NavbarViewModel $outcome
+     * @param HeaderViewModel $outcome
      * @return mixed
      */
     private function createViewModelLanguagesPart($outcome) {
@@ -96,7 +95,7 @@ class NavbarViewModelService {
                 }
                 else {
                     $url = route('lang.switch', $availableLanguage->id);
-                    $linkViewModel = new NavbarLinkViewModel($url,$availableLanguage->text, false );
+                    $linkViewModel = new HeaderLinkViewModel($url,$availableLanguage->text, false );
                     array_push($outcome->languageLinks, $linkViewModel);
                 }
             }
@@ -106,18 +105,18 @@ class NavbarViewModelService {
     }
 
     /**
-     * @return NavbarLinkViewModel
+     * @return HeaderLinkViewModel
      */
     private function createHomeLinkModel() {
         $url = route('index');
         $text = $this->getMenuPageTextFromConfig(config('custom.pages.INDEX'));
         $isActive = Route::currentRouteNamed('index*');
-        return new NavbarLinkViewModel($url, $text, $isActive);
+        return new HeaderLinkViewModel($url, $text, $isActive);
     }
 
     /**
-     * @param NavbarViewModel $vieModel
-     * @return NavbarViewModel
+     * @param HeaderViewModel $vieModel
+     * @return HeaderViewModel
      */
     private function createViewModelAdminPart($vieModel) {
         $vieModel->isUserAuth = $this->authService->isAnyUserAuthenticated();
@@ -136,14 +135,14 @@ class NavbarViewModelService {
         $url = route('login');
         $text = $this->getMenuPageTextFromConfig(config('custom.pages.AUTH_LOGIN'));
         $isActive = Route::currentRouteNamed('login*');
-        return new NavbarLinkViewModel($url, $text, $isActive);
+        return new HeaderLinkViewModel($url, $text, $isActive);
     }
 
     private function createRegisterLink() {
         $url = route('register');
         $text = $this->getMenuPageTextFromConfig(config('custom.pages.AUTH_REGISTER'));
         $isActive = Route::currentRouteNamed('register*');
-        return new NavbarLinkViewModel($url, $text, $isActive);
+        return new HeaderLinkViewModel($url, $text, $isActive);
     }
 
     private function createAuthHomeLink() {
@@ -151,7 +150,7 @@ class NavbarViewModelService {
         $url = route('auth');
         $text = $this->getMenuPageTextFromConfig(config('custom.pages.AUTH_INDEX'));
         $isActive = Route::currentRouteNamed('auth');
-        return new NavbarLinkViewModel($url, $text, $isActive);
+        return new HeaderLinkViewModel($url, $text, $isActive);
     }
 
     private function getMenuPageTextFromConfig(int $pageId) {
