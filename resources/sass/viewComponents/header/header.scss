@@ -2,7 +2,7 @@
     position: fixed;
     z-index: 2;
     width: 100%;
-    height: var(--navbarHeight);
+    height: var(--headerHeight);
 }
 
 #header__logo {
@@ -22,12 +22,12 @@
     }
     img {
         float: left;
-        height: var(--navbarLogoHeight);
+        height: var(--headerLogoHeight);
     }
 }
 
 #header__burger {
-    font-size: var(--navbarBurgerSize);
+    font-size: var(--headerBurgerSize);
     cursor: pointer;
     position: relative;
     float: right;
@@ -85,19 +85,19 @@
         float: none;
         @media (--no-mobileDevice) {
             float: left;
-            margin-left: var(--navbarLinksSpaceNoMobile);
+            margin-left: var(--headerLinksSpaceNoMobile);
         }
     }
 }
 
 #header__links-wrapper a,
 #header__links-wrapper .dropdown__button {
-    font-size: var(--navbarLinkFontSize);
+    font-size: var(--headerLinkFontSize);
     display: block;
     letter-spacing: 0.1rem;
     text-decoration: none;
     text-transform: uppercase;
-    padding: var(--navbarLinksSpace) 3%;
+    padding: var(--headerLinksSpace) 3%;
     border-top: 1px solid #333;
     color: var(--complementaryColor);
     @media (--no-mobileDevice) {
@@ -135,12 +135,12 @@
         }
 
         a {
-            line-height: (calc(var(--navbarHeight) / 2));
+            line-height: (calc(var(--headerHeight) / 2));
             float: none;
             text-decoration: none;
             display: block;
             text-align: left;
-            font-size: 10px;
+            font-size: (calc(var(--headerLinkFontSize) - 0.3rem));
             padding: 10px 3%;
             @media (--no-mobileDevice) {
                 color: var(--complementaryColor);

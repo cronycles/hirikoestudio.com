@@ -5,7 +5,7 @@
     --defaultFontSize: 14px;
 
     /*---Margins---*/
-    --pageMargins: 10px;
+    --pageMargins: 1rem;
     --pageMarginsNoMobile: var(--pageMargins);
 
     /*---Colors---*/
@@ -20,13 +20,13 @@
     --buttonTextColorHover: var(--complementaryColor);
     --buttonBorderColor: var(--textColor);
 
-    /*---Navbar---*/
-    --navbarHeight: 60px;
-    --navbarLogoHeight: 40px;
-    --navbarLinksSpace: 30px;
-    --navbarLinksSpaceNoMobile: 20px;
-    --navbarBurgerSize: 30px;
-    --navbarLinkFontSize: 12px;
+    /*---Header---*/
+    --headerHeight: 5rem;
+    --headerLogoHeight: 3rem;
+    --headerLinksSpace: 2rem;
+    --headerLinksSpaceNoMobile: 1.2rem;
+    --headerBurgerSize: 2rem;
+    --headerLinkFontSize: 1rem;
 
     /*---Devices---*/
     --mobileScreenMaxWidth: 767px;
