@@ -22,9 +22,11 @@
 
     /*---Navbar---*/
     --navbarHeight: 60px;
-    --navbarHeightNoMobile: var(--navbarHeight);
+    --navbarLogoHeight: 40px;
     --navbarLinksSpace: 30px;
     --navbarLinksSpaceNoMobile: 20px;
+    --navbarBurgerSize: 30px;
+    --navbarLinkFontSize: 12px;
 
     /*---Devices---*/
     --mobileScreenMaxWidth: 767px;

@@ -3,14 +3,15 @@ header {
     z-index: 2;
     width: 100%;
     height: var(--navbarHeight);
-    @media (--no-mobileDevice) {
-        height: var(--navbarHeightNoMobile);
-    }
 
     .header__logo {
         float: left;
         height: 100%;
         display: flex;
+        margin-left: var(--pageMargins);
+        @media (--no-mobileDevice) {
+            margin-left: var(--pageMarginsNoMobile);
+        }
         a {
             text-align: center;
             margin: 0;
@@ -20,19 +21,21 @@ header {
         }
         img {
             float: left;
-            height: 50px;
+            height: var(--navbarLogoHeight);
         }
     }
 
     .nav__burger {
-        font-size: 30px;
+        font-size: var(--navbarBurgerSize);
         cursor: pointer;
         position: relative;
         float: right;
         height: 100%;
         display: flex;
+        margin-right: var(--pageMargins);
         @media (--no-mobileDevice) {
             display: none;
+            margin-right: var(--pageMarginsNoMobile);
         }
         i {
             top: 50%;
@@ -42,10 +45,11 @@ header {
 
     nav {
         width: 100%;
-
         float: right;
         display: flex;
+        margin-right: var(--pageMargins);
         @media (--no-mobileDevice) {
+            margin-right: var(--pageMarginsNoMobile);
             height: 100%;
             width: initial;
             float: right;
@@ -57,7 +61,7 @@ header {
 nav ul {
     position: absolute;
     right: 0;
-    background: #222;
+    background: var(--corporateColor);
     width: 0;
     transition: 0.5s;
     list-style-type: none;
@@ -75,14 +79,14 @@ nav ul {
         float: none;
         @media (--no-mobileDevice) {
             float: left;
-            margin-left: 20px;
+            margin-left: var(--navbarLinksSpaceNoMobile);
         }
     }
 }
 
 nav a,
 nav .nav__dropdown-button {
-    font-size: 12px;
+    font-size: var(--navbarLinkFontSize);
     display: block;
     letter-spacing: 0.1rem;
     text-decoration: none;
@@ -122,7 +126,6 @@ nav .nav__dropdown-container {
             background-color: var(--corporateColor);
             position: absolute;
             padding: 2px 5px 0 5px;
-
         }
 
         a {
@@ -135,7 +138,6 @@ nav .nav__dropdown-container {
             padding: 10px 3%;
             @media (--no-mobileDevice) {
                 color: var(--complementaryColor);
-                line-height: (calc(var(--navbarHeightNoMobile) / 2));
                 padding: inherit;
             }
         }
