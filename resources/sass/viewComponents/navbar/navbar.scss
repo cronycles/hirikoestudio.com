@@ -10,7 +10,6 @@ header {
     .header__logo {
         float: left;
         height: 100%;
-        background-color: bisque;
         display: flex;
         a {
             text-align: center;
@@ -45,7 +44,6 @@ header {
         width: 100%;
 
         float: right;
-        background-color: bisque;
         display: flex;
         @media (--no-mobileDevice) {
             height: 100%;
@@ -77,6 +75,7 @@ nav ul {
         float: none;
         @media (--no-mobileDevice) {
             float: left;
+            margin-left: 20px;
         }
     }
 }
@@ -92,7 +91,7 @@ nav .nav__dropdown-button {
     border-top: 1px solid #333;
     color: var(--complementaryColor);
     @media (--no-mobileDevice) {
-        padding: 0 0 0 var(--navbarLinksSpaceNoMobile);
+        padding: 0;
         line-height: inherit;
         border: 0;
         color: initial;
@@ -112,7 +111,6 @@ nav .nav__dropdown-container {
     .nav__dropdown-button {
         outline: none;
         background-color: inherit;
-        font-family: inherit;
         margin: 0;
         cursor: pointer;
     }
@@ -121,9 +119,10 @@ nav .nav__dropdown-container {
         padding-left: 15px;
         display: none;
         @media (--no-mobileDevice) {
-            padding: 0;
             background-color: var(--corporateColor);
             position: absolute;
+            padding: 2px 5px 0 5px;
+
         }
 
         a {
@@ -132,9 +131,12 @@ nav .nav__dropdown-container {
             text-decoration: none;
             display: block;
             text-align: left;
+            font-size: 10px;
+            padding: 10px 3%;
             @media (--no-mobileDevice) {
                 color: var(--complementaryColor);
                 line-height: (calc(var(--navbarHeightNoMobile) / 2));
+                padding: inherit;
             }
         }
     }
