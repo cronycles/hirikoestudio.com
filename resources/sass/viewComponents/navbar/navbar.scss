@@ -91,7 +91,7 @@
 }
 
 #header__links-wrapper a,
-#header__links-wrapper .nav__dropdown-button {
+#header__links-wrapper .dropdown__button {
     font-size: var(--navbarLinkFontSize);
     display: block;
     letter-spacing: 0.1rem;
@@ -118,14 +118,14 @@
 #header__links-wrapper .nav__dropdown-container {
     overflow: hidden;
 
-    .nav__dropdown-button {
+    .dropdown__button {
         outline: none;
         background-color: inherit;
         margin: 0;
         cursor: pointer;
     }
 
-    .nav__dropdown-list-container {
+    .dropdown__list-container {
         padding-left: 15px;
         display: none;
         @media (--no-mobileDevice) {
