@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="page_auth">
+    <div class="page page_auth">
         @if($model->title != null && !empty($model->title))
             <div class="page__title">
                 <h1>{{$model->title}}</h1>
