@@ -47,7 +47,6 @@ header {
         width: 100%;
         float: right;
         display: flex;
-        margin-right: var(--pageMargins);
         @media (--no-mobileDevice) {
             margin-right: var(--pageMarginsNoMobile);
             height: 100%;
