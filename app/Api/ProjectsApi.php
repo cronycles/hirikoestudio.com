@@ -141,15 +141,8 @@ class ProjectsApi implements ICrudApi, ISortingApi, IImagesUploaderApi {
             $outcome = new Project();
             $outcome->id = $projectEntity->id;
             $outcome->category = $projectEntity->category;
+            $outcome->title = $projectEntity->title;
             $outcome->isVisible = $projectEntity->isVisible;
-
-            if (!empty($projectEntity->titleTranslations)) {
-                foreach ($projectEntity->titleTranslations as $titleTranslation) {
-                    $translation = new Translation($titleTranslation->locale, $titleTranslation->value);
-                    array_push($outcome->titleTranslations, $translation);
-                }
-
-            }
 
             if (!empty($projectEntity->descriptionTranslations)) {
                 foreach ($projectEntity->descriptionTranslations as $titleTranslation) {

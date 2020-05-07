@@ -9,7 +9,7 @@ class Project extends Model
 {
     use HasTranslations;
 
-    public $translatable = ['title', 'description'];
+    public $translatable = ['description'];
 
     protected $fillable = [
         'title',

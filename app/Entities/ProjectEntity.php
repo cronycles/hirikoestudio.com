@@ -24,11 +24,6 @@ class ProjectEntity extends CustomEntity{
     public $title;
 
     /**
-     * @var TranslationEntity[]
-     */
-    public $titleTranslations;
-
-    /**
      * @var string
      */
     public $description;
@@ -50,7 +45,6 @@ class ProjectEntity extends CustomEntity{
 
     public function __construct() {
         $this->category = new CategoryEntity();
-        $this->titleTranslations = [];
         $this->descriptionTranslations = [];
         $this->images = [];
     }

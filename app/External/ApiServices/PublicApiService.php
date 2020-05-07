@@ -365,7 +365,6 @@ class PublicApiService {
         if ($dbProject != null) {
             $outcome->id = $dbProject->id;
             $outcome->title = $dbProject->title;
-            $outcome->titleTranslations = $this->createTranslationModels($dbProject, 'title');
             $outcome->description = $dbProject->description;
             $outcome->descriptionTranslations = $this->createTranslationModels($dbProject, 'description');
             $category = new Category();
@@ -408,10 +407,9 @@ class PublicApiService {
 
             if ($outcome != null) {
                 $outcome->category_id = $projectEntity->category->id;
-                foreach ($projectEntity->titleTranslations as $titleTranslation) {
-                    $outcome->setTranslation('title', $titleTranslation->locale, $titleTranslation->value);
-                }
+                $outcome->title = $projectEntity->title;
                 $outcome->show = $projectEntity->isVisible;
+
                 foreach ($projectEntity->descriptionTranslations as $titleTranslation) {
                     $outcome->setTranslation('description', $titleTranslation->locale, $titleTranslation->value);
                 }

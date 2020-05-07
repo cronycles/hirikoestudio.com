@@ -23,11 +23,6 @@ class Project {
     public $title;
 
     /**
-     * @var Translation[]
-     */
-    public $titleTranslations;
-
-    /**
      * @var string
      */
     public $description;
@@ -49,7 +44,6 @@ class Project {
 
     public function __construct() {
         $this->images = [];
-        $this->titleTranslations = [];
         $this->descriptionTranslations = [];
         $this->category = new CategoryEntity();
     }
