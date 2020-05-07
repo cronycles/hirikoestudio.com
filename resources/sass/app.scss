@@ -13,11 +13,11 @@
 @import "custom/form/form";
 
 //@import "custom/sorting/sorting";
-//@import "custom/auto-adjust-image-gallery/auto-adjust-image-gallery";
+@import "custom/auto-adjust-image-gallery/auto-adjust-image-gallery";
 //@import "custom/cro-image-carousel/cro-image-carousel";
 
 
-@import "page";
+@import "layout/wrapper";
 /*---Pages----*/
 @import "pages/index";
 

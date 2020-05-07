@@ -2,7 +2,7 @@
 @section('content')
     @include('layouts.partials._breadcrumbs', ['breadcrumbs' => $model->breadcrumbs])
 
-    <div class="page">
+    <div class="page__section">
         @if($model->title != null && !empty($model->title))
             <div class="page__title">
                 <h1>{{$model->title}}</h1>
@@ -13,6 +13,10 @@
                 {{$model->description}}
             </div>
         @endif
-        @yield('page_content')
     </div>
+
+    <article class="page__section">
+        @yield('page_main')
+    </article>
+
 @endsection

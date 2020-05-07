@@ -1,4 +1,4 @@
-@extends('layouts.page')
+@extends('layouts.home')
 
 @section('page_content')
     <div>

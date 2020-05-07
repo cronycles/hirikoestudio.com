@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="page page_auth">
+    <div class="page__section">
         @if($model->title != null && !empty($model->title))
             <div class="page__title">
                 <h1>{{$model->title}}</h1>
@@ -11,7 +11,10 @@
                 {{$model->description}}
             </div>
         @endif
-        @yield('auth_content')
     </div>
+
+    <article class="page__section">
+        @yield('auth_content')
+    </article>
 @endsection
 

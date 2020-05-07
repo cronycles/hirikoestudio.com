@@ -8,6 +8,8 @@
 
 <div class="jpage wrapper" data-p="{{$model->id}}">
     @include('custom.form.messages.success')
+    @include('layouts.partials._breadcrumbs', ['breadcrumbs' => $model->breadcrumbs])
+
     @yield('content')
 </div>
 @include('custom.layouts._scripts')
