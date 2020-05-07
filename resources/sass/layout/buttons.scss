@@ -1,8 +1,8 @@
 .cro__button, .cro__button:visited, .cro__button:active {
-    color: var(--textColor);
+    color: $textColor;
     text-decoration: none;
-    background-color: var(--buttonBackgroundColor);
-    border: 1px solid var(--buttonBorderColor);
+    background-color: $buttonBackgroundColor;
+    border: 1px solid $buttonBorderColor;
     border-radius: 0;
     padding: 18px 54px;
     display: inline-block;
@@ -11,14 +11,14 @@
     line-height: 14px;
     letter-spacing: 1px;
     cursor: pointer;
-    box-shadow: inset 0 0 0 0 var(--corporateColor);
+    box-shadow: inset 0 0 0 0 $corporateColor;
     text-transform: uppercase;
     position: relative;
 
     &:hover:not(.loading__spinner) {
-        box-shadow: inset 400px 0 0 0 var(--corporateColor);
-        border-color: var(--corporateColor);
-        color: var(--buttonTextColorHover)
+        box-shadow: inset 400px 0 0 0 $corporateColor;
+        border-color: $corporateColor;
+        color: $buttonTextColorHover
     }
 
     &.cro__button--basic {

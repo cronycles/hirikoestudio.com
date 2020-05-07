@@ -4,9 +4,9 @@ html, body {
     width: 100%;
     height: 100%;
 
-    font-family: var(--defaultFont);
-    color: var(--textColor);
-    font-size: var(--defaultFontSize);
+    font-family: $defaultFont;
+    color: $textColor;
+    font-size: $defaultFontSize;
 }
 
 h1 {
@@ -40,15 +40,15 @@ p {
 }
 
 a {
-    color: var(--textColor);
+    color: $textColor;
     cursor: pointer;
 
     &:active, &:visited {
-        color: var(--textColor);
+        color: $textColor;
     }
 
     &:hover {
-        color: var(--textColorLinkHover);
+        color: $textColorLinkHover;
         text-decoration: none;
     }
 }

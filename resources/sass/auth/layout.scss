@@ -54,12 +54,12 @@
                 padding: 0;
                 border: 0;
                 background: none;
-                font-family: var(--defaultFont);
-                font-size: var(--defaultFontSize);
+                font-family: $defaultFont;
+                font-size: $defaultFontSize;
                 text-decoration: none;
                 cursor: pointer;
                 &:hover {
-                    color: var(--corporateColor);
+                    color: $corporateColor;
                 }
             }
         }

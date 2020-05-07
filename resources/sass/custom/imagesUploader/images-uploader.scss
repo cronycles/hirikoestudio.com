@@ -79,7 +79,7 @@
                 .img__upload_progress-bar {
                     width: 0%;
                     height: 10px;
-                    background-color: var(--corporateColor);
+                    background-color: $corporateColor;
                 }
                 .img__upload_percentage-number {
                     height: 20px;
