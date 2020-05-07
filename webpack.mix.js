@@ -52,14 +52,12 @@ mix.webpackConfig({
 
 mix.js('resources/js/app.js', publicFolderName + '/js')
     .js('resources/js/lazy.js', publicFolderName + '/js')
-    .sourceMaps()
     .extract()
     .sass('resources/sass/app.scss', publicFolderName + '/css').options({
     postCss: postCssPlugins
-})
-    .sourceMaps()
+}).sourceMaps()
     .webpackConfig({
-        devtool: 'source-map'
+        devtool: 'inline-source-map'
     })
     .polyfill({
         enabled: true,
