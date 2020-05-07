@@ -1,5 +1,6 @@
 #Single Image Slider
 
+## Come usarla
 - Importare il modulo css dove vi serve:
     ```css
     @import "custom/auto-adjust-image-gallery/auto-adjust-image-gallery.scss";
@@ -65,22 +66,18 @@
     ```
 poi ci sono parametri per cambiare varie cose delle immagini:
 
+###size delle immagini
+Per cambiare il size facilmente basta cambiare la variabile nel css chiamata __$imageSize__
+
+###distanza tra immagini
+Stessa cosa per questa, cambiare il __$gridGap__
+
+###Quadrati o rettangoli?
+Se si vuole che siano piú rettangolari le immagini basta semplicemente mettere, accanto alla classe principale
+chiamata __.auto-adjust-image-gallery__ la classe ```.rectangle``` 
+
 ###tipo di visualizzazione 
 ogni ```<figure>``` puó avere o non avere una particolare classe che le cambia completamente la visualizzazione:
 - __medium__: fa crescere di 2 righe l'immagine
 - __large__: fa crescere di 3 righe l'immagine
 - __full__: non capisco, ancora non so cosa faccia
-
-###size delle immagini
-la galleria in generale di default dice che le immagini sono grosse 300 pixel.
-Peró se si aggiunge una classe accanto al div principale con class __auto-adjust-image-gallery__
-tutto cambia:
-- __size--200__: cambia la size a 200px
-- __size--100__: cambia la size a 100px
-
-###distanza tra immagini
-anche la distanza di default é 30px e per cambiarla 
-si controlla con una classe posta accanto alla principale:
-- __gap--20__: cambia la distanza a 20px
-- __gap--10__: cambia la distanza a 10px
-- __gap--5__: cambia la distanza a 5px
