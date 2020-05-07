@@ -4,22 +4,20 @@
     }
 }
 
-.auto-adjust-image-gallery {
-    $imageSize: 25rem;
-    $gridGap: 2ch;
+.cro__auto-adjust__gallery {
 
     display: grid;
     grid-auto-flow: row dense;
 
-    grid-template-columns: repeat(auto-fill, minmax($imageSize, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax($croAAG_imageSize, 1fr));
 
-    grid-auto-rows: $imageSize / 2;
+    grid-auto-rows: $croAAG_imageSize / 2;
 
-    &.rectangle {@include shapeForm($imageSize, true)};
+    &.rectangle {@include shapeForm($croAAG_imageSize, true)};
 
-    grid-gap: $gridGap;
+    grid-gap: $croAAG_gridGap;
 
-    figure {
+    .gallery__image__box {
         margin: 0;
         padding: 0;
         overflow: hidden;
@@ -54,36 +52,25 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: all .3s ease-in-out;
         }
     }
 
-    .overlay {
-        background: #00000032;
+    .overlay__box {
+        background-color: $croAAG_overlayBackgroundColor;
         grid-column: 1;
         grid-row: 1;
         position: relative;
-        display: grid;
         justify-items: center;
         align-items: center;
-        transition: 0.2s;
-        transform: translateY(100%);
 
-        .view__button {
-            border: 1px solid #fff;
+        .overlay__text {
             color: #fff;
             text-transform: uppercase;
-            background: rgba(0, 0, 0, .7);
-            padding: 5px;
-            font-size: 0.7rem;
+            padding: 0 6rem;
+            font-size: 1.5rem;
             letter-spacing: 1px;
-        }
-    }
-
-    figure:hover {
-        .overlay {
-            @media (--no-mobileDevice) {
-                transform: translateY(0);
-            }
+            line-height: 2;
         }
     }
 
@@ -110,3 +97,46 @@
     }
 
 }
+
+@mixin overlayApply($isUp: true) {
+    @if $isUp {
+        .overlay__box {
+            display: grid;
+            transition: 0.2s;
+            transform: translateY(100%);
+        }
+        .gallery__image__box:hover {
+            .overlay__box {
+                @media (--no-mobileDevice) {
+                    transform: translateY(0);
+                }
+            }
+        }
+    }
+    @else {
+        .overlay__box {
+            display: none;
+        }
+        .gallery__image__box:hover {
+            .overlay__box {
+                @media (--no-mobileDevice) {
+                    display: grid;
+                }
+            }
+            img {
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
+.cro__auto-adjust__gallery {
+    &.overlay-up {
+    @include overlayApply(true);
+    }
+
+    &.overlay-zoom {
+        @include overlayApply(false);
+    }
+}
+
