@@ -5,6 +5,10 @@
     @media (--no-mobileDevice) {
         grid-template-columns: 1fr 2fr;
     }
+
+    .la {
+        font-size: 30px;
+    }
 }
 
 .img__upload_select_zone {

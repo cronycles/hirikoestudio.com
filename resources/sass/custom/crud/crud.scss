@@ -1,4 +1,4 @@
-.admin-section__container {
+.crud__container {
 
     .general__buttons {
         display: inline-flex;
@@ -6,10 +6,6 @@
         div {
             padding: 10px 10px 10px 0;
         }
-    }
-
-    .la {
-        font-size: 30px;
     }
 
     table.items__table {
@@ -51,12 +47,12 @@
                 padding: 0;
                 border: 0;
                 background: none;
-                font-family: var(--defaultFont);
-                font-size: var(--defaultFontSize);
+                font-family: $defaultFont;
+                font-size: $defaultFontSize;
                 text-decoration: none;
                 cursor: pointer;
                 &:hover {
-                    color: var(--corporateColor);
+                    color: $corporateColor;
                 }
             }
         }
