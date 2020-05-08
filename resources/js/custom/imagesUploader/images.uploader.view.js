@@ -112,7 +112,7 @@ export default class ImagesUploaderView {
      */
     onDeleteFile = (callback) => {
         this.$thumbsContainer.on('click', this.#deleteSelector, (deleteButton) => {
-            var id = $(deleteButton.delegateTarget).closest("." + this.thumbSelector).data("id");
+            var id = $(deleteButton.target).closest("." + this.thumbSelector).data("id");
             callback(id);
             return false;
         });
@@ -132,7 +132,7 @@ export default class ImagesUploaderView {
      */
     onDeleteFileConfirm = (callback) => {
         this.$thumbsContainer.on('click', this.#deleteConfirmSelector, (deleteButton) => {
-            var id = $(deleteButton.delegateTarget).closest("." + this.thumbSelector).data("id");
+            var id = $(deleteButton.target).closest("." + this.thumbSelector).data("id");
             callback(id);
             return false;
         });
