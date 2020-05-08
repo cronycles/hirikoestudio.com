@@ -50,10 +50,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/auth', ['as' => 'auth', 'uses' => 'Auth\AuthPagesController@index']);
 
     //Auth Categories
-    Route::get('/auth/categories', ['as' => 'auth.categories', 'uses' => 'AuthPagesController@categories']);
-    Route::get('/auth/categories/create', ['as' => 'auth.categories.create', 'uses' => 'AuthPagesController@categoryCreate']);
-    Route::get('/auth/categories/{id}/edit', ['as' => 'auth.categories.edit', 'uses' => 'AuthPagesController@categoryEdit']);
-    Route::get('/auth/categories/sort', ['as' => 'auth.categories.sort', 'uses' => 'AuthPagesController@categoriesSort']);
+    Route::get('/auth/categories', ['as' => 'auth.categories', 'uses' => 'Auth\AuthPagesController@categories']);
+    Route::get('/auth/categories/create', ['as' => 'auth.categories.create', 'uses' => 'Auth\AuthPagesController@categoryCreate']);
+    Route::get('/auth/categories/{id}/edit', ['as' => 'auth.categories.edit', 'uses' => 'Auth\AuthPagesController@categoryEdit']);
+    Route::get('/auth/categories/sort', ['as' => 'auth.categories.sort', 'uses' => 'Auth\AuthPagesController@categoriesSort']);
 
     Route::post('/auth/categories/create', ['as' => 'auth.categories.create', 'uses' => 'Auth\Categories\AuthCategoriesCrudController@store']);
     Route::post('/auth/categories/{id}/edit', ['as' => 'auth.categories.update', 'uses' => 'Auth\Categories\AuthCategoriesCrudController@update']);
@@ -63,11 +63,11 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     //Auth Projects
-    Route::get('/auth/projects', ['as' => 'auth.projects', 'uses' => 'AuthPagesController@projects']);
-    Route::get('/auth/projects/create', ['as' => 'auth.projects.create', 'uses' => 'AuthPagesController@projectCreate']);
-    Route::get('/auth/projects/{id}/edit', ['as' => 'auth.projects.edit', 'uses' => 'AuthPagesController@projectEdit']);
-    Route::get('/auth/projects/sort', ['as' => 'auth.projects.sort', 'uses' => 'AuthPagesController@projectsSort']);
-    Route::get('/auth/projects/{id}/images', ['as' => 'auth.projects.images', 'uses' => 'AuthPagesController@projectImages']);
+    Route::get('/auth/projects', ['as' => 'auth.projects', 'uses' => 'Auth\AuthPagesController@projects']);
+    Route::get('/auth/projects/create', ['as' => 'auth.projects.create', 'uses' => 'Auth\AuthPagesController@projectCreate']);
+    Route::get('/auth/projects/{id}/edit', ['as' => 'auth.projects.edit', 'uses' => 'Auth\AuthPagesController@projectEdit']);
+    Route::get('/auth/projects/sort', ['as' => 'auth.projects.sort', 'uses' => 'Auth\AuthPagesController@projectsSort']);
+    Route::get('/auth/projects/{id}/images', ['as' => 'auth.projects.images', 'uses' => 'Auth\AuthPagesController@projectImages']);
 
     Route::post('/auth/projects/create', ['as' => 'auth.projects.create', 'uses' => 'Auth\Projects\AuthProjectsCrudController@store']);
     Route::post('/auth/projects/{id}/edit', ['as' => 'auth.projects.update', 'uses' => 'Auth\Projects\AuthProjectsCrudController@update']);

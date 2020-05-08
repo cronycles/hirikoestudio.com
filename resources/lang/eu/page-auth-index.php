@@ -8,4 +8,9 @@ return [
     'description' => 'Gestiona tu web',
 
     'logoutText' => 'Logout',
+
+    'list' => [
+        'manage-projects' => 'Gestiona los proyectos',
+        'manage-categories' => 'Gestiona las categorías',
+    ]
 ];

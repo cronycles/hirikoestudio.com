@@ -99,47 +99,47 @@ class PagesService {
         ];
 
         $this->pageConfigurations[config('custom.pages.AUTH_CATEGORIES')] = [
-            'config' => config('pages.auth.index'),
+            'config' => config('pages.auth.categories'),
             'viewModelPageBuilder' => $authCategoriesViewModelPageBuilder
         ];
 
         $this->pageConfigurations[config('custom.pages.AUTH_CATEGORY_CREATE')] = [
-            'config' => config('pages.auth.index'),
+            'config' => config('pages.auth.category-create'),
             'viewModelPageBuilder' => $authCategoryCreateViewModelPageBuilder
         ];
 
         $this->pageConfigurations[config('custom.pages.AUTH_CATEGORY_EDIT')] = [
-            'config' => config('pages.auth.index'),
+            'config' => config('pages.auth.category-edit'),
             'viewModelPageBuilder' => $authCategoryEditViewModelPageBuilder
         ];
 
         $this->pageConfigurations[config('custom.pages.AUTH_CATEGORIES_SORT')] = [
-            'config' => config('pages.auth.index'),
+            'config' => config('pages.auth.categories-sort'),
             'viewModelPageBuilder' => $authCategoriesSortViewModelPageBuilder
         ];
 
         $this->pageConfigurations[config('custom.pages.AUTH_PROJECTS')] = [
-            'config' => config('pages.auth.index'),
+            'config' => config('pages.auth.projects'),
             'viewModelPageBuilder' => $authProjectsViewModelPageBuilder
         ];
 
         $this->pageConfigurations[config('custom.pages.AUTH_PROJECT_CREATE')] = [
-            'config' => config('pages.auth.index'),
+            'config' => config('pages.auth.project-create'),
             'viewModelPageBuilder' => $authProjectCreateViewModelPageBuilder
         ];
 
         $this->pageConfigurations[config('custom.pages.AUTH_PROJECT_EDIT')] = [
-            'config' => config('pages.auth.index'),
+            'config' => config('pages.auth.project-edit'),
             'viewModelPageBuilder' => $authProjectEditViewModelPageBuilder
         ];
 
         $this->pageConfigurations[config('custom.pages.AUTH_PROJECTS_SORT')] = [
-            'config' => config('pages.auth.index'),
+            'config' => config('pages.auth.project-sort'),
             'viewModelPageBuilder' => $authProjectsSortViewModelPageBuilder
         ];
 
         $this->pageConfigurations[config('custom.pages.AUTH_PROJECT_IMAGES')] = [
-            'config' => config('pages.auth.index'),
+            'config' => config('pages.auth.project-images'),
             'viewModelPageBuilder' => $authProjectImagesViewModelPageBuilder
         ];
 

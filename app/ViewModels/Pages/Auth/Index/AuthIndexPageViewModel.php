@@ -16,9 +16,14 @@ class AuthIndexPageViewModel extends AuthPageViewModel {
      */
     public $logoutText;
 
+    /**
+     * @var AuthIndexLinkViewModel[]
+     */
+    public $links;
+
     public function __construct() {
         parent::__construct();
-
+        $this->links = [];
     }
 
 }
