@@ -18,7 +18,9 @@
             </form>
             <div>
                 <div class="jdropzone img__upload-dropzone">
-                    {{trans('images-upload.drag-drop-images')}}
+                    <div class="img__upload-dropzone-text">
+                        {{trans('images-upload.drag-drop-images')}}
+                    </div>
                 </div>
             </div>
         </div>

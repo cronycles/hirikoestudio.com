@@ -7,7 +7,7 @@
     }
 
     .la {
-        font-size: 30px;
+        font-size: 2rem;
     }
 }
 
@@ -27,8 +27,20 @@
         border:1px dotted grey;
         display: none;
 
+        &.dragging {
+            background-color: rgba(0,0,0,0.5);
+        }
+
         @media (--no-mobileDevice) {
             display: inherit;
+        }
+
+        .img__upload-dropzone-text {
+            top: 50%;
+            position: relative;
+            padding: 0;
+            margin: 0;
+            text-align: center;
         }
     }
 }
