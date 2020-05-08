@@ -8,6 +8,10 @@
         }
     }
 
+    .la {
+        font-size: 30px;
+    }
+
     table.items__table {
         width: 100%;
         table-layout: fixed;
@@ -17,10 +21,9 @@
             text-align: left;
             padding: 10px 10px;
         }
-        td {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+
+        .table__td-centered {
+            text-align: center;
         }
         th {
             background: darkgray;
@@ -30,20 +33,14 @@
             background: lightgrey;
         }
 
-        .row-edit {
-            width: 25%;
+        .row-manage {
+            text-align: center;
+            width: 15%;
         }
 
-        .row-delete {
-            width: 20%;
-        }
         @media (--no-mobileDevice) {
-            .row-edit {
-                width: 10%;
-            }
-
-            .row-delete {
-                width: 10%;
+            .row-manage {
+                width: 5%;
             }
         }
 
@@ -54,12 +51,12 @@
                 padding: 0;
                 border: 0;
                 background: none;
-                font-family: $defaultFont;
-                font-size: $defaultFontSize;
+                font-family: var(--defaultFont);
+                font-size: var(--defaultFontSize);
                 text-decoration: none;
                 cursor: pointer;
                 &:hover {
-                    color: $corporateColor;
+                    color: var(--corporateColor);
                 }
             }
         }

@@ -160,11 +160,11 @@ return [
         'password' => 'Password',
         'password_confirm' => 'Confirm password',
         'remember' => 'Remember me',
+        'category' => 'Category',
         'title' => 'Title',
         'description' => 'Description',
         'price' => 'Price',
         'date' => 'Fecha',
-        'show-in-home' => 'Show in Homepage',
         'show' => 'Visible',
     ],
 

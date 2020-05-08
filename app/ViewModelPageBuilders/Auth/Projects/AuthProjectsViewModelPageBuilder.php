@@ -34,7 +34,7 @@ class AuthProjectsViewModelPageBuilder extends AuthViewModelPageBuilder {
      */
     public function fillPageViewModel($pageViewModel, $params) {
 
-        $entities = $this->service->getProjects();
+        $entities = $this->service->getProjects(false);
 
         $pageViewModel->createLink = new CrudLinkViewModel(route('auth.projects.create'), __('page-auth-projects.create-new-button'));
         $pageViewModel->sortLink = new CrudLinkViewModel(route('auth.projects.sort'), __('page-auth-projects.sort-button'));

@@ -40,8 +40,6 @@ class AuthProjectEditViewModelPageBuilder extends AuthViewModelPageBuilder {
     public function fillPageViewModel($pageViewModel, $params) {
         $entity = $this->service->getProjectById($params['id']);
 
-        $pageViewModel->id = $entity->id;
-
         $pageViewModel->noCategory = __('page-auth-project-edit.no-category');
         $pageViewModel->addNewCategory = __('page-auth-project-edit.add-category');
 

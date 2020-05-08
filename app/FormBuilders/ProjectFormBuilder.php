@@ -41,9 +41,6 @@ class ProjectFormBuilder extends FormBuilder {
                 case $this->getConfigFieldName('description'):
                     $field->value = $entity->description ?? null;
                     break;
-                case $this->getConfigFieldName('show-in-home'):
-                    $field->value = $entity->doesShowInHomePage ?? null;
-                    break;
                 case $this->getConfigFieldName('show'):
                     $field->value = $entity->isVisible ?? null;
                     break;
@@ -72,9 +69,6 @@ class ProjectFormBuilder extends FormBuilder {
                     break;
                 case $this->getConfigFieldName('description'):
                     $outcome->descriptionTranslations = $this->parseTranslatableFieldValue($field->value);
-                    break;
-                case $this->getConfigFieldName('show-in-home'):
-                    $outcome->doesShowInHomePage = $this->parseBooleanFieldValue($field->value);
                     break;
                 case $this->getConfigFieldName('show'):
                     $outcome->isVisible = $this->parseBooleanFieldValue($field->value);

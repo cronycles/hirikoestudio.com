@@ -42,8 +42,6 @@ class AuthCategoryEditViewModelPageBuilder extends AuthViewModelPageBuilder {
 
         $entity = $this->service->getCategoryById($params['id']);
 
-        $pageViewModel->id = $entity->id;
-
         $pageViewModel->formData = $this->viewModelService->createFormDataViewModel(
             route('auth.categories.edit', $entity->id),
             __('page-auth-category-edit.form.send'),

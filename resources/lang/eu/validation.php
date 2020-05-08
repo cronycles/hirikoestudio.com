@@ -159,11 +159,11 @@ return [
         'password' => 'Contraseña',
         'password_confirm' => 'Repite la contraseña',
         'remember' => 'Recuerdame',
+        'category' => 'Categoría',
         'title' => 'Título',
         'description' => 'Descripción',
         'price' => 'Precio',
         'date' => 'Fecha',
-        'show-in-home' => 'Muestra en la página de inicio',
         'show' => 'Visible',
     ],
 

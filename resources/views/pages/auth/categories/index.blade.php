@@ -1,7 +1,5 @@
 @extends('layouts.auth')
 
-@section('auth_page_content')
-    <article class="page__section">
-        @include('custom.crud.index', ['model' => $model])
-    </article>
+@section('auth_content')
+    @include('custom.crud.index', ['model' => $model])
 @endsection

@@ -3,16 +3,16 @@
 namespace App\Custom\Form\Builders;
 
 use App\Custom\Entities\CustomEntity;
-use App\Custom\Form\Captcha\Entities\CaptchaEntityTrait;
-use App\Custom\Form\Models\Fields\FieldModel;
 use App\Custom\Form\Models\FormModel;
-use App\Custom\Translations\Entities\TranslationEntity;
 use App\Custom\Form\Helpers\FormHelper;
+use App\Custom\Languages\Services\LanguagesService;
 use Illuminate\Http\Request;
 
 abstract class FormBuilder {
 
-    use TranslatableFormBuilderTrait;
+    use TranslatableFormBuilderTrait {
+        TranslatableFormBuilderTrait::__construct as private __tConstruct;
+    }
 
     /**
      * @var FormHelper
@@ -37,6 +37,8 @@ abstract class FormBuilder {
 
         $this->formConfig = config('custom.form.'. $formConfigKey);
         $this->fieldsConfig = $this->formConfig['fields'];
+
+        $this->__tConstruct(new LanguagesService());
     }
 
     public function createFormViewModelByConfigurationAndEntity(string $actionUrl, string $saveTextButton, $customEntity = null) {

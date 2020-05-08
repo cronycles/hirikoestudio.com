@@ -5,7 +5,7 @@ return [
     'htmlMetaDescription' => '',
     'htmlMetaKeywordsKey' => '',
     'title' => 'Nueva categoría',
-    'description' => 'Aqu&igrave; puedes crear tu nueva categoría.',
+    'description' => 'Aquí puedes crear tu nueva categoría.',
 
 
     'form' => [

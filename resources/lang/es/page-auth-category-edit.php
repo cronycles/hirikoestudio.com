@@ -5,7 +5,7 @@ return [
     'htmlMetaDescription' => '',
     'htmlMetaKeywordsKey' => '',
     'title' => 'Modifica categoría',
-    'description' => 'Aqu&igrave; puedes modificar tu categoría.',
+    'description' => 'Aquí puedes modificar tu categoría.',
 
     'form' => [
         'send' => 'Guarda categoría',
