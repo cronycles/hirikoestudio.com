@@ -30,6 +30,9 @@ class ContactFormBuilder extends FormBuilder {
                 case $this->getConfigFieldName('email'):
                     $field->value = $entity->email ?? null;
                     break;
+                case $this->getConfigFieldName('telephone'):
+                    $field->value = $entity->telephone ?? null;
+                    break;
                 case $this->getConfigFieldName('message'):
                     $field->value = $entity->message ?? null;
                     break;
@@ -54,6 +57,9 @@ class ContactFormBuilder extends FormBuilder {
                     break;
                 case $this->getConfigFieldName('email'):
                     $outcome->email = $this->parseStringFieldValue($field->value);
+                    break;
+                case $this->getConfigFieldName('telephone'):
+                    $outcome->telephone = $this->parseStringFieldValue($field->value);
                     break;
                 case $this->getConfigFieldName('message'):
                     $outcome->message = $this->parseStringFieldValue($field->value);

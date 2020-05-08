@@ -154,6 +154,7 @@ return [
         'zeroValueKey' => 'Elige...',
         'name' => 'Nombre',
         'email' => 'Correo electrónico',
+        'telephone' => 'Teléfono',
         'textMsg' => 'Mensaje',
         'password' => 'Contraseña',
         'password_confirm' => 'Repite la contraseña',

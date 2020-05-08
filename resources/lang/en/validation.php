@@ -155,6 +155,7 @@ return [
         'zeroValueKey' => 'Choose...',
         'name' => 'Name',
         'email' => 'Email',
+        'telephone' => 'Phone',
         'textMsg' => 'Message',
         'password' => 'Password',
         'password_confirm' => 'Confirm password',

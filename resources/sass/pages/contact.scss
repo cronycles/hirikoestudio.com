@@ -1,0 +1,6 @@
+.contact__logo {
+    display: none;
+    @media (--no-mobileDevice) {
+        display: block;
+    }
+}

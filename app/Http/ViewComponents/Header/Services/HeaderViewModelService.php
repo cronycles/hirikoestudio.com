@@ -66,7 +66,8 @@ class HeaderViewModelService {
     private function createPageLinks() {
         $outcome = [
             $this->createHomeLinkModel(),
-            $this->createProjectsLinkModel()
+            $this->createProjectsLinkModel(),
+            $this->createContactLinkModel()
         ];
         return $outcome;
     }
@@ -122,6 +123,16 @@ class HeaderViewModelService {
         $url = route('projects');
         $text = $this->getMenuPageTextFromConfig(config('custom.pages.PROJECTS'));
         $isActive = Route::currentRouteNamed('projects*');
+        return new HeaderLinkViewModel($url, $text, $isActive);
+    }
+
+    /**
+     * @return HeaderLinkViewModel
+     */
+    private function createContactLinkModel() {
+        $url = route('contact');
+        $text = $this->getMenuPageTextFromConfig(config('custom.pages.CONTACT'));
+        $isActive = Route::currentRouteNamed('contact*');
         return new HeaderLinkViewModel($url, $text, $isActive);
     }
 

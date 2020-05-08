@@ -21,7 +21,7 @@ return [
         'defaultLazyPlaceholder' => $imagesBaseUrl . '/lazy-img-placeholder.png',
         'logoBlack' => $imagesBaseUrl . '/logo_black.svg',
         'logoWhite' => $imagesBaseUrl . '/logo_white.svg',
-        'shopWindow' => $imagesBaseUrl . '/shop-window.jpg',
+        'shopWindow' => $imagesBaseUrl . '/shop-ext-contact.jpg',
         'defaultProjectImage' => $imagesBaseUrl . '/defaultProjectImage_560x360.png',
     ]
 ];

@@ -62,6 +62,7 @@ class ContactViewModelPageBuilder extends ViewModelPageBuilder {
         $outcome = new InfoViewModel();
 
         $outcome->telephone = config('custom.company.telephone');
+        $outcome->telephoneText = config('custom.company.telephone-txt');
 
         $outcome->email = config('custom.company.email');
 

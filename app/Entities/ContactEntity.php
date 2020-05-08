@@ -24,6 +24,11 @@ class ContactEntity extends CustomEntity {
     /**
      * @var string
      */
+    public $telephone;
+
+    /**
+     * @var string
+     */
     public $message;
 
     public function __construct() {

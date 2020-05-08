@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'name' => 'Crosetti Interior Design',
-    'vat-number' => '00246870109',
-    'address' => 'Via L. Vetrano 37r, 16152 Genova',
-    'telephone' => '0106507227',
-    'email' => 'info@crosetti.it',
-    'google-maps-url' => 'https://goo.gl/maps/atgEdtEK3Vu'
+    'name' => 'Hiriko Studio',
+    'address' => 'C/ Heros&nbsp;N&deg;&nbsp;15, Bajo&nbsp;3&nbsp;Izq. 48009&nbsp;Bilbao',
+    'telephone' => '+34946853206',
+    'telephone-txt' => '946 853 206',
+    'email' => 'info@hirikoestudio.com',
+    'google-maps-url' => 'https://goo.gl/maps/qGnMhsYXkNL2'
 ];

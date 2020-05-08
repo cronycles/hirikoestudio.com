@@ -20,6 +20,14 @@ return [
             'validations' => ['required', 'email'],
         ],
 
+        'telephone' => [
+            'type' => 1,
+            'name' => 'telephone',
+            'textKey' => 'validation.attributes.telephone',
+            'errorTextKey' => '{"id": "validation-js.min.string", "params": {"min": 3}}',
+            'validations' => ['required', 'min:3'],
+        ],
+
         'message' => [
             'type' => 3,
             'name' => 'textMsg',

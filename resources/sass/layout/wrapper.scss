@@ -1,5 +1,38 @@
-.wrapper {
+#wrapper {
     height: 100vh;
-    text-align: center;
     padding-top: $headerHeight;
+}
+
+.columns__container {
+    display: grid;
+    grid-template-columns: 100%;
+
+    .column {
+        img {
+            max-width: 100%;
+        }
+        &:nth-child(2) {
+            grid-row: 1/2;
+        }
+    }
+
+    @media (--no-mobileDevice) {
+        grid-template-columns: 50% 50%;
+
+        .column {
+            &:nth-child(2) {
+                grid-row: initial;
+            }
+        }
+
+        &.left-large {
+            grid-template-columns: 60% 40%;
+        }
+
+        &.right-large {
+            grid-template-columns: 40% 60%;
+        }
+    }
+
+
 }

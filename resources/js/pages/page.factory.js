@@ -4,11 +4,13 @@ import PageAuthIndex from "./auth";
 import PageAuthRegister from "./auth/register";
 import PageAuthForgotPassword from "./auth/forgot.password";
 import PageAuthResetPassword from "./auth/reset.password";
+import PageContact from "./contact";
 
 export default class PageFactory {
     constructor() {
         this.pages = [
             {id: 2, className: PageProjects},
+            {id: 4, className: PageContact},
             {id: 1001, className: PageAuthLogin},
             {id: 1002, className: PageAuthRegister},
             {id: 1003, className: PageAuthForgotPassword},

@@ -10,13 +10,14 @@ class EmailService {
     public function __construct() {
     }
 
-    public function sendEmail($senderName, $senderEmail, $message) {
+    public function sendEmail($senderName, $senderEmail, $senderTelephone, $message) {
         try {
             $data = [
                 'to' => config('custom.mail.contact_email'),
                 'subject' => config('custom.mail.contact_subject'),
                 'fromEmail' => $senderEmail,
                 'fromName' => $senderName,
+                'fromTelephone' => $senderTelephone,
                 'content' => $message
             ];
 

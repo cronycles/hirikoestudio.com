@@ -44,7 +44,11 @@ class ContactController extends Controller {
             $contactEntity = $this->formBuilder->createEntityFromRequest($request);
 
             if ($this->formBuilder->isAValidCaptchaRequest($request)) {
-                $isSent = $this->mailService->sendEmail($contactEntity->name, $contactEntity->email, $contactEntity->message);
+                $isSent = $this->mailService->sendEmail(
+                    $contactEntity->name,
+                    $contactEntity->email,
+                    $contactEntity->telephone,
+                    $contactEntity->message);
                 if ($isSent) {
                     $outcome = $this->messagesService->createSuccessResponse(__('page-contact.messages.send-success'));
                 }
