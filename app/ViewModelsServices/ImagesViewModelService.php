@@ -70,6 +70,9 @@ class ImagesViewModelService {
             $outcome = new ImageViewModel();
             $outcome->id = $imageEntity->id;
             $outcome->url = $imageEntity->url;
+            $outcome->name = $imageEntity->name;
+            $outcome->width = $imageEntity->width;
+            $outcome->height = $imageEntity->height;
         }
         return $outcome;
     }

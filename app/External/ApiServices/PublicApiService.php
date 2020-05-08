@@ -14,6 +14,7 @@ use App\External\Repositories\ProjectsRepository;
 use App\External\Repositories\UsersRepository;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
+use Image;
 
 class PublicApiService {
 
@@ -243,11 +244,14 @@ class PublicApiService {
 
             $fileName = $this->imageService->createNewJpgFileName($file);
             if ($fileName != null && !empty($fileName)) {
-                $dbImageEntity = $this->createImageDbEntityByFileName($fileName);
-                $imageId = $this->projectsRepository->saveImageToProject($dbImageEntity, $projectId);
-                if($imageId > 0 ) {
-                    $savedImage = $this->saveImageToDisk($file, $fileName);
-                    $outcome = $imageId;
+                $image = Image::make($file->getRealPath());
+                if ($image != null) {
+                    $dbImageEntity = $this->createImageDbEntity($image, $fileName);
+                    $imageId = $this->projectsRepository->saveImageToProject($dbImageEntity, $projectId);
+                    if($imageId > 0 ) {
+                        $savedImage = $this->saveImageToDisk($image, $fileName);
+                        $outcome = $imageId;
+                    }
                 }
             }
 
@@ -260,15 +264,14 @@ class PublicApiService {
     }
 
     /**
-     * @param UploadedFile $file
+     * @param \Intervention\Image\Image $image
      * @param $fileName
      * @return \Intervention\Image\Image|null
      */
-    public function saveImageToDisk(UploadedFile $file, $fileName) {
+    public function saveImageToDisk(\Intervention\Image\Image $image, $fileName) {
         try {
             $outcome = null;
-            if ($file != null || $fileName != null) {
-                $image = Image::make($file->getRealPath());
+            if ($image != null || $fileName != null) {
                 if ($image != null) {
                     $image = $this->resizeImageIfRequired($image);
                     $this->createPathIfNotExists(config('custom.images.uploadedImagePath'));
@@ -381,6 +384,9 @@ class PublicApiService {
                 if($dbImage != null) {
                     $imageEntity = new \App\External\ApiServiceEntities\Image();
                     $imageEntity->id = $dbImage->id;
+                    $imageEntity->name = $dbImage->name;
+                    $imageEntity->width = $dbImage->width;
+                    $imageEntity->height = $dbImage->height;
                     $imageEntity->url = config('custom.images.uploadedImagesUrl') . "/" . $dbImage->name;
                     array_push($outcome->images, $imageEntity);
                 }
@@ -470,10 +476,11 @@ class PublicApiService {
     }
 
     /**
+     * @param \Intervention\Image\Image $image
      * @param string $fileName
      * @return \App\Image|null
      */
-    private function createImageDbEntityByFileName(string $fileName) {
+    private function createImageDbEntity(\Intervention\Image\Image $image, string $fileName) {
         $outcome = null;
         if ($fileName != null && !empty($fileName)) {
             /** @var \App\Image $outcome */
@@ -481,6 +488,9 @@ class PublicApiService {
 
             if ($outcome != null) {
                 $outcome->name = $fileName;
+                $outcome->size = $image->fileSize();
+                $outcome->width = $image->width();
+                $outcome->height = $image->height();
             }
         }
         return $outcome;

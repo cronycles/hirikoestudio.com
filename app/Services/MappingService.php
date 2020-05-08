@@ -93,6 +93,9 @@ class MappingService {
         if ($serviceImage != null) {
             $outcome->id = $serviceImage->id;
             $outcome->url = $serviceImage->url;
+            $outcome->name = $serviceImage->name;
+            $outcome->width = $serviceImage->width;
+            $outcome->height = $serviceImage->height;
         }
         return $outcome;
     }

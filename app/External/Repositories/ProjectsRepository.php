@@ -3,6 +3,7 @@
 namespace App\External\Repositories;
 
 use App\Custom\Api\Repositories\Repository;
+use App\Custom\Logging\AppLog;
 use App\Image;
 use App\Project;
 use Illuminate\Support\Facades\DB;
@@ -39,6 +40,7 @@ class ProjectsRepository extends Repository {
             }
             return $outcome;
         } catch (\Exception $e) {
+            AppLog::error($e);
             DB::rollBack();
             return 0;
         }
@@ -64,6 +66,7 @@ class ProjectsRepository extends Repository {
             DB::commit();
             return true;
         } catch (\Exception $e) {
+            AppLog::error($e);
             DB::rollBack();
             return false;
         }
@@ -92,6 +95,7 @@ class ProjectsRepository extends Repository {
             DB::commit();
             return true;
         } catch (\Exception $e) {
+            AppLog::error($e);
             DB::rollBack();
             return false;
         }

@@ -14,6 +14,21 @@ class ImageViewModel {
      */
     public $url;
 
+    /**
+     * @var string
+     */
+    public $name;
+
+    /**
+     * @var int
+     */
+    public $width;
+
+    /**
+     * @var int
+     */
+    public $height;
+
     public function __construct() {
     }
 

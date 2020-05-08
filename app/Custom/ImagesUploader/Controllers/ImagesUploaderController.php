@@ -18,13 +18,13 @@ abstract class ImagesUploaderController {
         $this->service = $service;
     }
 
-    public function uploadImages($offerId, Request $request) {
+    public function uploadImages($entityId, Request $request) {
 
         $file = $request->file("uploaded_file");
 
         $savedImageId = 0;
         if ($file != null) {
-            $savedImageId = $this->service->saveImage($offerId, $file);
+            $savedImageId = $this->service->saveImage($entityId, $file);
         }
 
         return $this->getResponseForAjaxCall(
