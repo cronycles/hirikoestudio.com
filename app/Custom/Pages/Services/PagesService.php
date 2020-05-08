@@ -134,7 +134,7 @@ class PagesService {
         ];
 
         $this->pageConfigurations[config('custom.pages.AUTH_PROJECTS_SORT')] = [
-            'config' => config('pages.auth.project-sort'),
+            'config' => config('pages.auth.projects-sort'),
             'viewModelPageBuilder' => $authProjectsSortViewModelPageBuilder
         ];
 
