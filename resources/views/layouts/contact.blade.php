@@ -18,7 +18,7 @@
         <article class="page__section column">
             @yield('left_content')
         </article>
-        <article class="page__section column">
+        <article class="page__section column first">
             @yield('right_content')
         </article>
     </div>
