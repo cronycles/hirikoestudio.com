@@ -29,7 +29,7 @@ export default class ImagesService {
                 var reader = new FileReader();
                 reader.onload = function (e) {
                     var imageObject = new Image();
-                    imageObject.src = e.delegateTarget.result;
+                    imageObject.src = e.target.result;
                     imageObject.onload = function () {
                         resolve(this);
                     }
