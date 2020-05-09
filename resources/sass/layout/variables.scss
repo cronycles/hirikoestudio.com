@@ -29,9 +29,12 @@ $headerBurgerSize: 2rem;
 $headerLinkFontSize: 1rem;
 
 /*---cro-auto-adjust-gallery---*/
-$croAAG_imageSize: 25rem;
+$croAAG_minImageSize: 50ch;
 $croAAG_gridGap: 2ch;
-$croAAG_overlayBackgroundColor: rgba(0, 0, 0, 0.5);
+$croAAG_overlayAlpha: 0.5;
+
+/*---cro-vertical-gallery---*/
+$croVG_gridGap: 2ch;
 
 /*---Media variables---*/
 :root {

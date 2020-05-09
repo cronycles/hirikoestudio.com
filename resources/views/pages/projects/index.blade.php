@@ -13,16 +13,19 @@
             </div>
         @endif
         <div class="page__section__box">
-            <div class="cro__auto-adjust__gallery rectangle overlay-zoom">
+            <div class="cro__auto-adjust__gallery square overlay-zoom">
                 @foreach($model->projects as $project)
-                    <figure class="gallery__image__box medium jcb" data-c="{{$project->category->id}}">
-                        <a href="{{$project->url}}">
+                    <div class="gallery__box jcb" data-c="{{$project->category->id}}">
+                        <a class="image__track" href="{{$project->url}}">
                             <img src="{{config('custom.images.static.defaultLazyPlaceholder')}}" data-src="{{$project->cover ? $project->cover->url : ""}}" class="jlimg">
                         </a>
-                        <a href="{{$project->url}}" class="overlay__box">
+                        <a href="{{$project->url}}" class="overlay__track">
                             <div class="overlay__text">{{$project->title}}</div>
                         </a>
-                    </figure>
+                        <div class="caption__track">
+                            caption
+                        </div>
+                    </div>
                 @endforeach
             </div>
         </div>
