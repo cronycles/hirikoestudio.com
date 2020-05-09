@@ -22,9 +22,6 @@
                         <a href="{{$project->url}}" class="overlay__track">
                             <div class="overlay__text">{{$project->title}}</div>
                         </a>
-                        <div class="caption__track">
-                            caption
-                        </div>
                     </div>
                 @endforeach
             </div>
