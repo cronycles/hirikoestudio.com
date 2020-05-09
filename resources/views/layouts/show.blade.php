@@ -1,5 +1,5 @@
-@extends('layouts.app')
-@section('content')
+@extends('layouts.page')
+@section('page_content')
 
     <div class="columns__container right-large">
         <article class="page__section column">

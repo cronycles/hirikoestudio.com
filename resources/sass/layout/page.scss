@@ -1,3 +1,8 @@
+#page__container {
+    height: 100vh;
+    padding-top: $headerHeight;
+}
+
 .columns__container {
     display: grid;
     grid-template-columns: 100%;

@@ -1,5 +1,5 @@
-@extends('layouts.app')
-@section('content')
+@extends('layouts.page')
+@section('page_content')
 
     <div class="page__section">
         @if($model->title != null && !empty($model->title))
