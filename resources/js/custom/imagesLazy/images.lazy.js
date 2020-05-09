@@ -6,6 +6,12 @@ export default class ImagesLazy {
 
     loadAllLazyImagesIntoThePage() {
         $('.jlimg').Lazy();
+
+        $('.jlimg1000').Lazy({
+            effect: 'fadeIn',
+            effectTime: 1000,
+            threshold: 0
+        });
     }
 
 }

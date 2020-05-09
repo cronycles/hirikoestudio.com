@@ -12,7 +12,7 @@
                 <div class="gallery__box">
                     <div class="image__track">
                         <img src="{{config('custom.images.static.defaultLazyPlaceholder')}}" data-src="{{$image->url}}"
-                             class="jlimg"/>
+                             class="jlimg1000"/>
                     </div>
                 </div>
             @endforeach
