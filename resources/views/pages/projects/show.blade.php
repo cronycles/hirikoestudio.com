@@ -7,8 +7,13 @@
 
 @section('right_content')
     @if($model->project->images != null && !empty($model->project->images))
-        @foreach($model->project->images as $image)
-            <img src="{{config('custom.images.static.defaultLazyPlaceholder')}}" data-src="{{$image->url}}" class="jlimg"/>
-        @endforeach
+        <div class="cro__vertical__gallery">
+            @foreach($model->project->images as $image)
+                <figure class="gallery__image__box">
+                        <img src="{{config('custom.images.static.defaultLazyPlaceholder')}}" data-src="{{$image->url}}"
+                             class="jlimg"/>
+                </figure>
+            @endforeach
+        </div>
     @endif
 @endsection

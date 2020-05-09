@@ -1,0 +1,20 @@
+.cro__vertical__gallery {
+    display: grid;
+    grid-gap: 2ch;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    .gallery__image__box {
+        grid-column: span 2;
+        margin: 0;
+        padding: 0;
+
+        &.small {
+            grid-column: span 1;
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+}
