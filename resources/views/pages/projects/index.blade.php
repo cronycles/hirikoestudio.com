@@ -13,7 +13,7 @@
             </div>
         @endif
         <div class="page__section__box">
-            <div class="cro__auto-adjust__gallery square overlay-zoom">
+            <div class="cro__auto-adjust__gallery overlay-zoom">
                 @foreach($model->projects as $project)
                     <div class="gallery__box jcb" data-c="{{$project->category->id}}">
                         <a class="image__track" href="{{$project->url}}">
