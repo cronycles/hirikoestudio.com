@@ -12,7 +12,8 @@ export default class CroFullScreenImagesCarousel {
             autoplay: true,
             mouseDrag: true,
             autoplayTimeout: 5000,
-            autoplayHoverPause: false
+            autoplayHoverPause: false,
+            lazyload: true,
         };
 
         let mergedOptions = {...defaultOptions, ...customOptions };
