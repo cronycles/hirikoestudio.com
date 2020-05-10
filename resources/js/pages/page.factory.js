@@ -12,10 +12,12 @@ import PageAuthProjectCreate from "./auth/projects/auth.project.create";
 import PageAuthProjectEdit from "./auth/projects/auth.project.edit";
 import PageAuthProjectsSort from "./auth/projects/auth.projects.sort";
 import PageAuthProjectImages from "./auth/projects/auth.project.images";
+import PageHome from "./home";
 
 export default class PageFactory {
     constructor() {
         this.pages = [
+            {id: 1, className: PageHome},
             {id: 2, className: PageProjects},
             {id: 4, className: PageContact},
             {id: 1001, className: PageAuthLogin},
