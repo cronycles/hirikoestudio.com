@@ -73,6 +73,7 @@ class ImagesViewModelService {
             $outcome->name = $imageEntity->name;
             $outcome->width = $imageEntity->width;
             $outcome->height = $imageEntity->height;
+            $outcome->isSmallViewEnabled = $imageEntity->isSmallViewEnabled;
         }
         return $outcome;
     }

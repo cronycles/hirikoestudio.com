@@ -388,6 +388,7 @@ class PublicApiService {
                     $imageEntity->width = $dbImage->width;
                     $imageEntity->height = $dbImage->height;
                     $imageEntity->url = config('custom.images.uploadedImagesUrl') . "/" . $dbImage->name;
+                    $imageEntity->isSmallViewEnabled = $dbImage->pivot->image_small_view;
                     array_push($outcome->images, $imageEntity);
                 }
             }
@@ -529,4 +530,15 @@ class PublicApiService {
     public function updateProjectImagesSort(int $projectId, array $imagesSortedIds) {
         return $this->projectsRepository->updateImagesSort($projectId, $imagesSortedIds);
     }
+
+    /**
+     * @param int $projectId
+     * @param int $imageId
+     * @param bool $value
+     * @return bool
+     */
+    public function changeProjectImageSmallView(int $projectId, int $imageId, bool $value = true) {
+        return $this->projectsRepository->changeProjectImageSmallView($projectId, $imageId, $value);
+    }
 }
+

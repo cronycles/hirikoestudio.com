@@ -100,4 +100,29 @@ class ProjectsRepository extends Repository {
             return false;
         }
     }
+
+    /**
+     * @param int $projectId
+     * @param int $imageId
+     * @param bool $value
+     * @return bool
+     */
+    public function changeProjectImageSmallView(int $projectId, int $imageId, bool $value = true) {
+        try {
+            DB::beginTransaction();
+
+                DB::table('image_project')
+                    ->where('project_id', '=', $projectId)
+                    ->where('image_id', '=', $imageId)
+                    ->update([
+                        'image_small_view' => $value
+                    ]);
+            DB::commit();
+            return true;
+        } catch (\Exception $e) {
+            AppLog::error($e);
+            DB::rollBack();
+            return false;
+        }
+    }
 }

@@ -135,6 +135,16 @@ class ProjectsApi implements ICrudApi, ISortingApi, IImagesUploaderApi {
         return $this->mainApi->updateProjectImagesSort($projectId, $imagesSortedIds);
     }
 
+    /**
+     * @param int $projectId
+     * @param int $imageId
+     * @param bool $value
+     * @return bool
+     */
+    public function changeSmallView(int $projectId, int $imageId, bool $value = true) {
+        return $this->mainApi->changeProjectImageSmallView($projectId, $imageId, $value);
+    }
+
     private function createProjectServiceEntityFromEntity(ProjectEntity $projectEntity) {
         $outcome = null;
         if ($projectEntity != null) {

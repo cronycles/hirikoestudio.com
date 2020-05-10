@@ -8,17 +8,17 @@ export default class ApiService {
             return this.#handleResponse(response);
         } catch (e) {
             log.error(e);
-            return null;
+            return this.#handleResponse();
         }
     };
 
-    ajaxPost = async (url, body) => {
+    ajaxPost = async (url, body = {}) => {
         try {
             let response = await axios.post(url, body);
             return this.#handleResponse(response);
         } catch (e) {
             log.error(e);
-            return null;
+            return this.#handleResponse();
         }
     };
 
@@ -29,7 +29,7 @@ export default class ApiService {
 
         } catch (e) {
             log.error(e);
-            return null;
+            return this.#handleResponse();
         }
     };
 
@@ -48,7 +48,7 @@ export default class ApiService {
             return this.#handleResponse(response)
         } catch (e) {
             log.error(e);
-            return null;
+            return this.#handleResponse();
         }
     };
 
@@ -57,24 +57,37 @@ export default class ApiService {
      * @param response
      * @returns {{request: *, response: object that contains parameters}}
      */
-    #handleResponse = (response) => {
-        let outcome = {
-            hasErrors: false,
-            params: null,
-            errors: null,
-        };
-        if (response != null) {
-            if (!$.trim(response)) {
-                response = {}
+    #handleResponse = (response = null) => {
+        try {
+            let outcome = {
+                hasErrors: true,
+                params: null,
+                errors: null,
+            };
+            if (response != null) {
+                if (!$.trim(response)) {
+                    response = {}
+                }
+                let parsedResponse = JSON.stringify(response);
+                parsedResponse = JSON.parse(parsedResponse);
+                const parsedResponseData = parsedResponse.data;
+                outcome.params = parsedResponseData.params;
+                outcome.hasErrors = parsedResponseData.hasErrors;
+                outcome.errors = parsedResponseData.errors;
             }
-            let parsedResponse = JSON.stringify(response);
-            parsedResponse = JSON.parse(parsedResponse);
-            parsedResponse = parsedResponse.data;
-            outcome.hasErrors = parsedResponse.hasErrors;
-            outcome.params = parsedResponse.params;
-            outcome.errors = parsedResponse.errors;
+            if (response == null || response.status !== 200) {
+                outcome.hasErrors = true
+            }
+            return outcome;
+        } catch (e) {
+            log.error(e);
+            return {
+                hasErrors: true,
+                params: null,
+                errors: null,
+            };
         }
-        return outcome;
+
     };
 }
 

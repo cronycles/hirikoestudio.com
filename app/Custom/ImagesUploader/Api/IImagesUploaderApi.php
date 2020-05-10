@@ -27,4 +27,11 @@ interface IImagesUploaderApi {
      */
     public function updateImagesSort(int $entityId, array $imagesSortedIds);
 
+    /**
+     * @param int $entityId
+     * @param int $imageId
+     * @param bool $value
+     * @return bool
+     */
+    public function changeSmallView(int $entityId, int $imageId, bool $value);
 }

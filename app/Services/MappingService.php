@@ -96,6 +96,7 @@ class MappingService {
             $outcome->name = $serviceImage->name;
             $outcome->width = $serviceImage->width;
             $outcome->height = $serviceImage->height;
+            $outcome->isSmallViewEnabled = $serviceImage->isSmallViewEnabled;
         }
         return $outcome;
     }

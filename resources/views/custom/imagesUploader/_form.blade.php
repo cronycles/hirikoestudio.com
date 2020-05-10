@@ -37,10 +37,13 @@
 
                             <div class="img__upload__thumb__buttons-wrap">
                                 <span class="img__upload__thumb-left__btn jSortHandle">
-                                    <i class="la la-sort" title="{{trans('images-upload.sort-image-button')}}"></i>
+                                    <i class="las la-sort" title="{{trans('images-upload.sort-image-button')}}"></i>
+                                </span>
+                                <span class="jSmallView img__upload__thumb-center__btn {{$image->isSmallViewEnabled ? 'active' : ''}}">
+                                    <i class="la la-compress-arrows-alt" title="{{trans('images-upload.small-image-button')}}"></i>
                                 </span>
                                 <span class="img__upload__thumb-right__btn">
-                                    <i class="jDel la la-trash" title="{{trans('images-upload.delete-image-button')}}"></i>
+                                    <i class="jDel las la-trash-alt" title="{{trans('images-upload.delete-image-button')}}"></i>
                                     <div class="jDelConfirm img__upload__confirm-btn none">
                                         {{trans('images-upload.delete-confirm-image-button')}}
                                     </div>
@@ -61,11 +64,14 @@
             </li>
 
             <div class="img__upload__thumb__buttons-wrap jThOk jClonable" style="display: none">
-                <span class="img__upload__thumb-left__btn jSort">
-                    <i class="la la-sort" title="{{trans('images-upload.sort-image-button')}}"></i>
+                <span class="img__upload__thumb-left__btn jSortHandle">
+                    <i class="las la-sort" title="{{trans('images-upload.sort-image-button')}}"></i>
+                </span>
+                <span class="img__upload__thumb-center__btn jSmallView">
+                    <i class="la la-compress-arrows-alt" title="{{trans('images-upload.small-image-button')}}"></i>
                 </span>
                 <span class="img__upload__thumb-right__btn">
-                    <i class="jDel la la-trash" title="{{trans('images-upload.delete-image-button')}}"></i>
+                    <i class="jDel las la-trash-alt" title="{{trans('images-upload.delete-image-button')}}"></i>
                     <div class="jDelConfirm img__upload__confirm-btn none">
                         {{trans('images-upload.delete-confirm-image-button')}}
                     </div>

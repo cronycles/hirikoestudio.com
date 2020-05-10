@@ -3,11 +3,13 @@ import ImageUploaderError from './images.uploader.errors'
 export default class ImagesUploaderView {
     #deleteSelector;
     #deleteConfirmSelector;
+    #smallViewSelector;
     constructor() {
 
         //Selector
         this.#deleteSelector = ".jDel";
         this.#deleteConfirmSelector = ".jDelConfirm";
+        this.#smallViewSelector = ".jSmallView";
 
         this.imageUploaderSelector = ".jimgHandling";
 
@@ -16,8 +18,11 @@ export default class ImagesUploaderView {
         this.thumbOkSelector = "jThOk";
         this.thumbKoSelector = "jThKo";
 
+        //classes
         this.noneClass = "none";
+        this.activeClass = "active";
 
+        //DOM
         this.$imageHandling = $(this.imageUploaderSelector);
         this.$imageHandlingClonableInputFile = $(".jimgHandling__file-input-clonable");
         this.$imageHandlingForm = $(".juploadForm");
@@ -73,10 +78,10 @@ export default class ImagesUploaderView {
     };
 
     appendThumbnail = (thumbnail) => {
-        var $clonedThumbTheme = this.$thumbTheme.clone();
+        let $clonedThumbTheme = this.$thumbTheme.clone();
         $clonedThumbTheme.removeClass(this.cloneableSelector);
 
-        var imageContainer = $clonedThumbTheme.find(".jthumbImg");
+        let imageContainer = $clonedThumbTheme.find(".jthumbImg");
         imageContainer.attr('src', thumbnail.src);
 
         this.$thumbsContainer.append($clonedThumbTheme);
@@ -93,7 +98,7 @@ export default class ImagesUploaderView {
     updateThumbnailOk = ($thumbnail, imageId) => {
         $thumbnail.attr('data-id', imageId);
 
-        var $clonedSuccessItem = this.$thumbItemSuccessTheme.clone();
+        let $clonedSuccessItem = this.$thumbItemSuccessTheme.clone();
         $clonedSuccessItem.removeClass(this.cloneableSelector);
         $thumbnail.find(".jthumbPercentageBarContainer").replaceWith($clonedSuccessItem);
 
@@ -101,7 +106,7 @@ export default class ImagesUploaderView {
     };
 
     updateThumbnailError = ($thumbnail) => {
-        var $clonedErrorItem = this.$thumbItemErrorTheme.clone();
+        let $clonedErrorItem = this.$thumbItemErrorTheme.clone();
         $clonedErrorItem.removeClass(this.cloneableSelector);
         $thumbnail.find(".jthumbPercentageBarContainer").replaceWith($clonedErrorItem);
         $clonedErrorItem.show();
@@ -112,7 +117,7 @@ export default class ImagesUploaderView {
      */
     onDeleteFile = (callback) => {
         this.$thumbsContainer.on('click', this.#deleteSelector, (deleteButton) => {
-            var id = $(deleteButton.target).closest("." + this.thumbSelector).data("id");
+            let id = $(deleteButton.currentTarget).closest("." + this.thumbSelector).data("id");
             callback(id);
             return false;
         });
@@ -132,24 +137,53 @@ export default class ImagesUploaderView {
      */
     onDeleteFileConfirm = (callback) => {
         this.$thumbsContainer.on('click', this.#deleteConfirmSelector, (deleteButton) => {
-            var id = $(deleteButton.target).closest("." + this.thumbSelector).data("id");
+            let id = $(deleteButton.currentTarget).closest("." + this.thumbSelector).data("id");
             callback(id);
             return false;
         });
     };
 
+    /**
+     * @param {function} callback
+     */
+    onImageSmallViewButtonClick = (callback) => {
+        this.$thumbsContainer.on('click', this.#smallViewSelector, (button) => {
+            const $button = $(button.currentTarget);
+            let id = $button.closest("." + this.thumbSelector).data("id");
+            let isSmallViewActive = $button.hasClass('active');
+            callback(id, isSmallViewActive);
+            return false;
+        });
+    };
+
+    /**
+     * @param {int} imageId
+     */
+    enableImageSmallView = (imageId) => {
+        const $thumbnail = this.#findThumbnailByImageId(imageId);
+        $thumbnail.find(this.#smallViewSelector).addClass(this.activeClass);
+    };
+
+    /**
+     * @param {int} imageId
+     */
+    disableImageSmallView = (imageId) => {
+        const $thumbnail = this.#findThumbnailByImageId(imageId);
+        $thumbnail.find(this.#smallViewSelector).removeClass(this.activeClass);
+    };
+
     hideThumbnail = (id) => {
-        var $thumbnail = this.#findThumbnailByImageId(id);
+        let $thumbnail = this.#findThumbnailByImageId(id);
         $thumbnail.addClass(this.noneClass);
     };
 
     showThumbnail = (id) => {
-        var $thumbnail = this.#findThumbnailByImageId(id);
+        let $thumbnail = this.#findThumbnailByImageId(id);
         $thumbnail.addClass(this.noneClass);
     };
 
     deleteThumbnail = (id) => {
-        var $thumbnail = this.#findThumbnailByImageId(id);
+        let $thumbnail = this.#findThumbnailByImageId(id);
         $thumbnail.remove();
     };
 
@@ -170,7 +204,7 @@ export default class ImagesUploaderView {
                 errorString = this.$imageHandling.data('no-valid-image-err');
                 break;
         }
-        var $clone = this.$clonableError.clone();
+        let $clone = this.$clonableError.clone();
         $clone.removeClass(this.cloneableSelector).addClass("jError");
         $clone.html(errorString);
         this.$errorAlertContainer.append($clone);
@@ -187,9 +221,9 @@ export default class ImagesUploaderView {
         if (this.$fileElem) {
             this.$fileElem.remove();
         }
-        var $clone = this.$imageHandlingClonableInputFile.clone();
+        let $clone = this.$imageHandlingClonableInputFile.clone();
         $clone.off().on("change", (input) => {
-            callback(Array.from(input.delegateTarget.files));
+            callback(Array.from(input.currentTarget.files));
             return false;
         });
         $clone.appendTo(this.$imageHandlingForm);

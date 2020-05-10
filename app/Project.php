@@ -24,7 +24,7 @@ class Project extends Model
 
     public function images() {
         return $this->belongsToMany('App\Image')
-            ->withPivot('image_order')
+            ->withPivot('image_order', 'image_small_view')
             ->withTimestamps()
             ->orderBy('pivot_image_order', 'asc');
     }

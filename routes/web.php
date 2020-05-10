@@ -78,5 +78,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/auth/projects/{id}/images', ['as' => 'auth.projects.images.upload', 'uses' => 'Auth\Projects\AuthProjectsImagesController@uploadImages']);
     Route::post('/auth/projects/{id}/images-sort', ['as' => 'auth.projects.imagesSort', 'uses' => 'Auth\Projects\AuthProjectsImagesController@updateImagesSort']);
     Route::delete('/auth/projects/{id}/images/{imageId}', ['as' => 'auth.projects.images.delete', 'uses' => 'Auth\Projects\AuthProjectsImagesController@deleteImage']);
+
+    Route::post('/auth/projects/{id}/images/{imageId}/small-view', ['as' => 'auth.projects.images.changeSmallView', 'uses' => 'Auth\Projects\AuthProjectsImagesController@changeSmallView']);
+
 });
 

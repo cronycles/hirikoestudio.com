@@ -34,15 +34,15 @@ abstract class ImagesUploaderService {
     }
 
     /**
-     * @param int $offerId
+     * @param int $entityId
      * @param int $imageId
      * @return bool
      */
-    public function deleteImage($offerId, $imageId) {
+    public function deleteImage($entityId, $imageId) {
         try {
             $outcome = false;
-            if ($offerId != null && $imageId != null) {
-                $outcome = $this->api->deleteImage($offerId, $imageId);
+            if ($entityId != null && $imageId != null) {
+                $outcome = $this->api->deleteImage($entityId, $imageId);
             }
             return $outcome;
         } catch (\Exception $e) {
@@ -52,11 +52,20 @@ abstract class ImagesUploaderService {
     }
 
     /**
-     * @param int $offerId
+     * @param int $entityId
      * @param array $imagesSortedIds
      */
-    public function updateImagesSort(int $offerId, array $imagesSortedIds) {
-        $this->api->updateImagesSort($offerId, $imagesSortedIds);
+    public function updateImagesSort(int $entityId, array $imagesSortedIds) {
+        return $this->api->updateImagesSort($entityId, $imagesSortedIds);
+    }
+
+    /**
+     * @param int $entityId
+     * @param int $imageId
+     * @param bool $value
+     */
+    public function changeSmallView(int $entityId, int $imageId, bool $value = true) {
+        return $this->api->changeSmallView($entityId, $imageId, $value);
     }
 
 }

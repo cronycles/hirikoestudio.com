@@ -3,10 +3,11 @@
 
 namespace App\Custom\Sorting\Controllers;
 
+use App\Custom\Ajax\CustomAjaxController;
 use App\Custom\Sorting\Services\SortingService;
 use Illuminate\Http\Request;
 
-abstract class SortingController {
+abstract class SortingController extends CustomAjaxController {
 
     /**
      * @var SortingService

@@ -30,6 +30,14 @@ export default class ImagesUploader {
         this.view.onDeleteFileConfirm(async (imageId) => {
             await this.#performDeleting(imageId)
         });
+        this.view.onImageSmallViewButtonClick(async (imageId, isSmallViewActive) => {
+            if(isSmallViewActive) {
+                await this.#disableImageSmallView(imageId);
+            }
+            else {
+                await this.#enableImageSmallView(imageId);
+            }
+        });
     }
 
     #performDeleting = async (imageId) => {
@@ -129,6 +137,22 @@ export default class ImagesUploader {
             for (const error of errors) {
                 this.view.printErrorToUser(error);
             }
+        }
+    };
+
+    #enableImageSmallView = async (imageId) => {
+        this.view.enableImageSmallView(imageId);
+        let response = await this.api.changeImageSmallViewById(imageId, true);
+        if (response.hasErrors) {
+            this.view.disableImageSmallView(imageId);
+        }
+    };
+
+    #disableImageSmallView = async (imageId) => {
+        this.view.disableImageSmallView(imageId);
+        let response = await this.api.changeImageSmallViewById(imageId, false);
+        if (response.hasErrors) {
+            this.view.enableImageSmallView(imageId);
         }
     };
 

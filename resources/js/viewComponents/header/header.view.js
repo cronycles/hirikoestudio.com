@@ -50,7 +50,7 @@ export default class HeaderView {
 
     onDropDownButtonClick = (callback) => {
         this.$dropdownButtons.off(this.tclick).on(this.tclick, (e) =>{
-            const dropdownButtonSelector = e.delegateTarget;
+            const dropdownButtonSelector = e.currentTarget;
             callback(dropdownButtonSelector);
             return false;
         });

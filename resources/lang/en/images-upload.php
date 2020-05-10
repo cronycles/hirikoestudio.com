@@ -5,6 +5,7 @@ return [
     'drag-drop-images' => 'Or drag & drop your files here...',
     'thumbs-description' => 'Drag images to sort or click on the trash to delete them',
     'sort-image-button' => 'Sort',
+    'small-image-button' => 'Small view',
     'delete-image-button' => 'Delete',
     'delete-confirm-image-button' => 'Confirm',
     'upload-ok'=> 'Image uploaded successfully',

@@ -146,4 +146,14 @@ class MainApi {
         return $this->publicApiService->updateProjectImagesSort($projectId, $imagesSortedIds);
     }
 
+    /**
+     * @param int $projectId
+     * @param int $imageId
+     * @param bool $value
+     * @return bool
+     */
+    public function changeProjectImageSmallView(int $projectId, int $imageId, bool $value) {
+        return $this->publicApiService->changeProjectImageSmallView($projectId, $imageId, $value);
+    }
+
 }

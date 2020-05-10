@@ -20,7 +20,7 @@ export default class CategorySelectionView {
     //#region Public functions
     onSelectCategory(callback) {
         this.$categories.off(this.tclick).on(this.tclick, (category) => {
-            let $clickedCategory = $(category.target);
+            let $clickedCategory = $(category.currentTarget);
             this.selectCategoryFromWrapper($clickedCategory);
             let categoryId = this.getCategoryIdFromWrapper($clickedCategory);
             callback(categoryId);

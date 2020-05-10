@@ -5,10 +5,6 @@
     @media (--no-mobileDevice) {
         grid-template-columns: 1fr 2fr;
     }
-
-    .la {
-        font-size: 2rem;
-    }
 }
 
 .img__upload_select_zone {
@@ -73,9 +69,26 @@
 
             .img__upload__thumb__buttons-wrap {
                 height: 30px;
+
+                span {
+                    cursor: pointer;
+                    i {
+                        font-size: 2rem;
+                    }
+                }
+
                 .img__upload__thumb-left__btn{
                     float: left;
                 }
+
+                .img__upload__thumb-center__btn{
+                    opacity: 0.3;
+
+                    &:hover, &.active {
+                        opacity: 1;
+                    }
+                }
+
                 .img__upload__thumb-right__btn{
                     float: right;
                 }

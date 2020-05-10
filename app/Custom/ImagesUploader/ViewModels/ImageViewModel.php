@@ -29,7 +29,13 @@ class ImageViewModel {
      */
     public $height;
 
+    /**
+     * @var bool
+     */
+    public $isSmallViewEnabled;
+
     public function __construct() {
+        $this->isSmallViewEnabled = false;
     }
 
 }

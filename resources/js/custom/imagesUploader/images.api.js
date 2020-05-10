@@ -12,19 +12,33 @@ export default class ImagesApi {
      * @returns {*}
      */
     uploadImageToGivenUrl = async (givenUrl, file, uploadProgressFunction) => {
-        var body = new FormData();
+        let body = new FormData();
         body.append('uploaded_file', file);
         return await this.api.ajaxPostFileFormData(givenUrl, body, uploadProgressFunction);
     };
 
     /**
      * delete a file by id
-     * @param imageId
+     * @param {int} imageId
      * @returns {*}
      */
     deleteImageById = async (imageId) => {
-        var url = this.uploadUrl + "/" + imageId;
+        const url = this.uploadUrl + "/" + imageId;
         return await this.api.ajaxDelete(url);
+    };
+
+    /**
+     * enable or disable the image small view by id
+     * @param {int} imageId
+     * @param {bool} isActive
+     * @returns {*}
+     */
+    changeImageSmallViewById = async (imageId, isActive = true) => {
+        const url = this.uploadUrl + "/" + imageId+ "/small-view";
+        const body = {
+            'is-active': isActive
+        };
+        return await this.api.ajaxPost(url, body);
     };
 }
 
