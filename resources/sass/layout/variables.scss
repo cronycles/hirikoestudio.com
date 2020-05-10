@@ -29,6 +29,11 @@ $headerLinksSpace: 2rem;
 $headerLinksSpaceNoMobile: 1.2rem;
 $headerBurgerSize: 2rem;
 $headerLinkFontSize: 1rem;
+$headerBackgroundColor: transparent;
+$headerMobileMenuBackgroundColor: $corporateColor;
+$headerDropdownMenuBackgroundColor: $corporateColor;
+
+$headerInvertedLinkColor: $complementaryColor; //nella home bisogna invertire il colore del header link
 
 /*---cro-auto-adjust-gallery---*/
 $croAAG_minImageSize: 50ch;

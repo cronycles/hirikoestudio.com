@@ -45,6 +45,10 @@ class HeaderViewModelService {
         $outcome = $this->createViewModelLanguagesPart($outcome);
         $outcome = $this->createViewModelAdminPart($outcome);
 
+        $isHomeRoot = Route::currentRouteNamed('index*');
+        if($isHomeRoot) {
+            $outcome->hasInvertedColors = true;
+        }
         return $outcome;
     }
 
@@ -53,7 +57,14 @@ class HeaderViewModelService {
      */
     private function createLogoViewModel() {
         $outcome = new HeaderLogoViewModel();
-        $outcome->imageUrl = config('custom.images.static.logoBlack');
+
+        $isHomeRoot = Route::currentRouteNamed('index*');
+        if($isHomeRoot) {
+            $outcome->imageUrl = config('custom.images.static.logoWhite');
+        }
+        else {
+            $outcome->imageUrl = config('custom.images.static.logoBlack');
+        }
         $outcome->url = route('index');
         $outcome->linkText = config('custom.company.name');
         $outcome->altText = config('custom.company.name');

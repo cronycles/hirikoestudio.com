@@ -3,6 +3,7 @@
     z-index: 2;
     width: 100%;
     height: $headerHeight;
+    background-color: $headerBackgroundColor;
 
 
     #header__logo {
@@ -86,9 +87,11 @@
 
     li {
         float: none;
+        background-color: $headerMobileMenuBackgroundColor;
         @media (--no-mobileDevice) {
             float: left;
             margin-left: $headerLinksSpaceNoMobile;
+            background-color: initial;
         }
     }
 }
@@ -124,6 +127,7 @@
         @media (--no-mobileDevice) {
             position: absolute;
             padding: 2px 5px 0 5px;
+            background-color: $headerDropdownMenuBackgroundColor;
         }
 
         a {

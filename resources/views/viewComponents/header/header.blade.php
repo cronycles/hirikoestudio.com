@@ -1,4 +1,4 @@
-<header id="header" class="jheader">
+<header id="header" class="jheader {{$model->hasInvertedColors ? 'inverted' : ''}}">
     <div id="header__logo"><a href="{{$model->logo->url}}"><img src="{{$model->logo->imageUrl}}" alt="{{$model->logo->altText}}"></a></div>
     <div id="header__burger" class="jburgerBtn">
         <i data-open="las la-times" data-closed="las la-bars" class="las la-bars"></i>

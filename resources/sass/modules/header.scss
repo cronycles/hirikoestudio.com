@@ -1,0 +1,9 @@
+#header {
+
+    &.inverted {
+        color: $headerInvertedLinkColor;
+        a {
+            color: $headerInvertedLinkColor;
+        }
+    }
+}

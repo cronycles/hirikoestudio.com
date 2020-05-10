@@ -49,6 +49,11 @@ class HeaderViewModel {
      */
     public $userName;
 
+    /**
+     * @var bool
+     */
+    public $hasInvertedColors;
+
     public function __construct() {
         $this->pageLinks = [];
         $this->userPageLinks = [];
@@ -56,6 +61,7 @@ class HeaderViewModel {
         $this->adminPageLinks = [];
         $this->isUserAuth = false;
         $this->isMultilanguageActive = false;
+        $this->hasInvertedColors = false;
     }
 
 }
