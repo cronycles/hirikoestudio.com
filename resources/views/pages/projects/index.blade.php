@@ -1,4 +1,4 @@
-@extends('layouts.show-all')
+@extends('layouts.page')
 
 @section('page_content')
 
