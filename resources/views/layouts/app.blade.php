@@ -12,7 +12,9 @@
 
     @yield('content')
 </div>
+
 @include('custom.layouts._scripts')
+@include('custom.layouts._analytics')
 </body>
 
 </html>
