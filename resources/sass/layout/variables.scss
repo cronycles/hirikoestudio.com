@@ -4,7 +4,7 @@ $boldFont:'DINBold', Helvetica, Arial, sans-serif;
 $defaultFontSize: 14px;
 
 /*---Margins---*/
-$pageMargins: 1rem;
+$pageMargins: 2ch;
 $pageMarginsNoMobile: $pageMargins;
 
 /*---Colors---*/
@@ -37,11 +37,11 @@ $headerInvertedLinkColor: $complementaryColor; //nella home bisogna invertire il
 
 /*---cro-auto-adjust-gallery---*/
 $croAAG_minImageSize: 50ch;
-$croAAG_gridGap: 2ch;
+$croAAG_gridGap: $pageMargins;
 $croAAG_overlayAlpha: 0.5;
 
 /*---cro-vertical-gallery---*/
-$croVG_gridGap: 2ch;
+$croVG_gridGap: $pageMargins;
 
 /*---Media variables---*/
 :root {

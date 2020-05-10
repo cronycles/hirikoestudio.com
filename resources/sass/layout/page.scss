@@ -1,6 +1,8 @@
 #page__container {
     height: 100vh;
     padding-top: $headerHeight;
+    padding-left: $pageMargins;
+    padding-right: $pageMargins;
 }
 
 .columns__container {
