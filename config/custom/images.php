@@ -22,7 +22,7 @@ return [
         'logoBlack' => $imagesBaseUrl . '/logo_black.svg',
         'logoWhite' => $imagesBaseUrl . '/logo_white.svg',
         'shopWindow' => $imagesBaseUrl . '/shop-ext-contact.jpg',
-        'defaultProjectImage' => $imagesBaseUrl . '/defaultProjectImage_560x360.png',
+        'defaultProjectImage' => $imagesBaseUrl . '/defaultProjectImage_560x360.jpg',
         'homeSlide1' => $imagesBaseUrl . '/home-slide1.jpg',
         'homeSlide2' => $imagesBaseUrl . '/home-slide2.jpg',
         'homeSlide3' => $imagesBaseUrl . '/home-slide3.jpg',
