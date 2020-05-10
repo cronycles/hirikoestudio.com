@@ -1,27 +1,27 @@
 <?php
 
-namespace App\Custom\Logging\Services;
+namespace App\Custom\Logging;
 
 use Illuminate\Support\Facades\Log;
 
-class JsLoggingService {
+class JsLog {
 
-    public function info($message) {
+    public static function info($message) {
         Log::channel('js')->info($message);
     }
 
     /**
      * @param $error \Exception
      */
-    public function error($error) {
+    public static function error($error) {
         $message = $error->getMessage();
-        $this->errorMessage($message);
+        self::errorMessage($message);
     }
 
     /**
      * @param $message string
      */
-    public function errorMessage($message) {
+    public static function errorMessage($message) {
         Log::channel('js')->error($message);
     }
 
@@ -29,9 +29,9 @@ class JsLoggingService {
      * @param $message string
      * @param $error \Exception
      */
-    public function errorMessageException($message, $error) {
+    public static function errorMessageException($message, $error) {
         $errorMessage = $error->getMessage();
         $message = $message . "\n" . $errorMessage;
-        $this->errorMessage($message);
+        self::errorMessage($message);
     }
 }
