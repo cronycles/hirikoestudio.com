@@ -85,9 +85,7 @@
         }
         .gallery__box:hover {
             .overlay__track {
-                @media (--no-mobileDevice) {
-                    display: grid;
-                }
+                display: grid;
             }
             img {
                 transform: scale(1.1);
