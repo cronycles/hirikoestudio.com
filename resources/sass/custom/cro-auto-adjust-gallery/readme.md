@@ -8,6 +8,7 @@
 $croAAG_minImageSize: 50ch;
 $croAAG_gridGap: 2ch;
 $croAAG_overlayAlpha: 0.5;
+$croAAG_overlayTextColor: #ffffff;
 ```
 - Importare il modulo css dove vi serve:
 ```css
@@ -43,6 +44,9 @@ Per cambiare il size facilmente basta cambiare la variabile nel css chiamata __$
 
 ####distanza tra immagini
 Stessa cosa per questa, cambiare il __$croAAG_gridGap__
+
+####Colore testo overlay
+Quando faccio hover sull'immagine vedró un testo del colore deciso por la variabile: __$croAAG_overlayTextColor__
 
 ####Alpha Hover
 Quando fai l'hover viene fuori un box con un testo. Per cambiare la trasparenza basta cambiare __$croAAG_overlayAlpha__
