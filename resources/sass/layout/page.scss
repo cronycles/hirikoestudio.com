@@ -3,4 +3,8 @@
     padding-top: $headerHeight;
     padding-left: $pageMargins;
     padding-right: $pageMargins;
+
+    .page__section {
+        padding: 1rem 0;
+    }
 }
