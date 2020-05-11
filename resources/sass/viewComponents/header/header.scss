@@ -101,14 +101,18 @@
     font-size: $headerLinkFontSize;
     display: block;
     letter-spacing: 0.1rem;
-    text-decoration: none;
     text-transform: uppercase;
     padding: $headerLinksSpace 3%;
     border-top: 1px solid;
+
+    @include linkBehaviour;
+    color: $headerMobileMenuTextColor;
+
     @media (--no-mobileDevice) {
         padding: 0;
         line-height: inherit;
         border: 0;
+        color: initial;
     }
 }
 
@@ -131,9 +135,9 @@
         }
 
         a {
+            color: $headerDropdownMenuTextColor;
             line-height: $headerHeight / 2;
             float: none;
-            text-decoration: none;
             display: block;
             text-align: left;
             font-size: $headerLinkFontSize - 0.3rem;

@@ -15,7 +15,7 @@
                     <li>
                         <div class="nav__dropdown-container">
                             <div class="jdropdownButton dropdown__button">
-                                <span style="float: left">{{ $model->currentLanguage }}</span>
+                                <span>{{ $model->currentLanguage }}</span>
                                 <i data-open="la-caret-right" data-closed="la-caret-down" class="la la-caret-down"></i>
                             </div>
                             <div class="jdropdownListContainer dropdown__list-container">

@@ -26,18 +26,25 @@ p {
     padding: 0;
 }
 
-a {
-    color: $textColor;
+@mixin linkBehaviour {
+
     cursor: pointer;
     text-decoration: none;
 
-    &:active, &:visited {
-        color: $textColor;
+    &:hover {
+        text-decoration: underline;
+        font-weight: bold;
     }
+}
 
+a {
+    @include linkBehaviour;
+    color: $textColor;
     &:hover {
         color: $textColorLinkHover;
-        text-decoration: none;
+    }
+    &:active, &:visited {
+        color: $textColor;
     }
 }
 

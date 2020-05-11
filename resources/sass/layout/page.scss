@@ -4,35 +4,3 @@
     padding-left: $pageMargins;
     padding-right: $pageMargins;
 }
-
-.columns__container {
-    display: grid;
-    grid-template-columns: 100%;
-
-    .column {
-        img {
-            max-width: 100%;
-        }
-        &.first {
-            grid-row: 1/2;
-        }
-    }
-
-    @media (--no-mobileDevice) {
-        grid-template-columns: 50% 50%;
-
-        .column.first {
-                grid-row: initial;
-        }
-
-        &.left-large {
-            grid-template-columns: 70% 30%;
-        }
-
-        &.right-large {
-            grid-template-columns: 30% 70%;
-        }
-    }
-
-
-}

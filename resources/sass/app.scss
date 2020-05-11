@@ -20,9 +20,11 @@
 
 /*----Modules----*/
 @import "modules/header";
+@import "modules/columns";
 
 /*----Pages----*/
 @import "pages/home";
 @import "pages/contact";
+@import "pages/projects";
 
 @import "auth/auth";
