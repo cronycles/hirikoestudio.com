@@ -1,11 +1,11 @@
 @extends('layouts.page')
 @section('page_content')
-    <div class="columns__container right-large">
-        <article class="page__section column">
-            <div>{{$model->project->title}}</div>
+    <div class="page__project-show">
+        <article class="page__section">
+            <h1>{{$model->project->title}}</h1>
             <div>{!! $model->project->description !!}</div>
         </article>
-        <article class="page__section column">
+        <article class="page__section">
             @if($model->project->images != null && !empty($model->project->images))
                 <div class="cro__vertical__gallery">
                     @foreach($model->project->images as $image)

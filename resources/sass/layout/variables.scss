@@ -4,8 +4,9 @@ $boldFont:'DINBold', Helvetica, Arial, sans-serif;
 $defaultFontSize: 14px;
 
 /*---Margins---*/
-$pageMargins: 2ch;
-$pageMarginsNoMobile: $pageMargins;
+$pageSideMargins: 1.7rem;
+$pageMarginsNoMobile: $pageSideMargins;
+$pageSectionBottomMargins: 3rem;
 
 /*---Colors---*/
 $backgroundColor: #ffffff;
@@ -22,8 +23,8 @@ $buttonBorderColor: $textColor;
 
 /*---Header---*/
 $headerHeight: 5rem;
-$headerSideMargins: $pageMargins;
-$headerSideMarginsNoMobile: $pageMargins;
+$headerSideMargins: $pageSideMargins;
+$headerSideMarginsNoMobile: $pageSideMargins;
 $headerLogoHeight: 3rem;
 $headerLinksSpace: 2rem;
 $headerLinksSpaceNoMobile: 1.2rem;
@@ -38,12 +39,12 @@ $headerInvertedLinkColor: $complementaryColor; //nella home bisogna invertire il
 
 /*---cro-auto-adjust-gallery---*/
 $croAAG_minImageSize: 50ch;
-$croAAG_gridGap: $pageMargins;
+$croAAG_gridGap: $pageSideMargins;
 $croAAG_overlayAlpha: 0.5;
 $croAAG_overlayTextColor: $complementaryColor;
 
 /*---cro-vertical-gallery---*/
-$croVG_gridGap: $pageMargins;
+$croVG_gridGap: $pageSideMargins;
 
 /*---Media variables---*/
 :root {

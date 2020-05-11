@@ -8,13 +8,22 @@
         grid-column: span 2;
         margin: 0;
         padding: 0;
+        overflow: hidden;
 
         &.small {
             grid-column: span 1;
         }
 
-        img {
-            width: 100%;
+
+        .image__track{
+            overflow: hidden;
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
         }
+
+
     }
 }

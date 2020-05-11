@@ -1,10 +1,10 @@
 #page__container {
     height: 100vh;
-    padding-top: $headerHeight;
-    padding-left: $pageMargins;
-    padding-right: $pageMargins;
+    padding-top: $headerHeight + 3rem;
+    padding-left: $pageSideMargins;
+    padding-right: $pageSideMargins;
 
     .page__section {
-        padding: 1rem 0;
+        padding-bottom: $pageSectionBottomMargins;
     }
 }

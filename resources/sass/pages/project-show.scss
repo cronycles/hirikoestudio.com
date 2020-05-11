@@ -1,0 +1,15 @@
+.page__project-show {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: $pageSectionBottomMargins;
+
+    .column {
+        img {
+            max-width: 100%;
+        }
+    }
+
+    @media (--no-mobileDevice) {
+        grid-template-columns: 1fr 2fr;
+    }
+}
