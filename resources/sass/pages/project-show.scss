@@ -1,12 +1,10 @@
-.page__project-show {
+#page__project-show {
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: $pageSectionBottomMargins;
 
-    .column {
-        img {
-            max-width: 100%;
-        }
+    &:nth-child(2) {
+        grid-row: 1/2;
     }
 
     @media (--no-mobileDevice) {

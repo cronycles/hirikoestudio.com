@@ -1,6 +1,6 @@
 @extends('layouts.page')
 @section('page_content')
-    <div class="page__project-show">
+    <div id="page__project-show">
         <article class="page__section">
             <h1>{{$model->project->title}}</h1>
             <div>{!! $model->project->description !!}</div>

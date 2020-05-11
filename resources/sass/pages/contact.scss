@@ -1,6 +1,52 @@
-.contact__logo {
-    display: none;
+#contact__main-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: $pageSectionBottomMargins;
+
     @media (--no-mobileDevice) {
-        display: block;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .shop-images img {
+        width: 100%;
+        object-fit: contain;
+    }
+
+    .contact__logo {
+        display: none;
+        text-align: center;
+        padding: 0 2rem $pageSectionBottomMargins 2rem;
+
+        img {
+            width: 15rem;
+        }
+        @media (--no-mobileDevice) {
+            display: block;
+        }
+    }
+
+    .contact__form-info__section {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: $pageSectionBottomMargins;
+
+        &:nth-child(2) {
+            grid-row: 1/2;
+        }
+
+        @media (--no-mobileDevice) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        ul.contact__info {
+            list-style-type: none;
+            li {
+                margin-bottom: 3rem;
+            }
+        }
+
     }
 }
+
+
+

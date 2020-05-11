@@ -13,19 +13,19 @@
             </div>
         @endif
     </div>
-    <div class="columns__container">
-        <article class="page__section column">
+    <div id="contact__main-container">
+        <article class="page__section shop-images">
             <img src="{{config('custom.images.static.defaultLazyPlaceholder')}}"
                  data-src="{{config('custom.images.static.shopWindow')}}" class="jlimg">
         </article>
 
-        <article class="page__section column first">
+        <article class="page__section">
             <div class="contact__logo">
                 <img src="{{config('custom.images.static.defaultLazyPlaceholder')}}"
                      data-src="{{config('custom.images.static.logoBlack')}}" class="jlimg">
             </div>
-            <div class="columns__container">
-                <ul class="column contact__info">
+            <div class="columns__container contact__form-info__section">
+                <ul class="contact__info">
                     <li>
                         <a href="tel:{{$model->infoData->telephone}}" class="">
                             <i class="la la-phone" aria-hidden="true"></i>
@@ -41,7 +41,7 @@
                     <li>
                         <a href="#" target="_blank" class="">
                             <i class="la la-map-marker" aria-hidden="true"></i>
-                            <span class="contact-text">{{$model->infoData->address}}</span>
+                            <span class="contact-text">{!! $model->infoData->address  !!}</span>
                         </a>
                     </li>
                 </ul>
