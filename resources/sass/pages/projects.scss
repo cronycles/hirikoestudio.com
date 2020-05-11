@@ -1,6 +1,5 @@
 .product__categories {
-    text-align: center;
-    padding: 20px 0;
+    padding: 40px 0 20px 0;
 
 
     //display: grid;
@@ -9,6 +8,15 @@
 }
 
 .product__category {
-    padding: 0 20px;
+    padding: 0 3rem 0 0;
     text-transform: uppercase;
+    display: inline; white-space: nowrap;
+    cursor: pointer;
+
+    @include linkBehaviour;
+
+    &.active {
+        text-decoration: underline;
+        font-weight: bold;
+    }
 }

@@ -18,14 +18,12 @@
     <div class="page__section">
         @if($model->projects != null && !empty($model->projects))
             @if($model->categories != null && !empty($model->categories))
-                <div class="page__section__box">
-                    <div class="product__categories">
-                        @foreach($model->categories as $category)
-                            <a href="#" class="jcl {{$category->isActive ? 'active' : ''}}"
-                               data-c="{{$category->id}}">{{$category->name}}</a>
-                        @endforeach
-                    </div>
-                </div>
+                <ul class="page__section__box product__categories">
+                    @foreach($model->categories as $category)
+                        <li class="jcl product__category {{$category->isActive ? 'active' : ''}}"
+                           data-c="{{$category->id}}">{{$category->name}}</li>
+                    @endforeach
+                </ul>
             @endif
             <div class="page__section__box">
                 <div class="cro__auto-adjust__gallery overlay-zoom">
