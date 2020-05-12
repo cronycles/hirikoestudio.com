@@ -2,7 +2,9 @@
 
 namespace App\ViewModelPageBuilders;
 
+use App\Custom\Logging\AppLog;
 use App\Custom\Pages\Builders\ViewModelPageBuilder;
+use App\Entities\CategoryEntity;
 use App\Entities\ProjectEntity;
 use App\Services\Categories\CategoriesService;
 use App\Services\Projects\ProjectsService;
@@ -28,8 +30,8 @@ class ProjectsViewModelPageBuilder extends ViewModelPageBuilder {
     private $categoryViewModelService;
 
     /**
-    * @var ProjectsViewModelService
-    */
+     * @var ProjectsViewModelService
+     */
     private $projectsViewModelService;
 
     public function __construct(
@@ -55,9 +57,6 @@ class ProjectsViewModelPageBuilder extends ViewModelPageBuilder {
      */
     public function fillPageViewModel($pageViewModel, $params) {
 
-        $allCategory = $this->categoryViewModelService->createCategoryAllViewModel();
-        array_push($pageViewModel->categories, $allCategory);
-
         $projectEntities = $this->projectsService->getProjects();
         $categoriesEntities = $this->categoriesService->getCategories();
 
@@ -73,14 +72,38 @@ class ProjectsViewModelPageBuilder extends ViewModelPageBuilder {
             }
         }
 
-        foreach ($categoriesEntities as $categoryEntity) {
-            if(in_array($categoryEntity->id, $projectsCategoryIds)) {
-                $categoryViewModel = $this->categoryViewModelService->createCategoryViewModelByEntity($categoryEntity);
-                array_push($pageViewModel->categories, $categoryViewModel);
-            }
-        }
+        $pageViewModel->categories = $this->createCategoriesViewModelByEntities($categoriesEntities, $projectsCategoryIds);
 
         return $pageViewModel;
+    }
+
+    /**
+     * @param CategoryEntity[] $categoriesEntities
+     */
+    private function createCategoriesViewModelByEntities(array $categoriesEntities, array $projectsCategoryIds) {
+        try {
+            $outcome = [];
+
+            if ($categoriesEntities != null && count($categoriesEntities) > 1) {
+                $allCategory = $this->categoryViewModelService->createCategoryAllViewModel();
+                array_push($outcome, $allCategory);
+
+                foreach ($categoriesEntities as $categoryEntity) {
+                    if (in_array($categoryEntity->id, $projectsCategoryIds)) {
+                        $categoryViewModel = $this->categoryViewModelService->createCategoryViewModelByEntity($categoryEntity);
+                        array_push($outcome, $categoryViewModel);
+                    }
+                }
+            }
+
+
+            return $outcome;
+
+        } catch (\Exception $e) {
+            AppLog::error($e);
+            return [];
+        }
+
     }
 
 }
