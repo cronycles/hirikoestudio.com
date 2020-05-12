@@ -1,8 +1,13 @@
 .cro__auto-adjust__gallery {
 
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax($croAAG_minImageSize, 1fr));
     grid-gap: $croAAG_gridGap;
+    grid-template-columns: repeat(auto-fill, 1fr);
+    @media (--no-mobileDevice) {
+        grid-template-columns: repeat(auto-fill, minmax($croAAG_minImageSize, 1fr));
+
+    }
+
     grid-auto-rows: $croAAG_minImageSize * 0.8;
 
     //this style is for the square view
