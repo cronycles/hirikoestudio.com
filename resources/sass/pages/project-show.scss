@@ -1,7 +1,10 @@
 #page__project-show {
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: $pageSectionBottomMargins;
+
+    @media (--no-mobileDevice) {
+        grid-gap: $pageSectionBottomMargins;
+    }
 
     &:nth-child(2) {
         grid-row: 1/2;
