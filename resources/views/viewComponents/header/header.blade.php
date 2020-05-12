@@ -12,21 +12,21 @@
             </ul>
             <ul>
                 @if ($model->isMultilanguageActive)
-                    <li>
-                        <div class="nav__dropdown-container">
-                            <div class="jdropdownButton dropdown__button">
-                                <span>{{ $model->currentLanguage }}</span>
-                                <i data-open="la-caret-right" data-closed="la-caret-down" class="la la-caret-down"></i>
-                            </div>
-                            <div class="jdropdownListContainer dropdown__list-container">
-                                @foreach ($model->languageLinks as $languageLink)
-                                    <a href="{{ $languageLink->url }}">
-                                        {{ $languageLink->text }}
-                                    </a>
-                                @endforeach
-                            </div>
-                        </div>
-                    </li>
+{{--                    <li>--}}
+{{--                        <div class="nav__dropdown-container">--}}
+{{--                            <div class="jdropdownButton dropdown__button">--}}
+{{--                                <span>{{ $model->currentLanguage }}</span>--}}
+{{--                                <i data-open="la-caret-right" data-closed="la-caret-down" class="la la-caret-down"></i>--}}
+{{--                            </div>--}}
+{{--                            <div class="jdropdownListContainer dropdown__list-container">--}}
+{{--                                @foreach ($model->languageLinks as $languageLink)--}}
+{{--                                    <a href="{{ $languageLink->url }}">--}}
+{{--                                        {{ $languageLink->text }}--}}
+{{--                                    </a>--}}
+{{--                                @endforeach--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </li>--}}
                 @endif
             </ul>
             <ul>
