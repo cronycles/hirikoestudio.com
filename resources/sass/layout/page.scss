@@ -6,5 +6,9 @@
 
     .page__section {
         padding-bottom: $pageSectionBottomMargins;
+
+        .page__section__box {
+            margin-bottom: $pageSectionBoxBottomMargins;
+        }
     }
 }
