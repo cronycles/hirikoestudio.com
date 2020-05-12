@@ -2,8 +2,10 @@
 
 return [
     'select-images-button' => 'Upload new images',
-    'drag-drop-images' => 'Or drag & drop your files here...',
-    'thumbs-description' => 'Drag images to sort or click on the trash to delete them',
+    'drag-drop-images' => 'Or drag & drop your new images here...',
+    'thumbs-description' => 'If you would like to change the order of one image, click on the icon with the two arrows
+    and drag the image in the position that you prefer. If you want to delete it, click on the trash icon.
+    If you want to enable the image small view click on the 4 arrows icon.',
     'sort-image-button' => 'Sort',
     'small-image-button' => 'Small view',
     'delete-image-button' => 'Delete',
