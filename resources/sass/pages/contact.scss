@@ -1,10 +1,10 @@
 #contact__main-container {
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: $pageSectionBottomMargins;
 
     @media (--no-mobileDevice) {
         grid-template-columns: 1fr 1fr;
+        grid-gap: $pageSectionBottomMargins;
     }
 
     .shop-images img {

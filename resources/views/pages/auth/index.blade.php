@@ -1,7 +1,7 @@
 @extends('layouts.auth')
 
 @section('auth_content')
-    <article class="page__section">
+    <article class="page__section auth__home__main-section">
         @if($model->links != null && !empty($model->links))
             <ul>
                 @foreach($model->links as $link)
