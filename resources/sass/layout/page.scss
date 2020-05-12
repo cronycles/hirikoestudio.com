@@ -11,4 +11,36 @@
             margin-bottom: $pageSectionBoxBottomMargins;
         }
     }
+
+    ul.section__breadcrumb {
+        margin: 0;
+
+        //se si decide mettere il breadcrumb in tutta la web allora abbassare il padding top del page container e togliere sta gnañpa
+        margin-top: -2rem;
+        padding: 5px 10px;
+        list-style: none;
+        background-color: #eee;
+        text-transform: uppercase;
+
+        @media (--no-mobileDevice) {
+            padding: 0 40px 0 40px;
+        }
+
+        /* Display list items side by side */
+        li {
+            display: inline;
+            a {
+                text-decoration: none;
+                &:hover {
+                    color: var(--corporateColor);
+                }
+            }
+        }
+        /* Add a slash symbol (/) before/behind each list item */
+        li:before {
+            padding: 8px;
+            color: black;
+            content: "\/";
+        }
+    }
 }

@@ -26,9 +26,30 @@ class BreadcrumbViewModelService {
         try {
             $outcome = [];
             switch ($pageId) {
+                case config('custom.pages.PROJECTS'):
+                case config('custom.pages.CONTACT'):
                 case config('custom.pages.AUTH_LOGIN'):
-                $outcome = $this->getHomePageBreadcrumb();
-                break;
+                    $outcome = $this->getHomePageBreadcrumb();
+                    break;
+                case config('custom.pages.PROJECT_SHOW'):
+                    $outcome = $this->getProjectsPageBreadcrumb();
+                    break;
+                case config('custom.pages.AUTH_CATEGORIES'):
+                case config('custom.pages.AUTH_OFFERS'):
+                case config('custom.pages.AUTH_PROJECTS'):
+                    $outcome = $this->getAuthHomePageBreadcrumb();
+                    break;
+                case config('custom.pages.AUTH_CATEGORY_CREATE'):
+                case config('custom.pages.AUTH_CATEGORY_EDIT'):
+                case config('custom.pages.AUTH_CATEGORIES_SORT'):
+                    $outcome = $this->getAuthCategoriesPageBreadcrumb();
+                    break;
+                case config('custom.pages.AUTH_PROJECT_CREATE'):
+                case config('custom.pages.AUTH_PROJECT_EDIT'):
+                case config('custom.pages.AUTH_PROJECTS_SORT'):
+                case config('custom.pages.AUTH_PROJECT_IMAGES'):
+                    $outcome = $this->getAuthProjectsPageBreadcrumb();
+                    break;
             }
             return $outcome;
         } catch (\Exception $e) {
@@ -40,12 +61,89 @@ class BreadcrumbViewModelService {
     /**
      * @return BreadcrumbViewModel[]
      */
-    public function getHomePageBreadcrumb() {
+    private function getHomePageBreadcrumb() {
         try {
             return [
                 new BreadcrumbViewModel(
                     $this->getPageTextById(config('custom.pages.INDEX')),
-                    route('index') )
+                    route('index'))
+            ];
+
+        } catch (\Exception $e) {
+            AppLog::error($e);
+            return [];
+        }
+    }
+
+    /**
+     * @return BreadcrumbViewModel[]
+     */
+    private function getProjectsPageBreadcrumb() {
+        try {
+            return [
+                new BreadcrumbViewModel(
+                    $this->getPageTextById(config('custom.pages.INDEX')),
+                    route('index')),
+                new BreadcrumbViewModel(
+                    $this->getPageTextById(config('custom.pages.PROJECTS')),
+                    route('projects'))
+            ];
+
+        } catch (\Exception $e) {
+            AppLog::error($e);
+            return [];
+        }
+    }
+
+    /**
+     * @return BreadcrumbViewModel[]
+     */
+    private function getAuthHomePageBreadcrumb() {
+        try {
+            return [
+                new BreadcrumbViewModel(
+                    $this->getPageTextById(config('custom.pages.AUTH_INDEX')),
+                    route('auth')),
+            ];
+
+        } catch (\Exception $e) {
+            AppLog::error($e);
+            return [];
+        }
+    }
+
+    /**
+     * @return BreadcrumbViewModel[]
+     */
+    private function getAuthCategoriesPageBreadcrumb() {
+        try {
+            return [
+                new BreadcrumbViewModel(
+                    $this->getPageTextById(config('custom.pages.AUTH_INDEX')),
+                    route('auth')),
+                new BreadcrumbViewModel(
+                    $this->getPageTextById(config('custom.pages.AUTH_CATEGORIES')),
+                    route('auth.categories')),
+            ];
+
+        } catch (\Exception $e) {
+            AppLog::error($e);
+            return [];
+        }
+    }
+
+    /**
+     * @return BreadcrumbViewModel[]
+     */
+    private function getAuthProjectsPageBreadcrumb() {
+        try {
+            return [
+                new BreadcrumbViewModel(
+                    $this->getPageTextById(config('custom.pages.AUTH_INDEX')),
+                    route('auth')),
+                new BreadcrumbViewModel(
+                    $this->getPageTextById(config('custom.pages.AUTH_PROJECTS')),
+                    route('auth.projects')),
             ];
 
         } catch (\Exception $e) {
