@@ -30,4 +30,10 @@
     &.cro__button--small {
         padding: $smallButtonInternalPadding;
     }
+
+    span.cro__button__icon-and-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

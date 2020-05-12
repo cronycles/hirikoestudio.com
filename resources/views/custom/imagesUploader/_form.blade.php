@@ -13,7 +13,11 @@
             <input type="file" class="jimgHandling__file-input-clonable" multiple accept="image/*" style="display:none">
             <form class="juploadForm img__upload-select_form">
                 <a class="jselectFile cro__button cro__button--small" href="#">
-                    {{trans('images-upload.select-images-button')}}
+                    <span class="cro__button__icon-and-text">
+                         <i class="las la-upload"></i>
+                        {{trans('images-upload.select-images-button')}}
+                    </span>
+
                 </a>
             </form>
             <div>

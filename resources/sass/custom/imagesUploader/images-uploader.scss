@@ -5,6 +5,9 @@
     @media (--no-mobileDevice) {
         grid-template-columns: 1fr 2fr;
     }
+    i {
+        font-size: 2rem;
+    }
 }
 
 .img__upload_select_zone {
@@ -72,9 +75,6 @@
 
                 span {
                     cursor: pointer;
-                    i {
-                        font-size: 2rem;
-                    }
                 }
 
                 .img__upload__thumb-left__btn{

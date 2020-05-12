@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'select-images-button' => 'Selecciona una o más imágenes',
+    'select-images-button' => 'Sube nuevas imágenes',
     'drag-drop-images' => 'O arrastra las imagenes aquí; dentro...',
     'thumbs-description' => 'Arrastra las imagenes para ordenarlas o haz clic en la papelera para eliminarlas',
     'sort-image-button' => 'Ordena',

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'select-images-button' => 'Select one or more images',
+    'select-images-button' => 'Upload new images',
     'drag-drop-images' => 'Or drag & drop your files here...',
     'thumbs-description' => 'Drag images to sort or click on the trash to delete them',
     'sort-image-button' => 'Sort',
