@@ -17,7 +17,7 @@
     </div>
     @if($model->crudTable->items != null && !empty($model->crudTable->items))
         <div class="page__section">
-            <table class="items__table">
+            <table class="jitemsContainer items__table">
                 <thead>
                 <tr>
                     <th class="row-main">
@@ -25,42 +25,42 @@
                     </th>
                     @if($model->crudTable->isEditingEnabled)
                         <th class="row-manage">
-                            <i class="la la-edit" title="{{$model->crudTable->editTitle}}"></i>
+                            <i class="las la-edit" title="{{$model->crudTable->editTitle}}"></i>
                         </th>
                     @endif
                     @if($model->crudTable->isImagesEditingEnabled)
                         <th class="row-manage">
-                            <i class="la la-image" title="{{$model->crudTable->imagesTitle}}"></i>
+                            <i class="las la-image" title="{{$model->crudTable->imagesTitle}}"></i>
                         </th>
                     @endif
                     @if($model->crudTable->isDeletingEnabled)
                         <th class="row-manage">
-                            <i class="la la-trash" title="{{$model->crudTable->deleteTitle}}"></i>
+                            <i class="las la-trash-alt" title="{{$model->crudTable->deleteTitle}}"></i>
                         </th>
                     @endif
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($model->crudTable->items as $crudItem)
-                    <tr>
+                    <tr class="jitem" data-id="{{$crudItem->id}}">
                         <td>{{$crudItem->name}}</td>
                         @if($model->crudTable->isEditingEnabled)
                             <td class="table__td-centered">
                                 <a href="{{ $crudItem->editUrl }}">
-                                    <i class="la la-edit" title="{{$crudItem->editText}}"></i>
+                                    <i class="las la-edit" title="{{$crudItem->editText}}"></i>
                                 </a>
                             </td>
                         @endif
                         @if($model->crudTable->isImagesEditingEnabled)
                             <td class="table__td-centered">
                                 <a href="{{ $crudItem->imagesUrl }}">
-                                    <i class="la la-image" title="{{$crudItem->imagesText}}"></i>
+                                    <i class="las la-image" title="{{$crudItem->imagesText}}"></i>
                                 </a>
                             </td>
                         @endif
                         @if($model->crudTable->isDeletingEnabled)
                             <td class="table__td-centered">
-                                @include('custom.form._delete', array('url' => $crudItem->deleteUrl,'text' => $crudItem->deleteText))
+                                @include('custom.crud._delete', array('item' => $crudItem))
                             </td>
                         @endif
                     </tr>

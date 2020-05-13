@@ -1,10 +1,12 @@
+import PageHome from "./home";
 import PageProjects from "./projects";
+import PageContact from "./contact";
 import PageAuthLogin from "./auth/login";
 import PageAuthIndex from "./auth";
 import PageAuthRegister from "./auth/register";
 import PageAuthForgotPassword from "./auth/forgot.password";
 import PageAuthResetPassword from "./auth/reset.password";
-import PageContact from "./contact";
+import PageAuthCategoryIndex from "./auth/categories/auth.category.index";
 import PageAuthCategoryCreate from "./auth/categories/auth.category.create";
 import PageAuthCategoryEdit from "./auth/categories/auth.category.edit";
 import PageAuthCategoriesSort from "./auth/categories/auth.categories.sort";
@@ -12,7 +14,6 @@ import PageAuthProjectCreate from "./auth/projects/auth.project.create";
 import PageAuthProjectEdit from "./auth/projects/auth.project.edit";
 import PageAuthProjectsSort from "./auth/projects/auth.projects.sort";
 import PageAuthProjectImages from "./auth/projects/auth.project.images";
-import PageHome from "./home";
 
 export default class PageFactory {
     constructor() {
@@ -25,6 +26,7 @@ export default class PageFactory {
             {id: 1003, className: PageAuthForgotPassword},
             {id: 1004, className: PageAuthResetPassword},
             {id: 1010, className: PageAuthIndex},
+            {id: 1011, className: PageAuthCategoryIndex},
             {id: 1012, className: PageAuthCategoryCreate},
             {id: 1013, className: PageAuthCategoryEdit},
             {id: 1014, className: PageAuthCategoriesSort},

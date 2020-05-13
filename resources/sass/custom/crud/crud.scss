@@ -19,7 +19,7 @@
         }
     }
 
-    i.la {
+    i.las {
         font-size: 2rem;
     }
 
@@ -78,14 +78,13 @@
         .delete__form {
             margin: 0;
 
-            button {
-                margin: 0;
-                padding: 0;
-                border: 0;
-                background: none;
-                font-family: $defaultFont;
-                font-size: $defaultFontSize;
-                text-decoration: none;
+            button.img__upload__confirm-btn {
+                padding: 5px;
+
+                background: #fff;
+                border: 1px solid #ccc;
+            }
+            i {
                 cursor: pointer;
 
                 &:hover {
@@ -94,4 +93,5 @@
             }
         }
     }
+
 }

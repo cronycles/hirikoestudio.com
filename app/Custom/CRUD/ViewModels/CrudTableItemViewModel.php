@@ -5,6 +5,11 @@ namespace App\Custom\CRUD\ViewModels;
 class CrudTableItemViewModel {
 
     /**
+     * @var int
+     */
+    public $id;
+
+    /**
      * @var string
      */
     public $name;

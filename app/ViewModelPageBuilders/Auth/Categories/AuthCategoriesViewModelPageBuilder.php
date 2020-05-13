@@ -55,7 +55,7 @@ class AuthCategoriesViewModelPageBuilder extends AuthViewModelPageBuilder {
         if($entities != null && !empty($entities)) {
             foreach ($entities as $entity) {
                 $crudItem = new CrudTableItemViewModel();
-
+                $crudItem->id = $entity->id;
                 $crudItem->name = $entity->name;
                 $crudItem->editUrl = route('auth.categories.edit', ['id' =>$entity->id]);
                 $crudItem->deleteUrl = route('auth.categories.delete', ['id' =>$entity->id]);

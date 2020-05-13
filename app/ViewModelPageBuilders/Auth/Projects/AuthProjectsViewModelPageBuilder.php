@@ -56,7 +56,7 @@ class AuthProjectsViewModelPageBuilder extends AuthViewModelPageBuilder {
         if($entities != null && !empty($entities)) {
             foreach ($entities as $entity) {
                 $crudItem = new CrudTableItemViewModel();
-
+                $crudItem->id = $entity->id;
                 $crudItem->name = $entity->title;
                 $crudItem->editUrl = route('auth.projects.edit', ['id' =>$entity->id]);
                 $crudItem->imagesUrl = route('auth.projects.images', ['id' =>$entity->id]);
