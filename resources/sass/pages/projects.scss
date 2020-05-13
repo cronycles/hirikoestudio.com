@@ -1,17 +1,22 @@
 .product__categories {
-    padding: 20px 0;
+    padding-bottom: 1rem;
 
+    list-style-type: none;
 
-    //display: grid;
-    //grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    //grid-template-rows: 1fr;
+    display: flex;
+    flex-wrap: wrap;
+
+    @media (--no-mobileDevice) {
+        justify-content: start;
+    }
 }
 
 .product__category {
-    padding: 0 3rem 0 0;
     text-transform: uppercase;
-    display: inline; white-space: nowrap;
     cursor: pointer;
+
+    line-height: $pageSideMargins;
+    margin-right: 1rem;
 
     @include linkBehaviour;
 
