@@ -28,6 +28,11 @@ export default class CrudView {
         });
     };
 
+    resetAllDeleteButtons = () => {
+        $(this.#deleteSelector).removeClass(this.noneClass);
+        $(this.#deleteConfirmSelector).addClass(this.noneClass);
+    };
+
     /**
      * @param {int} itemId
      */

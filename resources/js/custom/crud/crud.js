@@ -5,6 +5,7 @@ export default class Crud {
         this.#view = new CrudView();
 
         this.#view.onDeleteClick((itemId)=>{
+            this.#view.resetAllDeleteButtons();
             this.#view.showDeleteConfirmButton(itemId)
         })
     }
