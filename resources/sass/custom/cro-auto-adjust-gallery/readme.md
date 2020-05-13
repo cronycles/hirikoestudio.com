@@ -57,7 +57,3 @@ accanto alla classe principale chiamata __.auto-adjust-image-gallery__ , la clas
 * Se vuoi l'hover con un leggero zoom dell'immagine, allora metti la classe  ```.overlay-zoom```
 
 __UNA DELLE DUE CLASSI É OBBLIGATORIA__
-
-####Quadrati o rettangoli?
-Se si vuole che gli elementi siano quadrati basta semplicemente mettere, 
-accanto alla classe principale chiamata __.auto-adjust-image-gallery__ , la classe ```square``` 

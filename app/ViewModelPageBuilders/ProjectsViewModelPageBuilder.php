@@ -85,15 +85,20 @@ class ProjectsViewModelPageBuilder extends ViewModelPageBuilder {
             $outcome = [];
 
             if ($categoriesEntities != null && count($categoriesEntities) > 1) {
-                $allCategory = $this->categoryViewModelService->createCategoryAllViewModel();
-                array_push($outcome, $allCategory);
-
                 foreach ($categoriesEntities as $categoryEntity) {
                     if (in_array($categoryEntity->id, $projectsCategoryIds)) {
                         $categoryViewModel = $this->categoryViewModelService->createCategoryViewModelByEntity($categoryEntity);
                         array_push($outcome, $categoryViewModel);
                     }
                 }
+            }
+
+            if(count($outcome) > 1) {
+                $allCategory = $this->categoryViewModelService->createCategoryAllViewModel();
+                array_unshift($outcome, $allCategory);
+            }
+            else {
+                $outcome = [];
             }
 
 

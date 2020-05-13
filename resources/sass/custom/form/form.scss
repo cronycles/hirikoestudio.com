@@ -105,8 +105,8 @@ form {
     top: 0;
     left: 0;
     right: 0;
-    background: $corporateColor;
-    color: $complementaryColor;
+    background: green;
+    color: white;
     text-align: center;
     line-height: 2.5;
     overflow: hidden;
@@ -116,7 +116,7 @@ form {
     .close {
         position: absolute;
         right: 10px;
-        color: $complementaryColor;
+        color: white;
         cursor: pointer;
     }
 }

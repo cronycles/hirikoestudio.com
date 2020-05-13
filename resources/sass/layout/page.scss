@@ -22,10 +22,6 @@
         background-color: #eee;
         text-transform: uppercase;
 
-        @media (--no-mobileDevice) {
-            padding: 0 40px 0 40px;
-        }
-
         /* Display list items side by side */
         li {
             display: inline;

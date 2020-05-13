@@ -10,21 +10,6 @@
 
     grid-auto-rows: $croAAG_minImageSize * 0.8;
 
-    //this style is for the square view
-    &::before {
-        content: '';
-        width: 0;
-        padding-bottom: 100%;
-        grid-row: 1 / 1;
-        grid-column: 1 / 1;
-    }
-
-    //this style also is for the square view
-    & > *:first-child {
-        grid-row: 1 / 1;
-        grid-column: 1 / 1;
-    }
-
     .gallery__box {
         display: grid;
         grid-template-columns: 1fr;
@@ -67,9 +52,6 @@
 }
 
 .cro__auto-adjust__gallery {
-    &.square {
-        grid-auto-rows: 1fr;
-    }
 
     &.overlay-up {
         .overlay__track {
