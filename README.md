@@ -57,9 +57,14 @@ prima di lanciarlo assicurarsi di:
 >* avere il branch **develop** e **master** in locale
 >* avere il branch **develop** tracked con **origin**
 
-* Andare nella cartella _/scripts_ col terminale.
-* Lanciare lo script _build.sh_. 
-> Lo script puó essere lanciato con o senza parametri. Se si lancia senza parametri non verrá cambiato il numero di versione
+* Aprire il terminale
+
+```
+cd scripts
+./build.sh
+
+```
+> Lo script __build.sh__ puó essere lanciato con o senza parametri. Se si lancia senza parametri non verrá cambiato il numero di versione
 > Se si lancia con il parametro -m allora si creerá una versione Minor della app.
 > Se si lancia con il parametro -M allora si creerá una versione Mayor della app.
 
