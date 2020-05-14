@@ -65,6 +65,7 @@ class PageViewModelService {
             $pageViewModel->htmlTitle = $pageEntity->htmlTitle;
             $pageViewModel->htmlMetaDescription = $pageEntity->htmlMetaDescription;
             $pageViewModel->htmlMetaKeywords = $pageEntity->htmlMetaKeywords;
+            $pageViewModel->ogImageUrl = config('custom.images.static.socialsDefaultLogo');
             $pageViewModel->title = $pageEntity->title;
             $pageViewModel->description = $pageEntity->description;
             $pageViewModel->viewPath = $pageEntity->viewPath;

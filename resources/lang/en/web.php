@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'htmlTitle' => 'Laravel Base Project - cronycles',
-    'htmlMetaDescription' => 'Boilerplate Laravel base project for starting developing',
-    'htmlMetaKeywords' => 'laravel, laravel base project, cronycles laravel',
+    'htmlTitle' => config('custom.company.name'),
+    'htmlMetaDescription' => 'Architecture and Urban Design Studio in Bilbao, Spain',
+    'htmlMetaKeywords' => 'hiriko, architecture studio, architecture, urban, interior design, bilbao',
 ];

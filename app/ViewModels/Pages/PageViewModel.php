@@ -27,6 +27,11 @@ class PageViewModel {
     /**
      * @var string
      */
+    public $ogImageUrl;
+
+    /**
+     * @var string
+     */
     public $title;
 
     /**

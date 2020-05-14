@@ -42,8 +42,12 @@ class ProjectShowViewModelPageBuilder extends ViewModelPageBuilder {
         $projectEntity = $this->projectsService->getProjectById($params['id']);
         $pageViewModel->title = $projectEntity->title;
         $pageViewModel->description = $projectEntity->description;
-
         $pageViewModel->project = $this->projectsViewModelService->createProjectModel($projectEntity);
+
+        if ($pageViewModel->project != null && $pageViewModel->project->cover != null && !empty($pageViewModel->project->cover->url)) {
+            $pageViewModel->ogImageUrl = $pageViewModel->project->cover->url;
+        }
+
         return $pageViewModel;
     }
 
