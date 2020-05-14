@@ -36,7 +36,7 @@ printf "${releaseType}\n";
 
 printf "\n${GREEN} - Going to the project folder:${NC}\n"
 
-pwd
+cd ..
 
 printf "\n"
 
