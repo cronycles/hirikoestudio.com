@@ -9,7 +9,7 @@ return [
     'description' => 'En ' . config('custom.company.name') . ' estamos a tu completa disposición:
     puedes llamarnos directamente al número que encuentras aquí abajo,
     encontrarás respuestas rápidas a tus preguntas.
-    O, si lo prefieres o si no nos has podido encontrar al teléfono, rellena el formulario y envíanos tu petición,
+    En alternativa, si lo prefieres, rellena el formulario y envíanos tu petición,
     te contestaremos lo antes posible.',
 
     'form' =>  [

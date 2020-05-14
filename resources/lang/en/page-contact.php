@@ -9,8 +9,8 @@ return [
     'description' => 'In ' . config('custom.company.name') . ' we are at your complete disposal:
     you can call us directly to the number that you find here below,
     you will find quick answers to your questions.
-    Or, if you prefer or if you have not been able to find us on the phone,
-    fill out the form and send us your request, we will answer as soon as possible.',
+    Alternatively, if you prefer,
+    fill out the form and send us your request, we will get back to you as soon as possible.',
 
     'form' =>  [
         'send' => 'send',
