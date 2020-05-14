@@ -13,6 +13,7 @@
                             <div class="image__track">
                                 <img src="{{config('custom.images.static.defaultLazyPlaceholder')}}"
                                      data-src="{{$image->url}}"
+                                     alt="{{$model->project->title}}"
                                      class="jlimg1000"/>
                             </div>
                         </div>

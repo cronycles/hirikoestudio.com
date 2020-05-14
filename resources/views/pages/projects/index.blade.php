@@ -31,7 +31,9 @@
                         <div class="gallery__box jcb" data-c="{{$project->category->id}}">
                             <a class="image__track" href="{{$project->url}}">
                                 <img src="{{config('custom.images.static.defaultLazyPlaceholder')}}"
-                                     data-src="{{$project->cover ? $project->cover->url : ""}}" class="jlimg">
+                                     data-src="{{$project->cover ? $project->cover->url : ""}}"
+                                     alt="{{$project->title}}"
+                                     class="jlimg">
                             </a>
                             <a href="{{$project->url}}" class="overlay__track">
                                 <div class="overlay__text">{{$project->title}}</div>
