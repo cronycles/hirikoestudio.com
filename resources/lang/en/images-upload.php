@@ -9,7 +9,7 @@ return [
     'sort-image-button' => 'Sort',
     'small-image-button' => 'Small view',
     'delete-image-button' => 'Delete',
-    'delete-confirm-image-button' => 'Confirm',
+    'delete-confirm-image-button' => 'OK?',
     'upload-ok'=> 'Image uploaded successfully',
     'upload-ko' => 'Uploading error!!',
     'max-uploaded-file-reached' => 'You have reached the upload image limit, before upload another image you need to delete one',
