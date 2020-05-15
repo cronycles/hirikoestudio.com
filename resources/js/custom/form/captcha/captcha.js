@@ -43,13 +43,8 @@ export default class Captcha {
     #executeRecaptcha = async (formId) => {
         try {
             const key = this.#view.getKey(formId);
-
-            //se non lascio il then in produzione non funziona, lascialo!!
-            await grecaptcha.execute(key, {action: formId})
-                .then((token) => {
-                    this.#view.addTokenToCaptchaInput(formId, token);
-                });
-
+            const token = await grecaptcha.execute(key, {action: formId});
+            this.#view.addTokenToCaptchaInput(formId, token);
             return true;
         } catch (e) {
             log.error(e);
@@ -57,6 +52,5 @@ export default class Captcha {
         }
 
     }
-
 
 };
