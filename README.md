@@ -56,7 +56,12 @@ prima di lanciarlo assicurarsi di:
 >* avere installato nel proprio pc jq [Usa Homebrew con **brew install jq**]
 >* avere il branch **develop** e **master** in locale
 >* avere il branch **develop** tracked con **origin**
->* aver tolto dal gitignore le cose che si vogliono subire
+>* aver tolto dal ```.gitignore``` le cartelle:
+>>* vendor
+>>* public/js
+>>* public/css
+>>* public/fonts
+>>* public/mix-manifest.json
 
 * Aprire il terminale
 
