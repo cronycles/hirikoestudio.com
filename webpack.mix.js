@@ -4,6 +4,7 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 require('laravel-mix-polyfill');
 
 let publicFolderName = 'public_html';
+let doesGenerateSourcemapsForProduction = true;
 
 mix.config.publicPath = publicFolderName;
 
@@ -55,11 +56,13 @@ mix.js('resources/js/app.js', publicFolderName + '/js')
     .extract()
     .sass('resources/sass/app.scss', publicFolderName + '/css').options({
     postCss: postCssPlugins
-}).polyfill({
-    enabled: true,
-    useBuiltIns: "usage",
-    targets: "> 10%, not dead"
-});
+})
+    .sourceMaps(doesGenerateSourcemapsForProduction)
+    .polyfill({
+        enabled: true,
+        useBuiltIns: "usage",
+        targets: "> 10%, not dead"
+    });
 if (mix.inProduction()) {
     mix.version();
 }
