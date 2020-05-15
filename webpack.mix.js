@@ -4,7 +4,7 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 require('laravel-mix-polyfill');
 
 const publicFolderName = 'public_html';
-const doesGenerateSourcemapsForProduction = true;
+const doesGenerateSourcemapsForProduction = false;
 
 mix.config.publicPath = publicFolderName;
 
