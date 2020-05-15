@@ -40,8 +40,6 @@ class ContactController extends Controller {
         try {
             $outcome = $this->messagesService->createResponseWithGenericError();
 
-            AppLog::info($request);
-
             /** @var ContactEntity $contactEntity */
             $contactEntity = $this->formBuilder->createEntityFromRequest($request);
 
