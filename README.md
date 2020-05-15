@@ -63,18 +63,25 @@ prima di lanciarlo assicurarsi di:
 >>* public/fonts
 >>* public/mix-manifest.json
 
-* Aprire il terminale
+* Aprire il terminale e digitare UNO dei seguuenti tre comandi
 
 ```
-cd scripts
-./build.sh
+npm run build
+```
+> Questo comando lancia solo un build degli assets in modo production (minificato, no sourcemaps, ...)
+
 
 ```
-> Lo script __build.sh__ puó essere lanciato con o senza parametri. Se si lancia senza parametri non verrá cambiato il numero di versione
-> Se si lancia con il parametro -m allora si creerá una versione Minor della app.
-> Se si lancia con il parametro -M allora si creerá una versione Mayor della app.
+npm run build-minor
+```
+> Questo comando creerá una versione Minor della app e subirá il contenuto automaticamente a master.
 
-* Automaticamente verrá fatto il merge con master, creato un tag con la versione e fatto commit e push al repository.
+```
+npm run build-mayor
+```
+>> Stessa cosa per questo che creerá una versione Mayor della app e subirá il contenuto automaticamente a master.
+
+* Con gli ultimi due comandi, automaticamente verrá anche creato un tag con la versione
 * Poi bisognerá solo andare nel **CPanel** del vostro provider, nella sezione **Git Version Control**.
 * Vedrete che c'è gia un repository con un bottone **Gestione**, cliccarlo.
 * Vi si aprirá una pagina con due tabs, andare al tab **Pull or Deploy**
