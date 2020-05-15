@@ -25,8 +25,7 @@ export default class Captcha {
         try {
             if (this.#isReady) {
                 return await this.#executeRecaptcha(formId);
-            }
-            else {
+            } else {
                 if (!this.#didWaitOnce) {
                     this.#didWaitOnce = true;
                     return setTimeout(() => {
@@ -34,7 +33,7 @@ export default class Captcha {
                     }, 5000);
                 }
             }
-        }catch (e) {
+        } catch (e) {
             log.error(e);
             return false;
         }
@@ -44,17 +43,18 @@ export default class Captcha {
     #executeRecaptcha = async (formId) => {
         try {
             const key = this.#view.getKey(formId);
-            const token = await grecaptcha.execute(key, {action: formId});
-            this.#view.addTokenToCaptchaInput(formId, token);
+            await grecaptcha.execute(key, {action: formId})
+                .then((token) => {
+                    this.#view.addTokenToCaptchaInput(formId, token);
+                });
+
             return true;
-        }catch (e) {
+        } catch (e) {
             log.error(e);
             return false;
         }
 
     }
-
-
 
 
 };
