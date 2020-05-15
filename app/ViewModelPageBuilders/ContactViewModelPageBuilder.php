@@ -67,6 +67,7 @@ class ContactViewModelPageBuilder extends ViewModelPageBuilder {
         $outcome->email = config('custom.company.email');
 
         $outcome->address = config('custom.company.address');
+        $outcome->addressMapUrl = config('custom.company.address-map-url');
 
         return $outcome;
 

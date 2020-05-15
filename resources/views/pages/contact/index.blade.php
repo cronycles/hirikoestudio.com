@@ -31,19 +31,19 @@
             <div class="columns__container contact__form-info__section">
                 <ul class="contact__info">
                     <li>
-                        <a href="tel:{{$model->infoData->telephone}}" class="">
+                        <a href="tel:{{$model->infoData->telephone}}" class=".jgtm-phone">
                             <i class="la la-phone" aria-hidden="true"></i>
                             <span class="contact-text">{{$model->infoData->telephoneText}}</span>
                         </a>
                     </li>
                     <li>
-                        <a href="mailto:{{$model->infoData->email}}" class="">
+                        <a href="mailto:{{$model->infoData->email}}" class=".jgtm-email">
                             <i class="la la-envelope" aria-hidden="true"></i>
                             <span class="contact-text">{{$model->infoData->email}}</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" target="_blank" class="">
+                        <a href="{{$model->infoData->addressMapUrl}}" target="_blank" class=".jgtm-addr">
                             <i class="la la-map-marker" aria-hidden="true"></i>
                             <span class="contact-text">{!! $model->infoData->address  !!}</span>
                         </a>

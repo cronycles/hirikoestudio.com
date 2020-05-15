@@ -7,5 +7,5 @@ return [
     'telephone' => '+34946853206',
     'telephone-txt' => '946 853 206',
     'email' => 'info@hirikoestudio.com',
-    'google-maps-url' => 'https://goo.gl/maps/qGnMhsYXkNL2'
+    'address-map-url' => 'https://goo.gl/maps/qGnMhsYXkNL2'
 ];

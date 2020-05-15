@@ -2,7 +2,7 @@
 
 namespace App\ViewModels\Pages\Contact;
 
-use App\ViewModels\Form\FormModel;
+use App\Custom\Form\Models\FormModel;
 use App\ViewModels\Pages\PageViewModel;
 
 class ContactPageViewModel extends PageViewModel {

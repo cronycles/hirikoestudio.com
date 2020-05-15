@@ -24,6 +24,11 @@ class InfoViewModel {
      */
     public $address;
 
+    /**
+     * @var string
+     */
+    public $addressMapUrl;
+
 
     public function __construct() {
     }
