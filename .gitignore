@@ -15,5 +15,6 @@ yarn-error.log
 .idea/
 .DS_Store
 package-lock.json
+public_html/js/*.txt
 .env.*
 composer.lock
