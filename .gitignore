@@ -3,7 +3,6 @@
 /public_html/hot
 /public_html/storage
 /storage/*.key
-/vendor
 .env
 .env.backup
 .phpunit.result.cache
@@ -16,9 +15,6 @@ yarn-error.log
 .idea/
 .DS_Store
 package-lock.json
-public_html/css/
-public_html/js/
-public_html/fonts/
 public_html/mix-manifest.json
 .env.*
 composer.lock
