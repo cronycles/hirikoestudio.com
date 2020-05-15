@@ -37,13 +37,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="mailto:{{$model->infoData->email}}" class="jgtm-email">
+                        <a href="mailto:{{$model->infoData->email}}" class="jgtm-email" target="_blank" >
                             <i class="la la-envelope" aria-hidden="true"></i>
                             <span class="contact-text">{{$model->infoData->email}}</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{$model->infoData->addressMapUrl}}" target="_blank" class="jgtm-addr">
+                        <a href="{{$model->infoData->addressMapUrl}}" class="jgtm-addr" target="_blank" >
                             <i class="la la-map-marker" aria-hidden="true"></i>
                             <span class="contact-text">{!! $model->infoData->address  !!}</span>
                         </a>
