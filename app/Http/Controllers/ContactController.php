@@ -40,16 +40,20 @@ class ContactController extends Controller {
         try {
             $outcome = $this->messagesService->createResponseWithGenericError();
 
+            AppLog::info($request);
+
             /** @var ContactEntity $contactEntity */
             $contactEntity = $this->formBuilder->createEntityFromRequest($request);
 
-            $isSent = $this->mailService->sendEmail(
-                $contactEntity->name,
-                $contactEntity->email,
-                $contactEntity->telephone,
-                $contactEntity->message);
-            if ($isSent) {
-                $outcome = $this->messagesService->createSuccessResponse(__('page-contact.messages.send-success'));
+            if ($this->formBuilder->isAValidCaptchaRequest($request)) {
+                $isSent = $this->mailService->sendEmail(
+                    $contactEntity->name,
+                    $contactEntity->email,
+                    $contactEntity->telephone,
+                    $contactEntity->message);
+                if ($isSent) {
+                    $outcome = $this->messagesService->createSuccessResponse(__('page-contact.messages.send-success'));
+                }
             }
 
             return $outcome;

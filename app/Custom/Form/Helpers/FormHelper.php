@@ -49,10 +49,6 @@ class FormHelper {
         $outcome = $this->initializeFormByConfiguration($configuration, null, null);
         $outcome->fields = $this->fieldsViewModelService->createAndFillFieldsByConfigurationAndInputRequest($configuration, $request);
 
-        if($this->isACaptchaForm($configuration)) {
-            $outcome->captcha->isValid = $this->captchaService->validateCaptcha(config('custom.captcha.field'));
-        }
-
         return $outcome;
     }
 

@@ -14,8 +14,4 @@ class CaptchaModel {
      */
     public $formId;
 
-    /**
-     * @var bool
-     */
-    public $isValid;
 }
