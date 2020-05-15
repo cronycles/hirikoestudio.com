@@ -10,7 +10,9 @@ appVersion=$1;
 
 printf "\n${GREEN} - Commit the new app version ${appVersion} change:${NC}\n"
 
-git commit -am "changing release version to: v${appVersion}"
+git add .
+
+git commit -m "changing release version to: v${appVersion}"
 
 git tag -a v${appVersion} -m "v${appVersion}"
 
