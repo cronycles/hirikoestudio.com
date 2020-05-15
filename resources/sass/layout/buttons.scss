@@ -17,7 +17,7 @@
     font-weight: normal;
 
     &:hover:not(.loading__spinner) {
-        box-shadow: inset 400px 0 0 0 $corporateColor;
+        background-color: $corporateColor;
         border-color: $corporateColor;
         color: $buttonTextColorHover;
         text-decoration: none;

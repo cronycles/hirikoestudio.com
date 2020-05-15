@@ -2,7 +2,7 @@
 
 return [
     'id' => 'contact_form',
-    'withCaptcha' => true,
+    'withCaptcha' => false,
     'fields' => [
         'name' => [
             'type' => 1,
