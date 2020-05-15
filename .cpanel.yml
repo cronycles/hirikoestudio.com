@@ -2,7 +2,7 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/hirikoes/
-    - export $PUBLICFOLDERNAME=public_html
+    - export PUBLICFOLDERNAME=public_html
     - /bin/rm -rf $DEPLOYPATH/app
     - /bin/rm -rf $DEPLOYPATH/bootstrap
     - /bin/rm -rf $DEPLOYPATH/config
