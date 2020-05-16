@@ -3,7 +3,7 @@
 ## Funzionamento
 I files che ci interessano sono:
 - I view models: **/app/ViewModels/Images/ImagesUploaderViewModel**
-- una pagina php **/view/images/imagesUploader/_form.blade.php**
+- una pagina php **/view/images/imagesUploader/_imagesUploader.blade.php**
 - i js: **/resources/js/images/imagesUploader/_images.xxx.js**, ...
 
 la pagina __form_ gestisce l'upload delle immaigni.

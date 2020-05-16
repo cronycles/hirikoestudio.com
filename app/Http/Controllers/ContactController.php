@@ -50,6 +50,7 @@ class ContactController extends Controller {
                     $contactEntity->telephone,
                     $contactEntity->message);
                 if ($isSent) {
+                    $request->session()->flash('resetForm', true);
                     $outcome = $this->messagesService->createSuccessResponse(__('page-contact.messages.send-success'));
                 }
             }

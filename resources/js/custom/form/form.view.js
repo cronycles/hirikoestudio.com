@@ -13,6 +13,7 @@ export default class FormView {
         this.tfocusIn = "focusin";
         this.tfocusOut = "focusout";
         this.tform = "form";
+        this.treset = "reset";
 
         //Classes
         this.fieldErrorClass = "form__field--error";
@@ -28,6 +29,20 @@ export default class FormView {
         //DOM
         this.$forms = $(this.tform);
     }
+
+    resetFormIfAskedByServer = () => {
+        try {
+            this.$forms.map((index, form) => {
+                const $form = $(form);
+                const dataReset = $form.data(this.treset);
+                if (dataReset) {
+                    $form.find(this.fieldSelector).val('');
+                }
+            });
+        } catch (e) {
+            log.error(e);
+        }
+    };
 
     onFormSubmit = (callback) => {
         this.$forms.off(this.tsubmit).on(this.tsubmit, (element) => {
@@ -71,15 +86,15 @@ export default class FormView {
             let outcome = [];
             const $form = this.#getJqueryFormById(formId);
             const domFields = $form.find(this.fieldSelector);
-            if(domFields && domFields.length > 0) {
-                for(const domField of domFields) {
+            if (domFields && domFields.length > 0) {
+                for (const domField of domFields) {
                     let $field = $(domField);
                     let field = this.#createNewFieldModelByJqueryObject($field);
                     outcome.push(field);
                 }
             }
             return outcome;
-        }catch (e) {
+        } catch (e) {
             log.error(e);
             return [];
         }
@@ -91,12 +106,12 @@ export default class FormView {
      */
     showErrorsOnFormFields = (formId, fields) => {
         try {
-            if(formId && fields && fields.length > 0) {
-                for(const field of fields) {
+            if (formId && fields && fields.length > 0) {
+                for (const field of fields) {
                     this.showErrorOnFormField(formId, field);
                 }
             }
-        }catch (e) {
+        } catch (e) {
             log.error(e);
         }
     };
@@ -108,7 +123,7 @@ export default class FormView {
     showErrorOnFormField = (formId, field) => {
         const fieldName = field.name;
         let $field = this.#findJqueryFormFieldByName(formId, fieldName);
-        if($field.is(":hidden")) {
+        if ($field.is(":hidden")) {
             $field = $field.nextAll(this.fieldSubSelector);
         }
         $field.addClass(this.fieldErrorClass);
@@ -155,8 +170,7 @@ export default class FormView {
         try {
             const $field = this.#findJqueryFormFieldByName(formId, fieldName);
             return this.#createNewFieldModelByJqueryObject($field);
-        }
-        catch (e) {
+        } catch (e) {
             log.error(e);
             return null;
         }
@@ -177,7 +191,7 @@ export default class FormView {
      */
     resetFieldErrors = (formId, fieldName) => {
         let $field = this.#findJqueryFormFieldByName(formId, fieldName);
-        if($field.is(":hidden")) {
+        if ($field.is(":hidden")) {
             $field = $field.nextAll(this.fieldSubSelector);
         }
         $field.removeClass(this.fieldErrorClass);
@@ -227,16 +241,16 @@ export default class FormView {
     #createNewFieldModelByJqueryObject($field) {
         try {
             let outcome = null;
-            if($field) {
+            if ($field) {
                 const fieldName = $field.attr(this.tname);
                 let fieldValue = $field.val();
-                if($field.hasClass(this.wysiwygClass)) {
+                if ($field.hasClass(this.wysiwygClass)) {
                     fieldValue = $(fieldValue).text();
                 }
                 const validationsArray = $field.data(this.tval);
                 let validations = [];
-                if(validationsArray) {
-                    for(let validationObject of validationsArray) {
+                if (validationsArray) {
+                    for (let validationObject of validationsArray) {
                         let validation = new Validation(validationObject.id, validationObject.params);
                         validations.push(validation);
                     }
@@ -245,7 +259,7 @@ export default class FormView {
 
             }
             return outcome;
-        }catch (e) {
+        } catch (e) {
             log.error(e);
             return null;
         }
@@ -258,7 +272,7 @@ export default class FormView {
      * @returns {jQuery}
      */
     #findJqueryFormFieldByJqueryFieldSub = ($fieldSub) => {
-        if(!$fieldSub.hasClass(this.fieldSubClass)) {
+        if (!$fieldSub.hasClass(this.fieldSubClass)) {
             $fieldSub = $fieldSub.closest(this.fieldSubSelector);
         }
         const $form = $fieldSub.closest(this.tform);
@@ -276,7 +290,6 @@ export default class FormView {
         const $fieldErrorText = this.#getFieldErrorTextJqueryObject(formId, fieldName);
         $fieldErrorText.addClass(this.tnone);
     };
-
 
 
 }

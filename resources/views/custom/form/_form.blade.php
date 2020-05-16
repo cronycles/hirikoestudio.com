@@ -1,5 +1,9 @@
+<form id="{{ $model->id }}"
+      method="POST"
+      data-reset="{{session()->has('resetForm') ? true : false}}"
+      action="{{ $model->actionUrl }}"
+      novalidate>
 
-<form id="{{ $model->id }}" method="POST" action="{{ $model->actionUrl }}" novalidate>
     @csrf
 
     @include('custom.form.messages.errors')
@@ -10,6 +14,7 @@
         @include('custom.form.captcha.captcha', ['captcha' => $model->captcha])
     @endif
 
-    <button class="cro__button cro__button--basic jformSend" data-txt="{{$model->buttonText}}">{{$model->buttonText}}</button>
+    <button class="cro__button cro__button--basic jformSend"
+            data-txt="{{$model->buttonText}}">{{$model->buttonText}}</button>
 </form>
 

@@ -14,6 +14,8 @@ export default class Form {
         this. #captcha = new Captcha();
         this.#formValidator = new FormValidator();
 
+        this.#view.resetFormIfAskedByServer();
+
         this.#view.onFormSubmit(async (formId) => {
             try {
                 this.#view.resetFormErrors();
