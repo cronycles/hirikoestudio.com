@@ -7,5 +7,5 @@
 <meta property="og:description" content="{{$model->htmlMetaDescription}}" />
 <meta property="og:image" content="{{$model->ogImageUrl}}" />
 <meta property="og:type" content="website" />
-<meta property="og:locale" content="es_ES" />
+<meta property="og:locale" content="{{$model->currentLanguage->cultureCode}}" />
 <meta name="csrf-token" content="{{csrf_token()}}" />
