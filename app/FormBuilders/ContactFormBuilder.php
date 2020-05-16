@@ -11,8 +11,8 @@ use App\Custom\Form\Helpers\FormHelper;
 class ContactFormBuilder extends FormBuilder {
 
     public function __construct(
-        FormHelper $formViewModelService) {
-        parent::__construct($formViewModelService, 'contact');
+        FormHelper $formHelper) {
+        parent::__construct($formHelper, 'contact');
     }
 
     /**

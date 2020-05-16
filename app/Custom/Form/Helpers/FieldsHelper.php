@@ -3,6 +3,7 @@
 namespace App\Custom\Form\Helpers;
 
 use App\Custom\Form\Models\Fields\HiddenFieldModel;
+use App\Custom\Languages\Services\LanguageService;
 use App\Custom\Logging\AppLog;
 use App\Custom\Form\Models\Fields\CheckboxArrayFieldModel;
 use App\Custom\Form\Models\Fields\CheckboxItemFieldModel;
@@ -16,16 +17,26 @@ use App\Custom\Form\Models\Fields\SelectboxItemFieldModel;
 use App\Custom\Form\Models\Fields\TextAreaFieldModel;
 use App\Custom\Form\Models\Fields\TextFieldModel;
 use App\Custom\Form\Models\Fields\WysiwygAreaFieldModel;
+use App\Custom\Translations\Entities\TranslationEntity;
 
 class FieldsHelper {
+
+    /**
+     * @var LanguageService
+     */
+    private $languageService;
 
     /**
      * @var FieldsConfigurationHelper
      */
     private $fieldsConfigurationHelper;
 
-    function __construct(FieldsConfigurationHelper $fieldsConfigurationHelper) {
+    function __construct(
+        FieldsConfigurationHelper $fieldsConfigurationHelper,
+        LanguageService $languageService) {
+
         $this->fieldsConfigurationHelper = $fieldsConfigurationHelper;
+        $this->languageService = $languageService;
     }
 
     /**
@@ -142,6 +153,22 @@ class FieldsHelper {
             AppLog::error($e);
             return null;
         }
+    }
+
+    /**
+     * @param string $fieldValue
+     * @return TranslationEntity[]
+     */
+    public function parseTranslatableFieldValue(string $fieldValue) {
+        $outcome = [];
+        $languages = $this->languageService->getAllLanguages();
+        foreach ($languages as $language) {
+            $translationEntity = new TranslationEntity($language->code, $fieldValue);
+            array_push($outcome, $translationEntity);
+        }
+
+        return $outcome;
+
     }
 
     /**

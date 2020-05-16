@@ -4,7 +4,7 @@ namespace App\Http\ViewComponents\Header\Services;
 
 use App\Http\ViewComponents\Header\Models\HeaderLogoViewModel;
 use App\Services\AuthService;
-use App\Custom\Languages\Services\LanguagesService;
+use App\Custom\Languages\Services\LanguageService;
 use App\Custom\Pages\Services\PagesService;
 use App\Http\ViewComponents\Header\Models\HeaderLinkViewModel;
 use App\Http\ViewComponents\Header\Models\HeaderViewModel;
@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 class HeaderViewModelService {
 
     /**
-     * @var LanguagesService
+     * @var LanguageService
      */
-    private $languagesService;
+    private $languageService;
 
     /**
      * @var PagesService
@@ -29,11 +29,11 @@ class HeaderViewModelService {
 
     function __construct(
         PagesService $pagesService,
-        LanguagesService $languagesService,
+        LanguageService $languageService,
         AuthService $authService) {
 
         $this->pagesService = $pagesService;
-        $this->languagesService = $languagesService;
+        $this->languageService = $languageService;
         $this->authService = $authService;
     }
 
@@ -99,16 +99,16 @@ class HeaderViewModelService {
      * @return mixed
      */
     private function createViewModelLanguagesPart($outcome) {
-        $outcome->isMultilanguageActive = $this->languagesService->isMultilanguageActive();
+        $outcome->isMultilanguageActive = $this->languageService->isMultilanguageActive();
         if($outcome->isMultilanguageActive) {
-            $availableLanguages = $this->languagesService->getAvailableLanguages();
-            foreach ($availableLanguages as $availableLanguage) {
-                if($availableLanguage->isCurrent) {
-                    $outcome->currentLanguage = $availableLanguage->text;
+            $visibleLanguages = $this->languageService->getVisibleLanguages();
+            foreach ($visibleLanguages as $visibleLanguage) {
+                if($visibleLanguage->isCurrent) {
+                    $outcome->currentLanguage = $visibleLanguage->name;
                 }
                 else {
-                    $url = route('lang.switch', $availableLanguage->id);
-                    $linkViewModel = new HeaderLinkViewModel($url,$availableLanguage->text, false );
+                    $url = route('lang.switch', $visibleLanguage->code);
+                    $linkViewModel = new HeaderLinkViewModel($url,$visibleLanguage->name, false );
                     array_push($outcome->languageLinks, $linkViewModel);
                 }
             }

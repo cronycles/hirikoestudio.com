@@ -4,7 +4,7 @@
 namespace App\Custom\Pages\Services;
 
 
-use App\Custom\Languages\Services\LanguagesService;
+use App\Custom\Languages\Services\LanguageService;
 use App\Custom\Logging\AppLog;
 use App\Custom\Pages\Entities\PageEntity;
 use App\ViewModelPageBuilders\Auth\AuthIndexViewModelPageBuilder;
@@ -31,12 +31,12 @@ class PagesService {
     private $pageConfigurations = [];
 
     /**
-     * @var LanguagesService
+     * @var LanguageService
      */
-    private $languagesService;
+    private $languageService;
 
     public function __construct(
-        LanguagesService $languagesService,
+        LanguageService $languageService,
         IndexViewModelPageBuilder $indexViewModelPageBuilder,
         LoginViewModelPageBuilder $loginViewModelPageBuilder,
         RegisterViewModelPageBuilder $registerViewModelPageBuilder,
@@ -57,7 +57,7 @@ class PagesService {
         AuthProjectImagesViewModelPageBuilder $authProjectImagesViewModelPageBuilder
         ) {
 
-        $this->languagesService = $languagesService;
+        $this->languageService = $languageService;
 
         $this->pageConfigurations[config('custom.pages.INDEX')] = [
             'config' => config('pages.index'),
@@ -170,7 +170,7 @@ class PagesService {
             $outcome->description = __($pageConfiguration['descriptionKey']);
             $outcome->shortName = __($pageConfiguration['shortNameKey']) == $pageConfiguration['shortNameKey'] ? __($pageConfiguration['titleKey']) : __($pageConfiguration['shortNameKey']);
             $outcome->viewPath = $pageConfiguration['viewPath'];
-            $outcome->currentLanguageId = str_replace('_', '-', $this->languagesService->getCurrentLanguage()->id);
+            $outcome->currentLanguageId = str_replace('_', '-', $this->languageService->getCurrentLanguage()->code);
             $outcome->viewModelPageBuilder = $this->pageConfigurations[$pageId]['viewModelPageBuilder'];
             return $outcome;
 

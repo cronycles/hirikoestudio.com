@@ -5,14 +5,9 @@ namespace App\Custom\Form\Builders;
 use App\Custom\Entities\CustomEntity;
 use App\Custom\Form\Models\FormModel;
 use App\Custom\Form\Helpers\FormHelper;
-use App\Custom\Languages\Services\LanguagesService;
 use Illuminate\Http\Request;
 
 abstract class FormBuilder {
-
-    use TranslatableFormBuilderTrait {
-        TranslatableFormBuilderTrait::__construct as private __tConstruct;
-    }
 
     /**
      * @var FormHelper
@@ -30,15 +25,13 @@ abstract class FormBuilder {
     protected $fieldsConfig;
 
     public function __construct(
-        FormHelper $formViewModelService,
+        FormHelper $formHelper,
         string $formConfigKey) {
 
-        $this->formHelper = $formViewModelService;
+        $this->formHelper = $formHelper;
 
         $this->formConfig = config('custom.form.'. $formConfigKey);
         $this->fieldsConfig = $this->formConfig['fields'];
-
-        $this->__tConstruct(new LanguagesService());
     }
 
     public function createFormViewModelByConfigurationAndEntity(string $actionUrl, string $saveTextButton, $customEntity = null) {

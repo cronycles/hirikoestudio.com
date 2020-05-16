@@ -10,9 +10,9 @@ use App\Entities\UserEntity;
 class ForgotPasswordFormBuilder extends FormBuilder {
 
     public function __construct(
-        FormHelper $formViewModelService) {
+        FormHelper $formHelper) {
 
-        parent::__construct($formViewModelService, 'forgot-password');
+        parent::__construct($formHelper, 'forgot-password');
     }
 
     /**

@@ -12,10 +12,17 @@ use App\Custom\Form\Helpers\FormHelper;
 
 class CategoryFormBuilder extends FormBuilder {
 
-    public function __construct(
-        FormHelper $formViewModelService) {
+    /**
+     * @var FormHelper
+     */
+    private $formHelper;
 
-        parent::__construct($formViewModelService, 'category');
+    public function __construct(FormHelper $formHelper) {
+
+        parent::__construct($formHelper, 'category');
+
+        $this->formHelper = $formHelper;
+
     }
 
     /**
@@ -48,7 +55,7 @@ class CategoryFormBuilder extends FormBuilder {
         foreach ($fields as $field) {
             switch ($field->name) {
                 case $this->getConfigFieldName('name'):
-                    $outcome->nameTranslations = $this->parseTranslatableFieldValue($field->value);
+                    $outcome->nameTranslations = $this->formHelper->parseTranslatableFieldValue($field->value);
                     break;
             }
         }

@@ -11,9 +11,9 @@ use App\Entities\ResetPasswordEntity;
 class ResetPasswordFormBuilder extends FormBuilder {
 
     public function __construct(
-        FormHelper $formViewModelService) {
+        FormHelper $formHelper) {
 
-        parent::__construct($formViewModelService, 'reset-password');
+        parent::__construct($formHelper, 'reset-password');
     }
 
     /**

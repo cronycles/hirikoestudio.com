@@ -2,12 +2,14 @@
 
 namespace App\Services;
 
+use App\Custom\Languages\Entities\LanguageEntity;
 use App\Entities\CategoryEntity;
 use App\Entities\ImageEntity;
 use App\Entities\ProjectEntity;
 use App\Entities\UserEntity;
 use App\External\ApiServiceEntities\Category;
 use App\External\ApiServiceEntities\Image;
+use App\External\ApiServiceEntities\Language;
 use App\External\ApiServiceEntities\Project;
 use App\External\ApiServiceEntities\User;
 
@@ -32,6 +34,42 @@ class MappingService {
     }
 
     /**
+     * @param Language[]
+     * @return LanguageEntity[];
+     */
+    public function mapLanguages($serviceLanguages) {
+        $outcome = [];
+        if ($serviceLanguages && !empty($serviceLanguages)) {
+            foreach ($serviceLanguages as $serviceLanguage) {
+                $languageEntity = $this->mapLanguage($serviceLanguage);
+                if ($languageEntity != null) {
+                    array_push($outcome, $languageEntity);
+                }
+            }
+        }
+        return $outcome;
+    }
+
+    /**
+     * @param Language
+     * @return LanguageEntity
+     */
+    public function mapLanguage($serviceLanguage) {
+        $outcome = new LanguageEntity();
+        /** @var Language $serviceLanguage */
+        if ($serviceLanguage != null) {
+            $outcome->code = $serviceLanguage->code;
+            $outcome->cultureCode = $serviceLanguage->cultureCode;
+            $outcome->name = $serviceLanguage->name;
+            $outcome->isDefault = $serviceLanguage->isDefault;
+            $outcome->isEnabled = $serviceLanguage->isEnabled;
+            $outcome->isVisible = $serviceLanguage->isVisible;
+            $outcome->isAuthVisible = $serviceLanguage->isAuthVisible;
+        }
+        return $outcome;
+    }
+
+    /**
      * @param Project[]
      * @return ProjectEntity[];
      */
@@ -40,7 +78,7 @@ class MappingService {
         if ($serviceProjects && !empty($serviceProjects)) {
             foreach ($serviceProjects as $serviceProject) {
                 $projectEntity = $this->mapProject($serviceProject);
-                if($projectEntity != null) {
+                if ($projectEntity != null) {
                     array_push($outcome, $projectEntity);
                 }
             }
@@ -75,7 +113,7 @@ class MappingService {
         if ($serviceImages && !empty($serviceImages)) {
             foreach ($serviceImages as $serviceImage) {
                 $imageEntity = $this->mapImage($serviceImage);
-                if($imageEntity != null) {
+                if ($imageEntity != null) {
                     array_push($outcome, $imageEntity);
                 }
             }

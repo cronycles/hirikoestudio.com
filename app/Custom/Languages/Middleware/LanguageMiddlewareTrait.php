@@ -2,7 +2,7 @@
 
 namespace App\Custom\Languages\Middleware;
 
-use App\Custom\Languages\Services\LanguagesService;
+use App\Custom\Languages\Services\LanguageService;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -10,22 +10,22 @@ use Illuminate\Support\Arr;
 trait LanguageMiddlewareTrait {
 
     /**
-     * @var LanguagesService
+     * @var LanguageService
      */
-    private $languagesService;
+    private $languageService;
 
-    public function __construct(LanguagesService $languagesService) {
-        $this->languagesService = $languagesService;
+    public function __construct(LanguageService $languageService) {
+        $this->languageService = $languageService;
     }
 
     public function handle(Request $request, Closure $next) {
         // Check if the first segment matches a language code
 
-        if($this->languagesService->isMultilanguageActive()) {
+        if($this->languageService->isMultilanguageActive()) {
 
             $langId = $request->segment(1);
 
-            $languageEntity = $this->languagesService->getLanguageById($langId);
+            $languageEntity = $this->languageService->getLanguageByCode($langId);
 
             if ($languageEntity == null) {
 

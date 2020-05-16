@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Custom\Languages\Entities;
+namespace App\External\ApiServiceEntities;
 
-class LanguageEntity {
+class Language {
 
     /**
      * @var string
@@ -39,11 +39,7 @@ class LanguageEntity {
      */
     public $isAuthVisible;
 
-    /**
-     * @var bool
-     */
-    public $isCurrent;
-
     public function __construct() {
     }
+
 }

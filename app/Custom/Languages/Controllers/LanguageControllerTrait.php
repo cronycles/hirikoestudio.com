@@ -2,19 +2,19 @@
 
 namespace App\Custom\Languages\Controllers;
 
-use App\Custom\Languages\Services\LanguagesService;
+use App\Custom\Languages\Services\LanguageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
 
 trait LanguageControllerTrait  {
 
     /**
-     * @var LanguagesService
+     * @var LanguageService
      */
-    private $languagesService;
+    private $languageService;
 
-    public function __construct(LanguagesService $languagesService) {
-        $this->languagesService = $languagesService;
+    public function __construct(LanguageService $languageService) {
+        $this->languageService = $languageService;
     }
 
     public function switchLang(Request $request, $lang)
@@ -34,7 +34,7 @@ trait LanguageControllerTrait  {
         // Store the segments of the last request as an array
         $segments = $previous_request->segments();
 
-        $languageEntity = $this->languagesService->getLanguageById($lang);
+        $languageEntity = $this->languageService->getLanguageByCode($lang);
 
         if ($languageEntity != null) {
             $request->session()->put('applocale', $lang);

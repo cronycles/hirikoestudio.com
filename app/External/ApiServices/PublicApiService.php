@@ -6,10 +6,12 @@ use App\Custom\ImagesUploader\Helpers\ImagesHelper;
 use App\Custom\Logging\AppLog;
 use App\Custom\Translations\ApiServiceEntities\Translation;
 use App\External\ApiServiceEntities\Category;
+use App\External\ApiServiceEntities\Language;
 use App\External\ApiServiceEntities\Project;
 use App\External\ApiServiceEntities\User;
 use App\External\Repositories\CategoriesRepository;
 use App\External\Repositories\ImagesRepository;
+use App\External\Repositories\LocalesRepository;
 use App\External\Repositories\ProjectsRepository;
 use App\External\Repositories\UsersRepository;
 use Illuminate\Http\UploadedFile;
@@ -22,6 +24,11 @@ class PublicApiService {
      * @var UsersRepository
      */
     private $usersRepository;
+
+    /**
+     * @var LocalesRepository
+     */
+    private $localesRepository;
 
     /**
      * @var ProjectsRepository
@@ -45,12 +52,14 @@ class PublicApiService {
 
     public function __construct(
         UsersRepository $usersRepository,
+        LocalesRepository $localesRepository,
         ProjectsRepository $projectsRepository,
         CategoriesRepository $categoriesRepository,
         ImagesRepository $imagesRepository,
         ImagesHelper $imageService) {
 
         $this->usersRepository = $usersRepository;
+        $this->localesRepository = $localesRepository;
         $this->projectsRepository = $projectsRepository;
         $this->categoriesRepository = $categoriesRepository;
         $this->imagesRepository = $imagesRepository;
@@ -70,6 +79,34 @@ class PublicApiService {
                 $dbUser = $this->usersRepository->find($userId);
                 $outcome = $this->createUserEntityByDbEntity($dbUser);
             }
+            return $outcome;
+
+        } catch (\Exception $e) {
+            AppLog::error($e);
+            return null;
+        }
+    }
+
+    /**
+     * @return Language[]
+     */
+    public function getLanguages() {
+        try {
+            $outcome = [];
+
+            /** @var array $dbLocales */
+            $dbLocales = $this->localesRepository->all();
+
+            if ($dbLocales != null && !empty($dbLocales)) {
+                /** @var \App\Locale $dbLocale */
+                foreach ($dbLocales as $dbLocale) {
+                    $entity = $this->createLanguageEntityByDbEntity($dbLocale);
+                    if ($entity != null) {
+                        array_push($outcome, $entity);
+                    }
+                }
+            }
+
             return $outcome;
 
         } catch (\Exception $e) {
@@ -303,16 +340,34 @@ class PublicApiService {
     }
 
     /**
+     * @param \App\Locale|null $dbLocale
+     * @return Language
+     */
+    private function createLanguageEntityByDbEntity($dbLocale) {
+        $outcome = new Language();
+        if ($dbLocale != null) {
+            $outcome->code = $dbLocale->code;
+            $outcome->cultureCode = $dbLocale->culture_code;
+            $outcome->name = $dbLocale->name;
+            $outcome->isDefault = $dbLocale->default;
+            $outcome->isEnabled = $dbLocale->enabled;
+            $outcome->isVisible = $dbLocale->visible;
+            $outcome->isAuthVisible = $dbLocale->auth_visible;
+        }
+        return $outcome;
+    }
+
+    /**
      * @param $translatableItem
      * @return Translation[]
      */
     private function createTranslationModels($databaseEntity, string $translatableItemName) {
         $outcome = [];
 
-        $locales = config('custom.languages.locales');
-        foreach ($locales as $key => $value) {
-            $translation = $databaseEntity->getTranslation($translatableItemName, $key);
-            $translationModel = new Translation($key, $translation);
+        $languages = $this->getLanguages();
+        foreach ($languages as $language) {
+            $translation = $databaseEntity->getTranslation($translatableItemName, $language->code);
+            $translationModel = new Translation($language->code, $translation);
             array_push($outcome, $translationModel);
         }
         return $outcome;

@@ -6,6 +6,7 @@ use App\Custom\Form\Captcha\Services\CaptchaService;
 use App\Custom\Form\Models\FormModel;
 use App\Custom\Form\Models\Fields\CheckboxItemFieldModel;
 use App\Custom\Form\Models\Fields\SelectboxItemFieldModel;
+use App\Custom\Translations\Entities\TranslationEntity;
 use Illuminate\Http\Request;
 
 class FormHelper {
@@ -13,7 +14,7 @@ class FormHelper {
     /**
      * @var FieldsHelper
      */
-    private $fieldsViewModelService;
+    private $fieldsHelper;
 
     /**
      * @var CaptchaService
@@ -21,10 +22,10 @@ class FormHelper {
     private $captchaService;
 
     function __construct(
-        FieldsHelper $fieldsViewModelService,
+        FieldsHelper $fieldsHelper,
         CaptchaService $service) {
 
-        $this->fieldsViewModelService = $fieldsViewModelService;
+        $this->fieldsHelper = $fieldsHelper;
         $this->captchaService = $service;
     }
 
@@ -36,7 +37,7 @@ class FormHelper {
      */
     public function createEmptyFormViewModelByConfiguration(array $configuration, $actionUrl = null, $buttonText = null) {
         $outcome = $this->initializeFormByConfiguration($configuration, $actionUrl, $buttonText);
-        $outcome->fields = $this->fieldsViewModelService->createEmptyFieldsByConfiguration($configuration);
+        $outcome->fields = $this->fieldsHelper->createEmptyFieldsByConfiguration($configuration);
         return $outcome;
     }
 
@@ -47,7 +48,7 @@ class FormHelper {
      */
     public function createAndFillFormModelByConfigurationAndInputRequest(array $configuration, Request $request) {
         $outcome = $this->initializeFormByConfiguration($configuration, null, null);
-        $outcome->fields = $this->fieldsViewModelService->createAndFillFieldsByConfigurationAndInputRequest($configuration, $request);
+        $outcome->fields = $this->fieldsHelper->createAndFillFieldsByConfigurationAndInputRequest($configuration, $request);
 
         return $outcome;
     }
@@ -85,7 +86,15 @@ class FormHelper {
      * @return CheckboxItemFieldModel|SelectboxItemFieldModel|null
      */
     public function getFieldItemModelFromConfiguration(array $fieldConfiguration) {
-        return $this->fieldsViewModelService->getFieldItemModelFromConfiguration($fieldConfiguration);
+        return $this->fieldsHelper->getFieldItemModelFromConfiguration($fieldConfiguration);
+    }
+
+    /**
+     * @param string $fieldValue
+     * @return TranslationEntity[]
+     */
+    public function parseTranslatableFieldValue(string $fieldValue) {
+        return $this->fieldsHelper->parseTranslatableFieldValue($fieldValue);
     }
 
     private function isACaptchaForm($formConfiguration) {

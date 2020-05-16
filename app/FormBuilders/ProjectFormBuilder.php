@@ -13,17 +13,23 @@ use App\Services\Categories\CategoriesService;
 class ProjectFormBuilder extends FormBuilder {
 
     /**
+     * @var FormHelper
+     */
+    private $formHelper;
+
+    /**
      * @var CategoriesService
      */
     private $categoriesService;
 
     public function __construct(
         CategoriesService $categoriesService,
-        FormHelper $formViewModelService) {
+        FormHelper $formHelper) {
 
-        parent::__construct($formViewModelService, 'project');
+        parent::__construct($formHelper, 'project');
 
         $this->categoriesService = $categoriesService;
+        $this->formHelper = $formHelper;
     }
 
     /**
@@ -68,7 +74,7 @@ class ProjectFormBuilder extends FormBuilder {
                     $outcome->title = $this->parseStringFieldValue($field->value);
                     break;
                 case $this->getConfigFieldName('description'):
-                    $outcome->descriptionTranslations = $this->parseTranslatableFieldValue($field->value);
+                    $outcome->descriptionTranslations = $this->formHelper->parseTranslatableFieldValue($field->value);
                     break;
                 case $this->getConfigFieldName('show'):
                     $outcome->isVisible = $this->parseBooleanFieldValue($field->value);

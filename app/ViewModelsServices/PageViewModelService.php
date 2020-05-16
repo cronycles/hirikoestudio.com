@@ -2,7 +2,7 @@
 
 namespace App\ViewModelsServices;
 
-use App\Custom\Languages\Services\LanguagesService;
+use App\Custom\Languages\Services\LanguageService;
 use App\Custom\Logging\AppLog;
 use App\Custom\Pages\Entities\PageEntity;
 use App\Custom\Pages\Services\PagesService;
@@ -21,17 +21,17 @@ class PageViewModelService {
     private $breadcrumbViewModelService;
 
     /**
-     * @var LanguagesService
+     * @var LanguageService
      */
-    private $languagesService;
+    private $languageService;
 
 
     function __construct(
-        LanguagesService $languagesService,
+        LanguageService $languageService,
         PagesService $pagesService,
         BreadcrumbViewModelService $breadcrumbViewModelService) {
 
-        $this->languagesService = $languagesService;
+        $this->languageService = $languageService;
         $this->pagesService = $pagesService;
         $this->breadcrumbViewModelService = $breadcrumbViewModelService;
     }

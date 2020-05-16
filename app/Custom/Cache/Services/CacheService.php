@@ -19,7 +19,7 @@ class CacheService {
      * @param $paramList array
      * @return string
      */
-    public function generateCacheKey($defaultCacheKey, $paramList) {
+    public function generateCacheKey($defaultCacheKey, $paramList = []) {
         try {
             $outcome = $defaultCacheKey;
             if ($paramList != null && !empty($paramList)) {

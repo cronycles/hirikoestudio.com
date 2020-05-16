@@ -10,9 +10,9 @@ use App\Entities\UserEntity;
 class RegisterFormBuilder extends FormBuilder {
 
     public function __construct(
-        FormHelper $formViewModelService) {
+        FormHelper $formHelper) {
 
-        parent::__construct($formViewModelService, 'register');
+        parent::__construct($formHelper, 'register');
     }
 
     /**
