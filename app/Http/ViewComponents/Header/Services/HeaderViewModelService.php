@@ -46,7 +46,7 @@ class HeaderViewModelService {
         $outcome = $this->createViewModelAdminPart($outcome);
 
         $isHomeRoot = Route::currentRouteNamed('index*');
-        if($isHomeRoot) {
+        if ($isHomeRoot) {
             $outcome->hasInvertedColors = true;
         }
         return $outcome;
@@ -59,10 +59,9 @@ class HeaderViewModelService {
         $outcome = new HeaderLogoViewModel();
 
         $isHomeRoot = Route::currentRouteNamed('index*');
-        if($isHomeRoot) {
+        if ($isHomeRoot) {
             $outcome->imageUrl = config('custom.images.static.logoWhite');
-        }
-        else {
+        } else {
             $outcome->imageUrl = config('custom.images.static.logoBlack');
         }
         $outcome->url = route('index');
@@ -99,16 +98,14 @@ class HeaderViewModelService {
      * @return mixed
      */
     private function createViewModelLanguagesPart($outcome) {
-        $outcome->isMultilanguageActive = $this->languageService->isMultilanguageActive();
-        if($outcome->isMultilanguageActive) {
-            $visibleLanguages = $this->languageService->getVisibleLanguages();
+        $visibleLanguages = $this->languageService->getVisibleLanguages();
+        if (count($visibleLanguages) > 1) {
             foreach ($visibleLanguages as $visibleLanguage) {
-                if($visibleLanguage->isCurrent) {
-                    $outcome->currentLanguage = $visibleLanguage->name;
-                }
-                else {
+                if ($visibleLanguage->isCurrent) {
+                    $outcome->currentLanguage = $visibleLanguage->code;
+                } else {
                     $url = route('lang.switch', $visibleLanguage->code);
-                    $linkViewModel = new HeaderLinkViewModel($url,$visibleLanguage->name, false );
+                    $linkViewModel = new HeaderLinkViewModel($url, $visibleLanguage->code, false);
                     array_push($outcome->languageLinks, $linkViewModel);
                 }
             }
@@ -153,9 +150,9 @@ class HeaderViewModelService {
      */
     private function createViewModelAdminPart($vieModel) {
         $vieModel->isUserAuth = $this->authService->isAnyUserAuthenticated();
-        if($vieModel->isUserAuth) {
+        if ($vieModel->isUserAuth) {
             $userEntity = $this->authService->getAuthUser();
-            $vieModel->userName =  '@' . $userEntity->name;
+            $vieModel->userName = '@' . $userEntity->name;
         }
         $vieModel->adminPageLinks = [
             $this->createAuthHomeLink(),

@@ -20,11 +20,6 @@ class HeaderViewModel {
     public $userPageLinks;
 
     /**
-     * @var bool
-     */
-    public $isMultilanguageActive;
-
-    /**
      * @var HeaderLinkViewModel[]
      */
     public $languageLinks;
@@ -60,7 +55,6 @@ class HeaderViewModel {
         $this->languageLinks = [];
         $this->adminPageLinks = [];
         $this->isUserAuth = false;
-        $this->isMultilanguageActive = false;
         $this->hasInvertedColors = false;
     }
 
