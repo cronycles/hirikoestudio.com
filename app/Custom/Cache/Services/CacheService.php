@@ -48,12 +48,11 @@ class CacheService {
      */
     public function getOrCallAndSave($cacheKey, $seconds, $fallbackFunction) {
         try {
-            if(env('CACHE_ENABLED')) {
+            if(config('custom.cache.isEnabled')) {
                 if ($cacheKey != null) {
                     if ($fallbackFunction != null) {
                         if ($seconds != null) {
-                            $minutes = $seconds / 60;
-                            return Cache::remember($cacheKey, $minutes, $fallbackFunction);
+                            return Cache::remember($cacheKey, $seconds, $fallbackFunction);
                         }
                         return Cache::rememberForever($cacheKey, $fallbackFunction);
                     } else {

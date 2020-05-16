@@ -1,6 +1,9 @@
 <?php
 
 return [
+
+    'isEnabled' => env('CACHE_ENABLED'),
+
     'api' => [
         'users' => ['key' => 'users', 'seconds' => 60],
         'languages' => ['key' => 'languages', 'seconds' => 60],
