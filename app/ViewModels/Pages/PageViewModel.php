@@ -2,6 +2,8 @@
 
 namespace App\ViewModels\Pages;
 
+use App\ViewModels\Language\LanguageViewModel;
+
 class PageViewModel {
 
     /**
@@ -45,9 +47,9 @@ class PageViewModel {
     public $viewPath;
 
     /**
-     * @var string
+     * @var LanguageViewModel
      */
-    public $currentLanguageId;
+    public $currentLanguage;
 
     /**
      * @var BreadcrumbViewModel[]

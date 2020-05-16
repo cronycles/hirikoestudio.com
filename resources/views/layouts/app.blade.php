@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ $model->currentLanguageId}}">
+<html lang="{{ $model->currentLanguage->code}}">
 @include('custom.layouts.head._head')
 
 <body>

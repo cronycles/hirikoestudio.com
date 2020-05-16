@@ -4,6 +4,7 @@
 namespace App\Custom\Pages\Entities;
 
 
+use App\Custom\Languages\Entities\LanguageEntity;
 use App\Custom\Pages\Builders\ViewModelPageBuilder;
 
 class PageEntity {
@@ -49,9 +50,9 @@ class PageEntity {
     public $viewPath;
 
     /**
-     * @var string
+     * @var LanguageEntity
      */
-    public $currentLanguageId;
+    public $currentLanguage;
 
     /**
      * @var ViewModelPageBuilder

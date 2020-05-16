@@ -170,7 +170,7 @@ class PagesService {
             $outcome->description = __($pageConfiguration['descriptionKey']);
             $outcome->shortName = __($pageConfiguration['shortNameKey']) == $pageConfiguration['shortNameKey'] ? __($pageConfiguration['titleKey']) : __($pageConfiguration['shortNameKey']);
             $outcome->viewPath = $pageConfiguration['viewPath'];
-            $outcome->currentLanguageId = str_replace('_', '-', $this->languageService->getCurrentLanguage()->code);
+            $outcome->currentLanguage = $this->languageService->getCurrentLanguage();
             $outcome->viewModelPageBuilder = $this->pageConfigurations[$pageId]['viewModelPageBuilder'];
             return $outcome;
 

@@ -21,35 +21,35 @@ trait LanguageMiddlewareTrait {
     public function handle(Request $request, Closure $next) {
         // Check if the first segment matches a language code
 
-        if($this->languageService->isMultilanguageActive()) {
+        if ($this->languageService->isMultilanguageActive()) {
 
             $langId = $request->segment(1);
 
-            $languageEntity = $this->languageService->getLanguageByCode($langId);
+            if ($langId == null) {
+                $fallbackLanguageCode = $this->languageService->setFallbackLanguage();
+                return $this->createLanguageFallbackRedirect($request, $fallbackLanguageCode);
 
-            if ($languageEntity == null) {
-
-                // Store segments in array
-                $segments = $request->segments();
-
-                $currentLocale = $request->session()->get('applocale');
-
-                if($currentLocale == null || empty($currentLocale)) {
-                    $currentLocale = config('app.fallback_locale');
+            } else {
+                $languageCode = $this->languageService->setCurrentLanguage($langId);
+                if ($languageCode == null) {
+                    $fallbackLanguageCode = $this->languageService->setFallbackLanguage();
+                    return $this->createLanguageFallbackRedirect($request, $fallbackLanguageCode);
                 }
-
-                // Set the default language code as the first segment
-                $segments = Arr::prepend($segments, $currentLocale);
-
-                // Redirect to the correct url
-                return redirect()->to(implode('/', $segments));
-            }
-            else {
-                $request->session()->put('applocale', $langId);
             }
 
         }
         return $next($request);
+    }
+
+    private function createLanguageFallbackRedirect(Request $request, $fallbackLanguageCode) {
+        // Store segments in array
+        $segments = $request->segments();
+
+        // Set the default language code as the first segment
+        $segments = Arr::prepend($segments, $fallbackLanguageCode);
+
+        // Redirect to the correct url
+        return redirect()->to(implode('/', $segments));
     }
 
 }

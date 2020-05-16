@@ -34,11 +34,8 @@ trait LanguageControllerTrait  {
         // Store the segments of the last request as an array
         $segments = $previous_request->segments();
 
-        $languageEntity = $this->languageService->getLanguageByCode($lang);
-
-        if ($languageEntity != null) {
-            $request->session()->put('applocale', $lang);
-
+        $isLanguageChanged = $this->languageService->setCurrentLanguage($lang);
+        if ($isLanguageChanged) {
             // If it was indeed a translated route name
             if ($route_name && Lang::has('routes.' . $route_name, $lang)) {
 

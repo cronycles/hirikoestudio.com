@@ -3,9 +3,16 @@
 namespace App\Custom\Languages\Services;
 
 use App\Api\LanguageApi;
+use App\Custom\Cache\Services\CacheService;
 use App\Custom\Languages\Entities\LanguageEntity;
+use App\Custom\Logging\AppLog;
 
 class LanguageService {
+
+    /**
+     * @var CacheService
+     */
+    private $cacheService;
 
     /**
      * @var LanguageApi
@@ -17,9 +24,12 @@ class LanguageService {
      */
     private $isMultilanguageActive;
 
-    public function __construct(LanguageApi $api) {
+    public function __construct(
+        CacheService $cacheService,
+        LanguageApi $api) {
         $this->api = $api;
 
+        $this->cacheService = $cacheService;
         $this->isMultilanguageActive = config('custom.languages.isActiveMultilang');
     }
 
@@ -102,9 +112,53 @@ class LanguageService {
 
     /**
      * @param string $languageCode
+     * @return string|null
+     */
+    public function setCurrentLanguage(string $languageCode) {
+        try {
+            $outcome = null;
+
+            $language = $this->getLanguageByCode($languageCode);
+            if ($language != null) {
+                session(['applocale' => $languageCode]);
+                $this->cacheService->clearCache();
+                $outcome = $languageCode;
+            }
+            return $outcome;
+        } catch (\Exception $e) {
+            AppLog::error($e);
+            return null;
+        }
+
+    }
+
+    /**
+     * @return string|null
+     */
+    public function setFallbackLanguage() {
+        try {
+            $outcome = null;
+
+            $currentLocale = session('applocale');
+
+            if ($currentLocale == null || empty($currentLocale)) {
+                $currentLocale = config('app.fallback_locale');
+            }
+            app()->setLocale($currentLocale);
+            return $this->setCurrentLanguage($currentLocale);
+
+        } catch (\Exception $e) {
+            AppLog::error($e);
+            return null;
+        }
+
+    }
+
+    /**
+     * @param string $languageCode
      * @return LanguageEntity|null
      */
-    public function getLanguageByCode($languageCode) {
+    private function getLanguageByCode($languageCode) {
         $outcome = null;
         $availableLanguages = $this->getAllLanguages();
         foreach ($availableLanguages as $availableLanguage) {
@@ -123,11 +177,7 @@ class LanguageService {
         return app()->getLocale();
     }
 
-    /**
-     * @param LanguageEntity $languageEntity
-     * @return LanguageEntity
-     */
-    private function processLanguage(LanguageEntity $languageEntity) {
+    private function processLanguage(LanguageEntity $languageEntity): LanguageEntity {
         $languageEntity->isCurrent = $languageEntity->code == $this->getCurrentLanguageCode();
         return $languageEntity;
     }

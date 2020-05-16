@@ -2,10 +2,12 @@
 
 namespace App\ViewModelsServices;
 
+use App\Custom\Languages\Entities\LanguageEntity;
 use App\Custom\Languages\Services\LanguageService;
 use App\Custom\Logging\AppLog;
 use App\Custom\Pages\Entities\PageEntity;
 use App\Custom\Pages\Services\PagesService;
+use App\ViewModels\Language\LanguageViewModel;
 use App\ViewModels\Pages\PageViewModel;
 
 class PageViewModelService {
@@ -69,7 +71,7 @@ class PageViewModelService {
             $pageViewModel->title = $pageEntity->title;
             $pageViewModel->description = $pageEntity->description;
             $pageViewModel->viewPath = $pageEntity->viewPath;
-            $pageViewModel->currentLanguageId = $pageEntity->currentLanguageId;
+            $pageViewModel->currentLanguage = $this->createLanguageViewModelByEntity($pageEntity->currentLanguage);
             $pageViewModel->breadcrumbs = $this->breadcrumbViewModelService->getBreadcrumbByPageId($pageEntity->id);
 
             return $pageViewModel;
@@ -78,6 +80,24 @@ class PageViewModelService {
             AppLog::error($e);
             return null;
         }
+    }
+
+    /**
+     * @param LanguageEntity $languageEntity
+     */
+    private function createLanguageViewModelByEntity(LanguageEntity $languageEntity) {
+        $outcome = new LanguageViewModel();
+        if ($languageEntity != null) {
+            $outcome->code = $languageEntity->code;
+            $outcome->cultureCode = $languageEntity->cultureCode;
+            $outcome->name = $languageEntity->name;
+            $outcome->isDefault = $languageEntity->isDefault;
+            $outcome->isEnabled = $languageEntity->isEnabled;
+            $outcome->isVisible = $languageEntity->isVisible;
+            $outcome->isAuthVisible = $languageEntity->isAuthVisible;
+            $outcome->isCurrent = $languageEntity->isCurrent;
+        }
+        return $outcome;
     }
 
 }
