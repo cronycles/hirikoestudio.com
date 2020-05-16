@@ -80,7 +80,9 @@ class CategoriesApi implements ICrudApi, ISortingApi {
      */
     public function storeEntity($categoryEntity) {
         $category = $this->createCategoryServiceEntityFromEntity($categoryEntity);
-        return $this->mainApi->storeCategory($category);
+        $outcome = $this->mainApi->storeCategory($category);
+        $this->cacheService->clearCache();
+        return $outcome;
     }
 
     /**
@@ -89,7 +91,9 @@ class CategoriesApi implements ICrudApi, ISortingApi {
      */
     public function updateEntity($categoryEntity) {
         $category = $this->createCategoryServiceEntityFromEntity($categoryEntity);
-        return $this->mainApi->updateCategory($category);
+        $outcome = $this->mainApi->updateCategory($category);
+        $this->cacheService->clearCache();
+        return $outcome;
     }
 
     /**
@@ -97,8 +101,9 @@ class CategoriesApi implements ICrudApi, ISortingApi {
      * @return bool
      */
     public function updateSort(array $sortedIds) {
-
-        return $this->mainApi->updateCategoriesSort($sortedIds);
+        $outcome = $this->mainApi->updateCategoriesSort($sortedIds);
+        $this->cacheService->clearCache();
+        return $outcome;
     }
 
     /**
@@ -106,8 +111,9 @@ class CategoriesApi implements ICrudApi, ISortingApi {
      * @return bool
      */
     public function deleteEntity(int $id) {
-
-        return $this->mainApi->deleteCategory($id);
+        $outcome = $this->mainApi->deleteCategory($id);
+        $this->cacheService->clearCache();
+        return $outcome;
     }
 
     private function createCategoryServiceEntityFromEntity(CategoryEntity $categoryEntity) {

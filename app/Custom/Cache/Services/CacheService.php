@@ -3,7 +3,6 @@
 namespace App\Custom\Cache\Services;
 
 use App\Custom\Logging\AppLog;
-use App\Custom\Logging\Services\LoggingService;
 use Illuminate\Support\Facades\Cache;
 
 class CacheService {
@@ -72,6 +71,18 @@ class CacheService {
             return null;
         }
 
+    }
+
+    /**
+     * @param string|null $cacheKey
+     */
+    public function clearCache(string $cacheKey = null) {
+        if($cacheKey != null) {
+            Cache::forget($cacheKey);
+        }
+        else {
+            Cache::flush();
+        }
     }
 
 }

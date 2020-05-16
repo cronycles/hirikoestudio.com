@@ -82,7 +82,9 @@ class ProjectsApi implements ICrudApi, ISortingApi, IImagesUploaderApi {
      */
     public function storeEntity($projectEntity) {
         $project = $this->createProjectServiceEntityFromEntity($projectEntity);
-        return $this->mainApi->storeProject($project);
+        $outcome = $this->mainApi->storeProject($project);
+        $this->cacheService->clearCache();
+        return $outcome;
     }
 
     /**
@@ -91,7 +93,9 @@ class ProjectsApi implements ICrudApi, ISortingApi, IImagesUploaderApi {
      */
     public function updateEntity($projectEntity) {
         $project = $this->createProjectServiceEntityFromEntity($projectEntity);
-        return $this->mainApi->updateProject($project);
+        $outcome = $this->mainApi->updateProject($project);
+        $this->cacheService->clearCache();
+        return $outcome;
     }
 
     /**
@@ -99,8 +103,9 @@ class ProjectsApi implements ICrudApi, ISortingApi, IImagesUploaderApi {
      * @return bool
      */
     public function deleteEntity(int $id) {
-
-        return $this->mainApi->deleteProject($id);
+        $outcome = $this->mainApi->deleteProject($id);
+        $this->cacheService->clearCache();
+        return $outcome;
     }
 
     /**
@@ -108,12 +113,15 @@ class ProjectsApi implements ICrudApi, ISortingApi, IImagesUploaderApi {
      * @return bool
      */
     public function updateSort(array $sortedIds) {
-
-        return $this->mainApi->updateProjectsSort($sortedIds);
+        $outcome = $this->mainApi->updateProjectsSort($sortedIds);
+        $this->cacheService->clearCache();
+        return $outcome;
     }
 
     public function saveImage(int $projectId, UploadedFile $file) {
-        return $this->mainApi->saveProjectImage($projectId, $file);
+        $outcome = $this->mainApi->saveProjectImage($projectId, $file);
+        $this->cacheService->clearCache();
+        return $outcome;
     }
 
     /**
@@ -122,7 +130,9 @@ class ProjectsApi implements ICrudApi, ISortingApi, IImagesUploaderApi {
      * @return bool
      */
     public function deleteImage(int $projectId, int $imageId) {
-        return $this->mainApi->deleteProjectImage($projectId, $imageId);
+        $outcome = $this->mainApi->deleteProjectImage($projectId, $imageId);
+        $this->cacheService->clearCache();
+        return $outcome;
     }
 
     /**
@@ -131,8 +141,9 @@ class ProjectsApi implements ICrudApi, ISortingApi, IImagesUploaderApi {
      * @return bool
      */
     public function updateImagesSort(int $projectId, array $imagesSortedIds) {
-
-        return $this->mainApi->updateProjectImagesSort($projectId, $imagesSortedIds);
+        $outcome = $this->mainApi->updateProjectImagesSort($projectId, $imagesSortedIds);
+        $this->cacheService->clearCache();
+        return $outcome;
     }
 
     /**
@@ -142,7 +153,9 @@ class ProjectsApi implements ICrudApi, ISortingApi, IImagesUploaderApi {
      * @return bool
      */
     public function changeSmallView(int $projectId, int $imageId, bool $value = true) {
-        return $this->mainApi->changeProjectImageSmallView($projectId, $imageId, $value);
+        $outcome = $this->mainApi->changeProjectImageSmallView($projectId, $imageId, $value);
+        $this->cacheService->clearCache();
+        return $outcome;
     }
 
     private function createProjectServiceEntityFromEntity(ProjectEntity $projectEntity) {
