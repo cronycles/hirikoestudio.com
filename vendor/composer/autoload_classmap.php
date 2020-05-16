@@ -184,6 +184,7 @@ return array(
     'App\\ViewModelsServices\\PageViewModelService' => $baseDir . '/app/ViewModelsServices/PageViewModelService.php',
     'App\\ViewModelsServices\\ProjectsViewModelService' => $baseDir . '/app/ViewModelsServices/ProjectsViewModelService.php',
     'App\\ViewModels\\Categories\\CategoryViewModel' => $baseDir . '/app/ViewModels/Categories/CategoryViewModel.php',
+    'App\\ViewModels\\Language\\LanguageViewModel' => $baseDir . '/app/ViewModels/Language/LanguageViewModel.php',
     'App\\ViewModels\\Pages\\Auth\\AuthPageViewModel' => $baseDir . '/app/ViewModels/Pages/Auth/AuthPageViewModel.php',
     'App\\ViewModels\\Pages\\Auth\\Categories\\AuthCategoriesSortPageViewModel' => $baseDir . '/app/ViewModels/Pages/Auth/Categories/AuthCategoriesSortPageViewModel.php',
     'App\\ViewModels\\Pages\\Auth\\Categories\\AuthCategoryCreatePageViewModel' => $baseDir . '/app/ViewModels/Pages/Auth/Categories/AuthCategoryCreatePageViewModel.php',

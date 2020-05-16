@@ -668,6 +668,7 @@ class ComposerStaticInit64a0b6ae438e51e9e92fb4b41efdd61b
         'App\\ViewModelsServices\\PageViewModelService' => __DIR__ . '/../..' . '/app/ViewModelsServices/PageViewModelService.php',
         'App\\ViewModelsServices\\ProjectsViewModelService' => __DIR__ . '/../..' . '/app/ViewModelsServices/ProjectsViewModelService.php',
         'App\\ViewModels\\Categories\\CategoryViewModel' => __DIR__ . '/../..' . '/app/ViewModels/Categories/CategoryViewModel.php',
+        'App\\ViewModels\\Language\\LanguageViewModel' => __DIR__ . '/../..' . '/app/ViewModels/Language/LanguageViewModel.php',
         'App\\ViewModels\\Pages\\Auth\\AuthPageViewModel' => __DIR__ . '/../..' . '/app/ViewModels/Pages/Auth/AuthPageViewModel.php',
         'App\\ViewModels\\Pages\\Auth\\Categories\\AuthCategoriesSortPageViewModel' => __DIR__ . '/../..' . '/app/ViewModels/Pages/Auth/Categories/AuthCategoriesSortPageViewModel.php',
         'App\\ViewModels\\Pages\\Auth\\Categories\\AuthCategoryCreatePageViewModel' => __DIR__ . '/../..' . '/app/ViewModels/Pages/Auth/Categories/AuthCategoryCreatePageViewModel.php',
