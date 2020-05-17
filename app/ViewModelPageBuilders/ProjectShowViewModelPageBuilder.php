@@ -81,8 +81,10 @@ class ProjectShowViewModelPageBuilder extends ViewModelPageBuilder {
         $projectEntities = $this->projectsService->getProjects();
         $categoriesEntities = $this->categoriesService->getCategories();
 
-        $pageViewModel->projects = $this->projectsViewModelService->createProjectsModel($projectEntities);
+        $pageViewModel->moreProjectsTitle = __('page-project-show.moreProjectsTitle');
+        $pageViewModel->moreProjectsDescription = __('page-project-show.moreProjectsDescription');
 
+        $pageViewModel->projects = $this->projectsViewModelService->createProjectsModel($projectEntities);
         $pageViewModel->categories = $this->projectsViewModelService->createCategoriesViewModelByEntities($categoriesEntities, $projectEntities);
 
         return $pageViewModel;

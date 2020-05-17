@@ -23,6 +23,16 @@ class ProjectPageViewModel extends PageViewModel {
      */
     public $projects;
 
+    /**
+     * @var string
+     */
+    public $moreProjectsTitle;
+
+    /**
+     * @var string
+     */
+    public $moreProjectsDescription;
+
     public function __construct() {
         parent::__construct();
         $this->categories = [];

@@ -25,8 +25,8 @@
             <hr />
         </div>
         <article class="page__section show__section">
-            <h2>¿Más Proyectos?</h2>
-            <p>¿Te apetece echar un vistazo a otros proyectos?</p>
+            <h2>{{$model->moreProjectsTitle}}</h2>
+            <p>{{$model->moreProjectsDescription}}</p>
         </article>
         <article class="page__section show__section">
             @include('pages.projects._projects-gallery')
