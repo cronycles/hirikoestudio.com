@@ -3,17 +3,5 @@
 <meta name="description" content="{{$model->htmlMetaDescription}}"/>
 <meta name="keywords" content="{{$model->htmlMetaKeywords}}">
 <meta name="author" content="cronycles">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-<meta name="msapplication-TileColor" content="#ffc40d">
-<meta name="theme-color" content="#ffffff">
-
-<meta property="og:title" content="{{$model->htmlTitle}}">
-<meta property="og:description" content="{{$model->htmlMetaDescription}}" />
-<meta property="og:image" content="{{$model->ogImageUrl}}" />
-<meta property="og:type" content="website" />
-<meta property="og:locale" content="{{$model->currentLanguage->cultureCode}}" />
-<meta name="csrf-token" content="{{csrf_token()}}" />
+@include('custom.layouts.head._meta-favicon')
+@include('custom.layouts.head._meta-og')
