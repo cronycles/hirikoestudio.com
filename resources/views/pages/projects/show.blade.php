@@ -3,7 +3,7 @@
     <div id="page__project-show">
         <article class="page__section show__section">
             <h1>{{$model->project->title}}</h1>
-            <div>{!! $model->project->description !!}</div>
+            <p>{!! $model->project->description !!}</p>
         </article>
         <article class="page__section show__section">
             @if($model->project->images != null && !empty($model->project->images))
