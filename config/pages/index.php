@@ -8,5 +8,6 @@ return [
     'titleKey' => 'page-index.title',
     'shortNameKey' => 'page-index.shortName',
     'descriptionKey' => 'page-index.description',
-    'viewPath' => 'pages.index'
+    'viewPath' => 'pages.index',
+    'slidesNumber' => env('HOME_SLIDES_NUMBER')
 ];

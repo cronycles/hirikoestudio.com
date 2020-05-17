@@ -24,7 +24,7 @@ return [
         'socialsDefaultLogo' => $imagesBaseUrl . '/og_social_default_logo.jpg',
         'shopWindow' => $imagesBaseUrl . '/shop-ext-contact.jpg',
         'defaultProjectImage' => $imagesBaseUrl . '/defaultProjectImage_560x360.jpg',
-        'homeSlide1' => $imagesBaseUrl . '/home-slide1.jpg',
+        'homeSlidesUrl' => $imagesBaseUrl . '/home-slides',
         'homeSlide2' => $imagesBaseUrl . '/home-slide2.jpg',
         'homeSlide3' => $imagesBaseUrl . '/home-slide3.jpg',
     ]
