@@ -3,6 +3,7 @@
 namespace App\ViewModelPageBuilders;
 
 use App\Custom\Pages\Builders\ViewModelPageBuilder;
+use App\Entities\ProjectEntity;
 use App\Services\Categories\CategoriesService;
 use App\Services\Projects\ProjectsService;
 use App\ViewModels\Pages\Projects\ProjectPageViewModel;
@@ -46,20 +47,22 @@ class ProjectShowViewModelPageBuilder extends ViewModelPageBuilder {
      */
     public function fillPageViewModel($pageViewModel, $params) {
 
-        $pageViewModel = $this->fillMainSection($pageViewModel, $params);
-        $pageViewModel = $this->fillMoreProjectsSection($pageViewModel);
+        $projectId = $params['id'];
+
+        $pageViewModel = $this->fillMainSection($pageViewModel, $projectId);
+        $pageViewModel = $this->fillMoreProjectsSection($pageViewModel, $projectId);
 
         return $pageViewModel;
     }
 
     /**
      * @param ProjectPageViewModel $pageViewModel
-     * @param array $params
+     * @param int $projectId
      * @return ProjectPageViewModel
      */
-    private function fillMainSection($pageViewModel, $params) {
+    private function fillMainSection(ProjectPageViewModel $pageViewModel, int $projectId) {
 
-        $projectEntity = $this->projectsService->getProjectById($params['id']);
+        $projectEntity = $this->projectsService->getProjectById($projectId);
         $pageViewModel->title = $projectEntity->title;
         $pageViewModel->description = $projectEntity->description;
         $pageViewModel->project = $this->projectsViewModelService->createProjectModel($projectEntity);
@@ -73,10 +76,10 @@ class ProjectShowViewModelPageBuilder extends ViewModelPageBuilder {
 
     /**
      * @param ProjectPageViewModel $pageViewModel
-     * @param array $params
+     * @param int $projectId
      * @return ProjectPageViewModel
      */
-    private function fillMoreProjectsSection($pageViewModel) {
+    private function fillMoreProjectsSection(ProjectPageViewModel $pageViewModel, int $projectId) {
 
         $projectEntities = $this->projectsService->getProjects();
         $categoriesEntities = $this->categoriesService->getCategories();
@@ -84,10 +87,31 @@ class ProjectShowViewModelPageBuilder extends ViewModelPageBuilder {
         $pageViewModel->moreProjectsTitle = __('page-project-show.moreProjectsTitle');
         $pageViewModel->moreProjectsDescription = __('page-project-show.moreProjectsDescription');
 
-        $pageViewModel->projects = $this->projectsViewModelService->createProjectsModel($projectEntities);
+        $projectEntities = $this->removeCurrentProjectFromTheListOfOtherProjects($projectEntities, $projectId);
+
         $pageViewModel->categories = $this->projectsViewModelService->createCategoriesViewModelByEntities($categoriesEntities, $projectEntities);
+        $pageViewModel->projects = $this->projectsViewModelService->createProjectsModel($projectEntities);
 
         return $pageViewModel;
     }
+
+    /**
+     * @param ProjectEntity[] $projectEntities
+     * @param int $projectId
+     * @return ProjectEntity[]
+     */
+    private function removeCurrentProjectFromTheListOfOtherProjects(array $projectEntities, int $projectId) {
+        $outcome = [];
+        if ($projectEntities != null && !empty($projectEntities)) {
+            foreach ($projectEntities as $projectEntity) {
+                if ($projectEntity != null && $projectEntity->id != $projectId) {
+                    array_push($outcome, $projectEntity);
+                }
+            }
+        }
+
+        return $outcome;
+    }
+
 
 }
