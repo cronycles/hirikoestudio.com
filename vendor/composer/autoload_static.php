@@ -690,6 +690,7 @@ class ComposerStaticInit64a0b6ae438e51e9e92fb4b41efdd61b
         'App\\ViewModels\\Pages\\Contact\\InfoViewModel' => __DIR__ . '/../..' . '/app/ViewModels/Pages/Contact/InfoViewModel.php',
         'App\\ViewModels\\Pages\\CrudPageViewModel' => __DIR__ . '/../..' . '/app/ViewModels/Pages/CrudPageViewModel.php',
         'App\\ViewModels\\Pages\\Index\\IndexViewModel' => __DIR__ . '/../..' . '/app/ViewModels/Pages/Index/IndexViewModel.php',
+        'App\\ViewModels\\Pages\\Index\\SlideViewModel' => __DIR__ . '/../..' . '/app/ViewModels/Pages/Index/SlideViewModel.php',
         'App\\ViewModels\\Pages\\PageViewModel' => __DIR__ . '/../..' . '/app/ViewModels/Pages/PageViewModel.php',
         'App\\ViewModels\\Pages\\Projects\\ProjectPageViewModel' => __DIR__ . '/../..' . '/app/ViewModels/Pages/Projects/ProjectPageViewModel.php',
         'App\\ViewModels\\Pages\\Projects\\ProjectsPageViewModel' => __DIR__ . '/../..' . '/app/ViewModels/Pages/Projects/ProjectsPageViewModel.php',

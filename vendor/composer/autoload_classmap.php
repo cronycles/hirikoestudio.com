@@ -206,6 +206,7 @@ return array(
     'App\\ViewModels\\Pages\\Contact\\InfoViewModel' => $baseDir . '/app/ViewModels/Pages/Contact/InfoViewModel.php',
     'App\\ViewModels\\Pages\\CrudPageViewModel' => $baseDir . '/app/ViewModels/Pages/CrudPageViewModel.php',
     'App\\ViewModels\\Pages\\Index\\IndexViewModel' => $baseDir . '/app/ViewModels/Pages/Index/IndexViewModel.php',
+    'App\\ViewModels\\Pages\\Index\\SlideViewModel' => $baseDir . '/app/ViewModels/Pages/Index/SlideViewModel.php',
     'App\\ViewModels\\Pages\\PageViewModel' => $baseDir . '/app/ViewModels/Pages/PageViewModel.php',
     'App\\ViewModels\\Pages\\Projects\\ProjectPageViewModel' => $baseDir . '/app/ViewModels/Pages/Projects/ProjectPageViewModel.php',
     'App\\ViewModels\\Pages\\Projects\\ProjectsPageViewModel' => $baseDir . '/app/ViewModels/Pages/Projects/ProjectsPageViewModel.php',
