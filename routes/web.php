@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,8 +47,14 @@ Route::get('password/reset/{token}', ['as' => 'password.reset', 'uses' => 'Auth\
 
 Route::get('lang/{language}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
 
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/auth', ['as' => 'auth', 'uses' => 'Auth\AuthPagesController@index']);
+
+    Route::get('auth/cache-flush', function () {
+        Cache::flush();
+        dd("cache flushed");
+    });
 
     //Auth Categories
     Route::get('/auth/categories', ['as' => 'auth.categories', 'uses' => 'Auth\AuthPagesController@categories']);

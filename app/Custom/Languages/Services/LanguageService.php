@@ -3,16 +3,10 @@
 namespace App\Custom\Languages\Services;
 
 use App\Api\LanguageApi;
-use App\Custom\Cache\Services\CacheService;
 use App\Custom\Languages\Entities\LanguageEntity;
 use App\Custom\Logging\AppLog;
 
 class LanguageService {
-
-    /**
-     * @var CacheService
-     */
-    private $cacheService;
 
     /**
      * @var LanguageApi
@@ -25,11 +19,9 @@ class LanguageService {
     private $isMultilanguageActive;
 
     public function __construct(
-        CacheService $cacheService,
         LanguageApi $api) {
         $this->api = $api;
 
-        $this->cacheService = $cacheService;
         $this->isMultilanguageActive = config('custom.languages.isActiveMultilang');
     }
 
@@ -121,7 +113,6 @@ class LanguageService {
             $language = $this->getLanguageByCode($languageCode);
             if ($language != null) {
                 session(['applocale' => $languageCode]);
-                $this->cacheService->clearCache();
                 $outcome = $languageCode;
             }
             return $outcome;
