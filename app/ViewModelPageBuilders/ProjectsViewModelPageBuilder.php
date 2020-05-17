@@ -25,11 +25,6 @@ class ProjectsViewModelPageBuilder extends ViewModelPageBuilder {
     private $categoriesService;
 
     /**
-     * @var CategoriesViewModelService
-     */
-    private $categoryViewModelService;
-
-    /**
      * @var ProjectsViewModelService
      */
     private $projectsViewModelService;
@@ -37,13 +32,11 @@ class ProjectsViewModelPageBuilder extends ViewModelPageBuilder {
     public function __construct(
         ProjectsService $projectsService,
         CategoriesService $categoriesService,
-        ProjectsViewModelService $projectsViewModelService,
-        CategoriesViewModelService $categoryViewModelService) {
+        ProjectsViewModelService $projectsViewModelService) {
 
         $this->projectsService = $projectsService;
         $this->categoriesService = $categoriesService;
         $this->projectsViewModelService = $projectsViewModelService;
-        $this->categoryViewModelService = $categoryViewModelService;
     }
 
     public function createNewViewModel() {
@@ -62,53 +55,10 @@ class ProjectsViewModelPageBuilder extends ViewModelPageBuilder {
 
         $pageViewModel->projects = $this->projectsViewModelService->createProjectsModel($projectEntities);
 
-        $projectsCategoryIds = [];
-        if ($projectEntities != null and !empty($projectEntities)) {
-            /** @var ProjectEntity $projectEntityEntity */
-            foreach ($projectEntities as $projectEntityEntity) {
-                if ($projectEntityEntity != null) {
-                    array_push($projectsCategoryIds, $projectEntityEntity->category->id);
-                }
-            }
-        }
-
-        $pageViewModel->categories = $this->createCategoriesViewModelByEntities($categoriesEntities, $projectsCategoryIds);
+        $pageViewModel->categories = $this->projectsViewModelService->createCategoriesViewModelByEntities($categoriesEntities, $projectEntities);
 
         return $pageViewModel;
     }
 
-    /**
-     * @param CategoryEntity[] $categoriesEntities
-     */
-    private function createCategoriesViewModelByEntities(array $categoriesEntities, array $projectsCategoryIds) {
-        try {
-            $outcome = [];
-
-            if ($categoriesEntities != null && count($categoriesEntities) > 1) {
-                foreach ($categoriesEntities as $categoryEntity) {
-                    if (in_array($categoryEntity->id, $projectsCategoryIds)) {
-                        $categoryViewModel = $this->categoryViewModelService->createCategoryViewModelByEntity($categoryEntity);
-                        array_push($outcome, $categoryViewModel);
-                    }
-                }
-            }
-
-            if(count($outcome) > 1) {
-                $allCategory = $this->categoryViewModelService->createCategoryAllViewModel();
-                array_unshift($outcome, $allCategory);
-            }
-            else {
-                $outcome = [];
-            }
-
-
-            return $outcome;
-
-        } catch (\Exception $e) {
-            AppLog::error($e);
-            return [];
-        }
-
-    }
 
 }
