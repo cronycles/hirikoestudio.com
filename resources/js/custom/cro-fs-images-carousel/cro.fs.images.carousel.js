@@ -1,5 +1,7 @@
 import {tns} from 'tiny-slider/src/tiny-slider';
+import CroDeviceImagesHelper from "../cro-device-images-helper/cro.device.images.helper";
 export default class CroFullScreenImagesCarousel {
+    #container;
     constructor(customOptions = {}) {
 
         let defaultOptions = {
@@ -17,6 +19,11 @@ export default class CroFullScreenImagesCarousel {
         };
 
         let mergedOptions = {...defaultOptions, ...customOptions };
+
+        this.#container = mergedOptions.container;
+
+        const croDeviceImagesHelper = new CroDeviceImagesHelper(this.#container);
+        croDeviceImagesHelper.setImagesBasedOnScreen();
 
         var slider = tns(mergedOptions);
     }
