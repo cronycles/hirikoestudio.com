@@ -59,7 +59,7 @@ class ProjectsViewModelService {
             $outcome->category = $this->categoriesViewModelService->createCategoryViewModelByEntity($projectEntity->category);
             $outcome->title = $projectEntity->title;
             $outcome->description = $projectEntity->description;
-            $outcome->url = route('projects.show', $projectEntity->id);
+            $outcome->url = route('projects.show', ['slug' => $projectEntity->slug]);
             $outcome->cover = $this->imagesViewModelService->createImageCoverViewModelByImageEntityList($projectEntity->images);
             $outcome->images = $this->imagesViewModelService->createImagesViewModel($projectEntity->images);
             $outcome->viewText = trans('gallery.view');

@@ -4,6 +4,7 @@ namespace App\External\ApiServices;
 
 use App\Custom\ImagesUploader\Helpers\ImagesHelper;
 use App\Custom\Logging\AppLog;
+use App\Custom\Slug\Helpers\SlugHelper;
 use App\Custom\Translations\ApiServiceEntities\Translation;
 use App\External\ApiServiceEntities\Category;
 use App\External\ApiServiceEntities\Language;
@@ -50,13 +51,19 @@ class PublicApiService {
      */
     private $imageService;
 
+    /**
+     * @var SlugHelper
+     */
+    private $slugHelper;
+
     public function __construct(
         UsersRepository $usersRepository,
         LocalesRepository $localesRepository,
         ProjectsRepository $projectsRepository,
         CategoriesRepository $categoriesRepository,
         ImagesRepository $imagesRepository,
-        ImagesHelper $imageService) {
+        ImagesHelper $imageService,
+        SlugHelper $slugHelper) {
 
         $this->usersRepository = $usersRepository;
         $this->localesRepository = $localesRepository;
@@ -64,6 +71,7 @@ class PublicApiService {
         $this->categoriesRepository = $categoriesRepository;
         $this->imagesRepository = $imagesRepository;
         $this->imageService = $imageService;
+        $this->slugHelper = $slugHelper;
     }
 
     /**
@@ -423,6 +431,7 @@ class PublicApiService {
         if ($dbProject != null) {
             $outcome->id = $dbProject->id;
             $outcome->title = $dbProject->title;
+            $outcome->slug = $this->slugHelper->addIdToSlug($dbProject->slug, $dbProject->id);
             $outcome->description = $dbProject->description;
             $outcome->descriptionTranslations = $this->createTranslationModels($dbProject, 'description');
             $category = new Category();
@@ -470,6 +479,7 @@ class PublicApiService {
             if ($outcome != null) {
                 $outcome->category_id = $projectEntity->category->id;
                 $outcome->title = $projectEntity->title;
+                $outcome->slug = $this->slugHelper->slugifyText($projectEntity->title);
                 $outcome->show = $projectEntity->isVisible;
 
                 foreach ($projectEntity->descriptionTranslations as $titleTranslation) {

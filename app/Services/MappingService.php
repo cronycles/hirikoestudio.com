@@ -97,6 +97,7 @@ class MappingService {
             $outcome->id = $serviceProject->id;
             $outcome->category = $this->mapCategory($serviceProject->category);
             $outcome->title = $serviceProject->title;
+            $outcome->slug = $serviceProject->slug;
             $outcome->description = $serviceProject->description;
             $outcome->isVisible = $serviceProject->isVisible;
             $outcome->images = $this->mapImages($serviceProject->images);

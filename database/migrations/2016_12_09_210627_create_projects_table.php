@@ -17,6 +17,7 @@ class CreateFailedJobsTable extends Migration
             $table->increments('id');
             $table->integer('category_id')->unsigned();
             $table->string('title')->nullable();
+            $table->string('slug')->nullable();
             $table->json('description')->nullable();
             $table->integer('order_number')->nullable();
             $table->boolean('show')->default(false);

@@ -26,6 +26,11 @@ class ProjectEntity extends CustomEntity{
     /**
      * @var string
      */
+    public $slug;
+
+    /**
+     * @var string
+     */
     public $description;
 
     /**

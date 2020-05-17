@@ -25,6 +25,11 @@ class Project {
     /**
      * @var string
      */
+    public $slug;
+
+    /**
+     * @var string
+     */
     public $description;
 
     /**

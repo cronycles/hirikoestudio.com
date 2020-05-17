@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Custom\Slug\Controllers\SlugController;
 use App\ViewModelsServices\PageViewModelService;
 use Illuminate\Http\Request;
 
-class PagesController extends Controller {
+class PagesController extends SlugController {
 
     /**
      * @var PageViewModelService
@@ -31,9 +32,11 @@ class PagesController extends Controller {
         return view($model->viewPath, compact('model'));
     }
 
-    public function projectShow($id) {
+    public function projectShow($slug) {
+        $id = $this->getIdFromSlug($slug);
         $model = $this->pageViewModelService->getViewModelByPageId(config('custom.pages.PROJECT_SHOW'), ['id' => $id]);
         return view($model->viewPath, compact('model'));
     }
+
 
 }
