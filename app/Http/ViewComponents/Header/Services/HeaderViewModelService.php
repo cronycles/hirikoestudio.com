@@ -87,8 +87,7 @@ class HeaderViewModelService {
      */
     private function createUserPageLinks() {
         $outcome = [
-            $this->createLoginLinkModel(),
-            $this->createRegisterLink()
+            $this->createLoginLinkModel()
         ];
         return $outcome;
     }
@@ -167,13 +166,6 @@ class HeaderViewModelService {
         $url = route('login');
         $text = $this->getMenuPageTextFromConfig(config('custom.pages.AUTH_LOGIN'));
         $isActive = Route::currentRouteNamed('login*');
-        return new HeaderLinkViewModel($url, $text, $isActive);
-    }
-
-    private function createRegisterLink() {
-        $url = route('register');
-        $text = $this->getMenuPageTextFromConfig(config('custom.pages.AUTH_REGISTER'));
-        $isActive = Route::currentRouteNamed('register*');
         return new HeaderLinkViewModel($url, $text, $isActive);
     }
 

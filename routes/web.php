@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', ['as' => 'index', 'uses' => 'PagesController@index']);
 
 //projects
-Route::get('projects', ['as' => 'projects', 'uses' => 'PagesController@projects']);
+Route::get(__('routes.projects'), ['as' => 'projects', 'uses' => 'PagesController@projects']);
 Route::get('projects/{id}', ['as' => 'projects.show', 'uses' => 'PagesController@projectShow']);
 
 //contact
-Route::get('contact', ['as' => 'contact', 'uses' => 'PagesController@contact']);
+Route::get(__('routes.contact'), ['as' => 'contact', 'uses' => 'PagesController@contact']);
 Route::post('contact', ['as' => 'contact.send', 'uses' => 'ContactController@send']);
 
 
@@ -41,8 +41,8 @@ Route::post('password/reset', ['as' => 'password.update', 'uses' => 'Auth\ResetP
 Route::get('password/reset/{token}', ['as' => 'password.reset', 'uses' => 'Auth\ResetPasswordController@showResetForm']);
 
 //Registration Routes...
-Route::get('register', ['as' => 'register', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
-Route::post('register', ['as' => 'register', 'uses' => 'Auth\RegisterController@register']);
+//Route::get('register', ['as' => 'register', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
+//Route::post('register', ['as' => 'register', 'uses' => 'Auth\RegisterController@register']);
 
 Route::get('lang/{language}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
 
