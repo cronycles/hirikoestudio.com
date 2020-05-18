@@ -57,12 +57,16 @@
     transition: 0.5s;
     display: grid;
     align-items: center;
+    background-color: $headerMobileMenuBackgroundColor;
+    grid-gap: 2rem;
+    text-align: center;
 
     @media (--no-mobileDevice) {
         grid-gap: 0.5rem;
         width: initial;
         position: initial;
         background: none;
+        text-align: initial;
         grid-auto-flow: column;
     }
 
@@ -73,15 +77,16 @@
     }
 
     li {
-        background-color: $headerMobileMenuBackgroundColor;
         @media (--no-mobileDevice) {
             float: left;
             margin-left: $headerLinksSpaceNoMobile;
-            background-color: initial;
         }
 
         a i {
-            font-size: 2rem;
+            font-size: 1.5em;
+            @media (--no-mobileDevice) {
+                font-size: 1.6em;
+            }
         }
     }
 }
@@ -93,11 +98,10 @@
     letter-spacing: 0.1rem;
     text-transform: uppercase;
     padding: $headerLinksSpace 3%;
-    border-top: 1px solid;
-
     color: $headerMobileMenuTextColor;
 
     @media (--no-mobileDevice) {
+        font-size: $headerLinkFontSizeNoMobile;
         padding: 0;
         line-height: inherit;
         border: 0;
@@ -115,7 +119,7 @@
         display: grid;
         grid-auto-flow: column;
         align-items: center;
-        justify-content: start;
+        justify-content: center;
 
         &:hover {
             span {
