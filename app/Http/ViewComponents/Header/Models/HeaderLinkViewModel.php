@@ -8,7 +8,7 @@ class HeaderLinkViewModel {
     public $text;
     public $isActive;
 
-    public function __construct($url, $text, $isActive) {
+    public function __construct($url, $text, $isActive = false) {
         $this->url = $url;
         $this->text = $text;
         $this->isActive = $isActive;
