@@ -75,7 +75,6 @@ class HeaderViewModelService {
      */
     private function createPageLinks() {
         $outcome = [
-            $this->createHomeLinkModel(),
             $this->createProjectsLinkModel(),
             $this->createContactLinkModel()
         ];
@@ -111,16 +110,6 @@ class HeaderViewModelService {
         }
 
         return $outcome;
-    }
-
-    /**
-     * @return HeaderLinkViewModel
-     */
-    private function createHomeLinkModel() {
-        $url = route('index');
-        $text = $this->getMenuPageTextFromConfig(config('custom.pages.INDEX'));
-        $isActive = Route::currentRouteNamed('index*');
-        return new HeaderLinkViewModel($url, $text, $isActive);
     }
 
     /**

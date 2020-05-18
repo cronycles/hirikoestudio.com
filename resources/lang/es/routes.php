@@ -2,6 +2,6 @@
 
 return [
     'projects' => 'proyectos',
-    'contact' => 'contactos'
+    'contact' => 'contacto'
     // other routes name
 ];

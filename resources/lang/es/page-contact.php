@@ -5,7 +5,7 @@ return [
     'htmlMetaDescription' => 'Si necesitas cualquier cosa contactanos',
     'htmlMetaKeywordsKey' => '',
     'title' => '¿Nos necesitas?',
-    'shortName' => 'Contactos',
+    'shortName' => 'Contacto',
     'description' => 'En ' . config('custom.company.name') . ' estamos a tu completa disposición:
     puedes llamarnos directamente al número que encuentras aquí abajo,
     encontrarás respuestas rápidas a tus preguntas.
