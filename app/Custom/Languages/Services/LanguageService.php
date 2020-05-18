@@ -149,7 +149,7 @@ class LanguageService {
      * @param string $languageCode
      * @return LanguageEntity|null
      */
-    private function getLanguageByCode($languageCode) {
+    public function getLanguageByCode($languageCode) {
         $outcome = null;
         $availableLanguages = $this->getAllLanguages();
         foreach ($availableLanguages as $availableLanguage) {

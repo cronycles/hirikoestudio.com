@@ -6,7 +6,10 @@ use App\Custom\Languages\Services\LanguageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
 
-trait LanguageControllerTrait  {
+trait LanguageControllerTrait {
+
+    protected $previousRequest;
+    protected $locale;
 
     /**
      * @var LanguageService
@@ -17,48 +20,60 @@ trait LanguageControllerTrait  {
         $this->languageService = $languageService;
     }
 
-    public function switchLang(Request $request, $lang)
-    {
-        // Store the URL on which the user was
-        $previous_url = url()->previous();
+    public function switchLang(Request $request, $locale) {
 
-        // Transform it into a correct request instance
-        $previous_request = app('request')->create($previous_url);
-
-        // Get Query Parameters if applicable
-        $query = $previous_request->query();
-
-        // In case the route name was translated
-        $route_name = app('router')->getRoutes()->match($previous_request)->getName();
+        $this->previousRequest = $this->getPreviousRequest();
+        $this->locale = $locale;
 
         // Store the segments of the last request as an array
-        $segments = $previous_request->segments();
+        $segments = $this->previousRequest->segments();
 
-        $isLanguageChanged = $this->languageService->setCurrentLanguage($lang);
-        if ($isLanguageChanged) {
-            // If it was indeed a translated route name
-            if ($route_name && Lang::has('routes.' . $route_name, $lang)) {
-
-                // Translate the route name to get the correct URI in the required language, and redirect to that URL.
-                if (count($query)) {
-                    return redirect()->to($lang . '/' .  trans('routes.' . $route_name, [], $lang) . '?' . http_build_query($query));
-                }
-
-                return redirect()->to($lang . '/' .  trans('routes.' . $route_name, [], $lang));
-            }
-
+        $language = $this->languageService->getLanguageByCode($locale);
+        if ($language != null) {
             // Replace the first segment by the new language code
-            $segments[0] = $lang;
+            $segments[0] = $this->locale;
+
+            $newRoute = $this->translateRouteSegments($segments);
 
             // Redirect to the required URL
-            if (count($query)) {
-                return redirect()->to(implode('/', $segments) . '?' . http_build_query($query));
-            }
-
-            return redirect()->to(implode('/', $segments));
+            return redirect()->to($this->buildNewRoute($newRoute));
         }
 
-        return redirect()->back();
+        return back();
+    }
+
+    private function getPreviousRequest()
+    {
+        // We Transform the URL on which the user was into a Request instance
+        return request()->create(url()->previous());
+    }
+
+    private function translateRouteSegments($segments)
+    {
+        $translatedSegments = collect();
+
+        foreach ($segments as $segment) {
+            if ($key = array_search($segment, Lang::get('routes'))) {
+                // The segment exists in the translations, so we will grab the translated version.
+                $translatedSegments->push(trans('routes.' . $key, [], $this->locale));
+            } else {
+                // Otherwise we simply reuse the same.
+                $translatedSegments->push($segment);
+            }
+        }
+
+        return $translatedSegments;
+    }
+
+    private function buildNewRoute($newRoute)
+    {
+        $redirectUrl = implode('/', $newRoute->toArray());
+
+        // Get Query Parameters if any, so they are preserved
+        $queryBag = $this->previousRequest->query();
+        $redirectUrl .= count($queryBag) ? '?' . http_build_query($queryBag) : '';
+
+        return $redirectUrl;
     }
 
 }
