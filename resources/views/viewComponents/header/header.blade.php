@@ -1,6 +1,9 @@
 <header id="header" class="jheader {{$model->hasInvertedColors ? 'inverted' : ''}}">
-    <div id="header__logo"><a href="{{$model->logo->url}}"><img src="{{$model->logo->imageUrl}}"
-                                                                alt="{{$model->logo->altText}}"></a></div>
+    <div id="header__logo">
+        <a href="{{$model->logo->url}}">
+            <img src="{{$model->logo->imageUrl}}" alt="{{$model->logo->altText}}">
+        </a>
+    </div>
     <div id="header__burger" class="jburgerBtn">
         <i data-open="las la-times" data-closed="las la-bars" class="las la-bars"></i>
     </div>
@@ -8,8 +11,11 @@
         <nav id="header__nav" class="jnavContainer">
             <ul>
                 @foreach($model->pageLinks as $pageLink)
-                    <li><a href="{{$pageLink->url}}"
-                           class="{{ $pageLink->isActive ? 'active' : "" }}">{{$pageLink->text}}</a></li>
+                    <li>
+                        <a href="{{$pageLink->url}}"
+                           class="{{ $pageLink->isActive ? 'active' : "" }}">{{$pageLink->text}}
+                        </a>
+                    </li>
                 @endforeach
             </ul>
             @if (!empty($model->socialLinks))
@@ -17,7 +23,7 @@
                     @foreach($model->socialLinks as $socialLink)
                         <li>
                             <a href="{{$socialLink->url}}" target="_blank">
-                                <i class="{{$socialLink->iconClass}}"></i>
+                                <i class="{{$socialLink->iconClass}}" title="{{$socialLink->text}}"></i>
                             </a>
                         </li>
                     @endforeach

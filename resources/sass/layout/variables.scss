@@ -37,7 +37,7 @@ $headerLinkFontSizeNoMobile: 1rem;
 $headerBackgroundColor: transparent;
 $headerMobileMenuBackgroundColor: #44444491;
 $headerMobileMenuTextColor: $complementaryColor;
-$headerDropdownMenuBackgroundColor: $corporateColor;
+$headerDropdownMenuBackgroundColor: $headerMobileMenuBackgroundColor;
 $headerDropdownMenuTextColor: $complementaryColor;
 $headerInvertedLinkColor: $complementaryColor; //nella home bisogna invertire il colore del header link
 

@@ -131,7 +131,6 @@
     }
 
     .dropdown__list-container {
-        padding-left: 15px;
         display: none;
         @media (--no-mobileDevice) {
             position: absolute;
@@ -144,11 +143,11 @@
             line-height: $headerHeight / 2;
             float: none;
             display: block;
-            text-align: left;
             font-size: $headerLinkFontSize - 0.3rem;
-            padding: 10px 3%;
+            padding: 0;
             @media (--no-mobileDevice) {
                 padding: inherit;
+                font-size: $headerLinkFontSizeNoMobile;
             }
         }
     }
