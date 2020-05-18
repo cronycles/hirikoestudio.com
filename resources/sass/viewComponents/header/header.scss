@@ -59,6 +59,7 @@
     align-items: center;
 
     @media (--no-mobileDevice) {
+        grid-gap: 0.5rem;
         width: initial;
         position: initial;
         background: none;
@@ -94,7 +95,6 @@
     padding: $headerLinksSpace 3%;
     border-top: 1px solid;
 
-    @include linkBehaviour;
     color: $headerMobileMenuTextColor;
 
     @media (--no-mobileDevice) {
@@ -112,10 +112,18 @@
         outline: none;
         margin: 0;
         cursor: pointer;
+        display: grid;
+        grid-auto-flow: column;
+        align-items: center;
+        justify-content: start;
 
-        i {
-            font-size: initial;
+        &:hover {
+            span {
+                text-decoration: underline;
+            }
+            font-weight: bold;
         }
+
     }
 
     .dropdown__list-container {

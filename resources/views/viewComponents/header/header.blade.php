@@ -12,6 +12,17 @@
                            class="{{ $pageLink->isActive ? 'active' : "" }}">{{$pageLink->text}}</a></li>
                 @endforeach
             </ul>
+            @if (!empty($model->socialLinks))
+                <ul>
+                    @foreach($model->socialLinks as $socialLink)
+                        <li>
+                            <a href="{{$socialLink->url}}">
+                                <i class="{{$socialLink->iconClass}}"></i>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
             <ul>
                 @if (!empty($model->languageLinks))
                     <li>
@@ -49,17 +60,6 @@
                             </div>
                         </div>
                     </li>
-                </ul>
-            @endif
-            @if (!empty($model->socialLinks))
-                <ul>
-                    @foreach($model->socialLinks as $socialLink)
-                        <li>
-                            <a href="{{$socialLink->url}}">
-                                <i class="{{$socialLink->iconClass}}"></i>
-                            </a>
-                        </li>
-                    @endforeach
                 </ul>
             @endif
         </nav>
