@@ -134,6 +134,7 @@ return array(
     'App\\Http\\ViewComponents\\Header\\Components\\HeaderComponent' => $baseDir . '/app/Http/ViewComponents/Header/Components/HeaderComponent.php',
     'App\\Http\\ViewComponents\\Header\\Models\\HeaderLinkViewModel' => $baseDir . '/app/Http/ViewComponents/Header/Models/HeaderLinkViewModel.php',
     'App\\Http\\ViewComponents\\Header\\Models\\HeaderLogoViewModel' => $baseDir . '/app/Http/ViewComponents/Header/Models/HeaderLogoViewModel.php',
+    'App\\Http\\ViewComponents\\Header\\Models\\HeaderSocialLinkViewModel' => $baseDir . '/app/Http/ViewComponents/Header/Models/HeaderSocialLinkViewModel.php',
     'App\\Http\\ViewComponents\\Header\\Models\\HeaderViewModel' => $baseDir . '/app/Http/ViewComponents/Header/Models/HeaderViewModel.php',
     'App\\Http\\ViewComponents\\Header\\Services\\HeaderViewModelService' => $baseDir . '/app/Http/ViewComponents/Header/Services/HeaderViewModelService.php',
     'App\\Image' => $baseDir . '/app/Image.php',

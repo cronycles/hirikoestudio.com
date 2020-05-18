@@ -618,6 +618,7 @@ class ComposerStaticInit41d1230bc39a17ed8f9d0beab829f808
         'App\\Http\\ViewComponents\\Header\\Components\\HeaderComponent' => __DIR__ . '/../..' . '/app/Http/ViewComponents/Header/Components/HeaderComponent.php',
         'App\\Http\\ViewComponents\\Header\\Models\\HeaderLinkViewModel' => __DIR__ . '/../..' . '/app/Http/ViewComponents/Header/Models/HeaderLinkViewModel.php',
         'App\\Http\\ViewComponents\\Header\\Models\\HeaderLogoViewModel' => __DIR__ . '/../..' . '/app/Http/ViewComponents/Header/Models/HeaderLogoViewModel.php',
+        'App\\Http\\ViewComponents\\Header\\Models\\HeaderSocialLinkViewModel' => __DIR__ . '/../..' . '/app/Http/ViewComponents/Header/Models/HeaderSocialLinkViewModel.php',
         'App\\Http\\ViewComponents\\Header\\Models\\HeaderViewModel' => __DIR__ . '/../..' . '/app/Http/ViewComponents/Header/Models/HeaderViewModel.php',
         'App\\Http\\ViewComponents\\Header\\Services\\HeaderViewModelService' => __DIR__ . '/../..' . '/app/Http/ViewComponents/Header/Services/HeaderViewModelService.php',
         'App\\Image' => __DIR__ . '/../..' . '/app/Image.php',
