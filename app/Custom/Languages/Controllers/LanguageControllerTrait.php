@@ -28,7 +28,7 @@ trait LanguageControllerTrait {
         // Store the segments of the last request as an array
         $segments = $this->previousRequest->segments();
 
-        $language = $this->languageService->getLanguageByCode($locale);
+        $language = $this->languageService->getVisibleLanguageByCode($locale);
         if ($language != null) {
             // Replace the first segment by the new language code
             $segments[0] = $this->locale;

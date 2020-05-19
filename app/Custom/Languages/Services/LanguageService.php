@@ -110,7 +110,7 @@ class LanguageService {
         try {
             $outcome = null;
 
-            $language = $this->getLanguageByCode($languageCode);
+            $language = $this->getVisibleLanguageByCode($languageCode);
             if ($language != null) {
                 session(['applocale' => $languageCode]);
                 $outcome = $languageCode;
@@ -149,9 +149,9 @@ class LanguageService {
      * @param string $languageCode
      * @return LanguageEntity|null
      */
-    public function getLanguageByCode($languageCode) {
+    public function getVisibleLanguageByCode($languageCode) {
         $outcome = null;
-        $availableLanguages = $this->getAllLanguages();
+        $availableLanguages = $this->getVisibleLanguages();
         foreach ($availableLanguages as $availableLanguage) {
             if ($availableLanguage->code == $languageCode) {
                 $outcome = $availableLanguage;

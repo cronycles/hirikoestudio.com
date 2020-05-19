@@ -15,6 +15,7 @@ class LocalesRepository extends Repository
     public function all()
     {
         return $this->modelClassName
-            ->all();
+            ->where('enabled', '=', true)
+            ->get();
     }
 }
