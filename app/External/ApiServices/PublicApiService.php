@@ -85,7 +85,7 @@ class PublicApiService {
             if ($userId != null && $userId > 0) {
                 /** @var \App\User $dbUser */
                 $dbUser = $this->usersRepository->find($userId);
-                $outcome = $this->createUserEntityByDbEntity($dbUser);
+                $outcome = $this->createUserEntityByDbModel($dbUser);
             }
             return $outcome;
 
@@ -108,7 +108,7 @@ class PublicApiService {
             if ($dbLocales != null && !empty($dbLocales)) {
                 /** @var \App\Locale $dbLocale */
                 foreach ($dbLocales as $dbLocale) {
-                    $entity = $this->createLanguageEntityByDbEntity($dbLocale);
+                    $entity = $this->createLanguageEntityByDbModel($dbLocale);
                     if ($entity != null) {
                         array_push($outcome, $entity);
                     }
@@ -139,7 +139,7 @@ class PublicApiService {
             if ($dbCategories != null && !empty($dbCategories)) {
                 /** @var \App\Category $dbCategory */
                 foreach ($dbCategories as $dbCategory) {
-                    $entity = $this->createCategoryEntityByDbEntity($dbCategory);
+                    $entity = $this->createCategoryEntityByDbModel($dbCategory);
                     if ($entity != null) {
                         array_push($outcome, $entity);
                     }
@@ -165,7 +165,7 @@ class PublicApiService {
             if ($id != null && $id > 0) {
                 /** @var \App\Category $dbCategory */
                 $dbCategory = $this->categoriesRepository->find($id);
-                $outcome = $this->createCategoryEntityByDbEntity($dbCategory);
+                $outcome = $this->createCategoryEntityByDbModel($dbCategory);
             }
             return $outcome;
 
@@ -177,7 +177,7 @@ class PublicApiService {
 
     public function storeCategory(Category $categoryEntity) {
         $outcome = false;
-        $category = $this->createDbCategoryEntityByServiceEntity($categoryEntity);
+        $category = $this->createCategoryDbModelByServiceEntity($categoryEntity);
         if ($category != null) {
             $outcome = $category->save();
         }
@@ -186,7 +186,7 @@ class PublicApiService {
 
     public function updateCategory(Category $categoryEntity) {
         $outcome = false;
-        $category = $this->createDbCategoryEntityByServiceEntity($categoryEntity);
+        $category = $this->createCategoryDbModelByServiceEntity($categoryEntity);
         if ($category != null) {
             $outcome = $category->update();
         }
@@ -256,7 +256,7 @@ class PublicApiService {
 
     public function storeProject(Project $projectEntity) {
         $outcome = false;
-        $project = $this->createDbProjectEntityByServiceEntity($projectEntity);
+        $project = $this->createProjectDbModelByServiceEntity($projectEntity);
         if ($project != null) {
             $outcome = $project->save();
         }
@@ -265,7 +265,7 @@ class PublicApiService {
 
     public function updateProject(Project $projectEntity) {
         $outcome = false;
-        $project = $this->createDbProjectEntityByServiceEntity($projectEntity);
+        $project = $this->createProjectDbModelByServiceEntity($projectEntity);
         if ($project != null) {
             $outcome = $project->update();
         }
@@ -337,7 +337,7 @@ class PublicApiService {
      * @param \App\User|null $dbUser
      * @return User
      */
-    private function createUserEntityByDbEntity($dbUser) {
+    private function createUserEntityByDbModel($dbUser) {
         $outcome = new User();
         if ($dbUser != null) {
             $outcome->id = $dbUser->id;
@@ -351,7 +351,7 @@ class PublicApiService {
      * @param \App\Locale|null $dbLocale
      * @return Language
      */
-    private function createLanguageEntityByDbEntity($dbLocale) {
+    private function createLanguageEntityByDbModel($dbLocale) {
         $outcome = new Language();
         if ($dbLocale != null) {
             $outcome->code = $dbLocale->code;
@@ -366,10 +366,9 @@ class PublicApiService {
     }
 
     /**
-     * @param $translatableItem
      * @return Translation[]
      */
-    private function createTranslationModels($databaseEntity, string $translatableItemName) {
+    private function createTranslationEntities($databaseEntity, string $translatableItemName) {
         $outcome = [];
 
         $languages = $this->getLanguages();
@@ -385,12 +384,12 @@ class PublicApiService {
      * @param \App\Category $dbCategory
      * @return Category
      */
-    private function createCategoryEntityByDbEntity(\App\Category $dbCategory) {
+    private function createCategoryEntityByDbModel(\App\Category $dbCategory) {
         $outcome = new Category();
         if ($dbCategory != null) {
             $outcome->id = $dbCategory->id;
             $outcome->name = $dbCategory->name;
-            $outcome->nameTranslations = $this->createTranslationModels($dbCategory, 'name');
+            $outcome->nameTranslations = $this->createTranslationEntities($dbCategory, 'name');
         }
 
         return $outcome;
@@ -401,7 +400,7 @@ class PublicApiService {
      * @param Category $categoryEntity
      * @return \App\Category
      */
-    private function createDbCategoryEntityByServiceEntity(Category $categoryEntity) {
+    private function createCategoryDbModelByServiceEntity(Category $categoryEntity) {
         $outcome = null;
         if ($categoryEntity != null) {
             if ($categoryEntity->id > 0) {
@@ -433,7 +432,7 @@ class PublicApiService {
             $outcome->title = $dbProject->title;
             $outcome->slug = $this->slugHelper->addIdToSlug($dbProject->slug, $dbProject->id);
             $outcome->description = $dbProject->description;
-            $outcome->descriptionTranslations = $this->createTranslationModels($dbProject, 'description');
+            $outcome->descriptionTranslations = $this->createTranslationEntities($dbProject, 'description');
             $category = new Category();
             $category->id = $dbProject->category->id;
             $category->name = $dbProject->category->name;
@@ -465,7 +464,7 @@ class PublicApiService {
      * @param Category $categoryEntity
      * @return \App\Project
      */
-    private function createDbProjectEntityByServiceEntity(Project $projectEntity) {
+    private function createProjectDbModelByServiceEntity(Project $projectEntity) {
         $outcome = null;
         if ($projectEntity != null) {
             if ($projectEntity->id > 0) {
