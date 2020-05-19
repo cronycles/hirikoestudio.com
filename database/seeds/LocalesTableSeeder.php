@@ -40,7 +40,7 @@ class LocalesTableSeeder extends Seeder {
                 ),
                 array(
                     'code' => 'en',
-                    'culture_code' => 'en_EU',
+                    'culture_code' => 'en_US',
                     'name' => json_encode([
                         "en" => "English",
                         "es" => "Inglés",
