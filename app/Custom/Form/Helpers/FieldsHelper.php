@@ -52,10 +52,14 @@ class FieldsHelper {
 
             if ($this->isFieldTranslatable($fieldConfiguration)) {
                 $authVisibleLanguages = $this->languageService->getAuthVisibleLanguages();
+
                 foreach ($authVisibleLanguages as $authVisibleLanguage) {
                     $clonedObject = clone $fieldViewModel;
                     $clonedObject->name = $fieldConfiguration['name'] . "_" . $authVisibleLanguage->code;
                     $clonedObject->localeCode = $authVisibleLanguage->code;
+                    if(count($authVisibleLanguages) > 1) {
+                        $clonedObject->text = $clonedObject->text . ' (' . $authVisibleLanguage->code .  ')';
+                    }
                     array_push($outcome, $clonedObject);
                 }
             }
@@ -85,6 +89,9 @@ class FieldsHelper {
                     $clonedObject = clone $fieldViewModel;
                     $clonedObject->value = $request->input($fieldConfiguration['name'] . "_" . $authVisibleLanguage->code);
                     $clonedObject->localeCode = $authVisibleLanguage->code;
+                    if(count($authVisibleLanguages) > 1) {
+                        $clonedObject->text = $clonedObject->text . ' (' . $authVisibleLanguage->code .  ')';
+                    }
                     array_push($outcome, $clonedObject);
                 }
             }
