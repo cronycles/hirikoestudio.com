@@ -25,3 +25,5 @@ deployment:
     - /bin/cp -R resources $DEPLOYPATH
     - /bin/cp -R routes $DEPLOYPATH
     - /bin/cp -R vendor $DEPLOYPATH
+    - cd ..
+    - /bin/rm -rf ./$BUILDFOLDERNAME
