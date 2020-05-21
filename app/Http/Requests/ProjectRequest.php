@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Custom\Form\Requests\FieldsRequest;
+use App\Custom\Form\Requests\TranslatableFieldsRequest;
 
-class ProjectRequest extends FieldsRequest
+class ProjectRequest extends TranslatableFieldsRequest
 {
     /**
      * Determine if the user is authorized to make this request.

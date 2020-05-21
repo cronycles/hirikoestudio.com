@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Custom\Languages\Entities\LanguageEntity;
+use App\Custom\Translations\ApiServiceEntities\Translation;
+use App\Custom\Translations\Entities\TranslationEntity;
 use App\Entities\CategoryEntity;
 use App\Entities\ImageEntity;
 use App\Entities\ProjectEntity;
@@ -98,6 +100,7 @@ class MappingService {
             $outcome->title = $serviceProject->title;
             $outcome->slug = $serviceProject->slug;
             $outcome->description = $serviceProject->description;
+            $outcome->descriptionTranslations = $this->createTranslationEntities($serviceProject->descriptionTranslations);
             $outcome->isVisible = $serviceProject->isVisible;
             $outcome->images = $this->mapImages($serviceProject->images);
         }
@@ -168,6 +171,20 @@ class MappingService {
                 $outcome->id = $serviceCategory->id;
                 $outcome->name = $serviceCategory->name;
             }
+        }
+        return $outcome;
+    }
+
+    /**
+     * @param Translation[] $serviceEntities
+     * @return TranslationEntity[]
+     */
+    private function createTranslationEntities($serviceEntities) {
+        $outcome = [];
+
+        foreach ($serviceEntities as $serviceEntity) {
+            $translationEntity = new TranslationEntity($serviceEntity->locale, $serviceEntity->value);
+            array_push($outcome, $translationEntity);
         }
         return $outcome;
     }

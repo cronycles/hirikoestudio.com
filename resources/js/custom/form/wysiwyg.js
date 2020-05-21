@@ -8,9 +8,11 @@ export default class Wysiwyg {
     }
 
     #initializeWysiwygIfVisible = () => {
-        if(this.#view.isWysiwygVisible())  {
-            const wysiwygSelector = this.#view.getWysiwygSelector();
-            this.#initializeWysiwygPlugin(wysiwygSelector);
+        const wysiwygSelectors = this.#view.getAllWysiwygSelectors();
+        if(wysiwygSelectors && wysiwygSelectors.length > 0)  {
+            for (let wysiwygSelector of wysiwygSelectors) {
+                this.#initializeWysiwygPlugin(wysiwygSelector);
+            }
 
             this.#view.onFormSubmit(this.#view.setWysiwygTextToHiddenInput);
             this.#view.onFieldFocusOut(this.#view.setWysiwygTextToHiddenInput);

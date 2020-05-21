@@ -219,7 +219,7 @@ class PublicApiService {
             if ($dbProjects != null && !empty($dbProjects)) {
                 /** @var \App\Project $dbProject */
                 foreach ($dbProjects as $dbProject) {
-                    $entity = $this->createProjectEntityByDbEntity($dbProject);
+                    $entity = $this->createProjectEntityByDbModel($dbProject);
                     if ($entity != null) {
                         array_push($outcome, $entity);
                     }
@@ -244,7 +244,7 @@ class PublicApiService {
             if ($id != null && $id > 0) {
                 /** @var \App\Project $dbProject */
                 $dbProject = $this->projectsRepository->find($id);
-                $outcome = $this->createProjectEntityByDbEntity($dbProject);
+                $outcome = $this->createProjectEntityByDbModel($dbProject);
             }
             return $outcome;
 
@@ -367,7 +367,7 @@ class PublicApiService {
     /**
      * @return Translation[]
      */
-    private function createTranslationEntities($databaseEntity, string $translatableItemName) {
+    private function createTranslationEntitiesByDbModel($databaseEntity, string $translatableItemName) {
         $outcome = [];
 
         $languages = $this->getLanguages();
@@ -388,7 +388,7 @@ class PublicApiService {
         if ($dbCategory != null) {
             $outcome->id = $dbCategory->id;
             $outcome->name = $dbCategory->name;
-            $outcome->nameTranslations = $this->createTranslationEntities($dbCategory, 'name');
+            $outcome->nameTranslations = $this->createTranslationEntitiesByDbModel($dbCategory, 'name');
         }
 
         return $outcome;
@@ -423,7 +423,7 @@ class PublicApiService {
      * @param \App\Project $dbProject
      * @return Project
      */
-    private function createProjectEntityByDbEntity(\App\Project $dbProject) {
+    private function createProjectEntityByDbModel(\App\Project $dbProject) {
         $outcome = new Project();
 
         if ($dbProject != null) {
@@ -431,7 +431,7 @@ class PublicApiService {
             $outcome->title = $dbProject->title;
             $outcome->slug = $this->slugHelper->addIdToSlug($dbProject->slug, $dbProject->id);
             $outcome->description = $dbProject->description;
-            $outcome->descriptionTranslations = $this->createTranslationEntities($dbProject, 'description');
+            $outcome->descriptionTranslations = $this->createTranslationEntitiesByDbModel($dbProject, 'description');
             $category = new Category();
             $category->id = $dbProject->category->id;
             $category->name = $dbProject->category->name;

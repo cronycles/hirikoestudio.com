@@ -48,7 +48,22 @@ class FieldsHelper {
         $fieldsConfiguration = $formConfiguration['fields'];
         foreach ($fieldsConfiguration as $fieldConfiguration) {
             $fieldViewModel = $this->getFieldModelByConfiguration($fieldConfiguration);
-            array_push($outcome, $fieldViewModel);
+
+
+            if ($this->isFieldTranslatable($fieldConfiguration)) {
+                $authVisibleLanguages = $this->languageService->getAuthVisibleLanguages();
+                foreach ($authVisibleLanguages as $authVisibleLanguage) {
+                    $clonedObject = clone $fieldViewModel;
+                    $clonedObject->name = $fieldConfiguration['name'] . "_" . $authVisibleLanguage->code;
+                    $clonedObject->localeCode = $authVisibleLanguage->code;
+                    array_push($outcome, $clonedObject);
+                }
+            }
+            else {
+                array_push($outcome, $fieldViewModel);
+            }
+
+
         }
 
         return $outcome;
@@ -64,10 +79,27 @@ class FieldsHelper {
         $fieldsConfiguration = $formConfiguration['fields'];
         foreach ($fieldsConfiguration as $fieldConfiguration) {
             $fieldViewModel = $this->getFieldModelByConfiguration($fieldConfiguration);
-            $fieldViewModel->value = $request->input($fieldConfiguration['name']);
-            array_push($outcome, $fieldViewModel);
+            if ($this->isFieldTranslatable($fieldConfiguration)) {
+                $authVisibleLanguages = $this->languageService->getAuthVisibleLanguages();
+                foreach ($authVisibleLanguages as $authVisibleLanguage) {
+                    $clonedObject = clone $fieldViewModel;
+                    $clonedObject->value = $request->input($fieldConfiguration['name'] . "_" . $authVisibleLanguage->code);
+                    $clonedObject->localeCode = $authVisibleLanguage->code;
+                    array_push($outcome, $clonedObject);
+                }
+            }
+            else {
+                $fieldViewModel->value = $request->input($fieldConfiguration['name']);
+                array_push($outcome, $fieldViewModel);
+            }
         }
 
+        return $outcome;
+    }
+
+    private function isFieldTranslatable(array $fieldConfiguration) {
+        $outcome = false;
+        $outcome = array_key_exists("translatable", $fieldConfiguration) ? $fieldConfiguration['translatable'] : false;
         return $outcome;
     }
 
@@ -156,19 +188,31 @@ class FieldsHelper {
     }
 
     /**
-     * @param string $fieldValue
-     * @return TranslationEntity[]
+     * @param FieldModel $fieldModel
+     * @param TranslationEntity[]|null $translationEntities
+     * @return string
      */
-    public function parseTranslatableFieldValue(string $fieldValue) {
-        $outcome = [];
-        $languages = $this->languageService->getAllLanguages();
-        foreach ($languages as $language) {
-            $translationEntity = new TranslationEntity($language->code, $fieldValue);
-            array_push($outcome, $translationEntity);
+    public function getTranslatableFieldValueFromTranslatableEntity(FieldModel $fieldModel, $translationEntities) {
+        $outcome = "";
+        if($translationEntities != null && !empty($translationEntities)) {
+            foreach ($translationEntities as $translationEntity) {
+                if($translationEntity->locale == $fieldModel->localeCode) {
+                    $outcome = $translationEntity->value;
+                    break;
+                }
+            }
         }
 
         return $outcome;
 
+    }
+
+    /**
+     * @param FieldModel $field
+     * @return TranslationEntity
+     */
+    public function parseTranslatableField(FieldModel $field) {
+        return new TranslationEntity($field->localeCode, $field->value);
     }
 
     /**
@@ -228,11 +272,11 @@ class FieldsHelper {
      * @param string $fieldValue
      * @return string
      */
-    private function getFieldDefaultValue ($fieldConfiguration) {
+    private function getFieldDefaultValue($fieldConfiguration) {
         $outcome = "";
-        if(array_key_exists("default",$fieldConfiguration)){
+        if (array_key_exists("default", $fieldConfiguration)) {
             $configurationDefaultValue = $fieldConfiguration['default'];
-            if($configurationDefaultValue !== null && !empty($configurationDefaultValue)) {
+            if ($configurationDefaultValue !== null && !empty($configurationDefaultValue)) {
                 $outcome = $configurationDefaultValue;
             }
         }

@@ -6,7 +6,7 @@
     data-val="{{$field->validations}}"
     value="{!! old($field->name, $field->value) !!}">
 
-<div data-name="{{$field->name}}" class="jfieldSub jwysiwyg form__content-editable @error($field->name) form__field--error @enderror">
+<div id="jww_{{$field->name}}" data-name="{{$field->name}}" class="jfieldSub jwysiwyg form__content-editable @error($field->name) form__field--error @enderror">
     {!! old($field->name, $field->value) !!}
 </div>
 

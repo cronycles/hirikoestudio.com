@@ -7,7 +7,7 @@ return [
             'type' => 10,
             'name' => 'category',
             'textKey' => 'validation.attributes.category',
-            'zeroValueKey' =>'validation.attributes.zeroValueKey',
+            'zeroValueKey' => 'validation.attributes.zeroValueKey',
             'errorTextKey' => '{"id": "validation-js.required", "params": {}}',
             'validations' => ['required'],
         ],
@@ -20,6 +20,7 @@ return [
         ],
         'description' => [
             'type' => 2,
+            'translatable' => true,
             'name' => 'description',
             'textKey' => 'validation.attributes.description',
             'errorTextKey' => '{"id": "validation-js.min.string", "params": {"min": 3}}',

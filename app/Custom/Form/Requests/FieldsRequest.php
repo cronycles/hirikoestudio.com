@@ -3,6 +3,7 @@
 namespace App\Custom\Form\Requests;
 
 use App\Custom\Form\Requests\Rules\Price;
+use App\Custom\Languages\Services\LanguageService;
 use Illuminate\Foundation\Http\FormRequest;
 
 abstract class FieldsRequest extends FormRequest
@@ -18,7 +19,13 @@ abstract class FieldsRequest extends FormRequest
         $fieldsArray = config($configurationKey);
 
         foreach ($fieldsArray as $field) {
-            $outcome[$field['name']] = $this->processValidations($field['validations']);
+            if(array_key_exists('translatable', $field) && $field['translatable'] == true) {
+                $translatableFieldName = $field['name'] . "_es";
+                $outcome[$translatableFieldName] = $this->processValidations($field['validations']);
+            }
+            else {
+                $outcome[$field['name']] = $this->processValidations($field['validations']);
+            }
         }
 
         return $outcome;

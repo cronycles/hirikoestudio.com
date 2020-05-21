@@ -12,6 +12,11 @@ abstract class FieldModel {
     /**
      * @var string
      */
+    public $localeCode;
+
+    /**
+     * @var string
+     */
     public $type;
 
     /**

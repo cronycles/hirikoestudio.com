@@ -3,6 +3,7 @@
 namespace App\Custom\Form\Helpers;
 
 use App\Custom\Form\Captcha\Services\CaptchaService;
+use App\Custom\Form\Models\Fields\FieldModel;
 use App\Custom\Form\Models\FormModel;
 use App\Custom\Form\Models\Fields\CheckboxItemFieldModel;
 use App\Custom\Form\Models\Fields\SelectboxItemFieldModel;
@@ -90,11 +91,19 @@ class FormHelper {
     }
 
     /**
-     * @param string $fieldValue
-     * @return TranslationEntity[]
+     * @param TranslationEntity[]|null $translationEntity
+     * @return string
      */
-    public function parseTranslatableFieldValue(string $fieldValue) {
-        return $this->fieldsHelper->parseTranslatableFieldValue($fieldValue);
+    public function getTranslatableFieldValueFromTranslatableEntity(FieldModel $field, $translationEntity) {
+        return $this->fieldsHelper->getTranslatableFieldValueFromTranslatableEntity($field, $translationEntity);
+    }
+
+    /**
+     * @param FieldModel $field
+     * @return TranslationEntity
+     */
+    public function parseTranslatableField(FieldModel $field) {
+        return $this->fieldsHelper->parseTranslatableField($field);
     }
 
     private function isACaptchaForm($formConfiguration) {

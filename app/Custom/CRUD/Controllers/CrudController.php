@@ -78,10 +78,10 @@ abstract class CrudController extends Controller{
      */
     public function crudUpdate(Request $request, int $entityId, string $successRedirectRoute, string $successMessage) {
         try {
-            $categoryEntity = $this->formBuilder->createEntityFromRequest($request);
-            $categoryEntity->id = $entityId;
+            $entity = $this->formBuilder->createEntityFromRequest($request);
+            $entity->id = $entityId;
 
-            $outcome = $this->service->updateEntity($categoryEntity);
+            $outcome = $this->service->updateEntity($entity);
             if($outcome != null && $outcome === true) {
                 $outcome = $this->messagesService->createSuccessResponse(
                     $successMessage,

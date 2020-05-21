@@ -10,25 +10,42 @@ export default class WysiwygView {
         this.qlEditorSelector = ".ql-editor";
 
         //DOM
-        this.$wysiwig = $(this.wysiwygSelector);
-        this.$hiddenInputSelector = $(this.hiddenInputSelector);
+        this.$wysiwygs = $(this.wysiwygSelector);
+
+        this.$hiddenInputs = $(this.hiddenInputSelector);
+
+        this.wysiwigRealSelectors = this.#initializeWysiwigRealSelectors();
     }
 
-    isWysiwygVisible = () => {
+    #initializeWysiwigRealSelectors = () => {
+        let outcome = [];
+        if(this.$wysiwygs && this.$wysiwygs.length > 0) {
+            this.$wysiwygs.map((index, element) => {
+                let $wysiwyg = $(element);
+                if($wysiwyg) {
+                    const wysiwygRealSelector = "#" + $wysiwyg.attr('id');
+                    outcome.push(wysiwygRealSelector)
+                }
+            })
+        }
+        return outcome;
+    };
+
+    areWysiwygsVisible = () => {
         let outcome = false;
-        if(this.$wysiwig && this.$wysiwig.length > 0) {
+        if(this.$wysiwygs && this.$wysiwygs.length > 0) {
             outcome = true;
         }
         return outcome;
     };
 
-    getWysiwygSelector = () => {
-        return this.wysiwygSelector;
+    getAllWysiwygSelectors = () => {
+        return this.wysiwigRealSelectors;
     };
 
     onFormSubmit = (callback) => {
-        if(this.isWysiwygVisible()) {
-            const $form = this.$wysiwig.closest("form");
+        if(this.areWysiwygsVisible()) {
+            const $form = this.$wysiwygs.closest("form");
             $form.on('submit', () => {
                 callback();
                 return true;
@@ -37,15 +54,22 @@ export default class WysiwygView {
     };
 
     onFieldFocusOut = (callback) => {
-        this.$wysiwig.on(this.tfocusOut, () => {
+        this.$wysiwygs.on(this.tfocusOut, () => {
             callback();
             return true;
         });
     };
 
     setWysiwygTextToHiddenInput = () => {
-        const text = $(this.wysiwygSelector).find(this.qlEditorSelector).html();
-        $(this.$hiddenInputSelector).val(text);
+        if(this.wysiwigRealSelectors && this.wysiwigRealSelectors.length > 0) {
+            for(let wysiwigRealSelector of this.wysiwigRealSelectors) {
+                const $wysiwygRealSelector = $(wysiwigRealSelector);
+                const text = $wysiwygRealSelector.find(this.qlEditorSelector).html();
+                const inputName = $wysiwygRealSelector.data('name');
+                const $hiddenInput = this.$hiddenInputs.filter(`[name='${inputName}']`);
+                $hiddenInput.val(text);
+            }
+        }
     };
 }
 

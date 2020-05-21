@@ -55,7 +55,7 @@ class CategoryFormBuilder extends FormBuilder {
         foreach ($fields as $field) {
             switch ($field->name) {
                 case $this->getConfigFieldName('name'):
-                    $outcome->nameTranslations = $this->formHelper->parseTranslatableFieldValue($field->value);
+                    $outcome->nameTranslations = $this->formHelper->parseTranslatableField($field->value);
                     break;
             }
         }

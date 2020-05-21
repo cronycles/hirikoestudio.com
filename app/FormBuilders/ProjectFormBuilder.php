@@ -44,8 +44,8 @@ class ProjectFormBuilder extends FormBuilder {
                 case $this->getConfigFieldName('title'):
                     $field->value = $entity->title ?? null;
                     break;
-                case $this->getConfigFieldName('description'):
-                    $field->value = $entity->description ?? null;
+                case $this->getConfigFieldName('description'). "_" . $field->localeCode:
+                    $field->value = $this->formHelper->getTranslatableFieldValueFromTranslatableEntity($field, $entity->descriptionTranslations ?? null);
                     break;
                 case $this->getConfigFieldName('show'):
                     $field->value = $entity->isVisible ?? null;
@@ -74,7 +74,7 @@ class ProjectFormBuilder extends FormBuilder {
                     $outcome->title = $this->parseStringFieldValue($field->value);
                     break;
                 case $this->getConfigFieldName('description'):
-                    $outcome->descriptionTranslations = $this->formHelper->parseTranslatableFieldValue($field->value);
+                    array_push($outcome->descriptionTranslations, $this->formHelper->parseTranslatableField($field));
                     break;
                 case $this->getConfigFieldName('show'):
                     $outcome->isVisible = $this->parseBooleanFieldValue($field->value);
