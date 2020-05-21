@@ -5,4 +5,4 @@ deployment:
     - export PUBLICFOLDERNAME=public_html
     - export BUILDFOLDERNAME=build
     - cd $BUILDFOLDERNAME
-    - tar xvjf build_v*.tar.gz
+    - tar xzf build_v*.tar.gz
