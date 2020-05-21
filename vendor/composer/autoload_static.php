@@ -533,6 +533,7 @@ class ComposerStaticInit41d1230bc39a17ed8f9d0beab829f808
         'App\\Custom\\Form\\Models\\FormModel' => __DIR__ . '/../..' . '/app/Custom/Form/Models/FormModel.php',
         'App\\Custom\\Form\\Requests\\FieldsRequest' => __DIR__ . '/../..' . '/app/Custom/Form/Requests/FieldsRequest.php',
         'App\\Custom\\Form\\Requests\\Rules\\Price' => __DIR__ . '/../..' . '/app/Custom/Form/Requests/Rules/Price.php',
+        'App\\Custom\\Form\\Requests\\TranslatableFieldsRequest' => __DIR__ . '/../..' . '/app/Custom/Form/Requests/TranslatableFieldsRequest.php',
         'App\\Custom\\HttpMessages\\Services\\HttpMessagesService' => __DIR__ . '/../..' . '/app/Custom/HttpMessages/Services/HttpMessagesService.php',
         'App\\Custom\\ImagesUploader\\Api\\IImagesUploaderApi' => __DIR__ . '/../..' . '/app/Custom/ImagesUploader/Api/IImagesUploaderApi.php',
         'App\\Custom\\ImagesUploader\\Controllers\\ImagesUploaderController' => __DIR__ . '/../..' . '/app/Custom/ImagesUploader/Controllers/ImagesUploaderController.php',

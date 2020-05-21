@@ -71,6 +71,8 @@ fi
 
 appVersion=($(jq -r '.version' composer.json))
 
+scripts/createZipPackage.sh ${appVersion}
+
 if [ ${releaseType} != "onlybuild" ]
 then
     scripts/commitVersionAndTag.sh ${appVersion}

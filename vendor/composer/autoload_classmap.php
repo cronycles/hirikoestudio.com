@@ -49,6 +49,7 @@ return array(
     'App\\Custom\\Form\\Models\\FormModel' => $baseDir . '/app/Custom/Form/Models/FormModel.php',
     'App\\Custom\\Form\\Requests\\FieldsRequest' => $baseDir . '/app/Custom/Form/Requests/FieldsRequest.php',
     'App\\Custom\\Form\\Requests\\Rules\\Price' => $baseDir . '/app/Custom/Form/Requests/Rules/Price.php',
+    'App\\Custom\\Form\\Requests\\TranslatableFieldsRequest' => $baseDir . '/app/Custom/Form/Requests/TranslatableFieldsRequest.php',
     'App\\Custom\\HttpMessages\\Services\\HttpMessagesService' => $baseDir . '/app/Custom/HttpMessages/Services/HttpMessagesService.php',
     'App\\Custom\\ImagesUploader\\Api\\IImagesUploaderApi' => $baseDir . '/app/Custom/ImagesUploader/Api/IImagesUploaderApi.php',
     'App\\Custom\\ImagesUploader\\Controllers\\ImagesUploaderController' => $baseDir . '/app/Custom/ImagesUploader/Controllers/ImagesUploaderController.php',
