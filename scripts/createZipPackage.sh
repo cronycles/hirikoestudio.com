@@ -23,6 +23,7 @@ mkdir -p $BUILDFOLDERNAME
 
 /bin/cp -R app $BUILDFOLDERNAME
 /bin/cp -R bootstrap $BUILDFOLDERNAME
+/bin/rm -rf $BUILDFOLDERNAME/bootstrap/cache/*
 /bin/cp -R config $BUILDFOLDERNAME
 /bin/cp -R resources $BUILDFOLDERNAME
 /bin/cp -R routes $BUILDFOLDERNAME
