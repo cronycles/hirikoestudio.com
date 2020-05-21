@@ -56,12 +56,6 @@ prima di lanciarlo assicurarsi di:
 >* avere installato nel proprio pc jq [Usa Homebrew con **brew install jq**]
 >* avere il branch **develop** e **master** in locale
 >* avere il branch **develop** tracked con **origin**
->* aver tolto dal ```.gitignore``` le cartelle:
->>* vendor
->>* public/js
->>* public/css
->>* public/fonts
->>* public/mix-manifest.json
 
 * Aprire il terminale e digitare UNO dei seguuenti tre comandi
 
@@ -79,7 +73,7 @@ npm run build-minor
 ```
 npm run build-mayor
 ```
->> Stessa cosa per questo che creerá una versione Mayor della app e subirá il contenuto automaticamente a master.
+> Stessa cosa per questo che creerá una versione Mayor della app e subirá il contenuto automaticamente a master.
 
 * Con gli ultimi due comandi, automaticamente verrá anche creato un tag con la versione
 * Poi bisognerá solo andare nel **CPanel** del vostro provider, nella sezione **Git Version Control**.
@@ -87,6 +81,13 @@ npm run build-mayor
 * Vi si aprirá una pagina con due tabs, andare al tab **Pull or Deploy**
 * Cliccare in ordine i 2 bottoni: **Update from remote** e poi **Deploy HEAD commit**
 Tutto il deploy lo fará solo grazie al file che avete in questo progetto chiamato **.cpanel.yml**
+
+### Prima volta che fate il deploy a Production?
+Se é la prima volta, allora dovete prima assicurarvi, nella route del progetto, di avere le seguienti cose giá messe a mano:
+* la cartella __/storage__
+* il file __.env.production__ che avrete rinominato in __.env__
+* la cartella del vostro cdn
+* ovviamente la BBDD funzionante
 
 ## CDN
 Per comoditá le immagini del progetto uploaded e gli eventuali files sono stati messi in un subdominio chiamato **cdn.hirikoestudio.com**.
