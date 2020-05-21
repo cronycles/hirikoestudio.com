@@ -92,7 +92,6 @@ class PageViewModelService {
             $outcome->cultureCode = $languageEntity->cultureCode;
             $outcome->name = $languageEntity->name;
             $outcome->isDefault = $languageEntity->isDefault;
-            $outcome->isEnabled = $languageEntity->isEnabled;
             $outcome->isVisible = $languageEntity->isVisible;
             $outcome->isAuthVisible = $languageEntity->isAuthVisible;
             $outcome->isCurrent = $languageEntity->isCurrent;

@@ -21,7 +21,6 @@ class LocalesTableSeeder extends Seeder {
                         "eu" => "Español"
                     ]),
                     'default' => true,
-                    'enabled' => true,
                     'visible' => true,
                     'auth_visible' => true,
                 ),
@@ -34,9 +33,8 @@ class LocalesTableSeeder extends Seeder {
                         "eu" => "Euskara"
                     ]),
                     'default' => false,
-                    'enabled' => false,
-                    'visible' => true,
-                    'auth_visible' => false,
+                    'visible' => false,
+                    'auth_visible' => true,
                 ),
                 array(
                     'code' => 'en',
@@ -47,9 +45,8 @@ class LocalesTableSeeder extends Seeder {
                         "eu" => "Inglés"
                     ]),
                     'default' => false,
-                    'enabled' => false,
-                    'visible' => true,
-                    'auth_visible' => false,
+                    'visible' => false,
+                    'auth_visible' => true,
                 )
             )
         );

@@ -62,7 +62,6 @@ class MappingService {
             $outcome->cultureCode = $serviceLanguage->cultureCode;
             $outcome->name = $serviceLanguage->name;
             $outcome->isDefault = $serviceLanguage->isDefault;
-            $outcome->isEnabled = $serviceLanguage->isEnabled;
             $outcome->isVisible = $serviceLanguage->isVisible;
             $outcome->isAuthVisible = $serviceLanguage->isAuthVisible;
         }

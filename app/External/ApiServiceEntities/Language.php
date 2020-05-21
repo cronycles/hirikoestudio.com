@@ -27,11 +27,6 @@ class Language {
     /**
      * @var bool
      */
-    public $isEnabled;
-
-    /**
-     * @var bool
-     */
     public $isVisible;
 
     /**

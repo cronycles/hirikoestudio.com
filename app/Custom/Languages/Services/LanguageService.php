@@ -55,7 +55,7 @@ class LanguageService {
         if ($this->isMultilanguageActive()) {
             $languages = $this->api->getLanguages();
             foreach ($languages as $language) {
-                if ($language->isEnabled && $language->isVisible) {
+                if ($language->isVisible) {
                     $language = $this->processLanguage($language);
                     array_push($outcome, $language);
                 }
@@ -74,7 +74,7 @@ class LanguageService {
         if ($this->isMultilanguageActive()) {
             $languages = $this->api->getLanguages();
             foreach ($languages as $language) {
-                if ($language->isEnabled && $language->isAuthVisible) {
+                if ($language->isAuthVisible) {
                     $language = $this->processLanguage($language);
                     array_push($outcome, $language);
                 }

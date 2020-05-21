@@ -27,11 +27,6 @@ class LanguageEntity {
     /**
      * @var bool
      */
-    public $isEnabled;
-
-    /**
-     * @var bool
-     */
     public $isVisible;
 
     /**

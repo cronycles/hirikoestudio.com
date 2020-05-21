@@ -19,7 +19,6 @@ class CreateLocalesTable extends Migration
             $table->text('culture_code');
             $table->json('name');
             $table->boolean('default')->default(false);
-            $table->boolean('enabled')->default(false);
             $table->boolean('visible')->default(false);
             $table->boolean('auth_visible')->default(false);
             $table->timestamps();

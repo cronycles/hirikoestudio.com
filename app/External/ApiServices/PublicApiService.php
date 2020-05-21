@@ -358,7 +358,6 @@ class PublicApiService {
             $outcome->cultureCode = $dbLocale->culture_code;
             $outcome->name = $dbLocale->name;
             $outcome->isDefault = $dbLocale->default;
-            $outcome->isEnabled = $dbLocale->enabled;
             $outcome->isVisible = $dbLocale->visible;
             $outcome->isAuthVisible = $dbLocale->auth_visible;
         }

@@ -27,11 +27,6 @@ class LanguageViewModel {
     /**
      * @var bool
      */
-    public $isEnabled;
-
-    /**
-     * @var bool
-     */
     public $isVisible;
 
     /**
