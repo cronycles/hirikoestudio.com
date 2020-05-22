@@ -39,8 +39,13 @@ class PagesController extends SlugController {
 
     public function projectShow($slug) {
         $id = $this->getIdFromSlug($slug);
-        $model = $this->pageViewModelService->getViewModelByPageId(config('custom.pages.PROJECT_SHOW'), ['id' => $id]);
-        return view($model->viewPath, compact('model'));
+        if($id > 0) {
+            $model = $this->pageViewModelService->getViewModelByPageId(config('custom.pages.PROJECT_SHOW'), ['id' => $id]);
+            return view($model->viewPath, compact('model'));
+        }
+        else {
+            return $this->unknown();
+        }
     }
 
 
