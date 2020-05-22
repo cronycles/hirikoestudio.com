@@ -3,7 +3,7 @@
 @section('content')
     <a href="{{route('projects')}}">
         <div id="home-container">
-            <div class="gallery__box cro-fs-images-carousel">
+            <section class="gallery__box cro-fs-images-carousel">
                 @if(!empty($model->slides))
                     @foreach($model->slides as $slide)
                         <figure>
@@ -19,7 +19,7 @@
                         </figure>
                     @endforeach
                 @endif
-            </div>
+            </section>
         </div>
     </a>
 @endsection

@@ -1,11 +1,11 @@
 @extends('layouts.page')
 @section('page_content')
     <div id="page__project-show">
-        <article class="page__section show__section">
+        <section class="page__section show__section">
             <h1>{{$model->project->title}}</h1>
             <p>{!! $model->project->description !!}</p>
-        </article>
-        <article class="page__section show__section">
+        </section>
+        <section class="page__section show__section">
             @if($model->project->images != null && !empty($model->project->images))
                 <div class="cro__vertical__gallery">
                     @foreach($model->project->images as $image)
@@ -20,16 +20,16 @@
                     @endforeach
                 </div>
             @endif
-        </article>
+        </section>
         <div class="page__section show__section">
             <hr />
         </div>
-        <article class="page__section show__section">
+        <div class="page__section show__section">
             <h2>{{$model->moreProjectsTitle}}</h2>
             <p>{{$model->moreProjectsDescription}}</p>
-        </article>
-        <article class="page__section show__section">
+        </div>
+        <section class="page__section show__section">
             @include('pages.projects._projects-gallery')
-        </article>
+        </section>
     </div>
 @endsection

@@ -10,12 +10,12 @@
         @endif
         @if($model->description != null && !empty($model->description))
             <div class="page__description">
-                {{$model->description}}
+                <p>{{$model->description}}</p>
             </div>
         @endif
     </div>
 
-    <div class="page__section">
+    <section class="page__section">
         @include('pages.projects._projects-gallery')
-    </div>
+    </section>
 @endsection

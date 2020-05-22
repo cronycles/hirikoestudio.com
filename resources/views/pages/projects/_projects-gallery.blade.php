@@ -10,7 +10,7 @@
     <div class="page__section__box">
         <div class="cro__auto-adjust__gallery overlay-zoom">
             @foreach($model->projects as $project)
-                <div class="gallery__box jcb" data-c="{{$project->category->id}}">
+                <article class="gallery__box jcb" data-c="{{$project->category->id}}">
                     <a class="image__track" href="{{$project->url}}">
                         <img src="{{config('custom.images.static.defaultLazyPlaceholder')}}"
                              data-src="{{$project->cover ? $project->cover->url : ""}}"
@@ -20,7 +20,7 @@
                     <a href="{{$project->url}}" class="overlay__track">
                         <div class="overlay__text">{{$project->title}}</div>
                     </a>
-                </div>
+                </article>
             @endforeach
         </div>
     </div>

@@ -17,7 +17,7 @@ $croAAG_overlayTextColor: #ffffff;
 - nell'html poi bisogna creare un container con immagini nel seguente formato:
 ```html
  <div class="cro__auto-adjust__gallery square overlay-zoom">
-    <div class="gallery__box">
+    <article class="gallery__box">
         <a class="image__track" href="#">
             <img src="https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=">
         </a>
@@ -27,7 +27,7 @@ $croAAG_overlayTextColor: #ffffff;
         <div class="caption__track">
             qui posso mettere un testo o divs o quello che voglio
         </div>
-    </div>
+    </article>
     ...
  </div>
 ```
