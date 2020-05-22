@@ -47,7 +47,6 @@ Route::get('password/reset/{token}', ['as' => 'password.reset', 'uses' => 'Auth\
 
 Route::get('lang/{language}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
 
-
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/auth', ['as' => 'auth', 'uses' => 'Auth\AuthPagesController@index']);
 
@@ -90,3 +89,5 @@ Route::group(['middleware' => 'auth'], function () {
 
 });
 
+//404 route! Questa route deve sempre stare in fondo a tutto!
+Route::get('/{any}', 'PagesController@unknown')->where('any', '.*');

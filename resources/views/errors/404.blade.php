@@ -1,4 +1,17 @@
-@extends('errors::minimal')
+@extends('layouts.page')
 
-@section('title', __('page-errors-404.title'))
-@section('message', __('page-errors-404.message'))
+@section('page_content')
+
+    <div class="page__section">
+        @if($model->title != null && !empty($model->title))
+            <div class="page__title">
+                <h1>{{$model->title}}</h1>
+            </div>
+        @endif
+        @if($model->description != null && !empty($model->description))
+            <div class="page__description">
+                <p>{{$model->description}}</p>
+            </div>
+        @endif
+    </div>
+@endsection

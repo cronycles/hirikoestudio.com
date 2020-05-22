@@ -17,6 +17,11 @@ class PagesController extends SlugController {
         $this->pageViewModelService = $pageViewModelService;
     }
 
+    public function unknown() {
+        $model = $this->pageViewModelService->getViewModelByPageId(config('custom.pages.UNKNOWN'));
+        return response()->view($model->viewPath, compact('model'), 404);
+    }
+
     public function index() {
         $model = $this->pageViewModelService->getViewModelByPageId(config('custom.pages.INDEX'));
         return view($model->viewPath, compact('model'));

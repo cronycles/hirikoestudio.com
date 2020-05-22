@@ -25,6 +25,7 @@ use App\ViewModelPageBuilders\ContactViewModelPageBuilder;
 use App\ViewModelPageBuilders\IndexViewModelPageBuilder;
 use App\ViewModelPageBuilders\ProjectShowViewModelPageBuilder;
 use App\ViewModelPageBuilders\ProjectsViewModelPageBuilder;
+use App\ViewModelPageBuilders\UnknownViewModelPageBuilder;
 
 class PagesService {
 
@@ -37,6 +38,7 @@ class PagesService {
 
     public function __construct(
         LanguageService $languageService,
+        UnknownViewModelPageBuilder $unknownViewModelPageBuilder,
         IndexViewModelPageBuilder $indexViewModelPageBuilder,
         LoginViewModelPageBuilder $loginViewModelPageBuilder,
         RegisterViewModelPageBuilder $registerViewModelPageBuilder,
@@ -55,9 +57,14 @@ class PagesService {
         AuthProjectEditViewModelPageBuilder $authProjectEditViewModelPageBuilder,
         AuthProjectsSortViewModelPageBuilder $authProjectsSortViewModelPageBuilder,
         AuthProjectImagesViewModelPageBuilder $authProjectImagesViewModelPageBuilder
-        ) {
+    ) {
 
         $this->languageService = $languageService;
+
+        $this->pageConfigurations[config('custom.pages.UNKNOWN')] = [
+            'config' => config('pages.unknown'),
+            'viewModelPageBuilder' => $unknownViewModelPageBuilder
+        ];
 
         $this->pageConfigurations[config('custom.pages.INDEX')] = [
             'config' => config('pages.index'),
