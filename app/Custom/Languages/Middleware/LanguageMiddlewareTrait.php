@@ -26,19 +26,28 @@ trait LanguageMiddlewareTrait {
             $langId = $request->segment(1);
 
             if ($langId == null) {
-                $fallbackLanguageCode = $this->languageService->setFallbackLanguage();
+                $fallbackLanguageCode = $this->setFallbackLanguage();
                 return $this->createLanguageFallbackRedirect($request, $fallbackLanguageCode);
 
             } else {
                 $languageCode = $this->languageService->setCurrentLanguage($langId);
                 if ($languageCode == null) {
-                    $fallbackLanguageCode = $this->languageService->setFallbackLanguage();
+                    $fallbackLanguageCode = $this->setFallbackLanguage();
                     return $this->createLanguageFallbackRedirect($request, $fallbackLanguageCode);
                 }
             }
 
         }
+        else {
+            $this->setFallbackLanguage();
+        }
         return $next($request);
+    }
+
+    private function setFallbackLanguage() {
+        $outcome = null;
+        $outcome = $this->languageService->setFallbackLanguage();
+        return $outcome;
     }
 
     private function createLanguageFallbackRedirect(Request $request, $fallbackLanguageCode) {
