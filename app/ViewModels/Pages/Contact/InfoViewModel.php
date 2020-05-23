@@ -5,30 +5,19 @@ namespace App\ViewModels\Pages\Contact;
 class InfoViewModel {
 
     /**
-     * @var string
+     * @var InfoLinkViewModel
      */
     public $telephone;
 
     /**
-     * @var string
-     */
-    public $telephoneText;
-
-    /**
-     * @var string
+     * @var InfoLinkViewModel
      */
     public $email;
 
     /**
-     * @var string
+     * @var InfoLinkViewModel
      */
     public $address;
-
-    /**
-     * @var string
-     */
-    public $addressMapUrl;
-
 
     public function __construct() {
     }

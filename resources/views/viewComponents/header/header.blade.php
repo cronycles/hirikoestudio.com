@@ -1,6 +1,6 @@
 <header id="header" class="jheader {{$model->hasInvertedColors ? 'inverted' : ''}}">
     <div id="header__logo">
-        <a href="{{$model->logo->url}}">
+        <a href="{{$model->logo->url}}" title="{{$model->logo->htmlTitle}}">
             <img src="{{$model->logo->imageUrl}}" alt="{{$model->logo->htmlTitle}}" title="{{$model->logo->htmlTitle}}">
         </a>
     </div>

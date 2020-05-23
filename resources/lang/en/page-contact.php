@@ -11,6 +11,9 @@ return [
     you will find quick answers to your questions.
     Alternatively, if you prefer,
     fill out the form and send us your request, we will get back to you as soon as possible.',
+    'info-telephone' => 'Phone',
+    'info-email' => 'Email',
+    'info-address' => 'Address',
 
     'form' =>  [
         'send' => 'send',

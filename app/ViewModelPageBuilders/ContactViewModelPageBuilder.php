@@ -7,6 +7,7 @@ use App\Custom\Pages\Builders\ViewModelPageBuilder;
 use App\FormBuilders\ContactFormBuilder;
 use App\Services\ContactService;
 use App\ViewModels\Pages\Contact\ContactPageViewModel;
+use App\ViewModels\Pages\Contact\InfoLinkViewModel;
 use App\ViewModels\Pages\Contact\InfoViewModel;
 
 class ContactViewModelPageBuilder extends ViewModelPageBuilder {
@@ -61,13 +62,20 @@ class ContactViewModelPageBuilder extends ViewModelPageBuilder {
     private function getModelForInfoData() {
         $outcome = new InfoViewModel();
 
-        $outcome->telephone = config('custom.company.telephone');
-        $outcome->telephoneText = config('custom.company.telephone-txt');
+        $outcome->telephone = new InfoLinkViewModel();
+        $outcome->telephone->name = __('page-contact.info-telephone');
+        $outcome->telephone->url = "tel:" . config('custom.company.telephone');
+        $outcome->telephone->text = config('custom.company.telephone-txt');
 
-        $outcome->email = config('custom.company.email');
+        $outcome->email = new InfoLinkViewModel();
+        $outcome->email->name = __('page-contact.info-email');
+        $outcome->email->url = "mailto:" . config('custom.company.email');
+        $outcome->email->text = config('custom.company.email');
 
-        $outcome->address = config('custom.company.address');
-        $outcome->addressMapUrl = config('custom.company.address-map-url');
+        $outcome->address = new InfoLinkViewModel();
+        $outcome->address->name = __('page-contact.info-address');
+        $outcome->address->url = config('custom.company.address-map-url');
+        $outcome->address->text = config('custom.company.address');
 
         return $outcome;
 

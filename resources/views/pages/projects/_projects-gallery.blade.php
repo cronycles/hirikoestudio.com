@@ -11,13 +11,14 @@
         <div class="cro__auto-adjust__gallery overlay-zoom">
             @foreach($model->projects as $project)
                 <article class="gallery__box jcb" data-c="{{$project->category->id}}">
-                    <a class="image__track" href="{{$project->url}}">
+                    <a class="image__track" href="{{$project->url}}" title="{{$project->title}}">
                         <img src="{{config('custom.images.static.defaultLazyPlaceholder')}}"
                              data-src="{{$project->cover ? $project->cover->url : ""}}"
                              alt="{{$project->title}}"
+                             title="{{$project->title}}"
                              class="jlimg">
                     </a>
-                    <a href="{{$project->url}}" class="overlay__track">
+                    <a href="{{$project->url}}" title="{{$project->title}}" class="overlay__track">
                         <div class="overlay__text">{{$project->title}}</div>
                     </a>
                 </article>
