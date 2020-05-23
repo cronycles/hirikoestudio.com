@@ -112,6 +112,7 @@ class LanguageService {
 
             $language = $this->getVisibleLanguageByCode($languageCode);
             if ($language != null) {
+                app()->setLocale($language->code);
                 session(['applocale' => $languageCode]);
                 $outcome = $languageCode;
             }
@@ -130,15 +131,16 @@ class LanguageService {
         try {
             $outcome = null;
 
+            app()->setLocale(config('app.fallback_locale'));
             $currentLocale = session('applocale');
-
             if ($currentLocale == null || empty($currentLocale)) {
                 $currentLocale = $this->getFallbackLanguageCodeFromBrowserLanguagesString();
                 if($currentLocale == null) {
                     $currentLocale = config('app.fallback_locale');
+
                 }
+
             }
-            app()->setLocale($currentLocale);
             return $this->setCurrentLanguage($currentLocale);
 
         } catch (\Exception $e) {
