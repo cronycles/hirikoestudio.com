@@ -56,7 +56,18 @@ class PageViewModel {
      */
     public $breadcrumbs;
 
+    /**
+     * @var RouteUrlViewModel
+     */
+    public $canonicalRouteUrl;
+
+    /**
+     * @var RouteUrlViewModel[]
+     */
+    public $hreflangRouteUrls;
+
     public function __construct() {
         $this->breadcrumbs = [];
+        $this->hreflangRouteUrls = [];
     }
 }

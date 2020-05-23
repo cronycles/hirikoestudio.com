@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', ['as' => 'index', 'uses' => 'PagesController@index']);
+Route::get(__('routes.index'), ['as' => 'index', 'uses' => 'PagesController@index']);
 
 //projects
 Route::get(__('routes.projects'), ['as' => 'projects', 'uses' => 'PagesController@projects']);
-Route::get(__('routes.projects') . '/{slug}', ['as' => 'projects.show', 'uses' => 'PagesController@projectShow']);
+Route::get(__('routes.projects.show'), ['as' => 'projects.show', 'uses' => 'PagesController@projectShow']);
 
 //contact
 Route::get(__('routes.contact'), ['as' => 'contact', 'uses' => 'PagesController@contact']);
