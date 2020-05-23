@@ -3,7 +3,7 @@
 return [
     'htmlTitle' => 'Auth Create Project',
     'htmlMetaDescription' => '',
-    'htmlMetaKeywordsKey' => '',
+    'htmlMetaKeywords' => '',
     'title' => 'New Project',
     'description' => 'Here you can create your new project.',
     'no-category' => 'Cannot find the category you are looking for?',

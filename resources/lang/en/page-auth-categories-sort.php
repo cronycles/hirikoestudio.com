@@ -3,7 +3,7 @@
 return [
     'htmlTitle' => 'Auth Sort Categories',
     'htmlMetaDescription' => '',
-    'htmlMetaKeywordsKey' => '',
+    'htmlMetaKeywords' => '',
     'title' => 'Sort your categories',
     'description' => 'Sort your categories visual order',
 ];

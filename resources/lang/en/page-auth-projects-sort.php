@@ -3,7 +3,7 @@
 return [
     'htmlTitle' => 'Auth Sort Projects',
     'htmlMetaDescription' => '',
-    'htmlMetaKeywordsKey' => '',
+    'htmlMetaKeywords' => '',
     'title' => 'Sort your projects',
     'description' => 'Sort your projects visual order',
 ];

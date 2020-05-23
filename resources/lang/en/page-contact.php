@@ -3,7 +3,7 @@
 return [
     'htmlTitle' => 'Contact us',
     'htmlMetaDescription' => 'need help, contact us',
-    'htmlMetaKeywordsKey' => '',
+    'htmlMetaKeywords' => '',
     'title' => 'Do you need us?',
     'shortName' => 'Contact us',
     'description' => 'In ' . config('custom.company.name') . ' we are at your complete disposal:

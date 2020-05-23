@@ -3,7 +3,7 @@
 return [
     'htmlTitle' => 'Contactanos',
     'htmlMetaDescription' => 'Si necesitas cualquier cosa contactanos',
-    'htmlMetaKeywordsKey' => '',
+    'htmlMetaKeywords' => '',
     'title' => '¿Nos necesitas?',
     'shortName' => 'Contacto',
     'description' => 'En ' . config('custom.company.name') . ' estamos a tu completa disposición:

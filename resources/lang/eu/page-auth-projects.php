@@ -3,7 +3,7 @@
 return [
     'htmlTitle' => 'Auth Proyectos',
     'htmlMetaDescription' => '',
-    'htmlMetaKeywordsKey' => '',
+    'htmlMetaKeywords' => '',
     'title' => 'Proyectos',
     'description' => 'Gestiona tus proyectos: crealos, modificalos o eliminalos.',
     'create-new-button' => 'Crea una nuevo proyecto',

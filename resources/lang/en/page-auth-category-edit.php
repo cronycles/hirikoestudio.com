@@ -3,7 +3,7 @@
 return [
     'htmlTitle' => 'Auth Edit Category',
     'htmlMetaDescription' => '',
-    'htmlMetaKeywordsKey' => '',
+    'htmlMetaKeywords' => '',
     'title' => 'Edit Category',
     'description' => 'Here you can edit category.',
 

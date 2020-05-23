@@ -3,7 +3,7 @@
 return [
     'htmlTitle' => 'Auth Categories',
     'htmlMetaDescription' => '',
-    'htmlMetaKeywordsKey' => '',
+    'htmlMetaKeywords' => '',
     'title' => 'Categories',
     'description' => 'Manage your categories: create, edit or delete them.',
     'create-new-button' => 'Create a new category',

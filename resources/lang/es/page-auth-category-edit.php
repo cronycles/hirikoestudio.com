@@ -3,7 +3,7 @@
 return [
     'htmlTitle' => 'Auth Modifica una Categoría',
     'htmlMetaDescription' => '',
-    'htmlMetaKeywordsKey' => '',
+    'htmlMetaKeywords' => '',
     'title' => 'Modifica categoría',
     'description' => 'Aquí puedes modificar tu categoría.',
 

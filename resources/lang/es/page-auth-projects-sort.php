@@ -3,7 +3,7 @@
 return [
     'htmlTitle' => 'Auth Ordena los proyectos',
     'htmlMetaDescription' => '',
-    'htmlMetaKeywordsKey' => '',
+    'htmlMetaKeywords' => '',
     'title' => 'Ordena los proyectos',
     'description' => 'Cambia el orden de visualización de tus proyectos',
 ];

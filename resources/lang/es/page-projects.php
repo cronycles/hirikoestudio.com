@@ -3,7 +3,7 @@
 return [
     'htmlTitle' => 'Proyectos',
     'htmlMetaDescription' => '',
-    'htmlMetaKeywordsKey' => '',
+    'htmlMetaKeywords' => '',
     'title' => 'Nuestros proyectos',
     'shortName' => 'Proyectos',
     'description' => '¿Tienes curiosidad por ver que tal trabajamos?

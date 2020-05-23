@@ -3,7 +3,7 @@
 return [
     'htmlTitle' => 'Auth Crea una Categoría',
     'htmlMetaDescription' => '',
-    'htmlMetaKeywordsKey' => '',
+    'htmlMetaKeywords' => '',
     'title' => 'Nueva categoría',
     'description' => 'Aquí puedes crear tu nueva categoría.',
 

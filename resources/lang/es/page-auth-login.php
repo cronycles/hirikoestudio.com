@@ -3,7 +3,7 @@
 return [
     'htmlTitle' => 'Acceso al área privada',
     'htmlMetaDescription' => 'Entra y administra tu web.',
-    'htmlMetaKeywordsKey' => '',
+    'htmlMetaKeywords' => '',
     'title' => 'Acceso al área privada',
     'shortName' => 'Login',
     'description' => 'Entra y administra tu web',

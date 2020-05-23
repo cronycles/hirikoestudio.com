@@ -3,7 +3,7 @@
 return [
     'htmlTitle' => 'Auth Projects',
     'htmlMetaDescription' => '',
-    'htmlMetaKeywordsKey' => '',
+    'htmlMetaKeywords' => '',
     'title' => 'Projects',
     'description' => 'Manage your projects: create, edit or delete them.',
     'create-new-button' => 'Create a new project',

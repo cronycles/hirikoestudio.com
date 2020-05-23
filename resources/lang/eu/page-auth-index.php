@@ -3,7 +3,7 @@
 return [
     'htmlTitle' => 'Área privada',
     'htmlMetaDescription' => 'Gestiona tu web',
-    'htmlMetaKeywordsKey' => '',
+    'htmlMetaKeywords' => '',
     'title' => 'Área privada',
     'description' => 'Gestiona tu web',
 
