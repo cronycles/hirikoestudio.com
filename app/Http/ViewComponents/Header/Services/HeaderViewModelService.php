@@ -68,7 +68,7 @@ class HeaderViewModelService {
         }
         $outcome->url = route('index');
         $outcome->linkText = config('custom.company.name');
-        $outcome->altText = config('custom.company.name');
+        $outcome->htmlTitle = $this->getMenuPageHtmlTitleFromConfig(config('custom.pages.INDEX'));
         return $outcome;
     }
 
@@ -134,7 +134,9 @@ class HeaderViewModelService {
         $url = route('projects');
         $text = $this->getMenuPageTextFromConfig(config('custom.pages.PROJECTS'));
         $isActive = Route::currentRouteNamed('projects*');
-        return new HeaderLinkViewModel($url, $text, $isActive);
+        $outcome = new HeaderLinkViewModel($url, $text, $isActive);
+        $outcome->htmlTitle = $this->getMenuPageHtmlTitleFromConfig(config('custom.pages.PROJECTS'));
+        return $outcome;
     }
 
     /**
@@ -144,7 +146,9 @@ class HeaderViewModelService {
         $url = route('contact');
         $text = $this->getMenuPageTextFromConfig(config('custom.pages.CONTACT'));
         $isActive = Route::currentRouteNamed('contact*');
-        return new HeaderLinkViewModel($url, $text, $isActive);
+        $outcome = new HeaderLinkViewModel($url, $text, $isActive);
+        $outcome->htmlTitle = $this->getMenuPageHtmlTitleFromConfig(config('custom.pages.CONTACT'));
+        return $outcome;
     }
 
     /**
@@ -200,6 +204,12 @@ class HeaderViewModelService {
     private function getMenuPageTextFromConfig(int $pageId) {
         $pageEntity = $this->pagesService->getPageById($pageId);
         $outcome = $pageEntity->shortName;
+        return $outcome;
+    }
+
+    private function getMenuPageHtmlTitleFromConfig(int $pageId) {
+        $pageEntity = $this->pagesService->getPageById($pageId);
+        $outcome = $pageEntity->htmlTitle;
         return $outcome;
     }
 

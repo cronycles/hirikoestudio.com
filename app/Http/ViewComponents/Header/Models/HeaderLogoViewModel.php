@@ -6,7 +6,7 @@ class HeaderLogoViewModel {
 
     public $url;
     public $imageUrl;
-    public $altText;
+    public $htmlTitle;
     public $linkText;
 
     public function __construct() {

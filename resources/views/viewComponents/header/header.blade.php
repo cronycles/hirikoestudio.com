@@ -1,7 +1,7 @@
 <header id="header" class="jheader {{$model->hasInvertedColors ? 'inverted' : ''}}">
     <div id="header__logo">
         <a href="{{$model->logo->url}}">
-            <img src="{{$model->logo->imageUrl}}" alt="{{$model->logo->altText}}">
+            <img src="{{$model->logo->imageUrl}}" alt="{{$model->logo->htmlTitle}}" title="{{$model->logo->htmlTitle}}">
         </a>
     </div>
     <div id="header__burger" class="jburgerBtn">
@@ -13,6 +13,7 @@
                 @foreach($model->pageLinks as $pageLink)
                     <li>
                         <a href="{{$pageLink->url}}"
+                           title="{{$pageLink->htmlTitle}}"
                            class="{{ $pageLink->isActive ? 'active' : "" }}">{{$pageLink->text}}
                         </a>
                     </li>
@@ -22,7 +23,9 @@
                 <ul>
                     @foreach($model->socialLinks as $socialLink)
                         <li>
-                            <a href="{{$socialLink->url}}" target="_blank">
+                            <a href="{{$socialLink->url}}"
+                               title="{{$socialLink->text}}"
+                               target="_blank">
                                 <i class="{{$socialLink->iconClass}}" title="{{$socialLink->text}}"></i>
                             </a>
                         </li>

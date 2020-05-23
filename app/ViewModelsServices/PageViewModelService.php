@@ -71,7 +71,7 @@ class PageViewModelService {
     private function setInitialDataForPage(PageViewModel $pageViewModel, PageEntity $pageEntity) {
         try {
             $pageViewModel->id = $pageEntity->id;
-            $pageViewModel->htmlTitle = $pageEntity->htmlTitle;
+            $pageViewModel->htmlTitle = $pageEntity->htmlTitle . " | " . config('custom.company.name');
             $pageViewModel->htmlMetaDescription = $pageEntity->htmlMetaDescription;
             $pageViewModel->htmlMetaKeywords = $pageEntity->htmlMetaKeywords;
             $pageViewModel->ogImageUrl = config('custom.images.static.socialsDefaultLogo');
