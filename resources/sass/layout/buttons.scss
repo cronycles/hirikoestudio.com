@@ -1,5 +1,5 @@
 .cro__button, .cro__button:visited, .cro__button:active {
-    color: $textColor;
+    color: $buttonTextColor;
     text-decoration: none;
     text-align: center;
     background-color: $buttonBackgroundColor;
@@ -17,8 +17,8 @@
     font-weight: normal;
 
     &:hover:not(.loading__spinner) {
-        background-color: $corporateColor;
-        border-color: $corporateColor;
+        background-color: $buttonBackgroundColor;
+        border-color: $buttonBorderColor;
         color: $buttonTextColorHover;
         text-decoration: none;
     }

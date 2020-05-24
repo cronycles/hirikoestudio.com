@@ -1,0 +1,19 @@
+.cookie-banner {
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.9rem;
+    color: $corporateColor;
+    background-color: $complementaryColor;
+    display: grid;
+    grid-gap: 1rem;
+    a {
+        color: $corporateColor;
+        text-transform: uppercase;
+    }
+}
+
+.cookie-banner * {
+    padding: 0.5rem;
+}

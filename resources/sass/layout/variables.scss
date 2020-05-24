@@ -18,9 +18,10 @@ $complementaryColor: #ffffff;
 $formFieldErrorColor: #ff5353;
 
 /*---Buttons---*/
-$buttonBackgroundColor: $complementaryColor;
-$buttonTextColorHover: $complementaryColor;
-$buttonBorderColor: $textColor;
+$buttonTextColor: $complementaryColor;
+$buttonBackgroundColor: $corporateColor;
+$buttonTextColorHover: $buttonTextColor;
+$buttonBorderColor: $buttonTextColor;
 $smallButtonInternalPadding: 1rem;
 $basicButtonInternalPadding: 2rem;
 

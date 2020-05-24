@@ -3,6 +3,7 @@ import LazyFactory from './custom/scriptsLazy/lazy.factory';
 import ImagesLazy from './custom/imagesLazy/images.lazy';
 import Notifications from "./custom/httpMessages/notifications";
 import Header from "./viewComponents/header/header";
+import CookieConsent from "./viewComponents/cookie-consent/cookie-consent";
 
 $(function () {
     let lazyFactory = new LazyFactory();
@@ -14,5 +15,6 @@ $(function () {
     imagesLoading.loadAllLazyImagesIntoThePage();
     new Notifications();
     new Header();
+    new CookieConsent();
 
 });
