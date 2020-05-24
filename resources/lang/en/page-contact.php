@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'htmlTitle' => 'Contact us',
-    'htmlMetaDescription' => 'need help, contact us',
-    'htmlMetaKeywords' => '',
+    'htmlTitle' => 'Contact telephone and address',
+    'htmlMetaDescription' => 'Contact information (phone, address, email and form) to make an appointment with the studio or to advise you on your renovation, interior design or contract project',
+    'htmlMetaKeywords' => 'telephone, address, contact, email, project, renovation, interior design, contract, new construction, urban planning',
     'title' => 'Do you need us?',
     'shortName' => 'Contact us',
     'description' => 'In ' . config('custom.company.name') . ' we are at your complete disposal:

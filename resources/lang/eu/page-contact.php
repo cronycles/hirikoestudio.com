@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'htmlTitle' => 'Contactanos',
-    'htmlMetaDescription' => 'Si necesitas cualquier cosa contactanos',
-    'htmlMetaKeywords' => '',
+    'htmlTitle' => 'kontaktu telefonoa eta helbidea',
+    'htmlMetaDescription' => 'Harremanetarako datuak (telefonoa, helbidea, posta elektronikoa eta formularioa) estudioarekin hitzordua hartzeko edota zure erreformari, barruko diseinuari edo contract proiektuari buruzko dudak argitzeko',
+    'htmlMetaKeywords' => 'telefonoa, helbidea, kontaktua, posta elektronikoa, proiektua, erreforma, barruko diseinua, interiorismoa, contract, obra berria, hirigintza',
     'title' => '¿Nos necesitas?',
     'shortName' => 'Contacto',
     'description' => 'En ' . config('custom.company.name') . ' estamos a tu completa disposición:

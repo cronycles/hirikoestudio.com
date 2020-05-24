@@ -3,7 +3,7 @@
 return [
     'htmlTitle' => 'Proyecto',
     'htmlMetaDescription' => '',
-    'htmlMetaKeywords' => '',
+    'htmlMetaKeywords' => 'erreformak, pisu erreforma, erreforma integrala, etxebizitza, apartamentuak, obra berria, contract, hirigintza, barne diseinua, interiorismoa',
     'title' => 'Proyecto',
     'shortName' => 'Proyecto',
     'description' => 'Esta es nuestro proyecto',
