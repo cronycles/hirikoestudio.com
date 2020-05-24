@@ -3,7 +3,7 @@
 return [
     'htmlTitle' => 'Proyecto',
     'htmlMetaDescription' => '',
-    'htmlMetaKeywords' => '',
+    'htmlMetaKeywords' => 'reformas, viviendas, pisos, obra nueva, contract, urbanismo, interiorismo',
     'title' => 'Proyecto',
     'shortName' => 'Proyecto',
     'description' => 'Esto es nuestro proyecto',

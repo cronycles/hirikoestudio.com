@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'htmlTitle' => 'Contactanos',
-    'htmlMetaDescription' => 'Si necesitas cualquier cosa contactanos',
-    'htmlMetaKeywords' => '',
-    'title' => '¿Nos necesitas?',
+    'htmlTitle' => 'Telefono y direccion de contacto',
+    'htmlMetaDescription' => 'Información de contacto (teléfono, dirección, email y formulario) para concertar una cita con el estudio para asesorarte en tu proyecto de reforma, interiorismo o contract ',
+    'htmlMetaKeywords' => 'telefono, direccion, contacto, email, proyecto, reforma, interiorismo, contract, obra nueva, urbanismo',
+    'title' => 'Información de contacto ¿Hablamos?',
     'shortName' => 'Contacto',
     'description' => 'En ' . config('custom.company.name') . ' estamos a tu completa disposición:
     puedes llamarnos directamente al número que encuentras aquí abajo,

@@ -63,6 +63,8 @@ class ProjectShowViewModelPageBuilder extends ViewModelPageBuilder {
     private function fillMainSection(ProjectPageViewModel $pageViewModel, int $projectId) {
 
         $projectEntity = $this->projectsService->getProjectById($projectId);
+        $pageViewModel->htmlTitle = $projectEntity->title . " | " . config('custom.company.name');
+        $pageViewModel->htmlMetaDescription = $projectEntity->description;
         $pageViewModel->title = $projectEntity->title;
         $pageViewModel->description = $projectEntity->description;
         $pageViewModel->project = $this->projectsViewModelService->createProjectModel($projectEntity);

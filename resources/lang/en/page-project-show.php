@@ -3,7 +3,7 @@
 return [
     'htmlTitle' => 'Project',
     'htmlMetaDescription' => '',
-    'htmlMetaKeywords' => '',
+    'htmlMetaKeywords' => 'reforms, house, apartment, home, new construction, contract, urban design, interior design, spain',
     'title' => 'Project',
     'shortName' => 'Project',
     'description' => 'This is our project',

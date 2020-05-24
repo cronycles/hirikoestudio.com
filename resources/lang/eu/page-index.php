@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'htmlTitle' => config('custom.company.name'),
-    'htmlMetaDescription' => 'Estudio de arquitectura, urbanismo, interiorismo en Bilbao',
-    'htmlMetaKeywords' => 'hiriko, estudio de arquitectura, arquitectura, urbanismo, interiorismo, bilbao',
+    'htmlTitle' => 'Arkitektura, interiorismo eta hirigintza Bilbon',
+    'htmlMetaDescription' => 'Bilbon kokaturiko arkitektura estudioa gara. Erreforma integralak, obra berriak, contract, barne diseinu lanak eta hirigintza proiektuak egiten ditugu.',
+    'htmlMetaKeywords' => 'hiriko, estudio, hiriko estudio, arkitektura estudioa, arkitektura, hirigintza, interiorismoa, contract, erreformak, erreforma integralak, obra berria, barne diseinua, Bilbao',
     'title' => config('custom.company.name'),
     'shortName' => 'Home',
-    'description' => 'Estudio de arquitectura, urbanismo, interiorismo en Bilbao',
+    'description' => 'Bilbon kokaturiko arkitektura estudioa gara',
 ];
