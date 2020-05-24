@@ -9,6 +9,18 @@
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr;
 
+    &.inverted {
+        color: $headerInvertedLinkColor;
+        a {
+            color: $headerInvertedLinkColor;
+            text-shadow: 1px 1px 1px $corporateColor;
+        }
+        .dropdown__button {
+            color: $headerInvertedLinkColor;
+            text-shadow: 1px 1px 1px $corporateColor;
+        }
+    }
+
     #header__logo {
         grid-column: 1/2;
         justify-self: start;

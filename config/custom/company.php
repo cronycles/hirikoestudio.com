@@ -8,6 +8,10 @@ return [
     'telephone-txt' => '946 853 206',
     'email' => 'info@hirikoestudio.com',
     'address-map-url' => 'https://goo.gl/maps/pjbff8mdMzmvi63U8',
+    'crointhemorning' => [
+        'name' => 'cro\' . . .in the morning',
+        'url' => 'https://www.crointhemorning.com'
+    ],
     'socials' => [
         'instagram' =>  [
             'linkText' => 'Instagram @hirikoestudio',

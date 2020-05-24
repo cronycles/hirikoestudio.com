@@ -6,12 +6,12 @@
 @include('custom.layouts._client-server')
 @render(\App\Http\ViewComponents\Header\Components\HeaderComponent::class)
 
-<main class="jpage" data-p="{{$model->id}}">
-    @include('custom.form.messages.success')
+    <main class="jpage" data-p="{{$model->id}}">
+        @include('custom.form.messages.success')
 
-    @yield('content')
-</main>
-
+        @yield('content')
+    </main>
+@render(\App\Http\ViewComponents\Footer\Component\FooterComponent::class)
 @include('custom.layouts._scripts')
 @include('custom.layouts._analytics')
 </body>

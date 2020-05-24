@@ -5,10 +5,12 @@
 @import "layout/globals";
 @import "layout/buttons";
 @import "layout/animations";
+@import "layout/wrapper";
 @import "layout/main";
 @import "layout/page";
 
-@import "viewComponents/header/header";
+@import "viewComponents/header";
+@import "viewComponents/footer";
 
 /*----Form----*/
 @import "custom/form/form";
@@ -19,7 +21,6 @@
 @import "custom/cro-fs-images-carousel/cro-fs-images-carousel";
 
 /*----Modules----*/
-@import "modules/header";
 @import "modules/cro-auto-adjust-gallery";
 
 /*----Pages----*/
