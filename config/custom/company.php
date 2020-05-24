@@ -2,6 +2,7 @@
 
 return [
     'name' => 'Hiriko Estudio',
+    'owner' => 'Aide Ramirez Ampudia',
     'address' => 'C/ Heros&nbsp;N&deg;&nbsp;15, Bajo&nbsp;3&nbsp;Izq. 48009&nbsp;Bilbao',
     'altAddress' => 'Calle Heros 15, Bajo 3 Izq. 48009 Bilbao',
     'telephone' => '+34946853206',

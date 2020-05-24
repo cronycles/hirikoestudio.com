@@ -2,7 +2,7 @@
 
 return [
     'logo-slogan' => 'Architecture - urban design - interior design',
-    'cookie-policy-text' => 'Cookies policy',
+    'cookie-policy-text' => 'Cookie policy',
     'privacy-policy-text' => 'Privacy policy',
     'rights-reserved' => 'All rights reserved',
     'info-telephone' => 'Phone',

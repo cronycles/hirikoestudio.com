@@ -6,6 +6,8 @@ return [
     'PROJECTS' => 2,
     'PROJECT_SHOW' => 3,
     'CONTACT' => 4,
+    'COOKIE' => 10,
+    'PRIVACY' => 11,
     'AUTH_LOGIN' => 1001,
     'AUTH_REGISTER' => 1002,
     'AUTH_FORGOT_PASSWORD' => 1003,

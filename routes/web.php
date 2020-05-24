@@ -24,6 +24,8 @@ Route::get(__('routes.projects.show'), ['as' => 'projects.show', 'uses' => 'Page
 Route::get(__('routes.contact'), ['as' => 'contact', 'uses' => 'PagesController@contact']);
 Route::post('contact', ['as' => 'contact.send', 'uses' => 'ContactController@send']);
 
+Route::get(__('routes.cookie'), ['as' => 'cookie', 'uses' => 'PagesController@cookie']);
+Route::get(__('routes.privacy'), ['as' => 'privacy', 'uses' => 'PagesController@privacy']);
 
 //Login Routes...
 Route::get('login', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);

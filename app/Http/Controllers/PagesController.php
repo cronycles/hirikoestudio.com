@@ -27,11 +27,6 @@ class PagesController extends SlugController {
         return view($model->viewPath, compact('model'));
     }
 
-    public function contact() {
-        $model = $this->pageViewModelService->getViewModelByPageId(config('custom.pages.CONTACT'));
-        return view($model->viewPath, compact('model'));
-    }
-
     public function projects() {
         $model = $this->pageViewModelService->getViewModelByPageId(config('custom.pages.PROJECTS'));
         return view($model->viewPath, compact('model'));
@@ -47,6 +42,22 @@ class PagesController extends SlugController {
             return $this->unknown();
         }
     }
+
+    public function contact() {
+        $model = $this->pageViewModelService->getViewModelByPageId(config('custom.pages.CONTACT'));
+        return view($model->viewPath, compact('model'));
+    }
+
+    public function cookie() {
+        $model = $this->pageViewModelService->getViewModelByPageId(config('custom.pages.COOKIE'));
+        return view($model->viewPath, compact('model'));
+    }
+
+    public function privacy() {
+        $model = $this->pageViewModelService->getViewModelByPageId(config('custom.pages.PRIVACY'));
+        return view($model->viewPath, compact('model'));
+    }
+
 
 
 }

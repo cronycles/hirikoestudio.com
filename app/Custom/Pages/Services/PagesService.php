@@ -22,7 +22,9 @@ use App\ViewModelPageBuilders\Auth\Projects\AuthProjectsViewModelPageBuilder;
 use App\ViewModelPageBuilders\Auth\RegisterViewModelPageBuilder;
 use App\ViewModelPageBuilders\Auth\ResetPasswordViewModelPageBuilder;
 use App\ViewModelPageBuilders\ContactViewModelPageBuilder;
+use App\ViewModelPageBuilders\CookieViewModelPageBuilder;
 use App\ViewModelPageBuilders\IndexViewModelPageBuilder;
+use App\ViewModelPageBuilders\PrivacyViewModelPageBuilder;
 use App\ViewModelPageBuilders\ProjectShowViewModelPageBuilder;
 use App\ViewModelPageBuilders\ProjectsViewModelPageBuilder;
 use App\ViewModelPageBuilders\UnknownViewModelPageBuilder;
@@ -47,6 +49,8 @@ class PagesService {
         ProjectsViewModelPageBuilder $projectsViewModelPageBuilder,
         ProjectShowViewModelPageBuilder $projectShowViewModelPageBuilder,
         ContactViewModelPageBuilder $contactViewModelPageBuilder,
+        CookieViewModelPageBuilder $cookieViewModelPageBuilder,
+        PrivacyViewModelPageBuilder $privacyViewModelPageBuilder,
         AuthIndexViewModelPageBuilder $authIndexViewModelPageBuilder,
         AuthCategoriesViewModelPageBuilder $authCategoriesViewModelPageBuilder,
         AuthCategoryCreateViewModelPageBuilder $authCategoryCreateViewModelPageBuilder,
@@ -81,6 +85,14 @@ class PagesService {
         $this->pageConfigurations[config('custom.pages.CONTACT')] = [
             'config' => config('pages.contact'),
             'viewModelPageBuilder' => $contactViewModelPageBuilder
+        ];
+        $this->pageConfigurations[config('custom.pages.COOKIE')] = [
+            'config' => config('pages.cookie'),
+            'viewModelPageBuilder' => $cookieViewModelPageBuilder
+        ];
+        $this->pageConfigurations[config('custom.pages.PRIVACY')] = [
+            'config' => config('pages.privacy'),
+            'viewModelPageBuilder' => $privacyViewModelPageBuilder
         ];
 
         $this->pageConfigurations[config('custom.pages.AUTH_LOGIN')] = [

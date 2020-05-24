@@ -80,9 +80,9 @@ class FooterViewModelService {
     private function createSubFooterViewModel() {
         $outcome = new SubFooterViewModel();
         $outcome->cookiePolicyText = __('footer.cookie-policy-text');
-        $outcome->cookiePolicyUrl = "";
+        $outcome->cookiePolicyUrl = route('cookie');
         $outcome->privacyPolicyText = __('footer.privacy-policy-text');
-        $outcome->privacyPolicyUrl = "";
+        $outcome->privacyPolicyUrl = route('privacy');
         $outcome->copyrightText = "Copiright © ". now()->year ." " .config('custom.company.crointhemorning.name');
         $outcome->copyrightUrl = config('custom.company.crointhemorning.url');
         $outcome->vatNumber = __('footer.copyright.vat-number') . " " .config('custom.company.vat-number');
