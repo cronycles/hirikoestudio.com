@@ -64,14 +64,14 @@ class CategoriesApi implements ICrudApi, ISortingApi {
             config('custom.cache.api.categories.key'),
             [$id]
         );
-        $serviceOffers = $this->cacheService->getOrCallAndSave(
+        $serviceCategories = $this->cacheService->getOrCallAndSave(
             $cacheKey,
             config('custom.cache.api.categories.seconds'),
             function () use ($id) {
                 return $this->mainApi->getCategoryById($id);
             });
 
-        return $this->mappingService->mapCategory($serviceOffers);
+        return $this->mappingService->mapCategory($serviceCategories);
     }
 
     /**

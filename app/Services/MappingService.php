@@ -170,6 +170,7 @@ class MappingService {
             if ($serviceCategory != null) {
                 $outcome->id = $serviceCategory->id;
                 $outcome->name = $serviceCategory->name;
+                $outcome->nameTranslations = $this->createTranslationEntities($serviceCategory->nameTranslations);
             }
         }
         return $outcome;

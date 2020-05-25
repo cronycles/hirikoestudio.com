@@ -35,8 +35,8 @@ class CategoryFormBuilder extends FormBuilder {
         /** @var FieldModel $field */
         foreach ($fields as $field) {
             switch ($field->name) {
-                case $this->getConfigFieldName('name'):
-                    $field->value = $entity->name ?? null;
+                case $this->getConfigFieldName('name'). "_" . $field->localeCode:
+                    $field->value = $this->formHelper->getTranslatableFieldValueFromTranslatableEntity($field, $entity->nameTranslations ?? null);
                     break;
             }
         }
@@ -55,7 +55,7 @@ class CategoryFormBuilder extends FormBuilder {
         foreach ($fields as $field) {
             switch ($field->name) {
                 case $this->getConfigFieldName('name'):
-                    $outcome->nameTranslations = $this->formHelper->parseTranslatableField($field->value);
+                    array_push($outcome->nameTranslations, $this->formHelper->parseTranslatableField($field));
                     break;
             }
         }
