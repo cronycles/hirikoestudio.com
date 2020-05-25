@@ -11,6 +11,11 @@ class IndexViewModel extends PageViewModel{
      */
     public $slides;
 
+    /**
+     * @var IndexProjectsSectionViewModel
+     */
+    public $projectsSection;
+
     public function __construct() {
         parent::__construct();
 

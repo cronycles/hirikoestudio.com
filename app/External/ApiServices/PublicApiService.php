@@ -438,6 +438,7 @@ class PublicApiService {
             $category->orderNumber = $dbProject->category->order_number;
             $outcome->category = $category;
             $outcome->isVisible = $dbProject->show ? true : false;
+            $outcome->isVisibleInHomepage = $dbProject->show_in_home ? true : false;
 
             $dbImages = $dbProject->images;
             $outcome->images = [];
@@ -479,6 +480,7 @@ class PublicApiService {
                 $outcome->title = $projectEntity->title;
                 $outcome->slug = $this->slugHelper->slugifyText($projectEntity->title);
                 $outcome->show = $projectEntity->isVisible;
+                $outcome->show_in_home = $projectEntity->isVisibleInHomepage;
 
                 foreach ($projectEntity->descriptionTranslations as $titleTranslation) {
                     $outcome->setTranslation('description', $titleTranslation->locale, $titleTranslation->value);

@@ -7,4 +7,6 @@ return [
     'title' => config('custom.company.name'),
     'shortName' => 'Home',
     'description' => 'Architecture and Urban Design Studio in Bilbao, Spain',
+    'projects-section-title' => 'Our last projects',
+    'projects-section-more' => 'I want to see more!'
 ];

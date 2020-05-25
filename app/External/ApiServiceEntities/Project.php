@@ -43,6 +43,11 @@ class Project {
     public $isVisible;
 
     /**
+     * @var bool
+     */
+    public $isVisibleInHomepage;
+
+    /**
      * @var Image[]
      */
     public $images;

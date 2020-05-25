@@ -3,14 +3,32 @@
 namespace App\ViewModelPageBuilders;
 
 use App\Custom\Pages\Builders\ViewModelPageBuilder;
+use App\Services\Projects\ProjectsService;
+use App\ViewModels\Pages\Index\IndexProjectsSectionViewModel;
 use App\ViewModels\Pages\Index\IndexViewModel;
 use App\ViewModels\Pages\Index\SlideViewModel;
 use App\ViewModels\Pages\PageViewModel;
+use App\ViewModelsServices\ProjectsViewModelService;
 
 class IndexViewModelPageBuilder extends ViewModelPageBuilder {
 
-    public function __construct() {
+    /**
+     * @var ProjectsService
+     */
+    private $projectsService;
 
+    /**
+     * @var ProjectsViewModelService
+     */
+    private $projectsViewModelService;
+
+
+    public function __construct(
+        ProjectsService $projectsService,
+        ProjectsViewModelService $projectsViewModelService) {
+
+        $this->projectsService = $projectsService;
+        $this->projectsViewModelService = $projectsViewModelService;
     }
 
     public function createNewViewModel() {
@@ -37,7 +55,25 @@ class IndexViewModelPageBuilder extends ViewModelPageBuilder {
             array_push($pageViewModel->slides, $slide);
         }
 
+        $pageViewModel->projectsSection = $this->fillProjectsSection();
+
         return $pageViewModel;
+    }
+
+    /**
+     * @return IndexProjectsSectionViewModel
+     */
+    private function fillProjectsSection() {
+        $outcome = new IndexProjectsSectionViewModel();
+
+        $projectEntities = $this->projectsService->getHomeProjects();
+
+        $outcome->title = __('page-index.projects-section-title');
+        $outcome->seeMore = __('page-index.projects-section-more');
+
+        $outcome->projects = $this->projectsViewModelService->createProjectsModel($projectEntities);
+
+        return $outcome;
     }
 
 }

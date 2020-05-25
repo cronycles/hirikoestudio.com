@@ -7,4 +7,6 @@ return [
     'title' => config('custom.company.name'),
     'shortName' => 'Home',
     'description' => 'Bilbon kokaturiko arkitektura estudioa gara',
+    'projects-section-title' => 'Nuestros últimos proyectos',
+    'projects-section-more' => '¡Quiero ver más!'
 ];
