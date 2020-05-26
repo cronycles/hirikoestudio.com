@@ -15,7 +15,12 @@ class IndexProjectsSectionViewModel {
     /**
      * @var string
      */
-    public $seeMore;
+    public $seeMoreText;
+
+    /**
+     * @var string
+     */
+    public $seeMoreUrl;
 
     /**
      * @var ProjectViewModel[]

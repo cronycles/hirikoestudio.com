@@ -24,11 +24,14 @@
             <p>{!! $model->servicesSection->companyText !!}</p>
             <hr/>
         </div>
-        <article class="page__section">
-            <h2>{{$model->projectsSection->title}}</h2>
-            @include('pages.projects._projects-gallery', ['model' => $model->projectsSection])
-            <a href="{{$model->projectsSection->seeMoreUrl}}" class="cro__button cro__button--basic">{{$model->projectsSection->seeMoreText}}</a>
-        </article>
+        @if(isset($model->projectsSection->projects) && !empty($model->projectsSection->projects))
+            <article class="page__section">
+                <h2>{{$model->projectsSection->title}}</h2>
+                @include('pages.projects._projects-gallery', ['model' => $model->projectsSection])
+                <a href="{{$model->projectsSection->seeMoreUrl}}"
+                   class="cro__button cro__button--basic">{{$model->projectsSection->seeMoreText}}</a>
+            </article>
+        @endif
     </section>
 @endsection
 
