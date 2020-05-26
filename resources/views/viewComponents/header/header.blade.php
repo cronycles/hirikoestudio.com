@@ -1,7 +1,12 @@
 <header id="header" class="jheader {{$model->hasInvertedColors ? 'inverted' : ''}}">
     <div id="header__logo">
         <a href="{{$model->logo->url}}" title="{{$model->logo->htmlTitle}}">
-            <img src="{{$model->logo->imageUrl}}" alt="{{$model->logo->htmlTitle}}" title="{{$model->logo->htmlTitle}}">
+            <img
+                src="{{config('custom.images.static.defaultLazyPlaceholder')}}"
+                data-src="{{$model->logo->imageUrl}}"
+                alt="{{$model->logo->htmlTitle}}"
+                title="{{$model->logo->htmlTitle}}"
+                class="jlimg">
         </a>
     </div>
     <div id="header__burger" class="jburgerBtn">

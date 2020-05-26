@@ -7,6 +7,7 @@ return [
     'title' => config('custom.company.name'),
     'shortName' => 'Home',
     'description' => 'Estudio de arquitectura, interiorismo y urbanismo en Bilbao',
+    'services-company-text' => 'Architectura &bull; Urbanismo &bull; Interiorismo &bull; Reformas integrales &bull; Obra nueva &bull; Contract',
     'projects-section-title' => 'Nuestros últimos proyectos',
     'projects-section-more' => '¡Quiero ver más!'
 ];

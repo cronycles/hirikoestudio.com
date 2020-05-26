@@ -1,5 +1,5 @@
 @if($model->projects != null && !empty($model->projects))
-    @if($model->categories != null && !empty($model->categories))
+    @if(isset($model->categories) && !empty($model->categories))
         <ul class="page__section__box product__categories">
             @foreach($model->categories as $category)
                 <li class="jcl product__category {{$category->isActive ? 'active' : ''}}"

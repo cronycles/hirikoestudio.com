@@ -5,6 +5,8 @@ namespace App\ViewModelPageBuilders;
 use App\Custom\Pages\Builders\ViewModelPageBuilder;
 use App\Services\Projects\ProjectsService;
 use App\ViewModels\Pages\Index\IndexProjectsSectionViewModel;
+use App\ViewModels\Pages\Index\IndexServicesSectionViewModel;
+use App\ViewModels\Pages\Index\IndexSlidesSectionViewModel;
 use App\ViewModels\Pages\Index\IndexViewModel;
 use App\ViewModels\Pages\Index\SlideViewModel;
 use App\ViewModels\Pages\PageViewModel;
@@ -41,9 +43,21 @@ class IndexViewModelPageBuilder extends ViewModelPageBuilder {
      * @return IndexViewModel
      */
     public function fillPageViewModel($pageViewModel, $params) {
+        $pageViewModel->slidesSection = $this->fillSlidesSection();
+        $pageViewModel->servicesSection = $this->fillServicesSection();
+        $pageViewModel->projectsSection = $this->fillProjectsSection();
 
+        return $pageViewModel;
+    }
+
+    /**
+     * @return IndexSlidesSectionViewModel
+     */
+    private function fillSlidesSection() {
         $imageBaseUrl = config('custom.images.static.homeSlidesUrl');
         $numberOfSlidesToShow = config('pages.index.slidesNumber');
+
+        $outcome = new IndexSlidesSectionViewModel();
 
         for ($i = 0; $i < $numberOfSlidesToShow; $i++) {
             $slide = new SlideViewModel();
@@ -52,12 +66,22 @@ class IndexViewModelPageBuilder extends ViewModelPageBuilder {
             $slide->imageDesktopUrl = $slidePartialName . "-d.jpg";
             $slide->imageMobileUrl = $slidePartialName . "-m.jpg";
 
-            array_push($pageViewModel->slides, $slide);
+            array_push($outcome->slides, $slide);
         }
 
-        $pageViewModel->projectsSection = $this->fillProjectsSection();
+        return $outcome;
+    }
 
-        return $pageViewModel;
+    /**
+     * @return IndexServicesSectionViewModel
+     */
+    private function fillServicesSection() {
+        $outcome = new IndexServicesSectionViewModel();
+
+        $outcome->companyName = config('custom.company.name');
+        $outcome->companyText = __('page-index.services-company-text');
+
+        return $outcome;
     }
 
     /**
@@ -69,7 +93,8 @@ class IndexViewModelPageBuilder extends ViewModelPageBuilder {
         $projectEntities = $this->projectsService->getHomeProjects();
 
         $outcome->title = __('page-index.projects-section-title');
-        $outcome->seeMore = __('page-index.projects-section-more');
+        $outcome->seeMoreText = __('page-index.projects-section-more');
+        $outcome->seeMoreUrl = route('projects');
 
         $outcome->projects = $this->projectsViewModelService->createProjectsModel($projectEntities);
 
