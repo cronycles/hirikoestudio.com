@@ -29,8 +29,16 @@ return [
         'show' => [
             'type' => 6,
             'name' => 'show',
-            'default' => true,
+            'default' => false,
             'textKey' => 'validation.attributes.show',
+            'errorTextKey' => '{"id": "validation-js.required", "params": {}}',
+            'validations' => ['required'],
+        ],
+        'showInHome' => [
+            'type' => 6,
+            'name' => 'show_in_home',
+            'default' => false,
+            'textKey' => 'validation.attributes.showInHome',
             'errorTextKey' => '{"id": "validation-js.required", "params": {}}',
             'validations' => ['required'],
         ]

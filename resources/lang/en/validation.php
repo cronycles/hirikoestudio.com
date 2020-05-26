@@ -166,6 +166,7 @@ return [
         'price' => 'Price',
         'date' => 'Fecha',
         'show' => 'Visible',
+        'showInHome' => 'Visible en homepage',
     ],
 
 ];

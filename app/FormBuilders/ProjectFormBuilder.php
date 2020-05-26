@@ -50,6 +50,9 @@ class ProjectFormBuilder extends FormBuilder {
                 case $this->getConfigFieldName('show'):
                     $field->value = $entity->isVisible ?? null;
                     break;
+                case $this->getConfigFieldName('showInHome'):
+                    $field->value = $entity->isVisibleInHomepage ?? null;
+                    break;
                 case $this->getConfigFieldName('category'):
                     $field->items = $this->fillCategoryFieldItems();
                     $field->selectedId = $entity != null ? $entity->category->id : null;
@@ -78,6 +81,9 @@ class ProjectFormBuilder extends FormBuilder {
                     break;
                 case $this->getConfigFieldName('show'):
                     $outcome->isVisible = $this->parseBooleanFieldValue($field->value);
+                    break;
+                case $this->getConfigFieldName('showInHome'):
+                    $outcome->isVisibleInHomepage = $this->parseBooleanFieldValue($field->value);
                     break;
                 case $this->getConfigFieldName('category'):
                     $outcome->category->id = $this->parseIntegerFieldValue($field->value);
