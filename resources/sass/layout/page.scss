@@ -3,14 +3,6 @@
     padding-left: $pageSideMargins;
     padding-right: $pageSideMargins;
 
-    .page__section {
-        padding-bottom: $pageSectionBottomMargins;
-
-        .page__section__box {
-            margin-bottom: $pageSectionBoxBottomMargins;
-        }
-    }
-
     ul.section__breadcrumb {
         margin: 0;
 
@@ -37,5 +29,13 @@
             color: black;
             content: "\/";
         }
+    }
+}
+
+.page__section {
+    padding-bottom: $pageSectionBottomMargins;
+
+    .page__section__box {
+        margin-bottom: $pageSectionBoxBottomMargins;
     }
 }

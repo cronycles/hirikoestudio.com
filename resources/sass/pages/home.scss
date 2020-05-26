@@ -1,2 +1,12 @@
-#home-container {
+#home__below__container {
+    margin: $pageSideMargins;
+    text-align: center;
+
+    @media(--no-mobileDevice) {
+        margin: $pageMarginsNoMobile;
+    }
+
+    hr {
+        width: 50%;
+    }
 }

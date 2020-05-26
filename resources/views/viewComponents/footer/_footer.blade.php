@@ -2,13 +2,14 @@
     <div class="footer__main">
         <ul class="footer__main-box footer__logo-box">
             <li>
-{{--                <img src="{{$model->logo->imageUrl}}"--}}
-{{--                     alt="{{$model->logo->htmlTitle}}"--}}
-{{--                     title="{{$model->logo->htmlTitle}}">--}}
-                <H1>Hiriko Estudio</H1>
+                <img src="{{config('custom.images.static.defaultLazyPlaceholder')}}"
+                     data-src="{{$model->logo->imageUrl}}"
+                     alt="{{$model->logo->htmlTitle}}"
+                     title="{{$model->logo->htmlTitle}}"
+                     class="jlimg">
             </li>
             <li>
-                <h2>{!! $model->logo->slogan !!}</h2>
+                {!! $model->logo->slogan !!}
             </li>
         </ul>
         <ul class="footer__main-box footer__contact-box">
@@ -52,12 +53,12 @@
     </div>
     <div class="footer__sub">
         <section>
-                <p>
-                    <a href="{{$model->sub->cookiePolicyUrl}}"
-                       title="{{$model->sub->cookiePolicyText}}">
-                        {{$model->sub->cookiePolicyText}}
-                    </a>
-                </p>
+            <p>
+                <a href="{{$model->sub->cookiePolicyUrl}}"
+                   title="{{$model->sub->cookiePolicyText}}">
+                    {{$model->sub->cookiePolicyText}}
+                </a>
+            </p>
             <p>
                 <a href="{{$model->sub->privacyPolicyUrl}}"
                    title="{{$model->sub->privacyPolicyText}}">

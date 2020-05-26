@@ -44,6 +44,11 @@ class ProjectEntity extends CustomEntity{
     public $isVisible;
 
     /**
+     * @var bool
+     */
+    public $isVisibleInHomepage;
+
+    /**
      * @var ImageEntity[]
      */
     public $images;

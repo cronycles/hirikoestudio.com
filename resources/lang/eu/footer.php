@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'logo-slogan' => 'Arquitectura - urbanismo - interiorismo',
+    'logo-slogan' => 'Arquitectura &bull; urbanismo &bull; interiorismo',
     'cookie-policy-text' => 'Pólitica de cookies',
     'privacy-policy-text' => 'Pólitica de privacidad',
     'rights-reserved' => 'Todos los derechos reservados',

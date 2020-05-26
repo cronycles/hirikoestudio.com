@@ -102,6 +102,7 @@ class MappingService {
             $outcome->description = $serviceProject->description;
             $outcome->descriptionTranslations = $this->createTranslationEntities($serviceProject->descriptionTranslations);
             $outcome->isVisible = $serviceProject->isVisible;
+            $outcome->isVisibleInHomepage = $serviceProject->isVisibleInHomepage;
             $outcome->images = $this->mapImages($serviceProject->images);
         }
         return $outcome;

@@ -21,6 +21,7 @@ class CreateFailedJobsTable extends Migration
             $table->json('description')->nullable();
             $table->integer('order_number')->nullable();
             $table->boolean('show')->default(false);
+            $table->boolean('show_in_home')->default(false);
             $table->timestamps();
 
             $table->foreign('category_id')
