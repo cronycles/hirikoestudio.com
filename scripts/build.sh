@@ -71,6 +71,8 @@ fi
 
 appVersion=($(jq -r '.version' composer.json))
 
+php artisan config:cache
+
 if [ ${releaseType} != "onlybuild" ]
 then
     scripts/createZipPackage.sh ${appVersion}
