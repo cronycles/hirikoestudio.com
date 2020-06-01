@@ -1,5 +1,5 @@
 footer {
-    background-color: $backgroundColor;
+    border-top: 1px solid #44444445;
     ul {
         list-style-type: none;
     }
@@ -9,33 +9,29 @@ footer {
     }
 
     .footer__main {
-        background-color: $corporateColor;
-        color: $complementaryColor;
         padding: $pageSideMargins;
 
         display: grid;
-        grid-auto-flow: row;
         justify-items: center;
-        align-items: center;
         grid-gap: 2rem;
+        align-items: center;
 
         @media (--no-mobileDevice) {
-            justify-items: left;
             grid-auto-flow: column;
-        }
-
-        a {
-            color: $complementaryColor;
+            grid-template-columns: 1fr 1fr 1fr;
         }
 
         .footer__main-box {
 
             &.footer__logo-box {
                 text-transform: lowercase;
-                //justify-self: left;
                 text-align: center;
                 img {
                     height: $headerLogoHeight;
+                }
+
+                @media (--no-mobileDevice) {
+                    justify-self: left;
                 }
             }
 
@@ -44,10 +40,13 @@ footer {
             }
 
             &.footer__social-box {
-                justify-self: center;
                 display: grid;
                 grid-auto-flow: column;
                 grid-gap: 1rem;
+
+                @media (--no-mobileDevice) {
+                    justify-self: right;
+                }
 
                 i {
                     font-size: 2rem;

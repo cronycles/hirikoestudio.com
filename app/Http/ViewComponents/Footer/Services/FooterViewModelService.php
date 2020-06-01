@@ -30,7 +30,7 @@ class FooterViewModelService {
      */
     private function createLogoViewModel() {
         $outcome = new LogoViewModel();
-        $outcome->imageUrl = config('custom.images.static.logoWhite');
+        $outcome->imageUrl = config('custom.images.static.logoBlack');
         $outcome->htmlTitle = config('custom.company.name');
         $outcome->slogan = __('footer.logo-slogan');
         return $outcome;
