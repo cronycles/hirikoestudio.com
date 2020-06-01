@@ -20,7 +20,7 @@
         <h2>¿QUÉ ES UNA COOKIE?</h2>
         <p>
             Una “Cookie” es un pequeño archivo de texto que un sitio web almacena en el navegador del usuario. Las
-            cookies facilitan el uso y la navegación por una página web y son esenciales para el funcionamiento de
+            cookies facilitan el uso y la navegación de una página web y son esenciales para el funcionamiento de
             internet, aportando innumerables ventajas en la prestación de servicios interactivos.
         </p>
         <p>
@@ -30,7 +30,7 @@
             generó o “persistentes”, que permanecen en su ordenador hasta una fecha determinada.
         </p>
         <p>
-            Este documento de “Uso de Cookies” ha sido elaborado a partir de un auditado técnico externo estando, por
+            Este documento de “Uso de Cookies” ha sido elaborado a partir de un auditor técnico externo estando, por
             tanto, sujeto a actualizaciones periódicas. Su propósito es ayudarle a comprender el uso que la presente
             página web hace de las cookies, la finalidad de las cookies utilizadas, así como de las opciones que el
             usuario tiene a su disposición para gestionarlas.
@@ -56,7 +56,7 @@
         <h3> COOKIES ANALÍTICAS</h3>
         <p>
             Esta web utiliza cookies analíticas para recabar estadísticas sobre la actividad del usuario en la web y la
-            actividad general de la misma. La información recopilada es anónima y permite optimizar la navegación por
+            actividad general de la misma. La información recopilada es anónima y permite optimizar la navegación de
             nuestra página web y garantizar el mejor servicio al usuario. El usuario puede excluir su actividad mediante
             los sistemas de exclusión facilitados por su navegador. En particular, este sitio web utiliza Google
             Analytics, un servicio analítico de web prestado por Google, Inc. con domicilio en los Estados Unidos con

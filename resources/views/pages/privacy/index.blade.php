@@ -12,7 +12,7 @@
                 personal, guardando en todo momento el deber de secreto profesional.
             </p>
             <p>
-                {{config('custom.company.name')}} le informa que se encuentra adaptada a la Ley Orgánica 15/1.999, de
+                {{config('custom.company.name')}} le informa de que se encuentra adaptada a la Ley Orgánica 15/1.999, de
                 Protección de Datos de Carácter Personal, y el Real Decreto 1720/2007 por el que se aprueba el
                 Reglamento de desarrollo de la L.O.P.D., que sus ficheros con datos personales han sido debidamente
                 inscritos en la Agencia Española de Protección de Datos y que cumple con el resto de las obligaciones
