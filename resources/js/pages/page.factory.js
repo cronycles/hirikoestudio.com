@@ -1,5 +1,6 @@
 import PageHome from "./home";
 import PageProjects from "./projects";
+import PageProjectShow from "./project.show";
 import PageContact from "./contact";
 import PageAuthLogin from "./auth/login";
 import PageAuthIndex from "./auth";
@@ -21,6 +22,7 @@ export default class PageFactory {
         this.pages = [
             {id: 1, className: PageHome},
             {id: 2, className: PageProjects},
+            {id: 3, className: PageProjectShow},
             {id: 4, className: PageContact},
             {id: 1001, className: PageAuthLogin},
             {id: 1002, className: PageAuthRegister},

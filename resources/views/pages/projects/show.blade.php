@@ -3,7 +3,10 @@
     <div id="page__project-show">
         <section class="page__section show__section">
             <h1>{{$model->project->title}}</h1>
-            <p>{!! $model->project->description !!}</p>
+            <div class="jCRTcontainer cro__readmore">
+                <div>{!! $model->project->description !!}</div>
+            </div>
+
         </section>
         <section class="page__section show__section">
             @if($model->project->images != null && !empty($model->project->images))

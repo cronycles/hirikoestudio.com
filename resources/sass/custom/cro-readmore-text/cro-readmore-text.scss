@@ -1,0 +1,18 @@
+.cro__readmore {
+
+    > :first-child {
+        display: none;
+        overflow: hidden;
+        word-break: break-word;
+        word-wrap: break-word;
+    }
+
+    .cro__readmore__btn-overflow {
+        display: none;
+        cursor: pointer;
+
+        i {
+            font-size: 2rem;
+        }
+    }
+}
