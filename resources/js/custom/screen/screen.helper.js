@@ -1,9 +1,7 @@
 export default class ScreenHelper {
 
-    #mobileScreenMaxSize;
-
     constructor() {
-        #mobileScreenMaxSize = 767;
+        this.mobileScreenMaxSize = 767;
     }
 
     isMobileScreen() {
