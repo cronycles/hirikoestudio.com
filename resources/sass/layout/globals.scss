@@ -32,7 +32,11 @@ h3 {
 p {
     margin: 0;
     padding: 0;
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
+    @media(--no-mobileDevice) {
+        padding-bottom: 2rem;
+    }
+
 }
 
 @mixin linkBehaviour {

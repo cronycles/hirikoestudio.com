@@ -10,7 +10,7 @@ export default class ImagesLazy {
         $('.jlimg1000').Lazy({
             effect: 'fadeIn',
             effectTime: 1000,
-            threshold: 0
+            threshold: 500
         });
     }
 

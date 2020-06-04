@@ -10,9 +10,6 @@ export default class CroReadMoreTextView {
         this.$moreButton = $('.jmoreBtn');
         this.$lessButton = $('.jlessBtn');
 
-        this.text.height(this.options.heightLimit);
-        this.text.show();
-
         this.scrollHeight = this.text[0].scrollHeight;
     }
 
@@ -20,8 +17,9 @@ export default class CroReadMoreTextView {
         return this.scrollHeight > this.options.heightLimit;
     };
 
-    showControlButtons = () => {
-        this.$moreButton.show();
+    enableReadMore = () => {
+        this.#showControlButtons();
+        this.hideMoreText();
     };
 
     onReadMoreClick = (callback) => {
@@ -52,5 +50,9 @@ export default class CroReadMoreTextView {
 
     #addControlButtons = () => {
         this.$container.append(this.options.controlButtons);
+    };
+
+    #showControlButtons = () => {
+        this.$moreButton.show();
     };
 }
