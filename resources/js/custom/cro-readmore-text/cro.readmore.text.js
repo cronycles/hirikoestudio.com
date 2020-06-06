@@ -16,8 +16,6 @@ export default class CroReadMoreText {
         this.view = new CroReadMoreTextView(options);
         this.screenHelper = new ScreenHelper();
 
-
-
         if (this.view.isHeightLimitReached()) {
             if(!options.onlyMobile) {
                 this.view.enableReadMore();

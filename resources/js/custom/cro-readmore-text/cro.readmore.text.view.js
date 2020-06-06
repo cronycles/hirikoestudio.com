@@ -2,6 +2,8 @@ export default class CroReadMoreTextView {
     constructor(options) {
         this.options = options;
 
+        this.transparentClass = "cro__readmore-transparent";
+
         this.$container = $('.jCRTcontainer');
 
         this.#addControlButtons();
@@ -32,6 +34,7 @@ export default class CroReadMoreTextView {
     showMoreText = () => {
         this.$moreButton.hide();
         this.$lessButton.show();
+        this.text.removeClass(this.transparentClass);
         this.text.animate({'height': this.scrollHeight});
     };
 
@@ -45,6 +48,7 @@ export default class CroReadMoreTextView {
     hideMoreText = () => {
         this.$lessButton.hide();
         this.$moreButton.show();
+        this.text.addClass(this.transparentClass);
         this.text.animate({'height': this.options.heightLimit + 'px'});
     };
 
