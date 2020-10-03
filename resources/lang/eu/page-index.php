@@ -7,7 +7,9 @@ return [
     'title' => config('custom.company.name'),
     'shortName' => 'Home',
     'description' => 'Bilbon kokaturiko arkitektura estudioa gara',
-    'services-company-text' => 'Architectura &bull; Urbanismo &bull; Interiorismo &bull; Reformas integrales &bull; Obra nueva &bull; Contract',
+    'presentation-section-title' => config('custom.company.name'),
+    'presentation-section-subtitle' => 'Hiriko Estudio Arkitekturan <strong>Hirigintza, Interiorismo, Erreforma integrala, Obra berria eta Contract</strong> proiektuak garatzen ditugu.',
+    'presentation-section-text' => '',
     'projects-section-title' => 'Nuestros últimos proyectos',
     'projects-section-more' => '¡Quiero ver más!'
 ];

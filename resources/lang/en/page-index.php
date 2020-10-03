@@ -7,7 +7,11 @@ return [
     'title' => config('custom.company.name'),
     'shortName' => 'Home',
     'description' => 'Architecture and Urban Design Studio in Bilbao, Spain',
-    'services-company-text' => 'Architectura &bull; Urban Design &bull; Interor Design &bull; Integral reforms &bull; New constructions &bull; Contract',
+    'services-company-text' => 'Architecture &bull; Urban Design &bull; Interor Design &bull; Integral reforms &bull; New constructions &bull; Contract',
+    'presentation-section-title' => config('custom.company.name'),
+    'presentation-section-subtitle' => 'In Hiriko Estudio we implements
+                                        <strong> Architecture, Urban Design, Interor Design, Integral reforms, New constructions and Contract projects.</strong>',
+    'presentation-section-text' => '',
     'projects-section-title' => 'Our last projects',
     'projects-section-more' => 'I want to see more!'
 ];

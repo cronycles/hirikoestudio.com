@@ -5,11 +5,10 @@ namespace App\ViewModelPageBuilders;
 use App\Custom\Pages\Builders\ViewModelPageBuilder;
 use App\Services\Projects\ProjectsService;
 use App\ViewModels\Pages\Index\IndexProjectsSectionViewModel;
-use App\ViewModels\Pages\Index\IndexServicesSectionViewModel;
+use App\ViewModels\Pages\Index\IndexPresentationSectionViewModel;
 use App\ViewModels\Pages\Index\IndexSlidesSectionViewModel;
 use App\ViewModels\Pages\Index\IndexViewModel;
 use App\ViewModels\Pages\Index\SlideViewModel;
-use App\ViewModels\Pages\PageViewModel;
 use App\ViewModelsServices\ProjectsViewModelService;
 
 class IndexViewModelPageBuilder extends ViewModelPageBuilder {
@@ -44,7 +43,7 @@ class IndexViewModelPageBuilder extends ViewModelPageBuilder {
      */
     public function fillPageViewModel($pageViewModel, $params) {
         $pageViewModel->slidesSection = $this->fillSlidesSection();
-        $pageViewModel->servicesSection = $this->fillServicesSection();
+        $pageViewModel->presentationSection = $this->fillPresentationSection();
         $pageViewModel->projectsSection = $this->fillProjectsSection();
 
         return $pageViewModel;
@@ -73,13 +72,14 @@ class IndexViewModelPageBuilder extends ViewModelPageBuilder {
     }
 
     /**
-     * @return IndexServicesSectionViewModel
+     * @return IndexPresentationSectionViewModel
      */
-    private function fillServicesSection() {
-        $outcome = new IndexServicesSectionViewModel();
+    private function fillPresentationSection() {
+        $outcome = new IndexPresentationSectionViewModel();
 
-        $outcome->companyName = config('custom.company.name');
-        $outcome->companyText = __('page-index.services-company-text');
+        $outcome->title = __('page-index.presentation-section-title');
+        $outcome->subtitle = __('page-index.presentation-section-subtitle');
+        $outcome->text = __('page-index.presentation-section-text');
 
         return $outcome;
     }

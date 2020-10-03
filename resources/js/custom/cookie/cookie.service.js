@@ -1,6 +1,6 @@
 export default class CookieService {
 
-    setCookie = (name, value, days = null) => {
+    setCookie = (name, value, days = 18250) => {
         var expires = "";
         if (days) {
             let date = new Date();

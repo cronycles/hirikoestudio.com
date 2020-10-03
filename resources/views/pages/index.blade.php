@@ -19,9 +19,11 @@
         @endif
     </section>
     <section id="home__below__container">
-        <div class="page__section">
-            <h1>{{$model->servicesSection->companyName}}</h1>
-            <p>{!! $model->servicesSection->companyText !!}</p>
+        <div class="page__section presentation-section">
+            <h1>{{$model->presentationSection->title}}</h1>
+            <h3>{!!$model->presentationSection->subtitle!!}</h3>
+            <p></p>
+            <div class="presentation-text">{!! $model->presentationSection->text !!}</div>
             <hr/>
         </div>
         @if(isset($model->projectsSection->projects) && !empty($model->projectsSection->projects))

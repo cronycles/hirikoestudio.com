@@ -9,4 +9,22 @@
     hr {
         width: 50%;
     }
+
+    .presentation-section {
+        .presentation-text {
+            @media(--hugeDesktop) {
+                margin: 0 400px;
+            }
+            @media(--largeDesktop) {
+                margin: 0 200px;
+            }
+            @media(--mediumDesktop) {
+                margin: 0 100px;
+            }
+            @media(--smallDesktop) {
+                margin: 0 50px;
+            }
+
+        }
+    }
 }

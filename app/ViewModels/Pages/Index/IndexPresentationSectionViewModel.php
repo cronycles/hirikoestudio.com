@@ -2,17 +2,22 @@
 
 namespace App\ViewModels\Pages\Index;
 
-class IndexServicesSectionViewModel {
+class IndexPresentationSectionViewModel {
 
     /**
      * @var string
      */
-    public $companyName;
+    public $title;
 
     /**
      * @var string
      */
-    public $companyText;
+    public $subtitle;
+
+    /**
+     * @var string
+     */
+    public $text;
 
     public function __construct() {
     }

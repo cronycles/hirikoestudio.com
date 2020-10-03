@@ -12,9 +12,9 @@ class IndexViewModel extends PageViewModel {
     public $slidesSection;
 
     /**
-     * @var IndexServicesSectionViewModel
+     * @var IndexPresentationSectionViewModel
      */
-    public $servicesSection;
+    public $presentationSection;
 
     /**
      * @var IndexProjectsSectionViewModel
