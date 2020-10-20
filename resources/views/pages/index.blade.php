@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="gallery__box cro-fs-images-carousel">
+    <section class="gallery__box cro-fs-images-carousel jslider">
         @if(isset($model->slidesSection->slides) && !empty($model->slidesSection->slides))
             @foreach($model->slidesSection->slides as $slide)
                 <figure>
@@ -31,7 +31,7 @@
                 <h2>{{$model->projectsSection->title}}</h2>
                 @include('pages.projects._projects-gallery', ['model' => $model->projectsSection])
                 <a href="{{$model->projectsSection->seeMoreUrl}}"
-                   class="cro__button cro__button--basic">{{$model->projectsSection->seeMoreText}}</a>
+                   class="cro__button cro__button--basic center">{{$model->projectsSection->seeMoreText}}</a>
             </article>
         @endif
     </section>

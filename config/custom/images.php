@@ -13,7 +13,7 @@ return [
     'partnersUrl' => $imagesBaseUrl . '/partners',
 
     'upload' => [
-        'maxNumberOfFiles' => 10,
+        'maxNumberOfFiles' => 50,
         'maxImagSize' => 1500
     ],
 

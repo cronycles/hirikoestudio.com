@@ -7,19 +7,29 @@ export default class HeaderView {
         this.topen = 'open';
         this.tclosed = 'closed';
         this.ticon = 'i';
+        this.tnone = "none";
+
+        //Classes
+        this.headerInverseClass = "inverted";
 
         //Selectors
+        this.sliderSelector = '.jslider';
         this.headerSelector = '.jheader';
         this.burgerButtonSelector = '.jburgerBtn';
         this.navMenuSelector = '.jnavContainer';
+        this.normalLogoSelector = ".jlnorm";
+        this.invertedLogoSelector = ".jlinv";
 
         this.dropdownButtonSelector = '.jdropdownButton';
         this.dropdownContentSelector = ".jdropdownListContainer";
 
         //DOM
+        this.$slider = $(this.sliderSelector);
         this.$header = $(this.headerSelector);
         this.$burgerButton = this.$header.find(this.burgerButtonSelector);
         this.$navMenu = this.$header.find(this.navMenuSelector);
+        this.$normalLogo = this.$header.find(this.normalLogoSelector);
+        this.$invertedLogo = this.$header.find(this.invertedLogoSelector);
 
         this.$dropdownButtons = this.$header.find(this.dropdownButtonSelector);
 
@@ -73,6 +83,32 @@ export default class HeaderView {
         $dropdownContent.show();
         $dropdownContent.addClass(this.topen);
         this.#setDropdownOpenIcon(dropdownButtonSelector);
+    };
+
+    isThereSliderPresent = () => {
+        return this.$slider && this.$slider.length > 0;
+    }
+
+    isHeaderScrollHigherThanSlider = () => {
+        let outcome = false;
+        const currentScrollPosition = $(document).scrollTop();
+        const sliderHeight = this.$slider.outerHeight();
+        if(sliderHeight && currentScrollPosition >= (sliderHeight - 50)){
+            outcome = true;
+        }
+        return outcome;
+    };
+
+    removeHeaderInversion = () => {
+        this.$header.removeClass(this.headerInverseClass);
+        this.$invertedLogo.addClass(this.tnone);
+        this.$normalLogo.removeClass(this.tnone);
+    };
+
+    applyHeaderInversion = () => {
+        this.$header.addClass(this.headerInverseClass);
+        this.$invertedLogo.removeClass(this.tnone);
+        this.$normalLogo.addClass(this.tnone);
     };
 
     #setBurgerButtonMenuClosedIcon() {

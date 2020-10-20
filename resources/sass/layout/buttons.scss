@@ -13,7 +13,7 @@
     box-shadow: inset 0 0 0 0 $corporateColor;
     text-transform: uppercase;
     position: relative;
-    font-family: $defaultFont;
+    font-family: $fontFamily;
     font-weight: normal;
 
     &:hover:not(.loading__spinner) {

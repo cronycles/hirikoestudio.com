@@ -1,5 +1,15 @@
 <header id="header" class="jheader {{$model->hasInvertedColors ? 'inverted' : ''}}">
-    <div id="header__logo">
+    <div class="header__logo jlinv none">
+        <a href="{{$model->logo->url}}" title="{{$model->logo->htmlTitle}}">
+            <img
+                src="{{config('custom.images.static.defaultLazyPlaceholder')}}"
+                data-src="{{$model->logo->invertedImageUrl}}"
+                alt="{{$model->logo->htmlTitle}}"
+                title="{{$model->logo->htmlTitle}}"
+                class="jlimg">
+        </a>
+    </div>
+    <div class="header__logo jlnorm">
         <a href="{{$model->logo->url}}" title="{{$model->logo->htmlTitle}}">
             <img
                 src="{{config('custom.images.static.defaultLazyPlaceholder')}}"

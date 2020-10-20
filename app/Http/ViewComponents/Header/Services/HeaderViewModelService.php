@@ -62,7 +62,8 @@ class HeaderViewModelService {
 
         $isHomeRoot = Route::currentRouteNamed('index*');
         if ($isHomeRoot) {
-            $outcome->imageUrl = config('custom.images.static.logoWhite');
+            $outcome->imageUrl = config('custom.images.static.logoBlack');
+            $outcome->invertedImageUrl = config('custom.images.static.logoWhite');
         } else {
             $outcome->imageUrl = config('custom.images.static.logoBlack');
         }

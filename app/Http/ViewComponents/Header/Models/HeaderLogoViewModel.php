@@ -6,6 +6,7 @@ class HeaderLogoViewModel {
 
     public $url;
     public $imageUrl;
+    public $invertedImageUrl;
     public $htmlTitle;
     public $linkText;
 

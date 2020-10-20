@@ -1,9 +1,12 @@
 /*---Fonts---*/
-$defaultFont:'DINRegular', Helvetica, Arial, sans-serif;
-$boldFont:'DINBold', Helvetica, Arial, sans-serif;
-$defaultFontSize: 14px;
-$h1FontSize : 1.5rem;
-$h2FontSize : 1.3rem;
+$fontFamily: 'Poppins', sans-serif;
+$fontWeightThin:100;
+$fontWeightRegular:200;
+$fontWeightBold:400;
+$fontWeightBlack:500;
+$regularFontSize: 14px;
+$h1FontSize : 1.8rem;
+$h2FontSize : 1.5rem;
 
 /*---Margins---*/
 $pageSideMargins: 1.7rem;
