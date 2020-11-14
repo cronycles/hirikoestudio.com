@@ -8,6 +8,8 @@ export default class CroFullScreenImagesCarousel {
             container: '.cro-fs-images-carousel',
             items: 1,
             slideBy: 'page',
+            mode: 'gallery',
+            speed: "1000",
             controls: false,
             nav: false,
             autoplayButtonOutput: false,
