@@ -16,8 +16,11 @@ export default class CroDeviceImagesHelperView {
         this.tdatadesktop = "d";
         this.tdataSrc = "data-src";
 
+        //Classes
+        this.tnoneClass = "none";
+
         this.$wrapper = $(containerSelector);
-        this.$images = this.$wrapper.find('img');
+        this.$figures = this.$wrapper.find('figure');
     }
 
     isMobileScreen = () => {
@@ -31,11 +34,16 @@ export default class CroDeviceImagesHelperView {
     setImagesForMobileScreen = () => {
         this.#setDeviceTypeSetUp(this.#DEVICE_TYPE.MOBILE);
 
-        this.$images.each((index, image) => {
-            let $image = $(image);
-            let imageUrl = $image.data(this.tdatamobile);
-            this.#setImagesByUrls($image, imageUrl)
-
+        this.$figures.each((index, figure) => {
+            let $figure = $(figure);
+            let $image = $figure.find('img');
+            let isMobile = $image.data(this.tdatamobile);
+            if(!isMobile) {
+                $figure.remove()
+            }
+            else {
+                $figure.removeClass(this.tnoneClass)
+            }
         });
     };
 
@@ -46,11 +54,16 @@ export default class CroDeviceImagesHelperView {
     setImagesForNoMobileScreen = () => {
         this.#setDeviceTypeSetUp(this.#DEVICE_TYPE.DESKTOP);
 
-        this.$images.each((index, image) => {
-            let $image = $(image);
-            let imageUrl = $image.data(this.tdatadesktop);
-            this.#setImagesByUrls($image, imageUrl)
-
+        this.$figures.each((index, figure) => {
+            let $figure = $(figure);
+            let $image = $figure.find('img');
+            let isMobile = $image.data(this.tdatamobile);
+            if(isMobile) {
+                $figure.remove()
+            }
+            else {
+                $figure.removeClass(this.tnoneClass)
+            }
         });
     };
 
@@ -60,9 +73,5 @@ export default class CroDeviceImagesHelperView {
 
     #setDeviceTypeSetUp(deviceType) {
         this.$wrapper.data(this.tdevice, deviceType);
-    }
-
-    #setImagesByUrls($image, imageUrl) {
-        $image.attr(this.tdataSrc, imageUrl);
     }
 }

@@ -3,11 +3,13 @@
 $uploadedImagesPath = config('custom.cdnsite.path') . '/upload/images';
 
 $uploadedImagesUrl = config('custom.cdnsite.url') . '/upload/images';
+$uploadedHomeSlidesUrl = config('custom.cdnsite.url') . '/upload/home-slides';
 $imagesBaseUrl = config('custom.cdnsite.url') . '/images';
 
 return [
     'uploadedImagePath' => $uploadedImagesPath,
     'uploadedImagesUrl' => $uploadedImagesUrl,
+    'uploadedHomeSlidesUrl' => $uploadedHomeSlidesUrl,
 
     'imagesBaseUrl' => $imagesBaseUrl,
     'partnersUrl' => $imagesBaseUrl . '/partners',
@@ -23,9 +25,6 @@ return [
         'logoWhite' => $imagesBaseUrl . '/logo_white.svg',
         'socialsDefaultLogo' => $imagesBaseUrl . '/og_social_default_logo.jpg',
         'shopWindow' => $imagesBaseUrl . '/shop-ext-contact.jpg',
-        'defaultProjectImage' => $imagesBaseUrl . '/defaultProjectImage_560x360.jpg',
-        'homeSlidesUrl' => $imagesBaseUrl . '/home-slides',
-        'homeSlide2' => $imagesBaseUrl . '/home-slide2.jpg',
-        'homeSlide3' => $imagesBaseUrl . '/home-slide3.jpg',
+        'defaultProjectImage' => $imagesBaseUrl . '/defaultProjectImage_560x360.jpg'
     ]
 ];

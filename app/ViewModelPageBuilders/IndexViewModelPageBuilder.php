@@ -3,6 +3,7 @@
 namespace App\ViewModelPageBuilders;
 
 use App\Custom\Pages\Builders\ViewModelPageBuilder;
+use App\Services\Carousel\CarouselImagesService;
 use App\Services\Projects\ProjectsService;
 use App\ViewModels\Pages\Index\IndexProjectsSectionViewModel;
 use App\ViewModels\Pages\Index\IndexPresentationSectionViewModel;
@@ -23,12 +24,19 @@ class IndexViewModelPageBuilder extends ViewModelPageBuilder {
      */
     private $projectsViewModelService;
 
+    /**
+     * @var CarouselImagesService
+     */
+    private $carouselImagesService;
+
 
     public function __construct(
         ProjectsService $projectsService,
+        CarouselImagesService $carouselImagesService,
         ProjectsViewModelService $projectsViewModelService) {
 
         $this->projectsService = $projectsService;
+        $this->carouselImagesService = $carouselImagesService;
         $this->projectsViewModelService = $projectsViewModelService;
     }
 
@@ -53,21 +61,16 @@ class IndexViewModelPageBuilder extends ViewModelPageBuilder {
      * @return IndexSlidesSectionViewModel
      */
     private function fillSlidesSection() {
-        $imageBaseUrl = config('custom.images.static.homeSlidesUrl');
-        $numberOfSlidesToShow = config('pages.index.slidesNumber');
-
         $outcome = new IndexSlidesSectionViewModel();
 
-        for ($i = 0; $i < $numberOfSlidesToShow; $i++) {
+        $carouselImagesEntities = $this->carouselImagesService->getCarouselImages();
+        foreach ($carouselImagesEntities as $carouselImagesEntity) {
             $slide = new SlideViewModel();
             $slide->imageAltText = config('custom.company.name');
-            $slidePartialName = $imageBaseUrl . '/home-slide' . ($i + 1);
-            $slide->imageDesktopUrl = $slidePartialName . "-d.jpg";
-            $slide->imageMobileUrl = $slidePartialName . "-m.jpg";
-
+            $slide->imageUrl = $carouselImagesEntity->image->url;
+            $slide->isMobileSlide = $carouselImagesEntity->isMobile;
             array_push($outcome->slides, $slide);
         }
-
         return $outcome;
     }
 

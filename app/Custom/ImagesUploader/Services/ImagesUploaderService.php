@@ -11,7 +11,7 @@ abstract class ImagesUploaderService {
     /**
      * @var IImagesUploaderApi
      */
-    private $api;
+    protected $api;
 
     public function __construct(IImagesUploaderApi $api) {
         $this->api = $api;

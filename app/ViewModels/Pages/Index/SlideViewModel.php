@@ -7,16 +7,16 @@ class SlideViewModel {
     /**
      * @var string
      */
-    public $imageDesktopUrl;
-
-    /**
-     * @var string
-     */
-    public $imageMobileUrl;
+    public $imageUrl;
 
     /**
      * @var string
      */
     public $imageAltText;
+
+    /**
+     * @var boolean
+     */
+    public $isMobileSlide;
 
 }

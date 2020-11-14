@@ -5,10 +5,12 @@ namespace App\Services;
 use App\Custom\Languages\Entities\LanguageEntity;
 use App\Custom\Translations\ApiServiceEntities\Translation;
 use App\Custom\Translations\Entities\TranslationEntity;
+use App\Entities\CarouselImageEntity;
 use App\Entities\CategoryEntity;
 use App\Entities\ImageEntity;
 use App\Entities\ProjectEntity;
 use App\Entities\UserEntity;
+use App\External\ApiServiceEntities\CarouselImage;
 use App\External\ApiServiceEntities\Category;
 use App\External\ApiServiceEntities\Image;
 use App\External\ApiServiceEntities\Language;
@@ -66,6 +68,39 @@ class MappingService {
             $outcome->isDefault = $serviceLanguage->isDefault;
             $outcome->isVisible = $serviceLanguage->isVisible;
             $outcome->isAuthVisible = $serviceLanguage->isAuthVisible;
+        }
+        return $outcome;
+    }
+
+    /**
+     * @param CarouselImage[]
+     * @return CarouselImageEntity[];
+     */
+    public function mapCarouselImages($serviceEntities) {
+        $outcome = [];
+        if ($serviceEntities && !empty($serviceEntities)) {
+            foreach ($serviceEntities as $serviceEntity) {
+                $entity = $this->mapCarouselImage($serviceEntity);
+                if ($entity != null) {
+                    array_push($outcome, $entity);
+                }
+            }
+        }
+        return $outcome;
+    }
+
+    /**
+     * @param CarouselImage
+     * @return CarouselImageEntity
+     */
+    public function mapCarouselImage($serviceEntity) {
+        $outcome = new CarouselImageEntity();
+        /** @var CarouselImage $serviceEntity */
+        if ($serviceEntity != null) {
+            $outcome->id = $serviceEntity->id;
+            $outcome->orderNumber = $serviceEntity->orderNumber;
+            $outcome->isMobile = $serviceEntity->isMobile;
+            $outcome->image = $this->mapImage($serviceEntity->image);
         }
         return $outcome;
     }

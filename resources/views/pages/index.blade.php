@@ -4,14 +4,12 @@
     <section class="gallery__box cro-fs-images-carousel jslider">
         @if(isset($model->slidesSection->slides) && !empty($model->slidesSection->slides))
             @foreach($model->slidesSection->slides as $slide)
-                <figure>
+                <figure class="none">
                     <img src="{{config('custom.images.static.defaultLazyPlaceholder')}}"
                          class="tns-lazy-img"
-                         @if($slide->imageMobileUrl == null || empty($slide->imageMobileUrl))
-                         data-src="{{$slide->imageDesktopUrl}}"
-                         @else
-                         data-d="{{$slide->imageDesktopUrl}}"
-                         data-m="{{$slide->imageMobileUrl}}"
+                         data-src="{{$slide->imageUrl}}"
+                         @if($slide->isMobileSlide)
+                         data-m="1"
                          @endif
                          alt="{{$slide->imageAltText}}">
                 </figure>

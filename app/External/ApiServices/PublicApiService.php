@@ -6,10 +6,12 @@ use App\Custom\ImagesUploader\Helpers\ImagesHelper;
 use App\Custom\Logging\AppLog;
 use App\Custom\Slug\Helpers\SlugHelper;
 use App\Custom\Translations\ApiServiceEntities\Translation;
+use App\External\ApiServiceEntities\CarouselImage;
 use App\External\ApiServiceEntities\Category;
 use App\External\ApiServiceEntities\Language;
 use App\External\ApiServiceEntities\Project;
 use App\External\ApiServiceEntities\User;
+use App\External\Repositories\CarouselImagesRepository;
 use App\External\Repositories\CategoriesRepository;
 use App\External\Repositories\ImagesRepository;
 use App\External\Repositories\LocalesRepository;
@@ -52,6 +54,11 @@ class PublicApiService {
     private $imageService;
 
     /**
+     * @var CarouselImagesRepository
+     */
+    private $carouselImagesRepository;
+
+    /**
      * @var SlugHelper
      */
     private $slugHelper;
@@ -61,6 +68,7 @@ class PublicApiService {
         LocalesRepository $localesRepository,
         ProjectsRepository $projectsRepository,
         CategoriesRepository $categoriesRepository,
+        CarouselImagesRepository $carouselImagesRepository,
         ImagesRepository $imagesRepository,
         ImagesHelper $imageService,
         SlugHelper $slugHelper) {
@@ -69,6 +77,7 @@ class PublicApiService {
         $this->localesRepository = $localesRepository;
         $this->projectsRepository = $projectsRepository;
         $this->categoriesRepository = $categoriesRepository;
+        $this->carouselImagesRepository = $carouselImagesRepository;
         $this->imagesRepository = $imagesRepository;
         $this->imageService = $imageService;
         $this->slugHelper = $slugHelper;
@@ -115,6 +124,32 @@ class PublicApiService {
                 }
             }
 
+            return $outcome;
+
+        } catch (\Exception $e) {
+            AppLog::error($e);
+            return null;
+        }
+    }
+
+    /**
+     * @return \App\External\ApiServiceEntities\CarouselImage[]
+     */
+    public function getCarouselImages() {
+        try {
+            $outcome = [];
+
+            $dbEntities = $this->carouselImagesRepository->all();
+
+            if ($dbEntities != null && !empty($dbEntities)) {
+                /** @var \App\CarouselImage $dbEntities */
+                foreach ($dbEntities as $dbEntity) {
+                    $entity = $this->createCarouselImageEntityByDbModel($dbEntity);
+                    if ($entity != null) {
+                        array_push($outcome, $entity);
+                    }
+                }
+            }
             return $outcome;
 
         } catch (\Exception $e) {
@@ -416,6 +451,34 @@ class PublicApiService {
                 }
             }
         }
+        return $outcome;
+    }
+
+    /**
+     * @param \App\CarouselImage $dbEntity
+     * @return CarouselImage
+     */
+    private function createCarouselImageEntityByDbModel(\App\CarouselImage $dbEntity) {
+        $outcome = new CarouselImage();
+
+        if ($dbEntity != null) {
+            $outcome->id = $dbEntity->id;
+            $outcome->orderNumber = $dbEntity->order_number;
+            $outcome->isMobile = $dbEntity->is_mobile;
+
+            $dbImage = $dbEntity->image;
+            if($dbImage != null) {
+                $imageEntity = new \App\External\ApiServiceEntities\Image();
+                $imageEntity->id = $dbImage->id;
+                $imageEntity->name = $dbImage->name;
+                $imageEntity->width = $dbImage->width;
+                $imageEntity->height = $dbImage->height;
+                $imageEntity->url = config('custom.images.uploadedHomeSlidesUrl') . "/" . $dbImage->name;
+                $outcome->image = $imageEntity;
+            }
+
+        }
+
         return $outcome;
     }
 

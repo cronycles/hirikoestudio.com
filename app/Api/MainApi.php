@@ -2,6 +2,7 @@
 
 namespace App\Api;
 
+use App\External\ApiServiceEntities\CarouselImage;
 use App\External\ApiServiceEntities\Category;
 use App\External\ApiServiceEntities\Language;
 use App\External\ApiServiceEntities\Project;
@@ -34,6 +35,13 @@ class MainApi {
      */
     public function getLanguages() {
         return $this->publicApiService->getLanguages();
+    }
+
+    /**
+     * @return CarouselImage[]
+     */
+    public function getCarouselImages() {
+        return $this->publicApiService->getCarouselImages();
     }
 
     /**
