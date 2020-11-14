@@ -22,7 +22,6 @@
             <h3>{!!$model->presentationSection->subtitle!!}</h3>
             <p></p>
             <div class="presentation-text">{!! $model->presentationSection->text !!}</div>
-            <hr/>
         </div>
         @if(isset($model->projectsSection->projects) && !empty($model->projectsSection->projects))
             <article class="page__section">

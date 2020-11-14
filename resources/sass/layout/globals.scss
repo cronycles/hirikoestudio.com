@@ -11,8 +11,12 @@ html, body {
     line-height: 2rem;
 }
 
-h1, h2, h3 {
-    font-weight: $fontWeightRegular;
+h1, h2 {
+    font-weight: $fontWeightMedium;
+}
+
+h3 {
+    font-weight: $fontWeightMedium;
 }
 
 h1 {
@@ -36,7 +40,6 @@ p {
     margin: 0;
     padding: 0;
     padding-bottom: 1rem;
-    font-weight: $fontWeightThin;
     @media(--no-mobileDevice) {
         padding-bottom: 2rem;
     }

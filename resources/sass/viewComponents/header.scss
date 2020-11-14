@@ -104,6 +104,7 @@
 #header__links-wrapper a,
 #header__links-wrapper .dropdown__button {
     font-size: $headerLinkFontSize;
+    font-weight: $fontWeightMedium;
     display: block;
     letter-spacing: 0.1rem;
     padding: $headerLinksSpace 3%;

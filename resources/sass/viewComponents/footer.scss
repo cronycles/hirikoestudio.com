@@ -59,6 +59,7 @@ footer {
 
     .footer__sub {
         font-size: 0.8rem;
+        font-weight: $fontWeightThin;
         display: grid;
         grid-auto-flow: column;
         grid-gap: 1rem;

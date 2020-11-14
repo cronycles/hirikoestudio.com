@@ -15,8 +15,10 @@ return [
                                     La arquitectura tiene la extraordinaria capacidad de mejorar un lugar y, en consecuencia, la vida de las personas que lo habitan.
                                     Los espacios arquitectónicos están necesariamente conectados con las emociones, las sensaciones, y sirviéndonos de una adecuada ordenación de los espacios arquitectónicos, trabajando la iluminación y el uso de materiales podemos influir positivamente en el bienestar de las personas.
                                     Partiendo de esa base conceptual, en nuestros proyectos buscamos una estética atractiva sin renunciar a la funcionalidad, una identidad única para cada proyecto, adaptada al cliente y a las características del lugar.
-                                    Somos un equipo dinámico y profesional, creativo, sensible a la materialidad y a los detalles.</p>
-                                    <p>Cada proyecto es un nuevo reto en el que nos empleamos con la máxima ilusión y dedicación.</p>',
+                                    Somos un equipo dinámico y profesional, creativo, sensible a la materialidad y a los detalles.
+                                    <br/>
+                                    Cada proyecto es un nuevo reto en el que nos empleamos con la máxima ilusión y dedicación.
+                                    </p>',
     'services-company-text' => 'Architectura &bull; Urbanismo &bull; Interiorismo &bull; Reformas integrales &bull; Obra nueva &bull; Contract',
     'projects-section-title' => 'Nuestros últimos proyectos',
     'projects-section-more' => '¡Quiero ver más!'
