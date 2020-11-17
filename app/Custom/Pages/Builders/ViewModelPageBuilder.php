@@ -16,6 +16,6 @@ abstract class ViewModelPageBuilder {
      * @param array $params
      * @return PageViewModel
      */
-    public abstract function fillPageViewModel(PageViewModel $outcome, $params);
+    public abstract function fillPageViewModel(PageViewModel $outcome, array $params);
 
 }

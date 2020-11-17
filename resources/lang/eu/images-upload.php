@@ -8,6 +8,7 @@ return [
     Si quieres habilitar la small view entonces haz click en el icono con las 4 flechas que van hacia el centro.',
     'sort-image-button' => 'Ordena',
     'small-image-button' => 'Small view',
+    'mobile-tick-button' => 'Es imágen móvil',
     'delete-image-button' => 'Elimina',
     'delete-confirm-image-button' => 'OK?',
     'upload-ok'=> 'Imagen subida correctamente',

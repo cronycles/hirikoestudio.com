@@ -38,6 +38,15 @@ export default class ImagesUploader {
                 await this.#enableImageSmallView(imageId);
             }
         });
+
+        this.view.onIsMobileButtonClick(async (imageId, isMobile) => {
+            if(isMobile) {
+                await this.#disableIsMobile(imageId);
+            }
+            else {
+                await this.#enableIsMobile(imageId);
+            }
+        });
     }
 
     #performDeleting = async (imageId) => {
@@ -153,6 +162,22 @@ export default class ImagesUploader {
         let response = await this.api.changeImageSmallViewById(imageId, false);
         if (response.hasErrors) {
             this.view.enableImageSmallView(imageId);
+        }
+    };
+
+    #enableIsMobile = async (imageId) => {
+        this.view.enableIsMobile(imageId);
+        let response = await this.api.changeIsMobileById(imageId, true);
+        if (response.hasErrors) {
+            this.view.disableIsMobile(imageId);
+        }
+    };
+
+    #disableIsMobile = async (imageId) => {
+        this.view.disableIsMobile(imageId);
+        let response = await this.api.changeIsMobileById(imageId, false);
+        if (response.hasErrors) {
+            this.view.enableIsMobile(imageId);
         }
     };
 

@@ -164,6 +164,7 @@ class HeaderViewModelService {
         }
         $vieModel->adminPageLinks = [
             $this->createAuthHomeLink(),
+            $this->createAuthHomeSlideLink(),
             $this->createAuthCategoriesLink(),
             $this->createAuthProjectsLink()
         ];
@@ -179,15 +180,20 @@ class HeaderViewModelService {
     }
 
     private function createAuthHomeLink() {
-        $userEntity = $this->authService->getAuthUser();
         $url = route('auth');
         $text = $this->getMenuPageTextFromConfig(config('custom.pages.AUTH_INDEX'));
         $isActive = Route::currentRouteNamed('auth');
         return new HeaderLinkViewModel($url, $text, $isActive);
     }
 
+    private function createAuthHomeSlideLink() {
+        $url = route('auth.home-slides');
+        $text = $this->getMenuPageTextFromConfig(config('custom.pages.AUTH_HOME_SLIDES'));
+        $isActive = Route::currentRouteNamed('auth.home-slid*');
+        return new HeaderLinkViewModel($url, $text, $isActive);
+    }
+
     private function createAuthCategoriesLink() {
-        $userEntity = $this->authService->getAuthUser();
         $url = route('auth.categories');
         $text = $this->getMenuPageTextFromConfig(config('custom.pages.AUTH_CATEGORIES'));
         $isActive = Route::currentRouteNamed('auth.categor*');

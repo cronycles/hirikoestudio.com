@@ -40,6 +40,11 @@ class AuthPagesController extends Controller
         return view($model->viewPath, compact('model'));
     }
 
+    public function homeSlides() {
+        $model = $this->pageViewModelService->getViewModelByPageId(config('custom.pages.AUTH_HOME_SLIDES'));
+        return view($model->viewPath, compact('model'));
+    }
+
     public function categoryCreate() {
         $model = $this->pageViewModelService->getViewModelByPageId(config('custom.pages.AUTH_CATEGORY_CREATE'));
         return view($model->viewPath, compact('model'));

@@ -11,27 +11,35 @@ interface IImagesUploaderApi {
      * @param UploadedFile $file
      * @return int|null
      */
-    public function saveImage(int $entityId, UploadedFile $file);
+    public function saveImage(UploadedFile $file, int $entityId);
 
     /**
-     * @param int $entityId
+     * @param int|null $entityId
      * @param int $imageId
      * @return bool
      */
-    public function deleteImage(int $entityId, int $imageId);
+    public function deleteImage(int $imageId, int $entityId = null);
 
     /**
-     * @param int $entityId
+     * @param int|null $entityId
      * @param array $imagesSortedIds
      * @return bool
      */
-    public function updateImagesSort(int $entityId, array $imagesSortedIds);
+    public function updateImagesSort(array $imagesSortedIds, int $entityId);
 
     /**
-     * @param int $entityId
      * @param int $imageId
      * @param bool $value
+     * @param int|null $entityId
      * @return bool
      */
-    public function changeSmallView(int $entityId, int $imageId, bool $value);
+    public function changeSmallView(int $imageId, bool $value, int $entityId = null);
+
+    /**
+     * @param int $imageId
+     * @param bool $value
+     * @param int|null $entityId
+     * @return bool
+     */
+    public function changeIsMobileProperty(int $imageId, bool $value = true, int $entityId = null);
 }

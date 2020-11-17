@@ -45,7 +45,7 @@ class MainApi {
     }
 
     /**
-     * @param int $maxNumber max number of items requested
+     * @param int|null $maxNumber max number of items requested
      * @return Category[]
      */
     public function getCategories($maxNumber = null) {
@@ -170,6 +170,35 @@ class MainApi {
      */
     public function changeProjectImageSmallView(int $projectId, int $imageId, bool $value) {
         return $this->publicApiService->changeProjectImageSmallView($projectId, $imageId, $value);
+    }
+
+    public function saveHomeSlidesImage(UploadedFile $file) {
+        return $this->publicApiService->saveHomeSlidesImage($file);
+    }
+
+    /**
+     * @param int $imageId
+     * @return bool
+     */
+    public function deleteHomeSlidesImage(int $imageId) {
+        return $this->publicApiService->deleteHomeSlidesImage($imageId);
+    }
+
+    /**
+     * @param array $imagesSortedIds
+     * @return bool
+     */
+    public function updateHomeSlidesImagesSort(array $imagesSortedIds) {
+        return $this->publicApiService->updateHomeSlidesImagesSort($imagesSortedIds);
+    }
+
+    /**
+     * @param int $imageId
+     * @param bool $value
+     * @return bool
+     */
+    public function changeHomeSlidesIsMobileProperty(int $imageId, bool $value) {
+        return $this->publicApiService->changeHomeSlidesIsMobileProperty($imageId, $value);
     }
 
 }

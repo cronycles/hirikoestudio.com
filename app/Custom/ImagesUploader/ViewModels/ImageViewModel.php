@@ -34,8 +34,14 @@ class ImageViewModel {
      */
     public $isSmallViewEnabled;
 
+    /**
+     * @var bool
+     */
+    public $isMobile;
+
     public function __construct() {
         $this->isSmallViewEnabled = false;
+        $this->isMobile = false;
     }
 
 }

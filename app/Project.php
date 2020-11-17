@@ -40,6 +40,6 @@ class Project extends Model
         return $this->belongsToMany('App\Image')
             ->withPivot('image_order', 'image_small_view')
             ->withTimestamps()
-            ->orderBy('pivot_image_order', 'asc');
+            ->orderByRaw('ISNULL(pivot_image_order), pivot_image_order asc');
     }
 }

@@ -1,14 +1,16 @@
 <?php
 
 $uploadedImagesPath = config('custom.cdnsite.path') . '/upload/images';
-
 $uploadedImagesUrl = config('custom.cdnsite.url') . '/upload/images';
+
+$uploadedHomeSlidesPath = config('custom.cdnsite.path') . '/upload/home-slides';
 $uploadedHomeSlidesUrl = config('custom.cdnsite.url') . '/upload/home-slides';
 $imagesBaseUrl = config('custom.cdnsite.url') . '/images';
 
 return [
     'uploadedImagePath' => $uploadedImagesPath,
     'uploadedImagesUrl' => $uploadedImagesUrl,
+    'uploadedHomeSlidesPath' => $uploadedHomeSlidesPath,
     'uploadedHomeSlidesUrl' => $uploadedHomeSlidesUrl,
 
     'imagesBaseUrl' => $imagesBaseUrl,

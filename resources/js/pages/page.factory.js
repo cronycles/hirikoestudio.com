@@ -16,6 +16,7 @@ import PageAuthProjectCreate from "./auth/projects/auth.project.create";
 import PageAuthProjectEdit from "./auth/projects/auth.project.edit";
 import PageAuthProjectsSort from "./auth/projects/auth.projects.sort";
 import PageAuthProjectImages from "./auth/projects/auth.project.images";
+import PageAuthHomeSlider from "./auth/home-slider/auth.home.slider";
 
 export default class PageFactory {
     constructor() {
@@ -37,7 +38,8 @@ export default class PageFactory {
             {id: 1016, className: PageAuthProjectCreate},
             {id: 1017, className: PageAuthProjectEdit},
             {id: 1018, className: PageAuthProjectsSort},
-            {id: 1019, className: PageAuthProjectImages}
+            {id: 1019, className: PageAuthProjectImages},
+            {id: 1020, className: PageAuthHomeSlider}
         ]
     }
 

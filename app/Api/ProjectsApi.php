@@ -39,7 +39,7 @@ class ProjectsApi implements ICrudApi, ISortingApi, IImagesUploaderApi {
     }
 
     /**
-     * @param int $maxNumber max number of items requested
+     * @param int|null $maxNumber max number of items requested
      * @return ProjectEntity[]
      */
     public function getProjects($maxNumber = null) {
@@ -118,44 +118,57 @@ class ProjectsApi implements ICrudApi, ISortingApi, IImagesUploaderApi {
         return $outcome;
     }
 
-    public function saveImage(int $projectId, UploadedFile $file) {
+    public function saveImage(UploadedFile $file, int $projectId) {
         $outcome = $this->mainApi->saveProjectImage($projectId, $file);
         $this->cacheService->clearCache();
         return $outcome;
     }
 
     /**
-     * @param int $projectId
      * @param int $imageId
+     * @param int|null $projectId
      * @return bool
      */
-    public function deleteImage(int $projectId, int $imageId) {
-        $outcome = $this->mainApi->deleteProjectImage($projectId, $imageId);
-        $this->cacheService->clearCache();
+    public function deleteImage(int $imageId, int $projectId = null) {
+        $outcome = false;
+        if($projectId != null) {
+            $outcome = $this->mainApi->deleteProjectImage($projectId, $imageId);
+            $this->cacheService->clearCache();
+        }
         return $outcome;
     }
 
     /**
-     * @param int $projectId
+     * @param int|null $projectId
      * @param array $imagesSortedIds
      * @return bool
      */
-    public function updateImagesSort(int $projectId, array $imagesSortedIds) {
+    public function updateImagesSort(array $imagesSortedIds, int $projectId = null) {
         $outcome = $this->mainApi->updateProjectImagesSort($projectId, $imagesSortedIds);
         $this->cacheService->clearCache();
         return $outcome;
     }
 
     /**
-     * @param int $projectId
+     * @param int|null $entityId
      * @param int $imageId
      * @param bool $value
      * @return bool
      */
-    public function changeSmallView(int $projectId, int $imageId, bool $value = true) {
-        $outcome = $this->mainApi->changeProjectImageSmallView($projectId, $imageId, $value);
+    public function changeSmallView(int $imageId, bool $value = true, int $entityId = null) {
+        $outcome = $this->mainApi->changeProjectImageSmallView($entityId, $imageId, $value);
         $this->cacheService->clearCache();
         return $outcome;
+    }
+
+    /**
+     * @param int $imageId
+     * @param bool $value
+     * @param int|null $entityId
+     * @return bool
+     */
+    public function changeIsMobileProperty(int $imageId, bool $value = true, int $entityId = null) {
+        return false;
     }
 
     private function createProjectServiceEntityFromEntity(ProjectEntity $projectEntity) {
@@ -179,6 +192,7 @@ class ProjectsApi implements ICrudApi, ISortingApi, IImagesUploaderApi {
 
         return $outcome;
     }
+
 
 
 }

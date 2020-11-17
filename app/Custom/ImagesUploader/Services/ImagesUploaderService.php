@@ -17,11 +17,11 @@ abstract class ImagesUploaderService {
         $this->api = $api;
     }
 
-    public function saveImage(int $id, UploadedFile $file) {
+    public function saveImage(UploadedFile $file, int $id = null) {
         try {
             $outcome = null;
 
-            $savedImageId = $this->api->saveImage($id, $file);
+            $savedImageId = $this->api->saveImage($file, $id);
 
             if ($savedImageId != null && $savedImageId > 0) {
                 $outcome = $savedImageId;
@@ -34,15 +34,15 @@ abstract class ImagesUploaderService {
     }
 
     /**
-     * @param int $entityId
      * @param int $imageId
+     * @param int|null $entityId
      * @return bool
      */
-    public function deleteImage($entityId, $imageId) {
+    public function deleteImage(int $imageId, int $entityId = null) {
         try {
             $outcome = false;
-            if ($entityId != null && $imageId != null) {
-                $outcome = $this->api->deleteImage($entityId, $imageId);
+            if ($imageId != null) {
+                $outcome = $this->api->deleteImage($imageId, $entityId);
             }
             return $outcome;
         } catch (\Exception $e) {
@@ -52,20 +52,29 @@ abstract class ImagesUploaderService {
     }
 
     /**
-     * @param int $entityId
      * @param array $imagesSortedIds
+     * @param int|null $entityId
      */
-    public function updateImagesSort(int $entityId, array $imagesSortedIds) {
-        return $this->api->updateImagesSort($entityId, $imagesSortedIds);
+    public function updateImagesSort(array $imagesSortedIds, int $entityId = null) {
+        return $this->api->updateImagesSort($imagesSortedIds, $entityId);
     }
 
     /**
-     * @param int $entityId
      * @param int $imageId
+     * @param int|null $entityId
      * @param bool $value
      */
-    public function changeSmallView(int $entityId, int $imageId, bool $value = true) {
-        return $this->api->changeSmallView($entityId, $imageId, $value);
+    public function changeSmallView(int $imageId, int $entityId = null, bool $value = true) {
+        return $this->api->changeSmallView($imageId, $value, $entityId);
+    }
+
+    /**
+     * @param int $imageId
+     * @param int|null $entityId
+     * @param bool $value
+     */
+    public function changeIsMobileProperty(int $imageId, int $entityId = null, bool $value = true) {
+        return $this->api->changeIsMobileProperty($imageId, $value, $entityId);
     }
 
 }

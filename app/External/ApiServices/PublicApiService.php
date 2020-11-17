@@ -343,29 +343,157 @@ class PublicApiService {
         }
     }
 
+    public function deleteProjectImage(int $projectId, int $imageId) {
+        try {
+            $outcome = false;
+
+            if ($projectId != null && $imageId != null) {
+                $imageDbEntity = $this->imagesRepository->find($imageId);
+                if($imageDbEntity != null) {
+                    $isDeletedFromDb = $this->imagesRepository->destroy($imageId);
+                    if($isDeletedFromDb) {
+                        $outcome = true;
+                        $isDeletedFromDisk = $this->deleteImageFromDisk($imageDbEntity->name);
+                        if(!$isDeletedFromDisk) {
+                            AppLog::errorMessage("l'immagine " . $imageId . " non si é potuta eliminare dal disco ma si dal DB");
+                        }
+                    }
+                }
+            }
+
+            return $outcome;
+        } catch (\Exception $e) {
+            AppLog::error($e);
+            return false;
+        }
+    }
+
+    /**
+     * @param int $projectId
+     * @param array $imagesSortedIds
+     * @return bool
+     */
+    public function updateProjectImagesSort(int $projectId, array $imagesSortedIds) {
+        return $this->projectsRepository->updateImagesSort($projectId, $imagesSortedIds);
+    }
+
+    /**
+     * @param int $projectId
+     * @param int $imageId
+     * @param bool $value
+     * @return bool
+     */
+    public function changeProjectImageSmallView(int $projectId, int $imageId, bool $value = true) {
+        return $this->projectsRepository->changeProjectImageSmallView($projectId, $imageId, $value);
+    }
+
+    public function saveHomeSlidesImage(UploadedFile $file) {
+        try {
+            $outcome = null;
+            $dbModel = $this->createHomeSlidesModel();
+            $fileName = $this->imageService->createNewJpgFileName($file);
+            if (!empty($fileName)) {
+                $image = Image::make($file->getRealPath());
+                if ($image != null) {
+                    $dbImageEntity = $this->createImageDbEntity($image, $fileName);
+                    $imageId = $this->carouselImagesRepository->saveHomeSlide($dbModel, $dbImageEntity);
+                    if($imageId > 0 ) {
+                        $savedImage = $this->saveImageToDisk($image, $fileName, config('custom.images.uploadedHomeSlidesPath'));
+                        $outcome = $imageId;
+                    }
+                }
+            }
+
+            return $outcome;
+        } catch (\Exception $e) {
+            AppLog::error($e);
+            $this->deleteImageFromDisk($fileName, config('custom.images.uploadedHomeSlidesPath'));
+            return null;
+        }
+    }
+
+    public function deleteHomeSlidesImage(int $imageId) {
+        try {
+            $outcome = false;
+            if ($imageId != null) {
+                $imageDbEntity = $this->imagesRepository->find($imageId);
+                if($imageDbEntity != null) {
+                    $isDeletedFromDb = $this->imagesRepository->destroy($imageId);
+                    if($isDeletedFromDb) {
+                        $outcome = true;
+                        $isDeletedFromDisk = $this->deleteImageFromDisk($imageDbEntity->name, config('custom.images.uploadedHomeSlidesPath'));
+                        if(!$isDeletedFromDisk) {
+                            AppLog::errorMessage("l'immagine " . $imageId . " non si é potuta eliminare dal disco ma si dal DB");
+                        }
+                    }
+                }
+            }
+
+            return $outcome;
+        } catch (\Exception $e) {
+            AppLog::error($e);
+            return false;
+        }
+    }
+
+    /**
+     * @param array $imagesSortedIds
+     * @return bool
+     */
+    public function updateHomeSlidesImagesSort(array $imagesSortedIds) {
+        return $this->carouselImagesRepository->updateImagesSort($imagesSortedIds);
+    }
+
+    /**
+     * @param int $imageId
+     * @param bool $value
+     * @return bool
+     */
+    public function changeHomeSlidesIsMobileProperty(int $imageId, bool $value = true) {
+        return $this->carouselImagesRepository->changeHomeSlidesIsMobileProperty($imageId, $value);
+    }
+
     /**
      * @param \Intervention\Image\Image $image
      * @param $fileName
+     * @param string|null $diskPath
      * @return \Intervention\Image\Image|null
      */
-    public function saveImageToDisk(\Intervention\Image\Image $image, $fileName) {
+    private function saveImageToDisk(\Intervention\Image\Image $image, $fileName, string $diskPath = null) {
         try {
             $outcome = null;
             if ($image != null || $fileName != null) {
                 if ($image != null) {
+                    $diskPath = $diskPath != null ? $diskPath : config('custom.images.uploadedImagePath');
                     $image = $this->resizeImageIfRequired($image);
-                    $this->createPathIfNotExists(config('custom.images.uploadedImagePath'));
-                    $filePath = $this->getRealFilePathFromName($fileName);
+                    $this->createPathIfNotExists($diskPath);
+                    $filePath = $this->getRealFilePathFromName($diskPath, $fileName);
                     $outcome = $image->save($filePath, 100, 'jpg');
                 }
             }
             return $outcome;
         } catch (\Exception $e) {
             AppLog::error($e);
-            $this->deleteImageFromDisk($fileName);
+            $this->deleteImageFromDisk($fileName, $diskPath);
             return $outcome;
         }
 
+    }
+
+    private function deleteImageFromDisk($fileName, string $diskPath = null) {
+        try {
+            $outcome = false;
+            $diskPath = $diskPath != null ? $diskPath : config('custom.images.uploadedImagesUrl');
+            $filePath = $this->getRealFilePathFromName($diskPath, $fileName);
+            if (file_exists($filePath)) {
+                $outcome = unlink($filePath);
+            }
+            return $outcome;
+
+        } catch (\Exception $e) {
+            AppLog::error($e);
+            return false;
+        }
     }
 
     /**
@@ -554,6 +682,13 @@ class PublicApiService {
     }
 
     /**
+     * @return \App\CarouselImage
+     */
+    private function createHomeSlidesModel() {
+        return new \App\CarouselImage();
+    }
+
+    /**
      * @param \Intervention\Image\Image $image
      * @return \Intervention\Image\Image
      */
@@ -585,23 +720,8 @@ class PublicApiService {
         File::isDirectory($pathToBeCreated) or File::makeDirectory($pathToBeCreated, 0777, true, true);
     }
 
-    private function deleteImageFromDisk($fileName) {
-        try {
-            $outcome = false;
-            $filePath = $this->getRealFilePathFromName($fileName);
-            if (file_exists($filePath)) {
-                $outcome = unlink($filePath);
-            }
-            return $outcome;
-
-        } catch (\Exception $e) {
-            AppLog::error($e);
-            return false;
-        }
-    }
-
-    private function getRealFilePathFromName($fileName) {
-        return config('custom.images.uploadedImagePath') . "/" . $fileName;
+    private function getRealFilePathFromName(string $diskPath, $fileName) {
+        return $diskPath . "/" . $fileName;
     }
 
     /**
@@ -623,50 +743,6 @@ class PublicApiService {
             }
         }
         return $outcome;
-    }
-
-    public function deleteProjectImage(int $projectId, int $imageId) {
-        try {
-            $outcome = false;
-
-            if ($projectId != null && $imageId != null) {
-                $imageDbEntity = $this->imagesRepository->find($imageId);
-                if($imageDbEntity != null) {
-                    $isDeletedFromDb = $this->imagesRepository->destroy($imageId);
-                    if($isDeletedFromDb) {
-                        $outcome = true;
-                        $isDeletedFromDisk = $this->deleteImageFromDisk($imageDbEntity->name);
-                        if(!$isDeletedFromDisk) {
-                            AppLog::errorMessage("l'immagine " . $imageId . " non si é potuta eliminare dal disco ma si dal DB");
-                        }
-                    }
-                }
-            }
-
-            return $outcome;
-        } catch (\Exception $e) {
-            AppLog::error($e);
-            return false;
-        }
-    }
-
-    /**
-     * @param int $projectId
-     * @param array $imagesSortedIds
-     * @return bool
-     */
-    public function updateProjectImagesSort(int $projectId, array $imagesSortedIds) {
-        return $this->projectsRepository->updateImagesSort($projectId, $imagesSortedIds);
-    }
-
-    /**
-     * @param int $projectId
-     * @param int $imageId
-     * @param bool $value
-     * @return bool
-     */
-    public function changeProjectImageSmallView(int $projectId, int $imageId, bool $value = true) {
-        return $this->projectsRepository->changeProjectImageSmallView($projectId, $imageId, $value);
     }
 }
 

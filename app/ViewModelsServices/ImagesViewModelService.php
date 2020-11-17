@@ -39,12 +39,11 @@ class ImagesViewModelService {
     /**
      * @param ImageEntity[] $imageEntities
      * @param bool $doesSetDefaultImagesIfNone
-     * @return array
+     * @return ImageViewModel[]
      */
     public function createImagesViewModel(array $imageEntities, bool $doesSetDefaultImagesIfNone = true) {
         $outcome = [];
-        if ($imageEntities != null && !empty($imageEntities)) {
-            /** @var ImageEntity $imageEntity */
+        if (!empty($imageEntities)) {
             foreach ($imageEntities as $imageEntity) {
                 $imageViewModel = $this->createImageViewModel($imageEntity);
                 if ($imageViewModel != null) {
@@ -64,7 +63,7 @@ class ImagesViewModelService {
      * @param ImageEntity $imageEntity
      * @return ImageViewModel
      */
-    private function createImageViewModel(ImageEntity $imageEntity) {
+    public function createImageViewModel(ImageEntity $imageEntity, bool $isMobile = false) {
         $outcome = null;
         if ($imageEntity != null) {
             $outcome = new ImageViewModel();
@@ -74,6 +73,7 @@ class ImagesViewModelService {
             $outcome->width = $imageEntity->width;
             $outcome->height = $imageEntity->height;
             $outcome->isSmallViewEnabled = $imageEntity->isSmallViewEnabled;
+            $outcome->isMobile = $isMobile;
         }
         return $outcome;
     }

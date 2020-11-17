@@ -40,6 +40,20 @@ export default class ImagesApi {
         };
         return await this.api.ajaxPost(url, body);
     };
+
+    /**
+     * enable or disable the is mobile image flag
+     * @param {int} imageId
+     * @param {bool} isActive
+     * @returns {*}
+     */
+    changeIsMobileById = async (imageId, isActive = true) => {
+        const url = this.uploadUrl + "/" + imageId+ "/is-mobile";
+        const body = {
+            'is-active': isActive
+        };
+        return await this.api.ajaxPost(url, body);
+    };
 }
 
 

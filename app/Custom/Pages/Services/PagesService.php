@@ -13,6 +13,7 @@ use App\ViewModelPageBuilders\Auth\Categories\AuthCategoriesViewModelPageBuilder
 use App\ViewModelPageBuilders\Auth\Categories\AuthCategoryCreateViewModelPageBuilder;
 use App\ViewModelPageBuilders\Auth\Categories\AuthCategoryEditViewModelPageBuilder;
 use App\ViewModelPageBuilders\Auth\ForgotPasswordViewModelPageBuilder;
+use App\ViewModelPageBuilders\Auth\HomeSlides\AuthHomeSlidesViewModelPageBuilder;
 use App\ViewModelPageBuilders\Auth\LoginViewModelPageBuilder;
 use App\ViewModelPageBuilders\Auth\Projects\AuthProjectCreateViewModelPageBuilder;
 use App\ViewModelPageBuilders\Auth\Projects\AuthProjectEditViewModelPageBuilder;
@@ -53,6 +54,7 @@ class PagesService {
         PrivacyViewModelPageBuilder $privacyViewModelPageBuilder,
         AuthIndexViewModelPageBuilder $authIndexViewModelPageBuilder,
         AuthCategoriesViewModelPageBuilder $authCategoriesViewModelPageBuilder,
+        AuthHomeSlidesViewModelPageBuilder $authHomeSlidesViewModelPageBuilder,
         AuthCategoryCreateViewModelPageBuilder $authCategoryCreateViewModelPageBuilder,
         AuthCategoryEditViewModelPageBuilder $authCategoryEditViewModelPageBuilder,
         AuthCategoriesSortViewModelPageBuilder $authCategoriesSortViewModelPageBuilder,
@@ -115,6 +117,11 @@ class PagesService {
         $this->pageConfigurations[config('custom.pages.AUTH_INDEX')] = [
             'config' => config('pages.auth.index'),
             'viewModelPageBuilder' => $authIndexViewModelPageBuilder
+        ];
+
+        $this->pageConfigurations[config('custom.pages.AUTH_HOME_SLIDES')] = [
+            'config' => config('pages.auth.home-slides'),
+            'viewModelPageBuilder' => $authHomeSlidesViewModelPageBuilder
         ];
 
         $this->pageConfigurations[config('custom.pages.AUTH_CATEGORIES')] = [

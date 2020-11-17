@@ -10,6 +10,7 @@ return [
     'logoutText' => 'Logout',
 
     'list' => [
+        'manage-home-slides' => 'Manage your home slides',
         'manage-projects' => 'Manage your projects',
         'manage-categories' => 'Manage your categories',
     ]

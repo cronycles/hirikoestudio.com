@@ -47,11 +47,20 @@
                                 <span class="img__upload__thumb-left__btn jSortHandle">
                                     <i class="las la-sort" title="{{trans('images-upload.sort-image-button')}}"></i>
                                 </span>
-                                <span
-                                    class="jSmallView img__upload__thumb-center__btn {{$image->isSmallViewEnabled ? 'active' : ''}}">
-                                    <i class="la la-compress-arrows-alt"
-                                       title="{{trans('images-upload.small-image-button')}}"></i>
-                                </span>
+                                @if($model->isSmallViewEnabled)
+                                    <span
+                                        class="jSmallView img__upload__thumb-center__btn {{$image->isSmallViewEnabled ? 'active' : ''}}">
+                                        <i class="la la-compress-arrows-alt"
+                                           title="{{trans('images-upload.small-image-button')}}"></i>
+                                    </span>
+                                @endif
+                                @if($model->isMobileTickEnabled)
+                                    <span
+                                        class="jMobileTick img__upload__thumb-center__btn {{$image->isMobile ? 'active' : ''}}">
+                                        <i class="las la-mobile-alt"
+                                           title="{{trans('images-upload.mobile-tick-button')}}"></i>
+                                    </span>
+                                @endif
                                 <span class="img__upload__thumb-right__btn">
                                     <i class="jDel las la-trash-alt"
                                        title="{{trans('images-upload.delete-image-button')}}"></i>
@@ -79,9 +88,16 @@
                 <span class="img__upload__thumb-left__btn jSortHandle">
                     <i class="las la-sort" title="{{trans('images-upload.sort-image-button')}}"></i>
                 </span>
-                <span class="img__upload__thumb-center__btn jSmallView">
-                    <i class="la la-compress-arrows-alt" title="{{trans('images-upload.small-image-button')}}"></i>
-                </span>
+                @if($model->isSmallViewEnabled)
+                    <span class="img__upload__thumb-center__btn jSmallView">
+                        <i class="la la-compress-arrows-alt" title="{{trans('images-upload.small-image-button')}}"></i>
+                    </span>
+                @endif
+                @if($model->isMobileTickEnabled)
+                    <span class="img__upload__thumb-center__btn jMobileTick">
+                        <i class="las la-mobile-alt" title="{{trans('images-upload.mobile-tick-button')}}"></i>
+                    </span>
+                @endif
                 <span class="img__upload__thumb-right__btn">
                     <i class="jDel las la-trash-alt" title="{{trans('images-upload.delete-image-button')}}"></i>
                     <div class="jDelConfirm img__upload__confirm-btn none">

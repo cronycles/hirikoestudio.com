@@ -57,6 +57,14 @@ Route::group(['middleware' => 'auth'], function () {
         dd("cache flushed");
     });
 
+    //Auth Slides
+    Route::get('/auth/home-slides', ['as' => 'auth.home-slides', 'uses' => 'Auth\AuthPagesController@homeSlides']);
+
+    Route::post('/auth/home-slides/images', ['as' => 'auth.home-slides.images.upload', 'uses' => 'Auth\HomeSlides\AuthHomeSlidesController@uploadImages']);
+    Route::post('/auth/home-slides/images-sort', ['as' => 'auth.home-slides.imagesSort', 'uses' => 'Auth\HomeSlides\AuthHomeSlidesController@updateImagesSortNoEntity']);
+    Route::post('/auth/home-slides/images/{imageId}/is-mobile', ['as' => 'auth.home-slides.images.isMobile', 'uses' => 'Auth\HomeSlides\AuthHomeSlidesController@changeIsMobilePropertyNoEntity']);
+    Route::delete('/auth/home-slides/images/{imageId}', ['as' => 'auth.home-slides.images.delete', 'uses' => 'Auth\HomeSlides\AuthHomeSlidesController@deleteImageNoEntity']);
+
     //Auth Categories
     Route::get('/auth/categories', ['as' => 'auth.categories', 'uses' => 'Auth\AuthPagesController@categories']);
     Route::get('/auth/categories/create', ['as' => 'auth.categories.create', 'uses' => 'Auth\AuthPagesController@categoryCreate']);

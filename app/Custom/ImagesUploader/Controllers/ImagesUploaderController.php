@@ -19,13 +19,13 @@ abstract class ImagesUploaderController extends CustomAjaxController {
         $this->service = $service;
     }
 
-    public function uploadImages($entityId, Request $request) {
+    public function uploadImages(Request $request, $entityId = null) {
         try {
             $file = $request->file("uploaded_file");
 
             $savedImageId = 0;
             if ($file != null) {
-                $savedImageId = $this->service->saveImage($entityId, $file);
+                $savedImageId = $this->service->saveImage($file, $entityId);
             }
 
             return $this->getResponseForAjaxCall(
@@ -41,7 +41,7 @@ abstract class ImagesUploaderController extends CustomAjaxController {
         try {
             $isDeleted = false;
             if ($entityId != null && $imageId != null) {
-                $isDeleted = $this->service->deleteImage($entityId, $imageId);
+                $isDeleted = $this->service->deleteImage($imageId, $entityId);
             }
 
             $hasErrors = $isDeleted == false;
@@ -52,10 +52,38 @@ abstract class ImagesUploaderController extends CustomAjaxController {
         }
     }
 
-    public function updateImagesSort(Request $request, $offerId) {
+    public function deleteImageNoEntity($imageId) {
+        try {
+            $isDeleted = false;
+            if ($imageId != null) {
+                $isDeleted = $this->service->deleteImage($imageId);
+            }
+
+            $hasErrors = $isDeleted == false;
+            return $this->getResponseForAjaxCall(null, $hasErrors);
+        } catch (\Exception $e) {
+            AppLog::error($e);
+            return $this->getResponseForAjaxCall(null, true);
+        }
+    }
+
+    public function updateImagesSort(Request $request, $entityId) {
         try {
             $imagesSortedIds = $request->input('images-ids');
-            $isSortedOk = $this->service->updateImagesSort($offerId, $imagesSortedIds);
+            $isSortedOk = $this->service->updateImagesSort($imagesSortedIds, $entityId);
+
+            $hasErrors = $isSortedOk == false;
+            return $this->getResponseForAjaxCall(null, $hasErrors);
+        } catch (\Exception $e) {
+            AppLog::error($e);
+            return $this->getResponseForAjaxCall(null, true);
+        }
+    }
+
+    public function updateImagesSortNoEntity(Request $request) {
+        try {
+            $imagesSortedIds = $request->input('images-ids');
+            $isSortedOk = $this->service->updateImagesSort($imagesSortedIds);
 
             $hasErrors = $isSortedOk == false;
             return $this->getResponseForAjaxCall(null, $hasErrors);
@@ -70,10 +98,58 @@ abstract class ImagesUploaderController extends CustomAjaxController {
             $isSmallViewChanged = false;
             $isActive = $request->input('is-active');
             if ($entityId != null && $imageId != null) {
-                $isSmallViewChanged = $this->service->changeSmallView($entityId, $imageId, $isActive);
+                $isSmallViewChanged = $this->service->changeSmallView($imageId, $entityId, $isActive);
             }
 
             $hasErrors = $isSmallViewChanged == false;
+            return $this->getResponseForAjaxCall(null, $hasErrors);
+        } catch (\Exception $e) {
+            AppLog::error($e);
+            return $this->getResponseForAjaxCall(null, true);
+        }
+    }
+
+    public function changeSmallViewNoEntity(Request $request, $imageId) {
+        try {
+            $isSmallViewChanged = false;
+            $isActive = $request->input('is-active');
+            if ($imageId != null) {
+                $isSmallViewChanged = $this->service->changeSmallView($imageId, null, $isActive);
+            }
+
+            $hasErrors = $isSmallViewChanged == false;
+            return $this->getResponseForAjaxCall(null, $hasErrors);
+        } catch (\Exception $e) {
+            AppLog::error($e);
+            return $this->getResponseForAjaxCall(null, true);
+        }
+    }
+
+    public function changeIsMobileProperty(Request $request, $entityId, $imageId) {
+        try {
+            $isMobilePropertyChanged = false;
+            $isActive = $request->input('is-active');
+            if ($entityId != null && $imageId != null) {
+                $isMobilePropertyChanged = $this->service->changeIsMobileProperty($imageId, $entityId, $isActive);
+            }
+
+            $hasErrors = $isMobilePropertyChanged == false;
+            return $this->getResponseForAjaxCall(null, $hasErrors);
+        } catch (\Exception $e) {
+            AppLog::error($e);
+            return $this->getResponseForAjaxCall(null, true);
+        }
+    }
+
+    public function changeIsMobilePropertyNoEntity(Request $request, $imageId) {
+        try {
+            $isMobilePropertyChanged = false;
+            $isActive = $request->input('is-active');
+            if ($imageId != null) {
+                $isMobilePropertyChanged = $this->service->changeIsMobileProperty($imageId, null, $isActive);
+            }
+
+            $hasErrors = $isMobilePropertyChanged == false;
             return $this->getResponseForAjaxCall(null, $hasErrors);
         } catch (\Exception $e) {
             AppLog::error($e);

@@ -34,8 +34,22 @@ class ImagesUploaderViewModel {
      */
     public $maxWidthPx;
 
+    /**
+     * abilitare o no lo small view
+     * @var bool
+     */
+    public $isSmallViewEnabled;
+
+    /**
+     * abilitare o no il mobile tick
+     * @var bool
+     */
+    public $isMobileTickEnabled;
+
     public function __construct() {
         $this->images = [];
+        $this->isSmallViewEnabled = true;
+        $this->isMobileTickEnabled = false;
     }
 
 }

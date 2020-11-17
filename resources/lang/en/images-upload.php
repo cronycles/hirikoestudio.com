@@ -8,6 +8,7 @@ return [
     If you want to enable the image small view click on the 4 arrows icon.',
     'sort-image-button' => 'Sort',
     'small-image-button' => 'Small view',
+    'mobile-tick-button' => 'Is mobile image',
     'delete-image-button' => 'Delete',
     'delete-confirm-image-button' => 'OK?',
     'upload-ok'=> 'Image uploaded successfully',

@@ -4,12 +4,14 @@ export default class ImagesUploaderView {
     #deleteSelector;
     #deleteConfirmSelector;
     #smallViewSelector;
+    #isMobileSelector;
     constructor() {
 
         //Selector
         this.#deleteSelector = ".jDel";
         this.#deleteConfirmSelector = ".jDelConfirm";
         this.#smallViewSelector = ".jSmallView";
+        this.#isMobileSelector = ".jMobileTick";
 
         this.imageUploaderSelector = ".jimgHandling";
 
@@ -157,6 +159,19 @@ export default class ImagesUploaderView {
     };
 
     /**
+     * @param {function} callback
+     */
+    onIsMobileButtonClick = (callback) => {
+        this.$thumbsContainer.on('click', this.#isMobileSelector, (button) => {
+            const $button = $(button.currentTarget);
+            let id = $button.closest("." + this.thumbSelector).data("id");
+            let isMobile = $button.hasClass('active');
+            callback(id, isMobile);
+            return false;
+        });
+    };
+
+    /**
      * @param {int} imageId
      */
     enableImageSmallView = (imageId) => {
@@ -170,6 +185,22 @@ export default class ImagesUploaderView {
     disableImageSmallView = (imageId) => {
         const $thumbnail = this.#findThumbnailByImageId(imageId);
         $thumbnail.find(this.#smallViewSelector).removeClass(this.activeClass);
+    };
+
+    /**
+     * @param {int} imageId
+     */
+    enableIsMobile = (imageId) => {
+        const $thumbnail = this.#findThumbnailByImageId(imageId);
+        $thumbnail.find(this.#isMobileSelector).addClass(this.activeClass);
+    };
+
+    /**
+     * @param {int} imageId
+     */
+    disableIsMobile = (imageId) => {
+        const $thumbnail = this.#findThumbnailByImageId(imageId);
+        $thumbnail.find(this.#isMobileSelector).removeClass(this.activeClass);
     };
 
     hideThumbnail = (id) => {

@@ -50,6 +50,9 @@ class BreadcrumbViewModelService {
                 case config('custom.pages.AUTH_PROJECT_IMAGES'):
                     $outcome = $this->getAuthProjectsPageBreadcrumb();
                     break;
+                case config('custom.pages.AUTH_HOME_SLIDES'):
+                    $outcome = $this->getAuthHomeSlidesPageBreadcrumb();
+                    break;
             }
             return $outcome;
         } catch (\Exception $e) {
@@ -144,6 +147,23 @@ class BreadcrumbViewModelService {
                 new BreadcrumbViewModel(
                     $this->getPageTextById(config('custom.pages.AUTH_PROJECTS')),
                     route('auth.projects')),
+            ];
+
+        } catch (\Exception $e) {
+            AppLog::error($e);
+            return [];
+        }
+    }
+
+    /**
+     * @return BreadcrumbViewModel[]
+     */
+    private function getAuthHomeSlidesPageBreadcrumb() {
+        try {
+            return [
+                new BreadcrumbViewModel(
+                    $this->getPageTextById(config('custom.pages.AUTH_INDEX')),
+                    route('auth'))
             ];
 
         } catch (\Exception $e) {

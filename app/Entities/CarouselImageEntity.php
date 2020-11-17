@@ -4,7 +4,7 @@ namespace App\Entities;
 
 use App\Custom\Entities\CustomEntity;
 
-class CarouselImageEntity extends CustomEntity{
+class CarouselImageEntity extends CustomEntity {
 
     /**
      * @var int

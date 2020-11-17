@@ -22,4 +22,5 @@ return [
     'AUTH_PROJECT_EDIT' => 1017,
     'AUTH_PROJECTS_SORT' => 1018,
     'AUTH_PROJECT_IMAGES' => 1019,
+    'AUTH_HOME_SLIDES' => 1020,
 ];
