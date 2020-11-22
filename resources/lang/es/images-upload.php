@@ -3,9 +3,10 @@
 return [
     'select-images-button' => 'Sube nuevas imágenes',
     'drag-drop-images' => 'O arrastra las imagenes que quieres cargar aquí; dentro...',
-    'thumbs-description' => 'Si quieres cambiar el orden de una imagen, haz click en su botón con las dos flechas y
-    arrastra la imagen en la posición que deseas. Si quieres eliminarla haz click en el icono de la papelera.
-    Si quieres habilitar la small view entonces haz click en el icono con las 4 flechas que van hacia el centro.',
+    'order-description' => 'Ordena las imagenes arrastrandolas clicando en este icono',
+    'delete-description' => 'Elimina una imagen',
+    'small-description' => 'Habilita la small view de una imagen clicando este icono',
+    'mobile-description' => 'Visualiza la imagen en moviles clicando este icono. De otro modo solo se verá en Escritorios',
     'sort-image-button' => 'Ordena',
     'small-image-button' => 'Small view',
     'mobile-tick-button' => 'Es imágen móvil',

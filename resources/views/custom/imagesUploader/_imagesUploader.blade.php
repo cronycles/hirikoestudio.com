@@ -32,9 +32,28 @@
             </div>
         </div>
         <div class="page__section img__upload_thumbnail_zone">
-            <div class="img__upload_thumb-text">
-                {{trans('images-upload.thumbs-description')}}
-            </div>
+            <ul class="img__upload_thumb-text">
+                <li>
+                    <i class="las la-sort" title="{{trans('images-upload.sort-image-button')}}"></i>
+                    {{trans('images-upload.order-description')}}
+                </li>
+                <li>
+                    <i class="jDel las la-trash-alt" title="{{trans('images-upload.delete-image-button')}}"></i>
+                    {{trans('images-upload.delete-description')}}
+                </li>
+                @if($model->isSmallViewEnabled)
+                <li>
+                    <i class="la la-compress-arrows-alt" title="{{trans('images-upload.small-image-button')}}"></i>
+                    {{trans('images-upload.small-description')}}
+                </li>
+                @endif
+                @if($model->isMobileTickEnabled)
+                <li>
+                    <i class="las la-mobile-alt" title="{{trans('images-upload.mobile-tick-button')}}"></i>
+                    {{trans('images-upload.mobile-description')}}
+                </li>
+                @endif
+            </ul>
             <ul id="thumbContainer" class="jThumbsContainer jsortableContainer img__upload__thumbs__container"
                 data-url="{{$model->updateSortApiUrl}}">
                 @if($model->images != null && !empty($model->images))
