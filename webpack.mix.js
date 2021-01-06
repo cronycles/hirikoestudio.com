@@ -6,7 +6,7 @@ require('laravel-mix-polyfill');
 const publicFolderName = 'public_html';
 const doesGenerateSourcemapsForProduction = false;
 
-mix.config.publicPath = publicFolderName;
+mix.setPublicPath(publicFolderName + '/');
 
 /*
  |--------------------------------------------------------------------------
@@ -21,12 +21,12 @@ mix.config.publicPath = publicFolderName;
 var postCssPlugins = [
     require('postcss-nested'),
     require('autoprefixer'),
-    require('postcss-media-variables'),
+    // require('postcss-media-variables'),
     require('postcss-custom-media'),
     require('postcss-custom-properties')({preserve: false}),
-    require('postcss-calc'),
-    require('postcss-media-variables'),
-    require('postcss-media-minmax'),
+    // require('postcss-calc'),
+    // require('postcss-media-variables'),
+    // require('postcss-media-minmax'),
     require('postcss-hexrgba'),
 ];
 
@@ -45,10 +45,7 @@ mix.webpackConfig({
             jQuery: 'jquery',
             'window.jQuery': 'jquery'
         })
-    ],
-    watchOptions: {
-        ignored: /node_modules/
-    }
+    ]
 });
 
 mix.js('resources/js/app.js', publicFolderName + '/js')
