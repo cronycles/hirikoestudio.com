@@ -46,9 +46,10 @@ $ php artisan db:seed
 ```
 * lanciare il _npm run dev_
 
-* dare al play:
+## lanciare il progetto
 ```
- $ php artisan serve
+ $ npm run restore
+ $ npm start
 ```
 
 ## Deploy a Production
