@@ -483,7 +483,7 @@ class PublicApiService {
     private function deleteImageFromDisk($fileName, string $diskPath = null) {
         try {
             $outcome = false;
-            $diskPath = $diskPath != null ? $diskPath : config('custom.images.uploadedImagesUrl');
+            $diskPath = $diskPath != null ? $diskPath : config('custom.images.uploadedImagePath');
             $filePath = $this->getRealFilePathFromName($diskPath, $fileName);
             if (file_exists($filePath)) {
                 $outcome = unlink($filePath);

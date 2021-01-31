@@ -1,7 +1,7 @@
 {
     "private": true,
     "scripts": {
-        "restore": "npm install && npm run dev",
+        "restore": "composer update && npm install && npm run dev",
         "start": "php artisan serve",
         "dev": "npm run development",
         "development": "mix",
