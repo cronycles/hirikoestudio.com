@@ -16,9 +16,9 @@ deployment:
     - /bin/rm -rf $DEPLOYPATH/storage/framework/cache/*
     - /bin/rm -rf $DEPLOYPATH/storage/framework/sessions/*
     - /bin/rm -rf $DEPLOYPATH/storage/framework/views/*
-    - /bin/rm -rf $DEPLOYPATH/$PUBLICFOLDERNAME
+    - /bin/rm -rf $DEPLOYPATH/$PUBLICFOLDERNAME/*
     - cd $BUILDFOLDERNAME
-    - /bin/cp -R $PUBLICFOLDERNAME $DEPLOYPATH
+    - /bin/cp -R $PUBLICFOLDERNAME/* $DEPLOYPATH
     - /bin/cp -R app $DEPLOYPATH
     - /bin/cp -R bootstrap $DEPLOYPATH
     - /bin/cp -R config $DEPLOYPATH
