@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/hirikoes/
+    - export DEPLOYPATH=/home/eh7usrt5wfuj/
     - export PUBLICFOLDERNAME=public_html
     - export BUILDFOLDERNAME=build
     - cd $BUILDFOLDERNAME
