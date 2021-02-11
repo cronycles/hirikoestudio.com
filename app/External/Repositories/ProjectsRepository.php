@@ -19,6 +19,25 @@ class ProjectsRepository extends Repository {
             ->get();
     }
 
+    public function destroy($id){
+        try {
+            DB::beginTransaction();
+            DB::table('images')
+            ->join('image_project', 'images.id', '=', 'image_project.image_id')
+            ->join('projects', 'projects.id', '=', 'image_project.project_id')
+            ->where('project_id', '=', $id)
+            ->delete();
+
+            DB::commit();
+            parent::destroy($id);
+            return true;
+        } catch (\Exception $e) {
+            AppLog::error($e);
+            DB::rollBack();
+            return false;
+        }
+    }
+
     /**
      * @param Image $dbImageEntity
      * @param int $projectId

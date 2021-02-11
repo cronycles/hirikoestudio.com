@@ -308,7 +308,30 @@ class PublicApiService {
     }
 
     public function deleteProject(int $id) {
-        return $this->projectsRepository->destroy($id);
+        try {
+            /** @var \App\Project $dbProject */
+            $dbProject = $this->projectsRepository->find($id);
+            $imagesDBModels = $dbProject->images;
+            $imageNames = [];
+            /** @var \App\Resource $resourceDbModel */
+            if(isset($imagesDBModels) && $imagesDBModels != null) {
+                foreach($imagesDBModels as $imageDBModel) {
+                    if($imageDBModel != null) {
+                        array_push($imageNames, $imageDBModel->name);
+                    }
+                }
+                $isDeletedFromDb = $this->projectsRepository->destroy($id);
+                if($isDeletedFromDb) {
+                    foreach($imageNames as $imageName) {
+                        $this->deleteImageFromDisk($imageName);
+                    }
+                }
+            }
+            return true;
+        } catch (\Exception $e) {
+            AppLog::error($e);
+            return false;
+        }
     }
 
     /**
