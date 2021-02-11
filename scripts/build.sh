@@ -48,8 +48,9 @@ git pull
 
 printf "\n${GREEN} - Launch things for cleaning laravel things:${NC}\n"
 
-php artisan view:clear
 composer dump-autoload --optimize
+composer install --no-scripts
+php artisan view:clear
 php artisan config:cache
 
 printf "\n${GREEN} - Building assets:${NC}\n"
