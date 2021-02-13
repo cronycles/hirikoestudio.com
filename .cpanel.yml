@@ -16,7 +16,7 @@ deployment:
     - /bin/rm -rf $DEPLOYPATH/storage/framework/cache/*
     - /bin/rm -rf $DEPLOYPATH/storage/framework/sessions/*
     - /bin/rm -rf $DEPLOYPATH/storage/framework/views/*
-    - /bin/find $DEPLOYPATH/$PUBLICFOLDERNAME type f -delete
+    - /bin/find $DEPLOYPATH/$PUBLICFOLDERNAME -type f -delete
     - cd $BUILDFOLDERNAME
     - /bin/cp -R $PUBLICFOLDERNAME $DEPLOYPATH
     - /bin/cp -R app $DEPLOYPATH
