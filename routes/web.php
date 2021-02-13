@@ -49,6 +49,11 @@ Route::get('password/reset/{token}', ['as' => 'password.reset', 'uses' => 'Auth\
 
 Route::get('lang/{language}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
 
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    // return what you want
+});
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/auth', ['as' => 'auth', 'uses' => 'Auth\AuthPagesController@index']);
 
